@@ -69,7 +69,7 @@ $when = static function (string $utc): string {
 
 <section class="card" aria-label="<?= $tab === 'panel' ? 'Acciones del panel' : 'Eventos de reservas' ?>">
   <?php if (!$rows): ?><p class="empty">No hay registros con estos filtros.</p><?php else: ?>
-  <div class="tbl-wrap"><table class="tbl">
+  <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable"><table class="tbl">
     <?php if ($tab === 'panel'): ?>
     <thead><tr><th scope="col">Fecha</th><th scope="col">Usuario</th><th scope="col">Acción</th><th scope="col">Objeto</th><th scope="col">IP</th></tr></thead>
     <tbody>

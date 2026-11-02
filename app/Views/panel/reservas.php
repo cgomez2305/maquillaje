@@ -57,7 +57,7 @@ $canWrite = in_array($role, ['owner', 'staff'], true);
     <?php if ($list['rows'] === []): ?>
     <p class="empty"><?= $q !== '' || $filter !== '' ? 'No hay reservas con ese filtro.' : 'Todavía no hay reservas registradas.' ?></p>
     <?php else: ?>
-    <div class="tbl-wrap">
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
       <table class="tbl rv-tbl">
         <thead><tr>
           <th scope="col">Código</th><th scope="col">Clienta</th><th scope="col">Servicio</th>

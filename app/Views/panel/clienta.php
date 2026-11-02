@@ -22,7 +22,7 @@ $done = array_sum(array_map(static fn(array $b): int => $b['status'] === 'realiz
   <div class="stack">
     <section class="card">
       <div class="card-head"><h2 class="d">Reservas</h2><p class="muted small"><?= count($bookings) ?> · realizado <?= e(money($done)) ?></p></div>
-      <div class="tbl-wrap">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
         <table class="tbl">
           <thead><tr><th scope="col">Código</th><th scope="col">Servicio</th><th scope="col">Fecha</th><th scope="col">Origen</th><th scope="col">Estado</th><th scope="col" class="n">Valor</th></tr></thead>
           <tbody>
@@ -44,7 +44,7 @@ $done = array_sum(array_map(static fn(array $b): int => $b['status'] === 'realiz
     <?php if ($orders !== []): ?>
     <section class="card">
       <div class="card-head"><h2 class="d">Compras en línea</h2></div>
-      <div class="tbl-wrap">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
         <table class="tbl">
           <thead><tr><th scope="col">Pedido</th><th scope="col">Fecha</th><th scope="col">Estado</th><th scope="col" class="n">Valor</th></tr></thead>
           <tbody>

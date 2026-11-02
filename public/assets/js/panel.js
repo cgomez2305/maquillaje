@@ -25,3 +25,19 @@ document.querySelectorAll('[data-search]').forEach((input) => {
 document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copiado'; } catch { /* sin permiso */ }
 }));
+
+// Tablas desplazables: enfocables con teclado solo cuando de verdad desbordan (WCAG 2.1.1)
+function syncScrollRegions() {
+  document.querySelectorAll('.tbl-wrap').forEach((w) => {
+    if (w.scrollWidth > w.clientWidth + 1) {
+      const head = w.closest('section, .card')?.querySelector('h2, h3, caption')?.textContent.trim();
+      w.setAttribute('tabindex', '0');
+      w.setAttribute('role', 'region');
+      w.setAttribute('aria-label', 'Tabla desplazable' + (head ? ': ' + head : ''));
+    } else {
+      ['tabindex', 'role', 'aria-label'].forEach((a) => w.removeAttribute(a));
+    }
+  });
+}
+syncScrollRegions();
+window.addEventListener('resize', () => requestAnimationFrame(syncScrollRegions));

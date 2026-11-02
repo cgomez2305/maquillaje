@@ -26,7 +26,7 @@ $aria = static fn(string $f): string => isset($errors[$f]) ? ' aria-invalid="tru
     <div class="f full"><label for="d-faq">Preguntas frecuentes</label><textarea id="d-faq" name="faq_text" rows="8"<?= $aria('faq_text') ?>><?= e($p['faq_text'] ?? '') ?></textarea>
       <span class="hint">Una por bloque: «P: pregunta», en la línea siguiente «R: respuesta», y una línea en blanco entre preguntas. Se marca como FAQPage para Google.</span><?= $err('faq_text') ?></div>
   </section>
-  <aside class="card stack">
+  <aside class="card stack" aria-label="Publicación del artículo">
     <div class="f"><label for="d-status">Estado</label><select id="d-status" name="status"><option value="borrador"<?= ($p['status'] ?? '') !== 'publicado' ? ' selected' : '' ?>>Borrador</option><option value="publicado"<?= ($p['status'] ?? '') === 'publicado' ? ' selected' : '' ?>>Publicado</option></select></div>
     <div class="f"><label for="d-cat">Categoría</label><select id="d-cat" name="category"<?= $aria('category') ?>><?php foreach ($categories as $c): ?><option<?= ($p['category'] ?? '') === $c ? ' selected' : '' ?>><?= e($c) ?></option><?php endforeach; ?></select><?= $err('category') ?></div>
     <div class="f"><label for="d-link">Enlaza a</label><select id="d-link" name="links_to"><option value="">—</option><?php foreach ($links as $href => $label): ?><option value="<?= e($href) ?>"<?= ($p['links_to'] ?? '') === $href ? ' selected' : '' ?>><?= e($label) ?></option><?php endforeach; ?></select></div>

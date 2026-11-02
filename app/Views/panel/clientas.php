@@ -21,7 +21,7 @@ $isPartner = Auth::is('partner');
 </div>
 
 <section class="card">
-  <div class="tbl-wrap">
+  <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
     <table class="tbl">
       <caption class="sr-only">Clientas</caption>
       <thead><tr><th scope="col">Nombre</th><th scope="col">WhatsApp</th><th scope="col">Correo</th><th scope="col">Primer origen</th><th scope="col">Atribuida a la web hasta</th><th scope="col" class="n">Reservas</th><th scope="col" class="n">Valor realizado</th></tr></thead>

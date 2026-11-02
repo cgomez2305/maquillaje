@@ -92,7 +92,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
 /* Tablas */
-.tbl-wrap { overflow-x: auto; }
+.tbl-wrap { overflow-x: auto; position: relative; }
 .tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
 .tbl th, .tbl td { text-align: left; padding: 14px 10px 14px 0; border-bottom: 1px solid rgba(23, 19, 18, .08); vertical-align: middle; }
 .tbl th { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: var(--topo); }
@@ -194,3 +194,4 @@ details.action[open] { padding-bottom: 14px; }
   .pcal { gap: 3px; } .pcal .cell { min-height: 64px; padding: 4px; } .pcal a.bk span { display: none; }
   .auth-card { padding: 28px 22px; }
 }
+.tbl-wrap:focus-visible { outline: 2px solid var(--terracota); outline-offset: 2px; border-radius: 8px; }

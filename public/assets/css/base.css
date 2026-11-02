@@ -211,7 +211,7 @@ html.js .rv.is-in { opacity: 1; transform: none; }
   .sec-head { margin-bottom: 40px; }
   .fab { right: 16px; bottom: 16px; padding: 0 16px; }
   .fab span { display: none; }
-  .foot { padding-top: 80px; }
+  .foot { padding-top: 80px; padding-bottom: 96px; } /* el botón flotante no tapa los enlaces legales */
   .foot-in { gap: 56px; }
   .foot-col { gap: 0; }
   .foot-col .lbl { margin-bottom: 6px; }

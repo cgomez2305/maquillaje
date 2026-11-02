@@ -65,7 +65,7 @@ $delta = $d['requestsDelta'];
   <section class="card" aria-labelledby="prox">
     <div class="card-head"><h2 id="prox" class="d">Próximas citas</h2><a class="xs" href="/panel/reservas">Ver agenda</a></div>
     <?php if (!$d['upcoming']): ?><p class="empty">No hay citas próximas.</p><?php else: ?>
-    <div class="tbl-wrap"><table class="tbl">
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable"><table class="tbl">
       <thead><tr><th scope="col">Fecha</th><th scope="col">Clienta</th><th scope="col">Servicio</th><th scope="col">Estado</th></tr></thead>
       <tbody>
       <?php foreach ($d['upcoming'] as $u): $t = local_time($u['starts_at']); ?>

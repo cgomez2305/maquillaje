@@ -74,7 +74,7 @@ $cats = ['service' => 'Servicio', 'course' => 'Curso', 'product' => 'Producto', 
     <div class="f full"><label for="bl-reason">Motivo (interno)</label><input id="bl-reason" name="reason" maxlength="120" value="<?= e($old['reason'] ?? '') ?>" placeholder="Vacaciones, curso, evento…"></div>
     <div class="full"><button class="btn" type="submit">Bloquear</button></div>
   </form>
-  <div class="tbl-wrap">
+  <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
     <table class="tbl">
       <thead><tr><th scope="col">Desde</th><th scope="col">Hasta</th><th scope="col">Motivo</th><th scope="col"><span class="sr-only">Acciones</span></th></tr></thead>
       <tbody>
@@ -97,7 +97,7 @@ $cats = ['service' => 'Servicio', 'course' => 'Curso', 'product' => 'Producto', 
     <?= $err('services') ?>
     <form method="post" action="/panel/ajustes" class="stack">
       <?= csrf_field() ?><input type="hidden" name="section" value="services">
-      <div class="tbl-wrap"><table class="tbl">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable"><table class="tbl">
         <thead><tr><th scope="col">Servicio</th><th scope="col" class="n">Precio (COP)</th><th scope="col" class="n">Activo</th></tr></thead>
         <tbody>
         <?php foreach ($services as $s): ?>
@@ -117,7 +117,7 @@ $cats = ['service' => 'Servicio', 'course' => 'Curso', 'product' => 'Producto', 
     <?= $err('products') ?>
     <form method="post" action="/panel/ajustes" class="stack">
       <?= csrf_field() ?><input type="hidden" name="section" value="products">
-      <div class="tbl-wrap"><table class="tbl">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable"><table class="tbl">
         <thead><tr><th scope="col">Producto</th><th scope="col" class="n">Precio (COP)</th><th scope="col" class="n">En venta</th></tr></thead>
         <tbody>
         <?php foreach ($products as $p): ?>

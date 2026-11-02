@@ -42,7 +42,7 @@ $giftStatus = ['activo' => 'con', 'canjeado' => 'rea', 'anulado' => 'can'];
 
 <section class="card">
   <div class="card-head"><h2 class="d">Pedidos</h2><p class="muted small">La URL de retorno nunca confirma un pago: solo el webhook firmado.</p></div>
-  <div class="tbl-wrap">
+  <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
     <table class="tbl">
       <thead><tr><th scope="col">Pedido</th><th scope="col">Clienta</th><th scope="col">Productos</th><th scope="col">Estado</th><th scope="col">Pago</th><th scope="col">Referencia Wompi</th><th scope="col" class="n">Valor</th><th scope="col" class="n">Tasa</th><th scope="col" class="n">Comisión</th></tr></thead>
       <tbody>
@@ -68,7 +68,7 @@ $giftStatus = ['activo' => 'con', 'canjeado' => 'rea', 'anulado' => 'can'];
 <div class="split">
   <section class="card">
     <div class="card-head"><h2 class="d">Bonos de regalo</h2><p class="muted small">Últimos 30</p></div>
-    <div class="tbl-wrap">
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
       <table class="tbl">
         <thead><tr><th scope="col">Código</th><th scope="col">Servicio</th><th scope="col">Para</th><th scope="col">Estado</th><th scope="col">Reserva</th><th scope="col" class="n">Valor</th></tr></thead>
         <tbody>

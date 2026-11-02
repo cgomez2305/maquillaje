@@ -27,7 +27,7 @@
 .drawer .facts p + p { margin-top: 6px; font-size: 13px; }
 .dr-tl { margin-top: 14px; }
 .dr-tl .ev p:first-child { font-size: 13px; line-height: 1.5; }
-.dr-tl .ev .meta { color: var(--placeholder); }
+.dr-tl .ev .meta { color: var(--topo); }
 .files { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
 .upload { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; margin-top: 12px; font-size: 13px; }
 .upload input[type=file] { min-width: 0; font-size: 12px; }

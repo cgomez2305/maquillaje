@@ -220,3 +220,17 @@ document.addEventListener('click', (e) => {
     track('click_whatsapp', { origin });
   }
 });
+
+/* Formularios devueltos con errores por el servidor: llevar el foco (y la vista) al primer campo inválido */
+// Se ejecuta tras «load» porque el ancla del formulario (#guia, #cotizar…) mueve el foco al documento al cargar.
+function focusFirstInvalid() {
+  if (document.querySelector('[data-focus-on-load]')) return; // /reservar ya gestiona su aviso
+  const first = document.querySelector('main [aria-invalid="true"]');
+  if (!first) return;
+  const rv = first.closest('.rv');
+  if (rv) rv.style.opacity = '1';
+  first.scrollIntoView({ block: 'center', behavior: 'auto' });
+  first.focus({ preventScroll: true });
+}
+if (document.readyState === 'complete') setTimeout(focusFirstInvalid, 0);
+else window.addEventListener('load', () => setTimeout(focusFirstInvalid, 0), { once: true });

@@ -48,7 +48,7 @@ $total = $x['servicesAmount'] + $x['ordersAmount'];
     <section class="card" aria-labelledby="lq">
       <div class="card-head"><h2 id="lq" class="d">Servicios realizados</h2><span class="xs muted">Solo cuentan las reservas marcadas como realizadas</span></div>
       <?php if (!$x['services']): ?><p class="empty">Aún no hay servicios realizados en este corte.</p><?php else: ?>
-      <div class="tbl-wrap"><table class="tbl">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable"><table class="tbl">
         <thead><tr><th scope="col">Código</th><th scope="col">Servicio</th><th scope="col">Fecha</th><th scope="col">Origen</th><th scope="col" class="n">Valor</th><th scope="col" class="n">Tasa</th><th scope="col" class="n">Comisión</th></tr></thead>
         <tbody>
         <?php foreach ($x['services'] as $l): ?>
@@ -71,7 +71,7 @@ $total = $x['servicesAmount'] + $x['ordersAmount'];
     <section class="card" aria-labelledby="vl">
       <div class="card-head"><h2 id="vl" class="d">Ventas en línea</h2><span class="xs muted">Confirmadas por el webhook de Wompi</span></div>
       <?php if (!$x['orders']): ?><p class="empty">Sin ventas en línea en este corte.</p><?php else: ?>
-      <div class="tbl-wrap"><table class="tbl">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable"><table class="tbl">
         <thead><tr><th scope="col">Pedido</th><th scope="col">Producto</th><th scope="col">Pago</th><th scope="col">Referencia Wompi</th><th scope="col" class="n">Valor</th><th scope="col" class="n">Tasa</th><th scope="col" class="n">Comisión</th></tr></thead>
         <tbody>
         <?php foreach ($x['orders'] as $l): ?>

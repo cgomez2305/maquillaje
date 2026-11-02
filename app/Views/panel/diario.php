@@ -4,9 +4,9 @@
   <div class="top-actions"><a class="btn" href="/panel/diario/nuevo">Nuevo artículo</a></div>
 </div>
 <section class="card">
-  <div class="tbl-wrap">
+  <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla desplazable">
     <table class="tbl">
-      <thead><tr><th>Título</th><th>Categoría</th><th>Estado</th><th>Publicado</th><th>Actualizado</th><th class="n"></th></tr></thead>
+      <thead><tr><th>Título</th><th>Categoría</th><th>Estado</th><th>Publicado</th><th>Actualizado</th><th class="n"><span class="sr-only">Acciones</span></th></tr></thead>
       <tbody>
         <?php foreach ($posts as $p): $pub = local_time($p['published_at']); $upd = local_time($p['updated_at']); ?>
         <tr>
