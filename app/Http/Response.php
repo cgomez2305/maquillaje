@@ -13,7 +13,7 @@ final class Response
         private int $status = 200,
         array $headers = [],
     ) {
-        $this->headers = ['Content-Type' => 'text/html; charset=UTF-8'] + $headers;
+        $this->headers = $headers + ['Content-Type' => 'text/html; charset=UTF-8'];
     }
 
     public static function html(string $body, int $status = 200): self
