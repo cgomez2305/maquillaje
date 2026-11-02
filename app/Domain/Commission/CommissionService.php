@@ -65,7 +65,12 @@ final class CommissionService
                 return null;
             }
             $local = local_time($eventUtc) ?? new \DateTimeImmutable();
-            $period = $forceCurrent ? null : self::period((int) $local->format('Y'), (int) $local->format('n'));
+            $nowL = local_time(now_utc());
+            $sameMonth = $local->format('Y-m') === $nowL->format('Y-m');
+            // El periodo del mes en curso se crea si aún no existe; uno pasado solo sirve si sigue abierto
+            $period = $forceCurrent ? null : ($sameMonth
+                ? self::ensurePeriod((int) $local->format('Y'), (int) $local->format('n'))
+                : self::period((int) $local->format('Y'), (int) $local->format('n')));
             if ($period === null || $period['status'] !== 'abierto') {
                 $now = local_time(now_utc());
                 $period = self::ensurePeriod((int) $now->format('Y'), (int) $now->format('n'));
