@@ -42,5 +42,9 @@ set_error_handler(static function (int $severity, string $message, string $file,
     if (!(error_reporting() & $severity)) {
         return false;
     }
+    if ($severity & (E_DEPRECATED | E_USER_DEPRECATED)) {
+        error_log("Obsoleto: {$message} en {$file}:{$line}");
+        return true; // una actualización de PHP no debe tumbar el sitio
+    }
     throw new ErrorException($message, 0, $severity, $file, $line);
 });

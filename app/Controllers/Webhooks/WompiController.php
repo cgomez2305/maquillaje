@@ -5,6 +5,7 @@ namespace App\Controllers\Webhooks;
 
 use App\Domain\Orders\OrderService;
 use App\Domain\Orders\WompiSignature;
+use App\Http\RateLimiter;
 use App\Http\Request;
 use App\Http\Response;
 use App\Support\Db;
@@ -36,10 +37,18 @@ final class WompiController
             ? 'tx:' . mb_substr((string) ($tx['id'] ?? ''), 0, 60) . ':' . $status
             : 'invalid:' . random_token(16);
 
+        if (!$valid && !RateLimiter::hit('wompi_bad:' . $request->ip(), 20, 3600)) {
+            // payment_events es de solo inserción: no se deja que eventos falsos la llenen
+            return Response::json(['error' => 'signature'], 429);
+        }
+        // De un evento con firma inválida solo se guarda un resumen acotado (auditoría sin almacenar basura)
+        $raw = $valid
+            ? json_encode($event, JSON_UNESCAPED_UNICODE)
+            : json_encode(['invalid' => true, 'ip' => $request->ip(), 'event' => mb_substr((string) ($event['event'] ?? ''), 0, 60), 'bytes' => strlen($raw)], JSON_UNESCAPED_UNICODE);
         try {
             Db::run(
                 'INSERT INTO payment_events (provider, event_id, order_reference, status, raw, signature_valid, received_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                ['wompi', $eventId, $ref, $status, json_encode($event, JSON_UNESCAPED_UNICODE), $valid ? 1 : 0, now_utc()],
+                ['wompi', $eventId, $ref, $status, $raw, $valid ? 1 : 0, now_utc()],
             );
         } catch (\PDOException $e) {
             if ((int) ($e->errorInfo[1] ?? 0) === 1062) {

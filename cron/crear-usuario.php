@@ -50,6 +50,8 @@ $hash = password_hash($password, PASSWORD_ARGON2ID);
 $existing = Db::one('SELECT id FROM users WHERE email = ?', [$email]);
 if ($existing) {
     $sql = 'UPDATE users SET name = ?, role = ?, password_hash = ?, active = 1, failed_logins = 0, locked_until = NULL, updated_at = ?';
+    // Cambiar la contraseña por consola cierra todas las sesiones abiertas de esa cuenta
+    \App\Panel\Auth::invalidateOtherSessions((int) $existing['id']);
     $params = [$name, $role, $hash, $now];
     if (isset($opts['reset-2fa'])) {
         $sql .= ', totp_enabled = 0, totp_secret = NULL, totp_last_step = NULL';

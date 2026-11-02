@@ -105,6 +105,7 @@ final class AuthController extends Controller
                     Db::run('UPDATE users SET password_hash = ?, failed_logins = 0, locked_until = NULL, updated_at = ? WHERE id = ?', [password_hash((string) $request->post['password'], PASSWORD_ARGON2ID), now_utc(), (int) $row['user_id']]);
                     Db::run('UPDATE password_resets SET used_at = ? WHERE id = ?', [now_utc(), (int) $row['id']]);
                 });
+                Auth::invalidateOtherSessions((int) $row['user_id']);
                 AuditLog::record((int) $row['user_id'], 'contrasena_cambiada', 'recuperacion', null, $request->ip());
                 Session::flash('notice', 'Contraseña actualizada. Ya puedes entrar.');
                 return Response::redirect('/panel/login', 303);
@@ -150,6 +151,7 @@ final class AuthController extends Controller
             if ($error === null) {
                 Db::run('UPDATE users SET password_hash = ?, updated_at = ? WHERE id = ?', [password_hash((string) $request->post['password'], PASSWORD_ARGON2ID), now_utc(), $id]);
                 Session::regenerate();
+                Auth::invalidateOtherSessions($id, true);
                 AuditLog::record($id, 'contrasena_cambiada', 'panel', null, $request->ip());
                 Session::flash('notice', 'Contraseña actualizada.');
                 return Response::redirect('/panel/seguridad', 303);

@@ -20,6 +20,9 @@ final class Auth
 {
     private static ?array $user = null;
 
+    /** Hash Argon2id válido de una clave aleatoria descartada: iguala el tiempo cuando el correo no existe. */
+    private const DUMMY_HASH = '$argon2id$v=19$m=65536,t=4,p=1$b1NTVGlLM2pKRXpnZGVBTw$f0kEEOo0mUkr4Fayj4nWp/uZVILBfm3qUI5xwOEQG4Y';
+
     public const ROLE_LABELS = ['owner' => 'Dueña · administración', 'partner' => 'Socio · solo lectura', 'staff' => 'Asistente'];
 
     /** @return array<string,mixed>|null usuario autenticado y con 2FA completado */
@@ -32,10 +35,19 @@ final class Auth
         if (!is_int($id) || Session::get('2fa_ok') !== true) {
             return null;
         }
-        $u = Db::one('SELECT id, name, email, role, totp_enabled, active FROM users WHERE id = ?', [$id]);
-        if ($u === null || !(int) $u['active']) {
+        // SELECT * para tolerar una BD a la que aún no se le aplicó la migración 004
+        $row = Db::one('SELECT * FROM users WHERE id = ?', [$id]);
+        if ($row === null || !(int) $row['active']) {
             return null;
         }
+        // Tras un cambio o restablecimiento de contraseña, las sesiones anteriores dejan de valer
+        $validAfter = $row['sessions_valid_after'] ?? null;
+        $authAt = Session::get('auth_at');
+        if ($validAfter !== null && (!is_int($authAt) || $authAt < (int) strtotime($validAfter . ' UTC'))) {
+            Session::destroy();
+            return null;
+        }
+        $u = array_intersect_key($row, array_flip(['id', 'name', 'email', 'role', 'totp_enabled', 'active']));
         return self::$user = $u;
     }
 
@@ -81,7 +93,8 @@ final class Auth
      */
     public static function attempt(string $email, string $password, Request $request): ?string
     {
-        $generic = 'Correo o contraseña incorrectos.';
+        // Un solo mensaje para usuario inexistente, contraseña errónea o cuenta bloqueada: no revela qué cuentas existen
+        $generic = 'Correo o contraseña incorrectos, o demasiados intentos seguidos. Revisa tus datos o espera unos minutos.';
         $ip = $request->ip();
         $email = mb_strtolower(trim($email));
         if (!RateLimiter::hit('login_ip:' . $ip, 20, 900)) {
@@ -91,11 +104,12 @@ final class Auth
         $u = Db::one('SELECT * FROM users WHERE email = ?', [$email]);
         $now = now_utc();
         if ($u !== null && $u['locked_until'] !== null && $u['locked_until'] > $now) {
+            password_verify($password, self::DUMMY_HASH); // mismo tiempo de respuesta que un intento normal
             AuditLog::record((int) $u['id'], 'login_bloqueado', $email, null, $ip);
-            return 'La cuenta está bloqueada temporalmente por intentos fallidos. Inténtalo más tarde.';
+            return $generic;
         }
-        // Verificación de tiempo constante aun si el usuario no existe
-        $hash = $u['password_hash'] ?? '$argon2id$v=19$m=65536,t=4,p=1$c29tZXNhbHRzb21lc2FsdA$Qe0x2a2x1a0b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8';
+        // Verificación de tiempo constante aun si el usuario no existe (hash Argon2id válido de una clave aleatoria)
+        $hash = $u['password_hash'] ?? self::DUMMY_HASH;
         $ok = password_verify($password, $hash) && $u !== null && (int) $u['active'] === 1;
         if (!$ok) {
             if ($u !== null) {
@@ -120,6 +134,7 @@ final class Auth
         Session::put('uid', (int) $u['id']);
         Session::put('2fa_ok', false);
         Session::put('login_at', time());
+        Session::put('auth_at', time());
         Session::put('seen_at', time());
         if (!(int) $u['totp_enabled']) {
             if (self::requiresTotp($u['role'])) {
@@ -214,6 +229,24 @@ final class Auth
     {
         Db::run('UPDATE users SET last_login_at = ? WHERE id = ?', [now_utc(), $id]);
         AuditLog::record($id, 'login', null, null, $ip);
+    }
+
+    /**
+     * Invalida todas las sesiones de la cuenta iniciadas antes de ahora. Si $keepCurrent, la sesión en
+     * curso se conserva (se vuelve a sellar con la hora actual).
+     */
+    public static function invalidateOtherSessions(int $userId, bool $keepCurrent = false): void
+    {
+        $now = time();
+        try {
+            Db::run('UPDATE users SET sessions_valid_after = ? WHERE id = ?', [gmdate('Y-m-d H:i:s', $now), $userId]);
+        } catch (\PDOException $e) {
+            app_log('warning', 'sessions_valid_after no disponible (¿falta la migración 004?): ' . $e->getMessage());
+            return;
+        }
+        if ($keepCurrent) {
+            Session::put('auth_at', $now);
+        }
     }
 
     /** Para pruebas. */

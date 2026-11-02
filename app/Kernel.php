@@ -38,6 +38,9 @@ final class Kernel
     {
         // URLs limpias: sin barra final y en minúscula (§12.4)
         $path = $request->path;
+        if (preg_match('/[\x00-\x1F\x7F\\\\]/', $path) || str_starts_with($path, '//')) {
+            throw new Http\HttpException(404); // caracteres de control, barras invertidas o «//»: nunca son rutas válidas
+        }
         if ($path !== '/' && str_ends_with($path, '/')) {
             return self::canonicalRedirect(rtrim($path, '/') ?: '/', $request);
         }

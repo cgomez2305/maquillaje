@@ -30,7 +30,12 @@ final class Request
     public static function capture(): self
     {
         $uri = (string) ($_SERVER['REQUEST_URI'] ?? '/');
-        $path = rawurldecode((string) (parse_url($uri, PHP_URL_PATH) ?: '/'));
+        // Ruta = todo lo anterior a «?» o «#». parse_url() devuelve false con rutas como «/a:1/» y caería en «/»
+        $rawPath = (string) strtok($uri, '?#');
+        if ($rawPath === '' || $rawPath[0] !== '/') {
+            $rawPath = '/' . ltrim((string) preg_replace('#^[a-z][a-z0-9+.-]*://[^/]*#i', '', $rawPath), '/');
+        }
+        $path = rawurldecode($rawPath);
         $method = strtoupper((string) ($_SERVER['REQUEST_METHOD'] ?? 'GET'));
         return new self($method, $path, $_GET, $_POST, $_SERVER, $_COOKIE, $_FILES);
     }

@@ -48,6 +48,10 @@ final class Response
 
     public static function isAllowedTarget(string $to): bool
     {
+        // Los navegadores eliminan tabuladores y saltos de línea de las URL («/\t/evil.com» → «//evil.com»)
+        if ($to === '' || preg_match('/[\x00-\x20\x7F]/', $to)) {
+            return false;
+        }
         if (str_starts_with($to, '/') && !str_starts_with($to, '//') && !str_contains($to, '\\')) {
             return true;
         }
