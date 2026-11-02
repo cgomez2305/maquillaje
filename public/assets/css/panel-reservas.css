@@ -1,0 +1,67 @@
+/* Panel · Reservas, alta manual y calendario (complementa panel.css) */
+.gap-8 { gap: 8px; } .gap-12 { gap: 12px; }
+.mt-6 { margin-top: 6px; }
+.wrap-any { overflow-wrap: anywhere; }
+.top .lbl a { color: inherit; }
+
+/* Listado */
+.rv-list { padding: 8px 24px 12px; }
+.rv-tbl td { padding: 0; border-bottom: 1px solid rgba(23, 19, 18, .07); }
+.rv-tbl td a.rowlink { padding: 16px 10px 16px 0; color: var(--tinta); }
+.rv-tbl td.n a.rowlink { padding-right: 0; }
+.rv-tbl td.code a.rowlink { font-size: 13px; letter-spacing: .02em; white-space: nowrap; }
+.rv-tbl td.origin a.rowlink { color: var(--topo); font-size: 13px; }
+.rv-tbl a.rowlink:hover { color: var(--terracota); }
+.rv-tbl th a.sort { color: inherit; text-decoration: none; }
+.split.no-drawer { grid-template-columns: minmax(0, 1fr); }
+.pager { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 0 6px; flex-wrap: wrap; }
+.list-count { padding: 14px 0 4px; }
+
+/* Cajón de detalle */
+.drawer { gap: 18px; }
+.dr-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.drawer h2.d { font-size: 32px; }
+.dr-sub { margin-top: 6px; font-size: 14px; color: var(--texto-tarjeta); }
+.drawer .facts { gap: 14px 16px; padding: 18px 0; font-size: 13px; }
+.drawer .facts .full { grid-column: 1 / -1; }
+.drawer .facts p + p { margin-top: 6px; font-size: 13px; }
+.dr-tl { margin-top: 14px; }
+.dr-tl .ev p:first-child { font-size: 13px; line-height: 1.5; }
+.dr-tl .ev .meta { color: var(--placeholder); }
+.files { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+.upload { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; margin-top: 12px; font-size: 13px; }
+.upload input[type=file] { min-width: 0; font-size: 12px; }
+.upload .full { grid-column: 1 / -1; }
+.dr-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dr-actions .full { grid-column: 1 / -1; }
+.dr-actions form { margin: 0; }
+.dr-actions details.action form { margin-top: 4px; }
+.dr-actions .fg { gap: 12px; }
+.dr-actions .fg .full { grid-column: 1 / -1; }
+.danger-zone summary { color: #9A3A28; }
+.dr-note { line-height: 1.55; }
+.dr-close { color: var(--topo); align-self: flex-start; }
+
+/* Alta manual */
+.nb-set { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.nb-set legend { margin-bottom: 14px; padding: 0; }
+.nb-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.nb-info h2 { font-size: 28px; }
+.nb-list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+.f .err { display: block; }
+
+/* Calendario */
+.pcal a.bk.done { background: #EAEFF7; color: #2D4E80; }
+.pcal .blk { font-size: 11px; }
+.cal-legend { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
+.cal-legend .lg { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #E8F1EA; margin-left: 6px; }
+.cal-legend .lg.sol { background: #FFF4E5; } .cal-legend .lg.done { background: #EAEFF7; } .cal-legend .lg.blk { background: #EFEAE6; }
+
+@media (max-width: 1180px) { .drawer { order: -1; } }
+@media (max-width: 760px) {
+  .rv-list { padding: 4px 16px 8px; }
+  .drawer h2.d { font-size: 28px; }
+  .dr-actions { grid-template-columns: minmax(0, 1fr); }
+  .top-actions { width: 100%; }
+  .top-actions .btn { flex: 1 1 auto; }
+}
