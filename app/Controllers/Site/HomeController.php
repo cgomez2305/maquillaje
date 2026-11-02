@@ -26,6 +26,7 @@ final class HomeController extends Controller
             'courses' => Catalog::courses(),
             'faq' => $faq,
             'css' => ['pages/home.css'],
+            'js' => ['rail.js'],
             'preload' => ['key' => 'fotos/catalogo-modelo-hero', 'sizes' => '(max-width: 960px) 100vw, 520px'],
             'schema' => [Schema::faq($faq)],
             'waOrigin' => 'inicio',

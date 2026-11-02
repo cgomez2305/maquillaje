@@ -105,15 +105,15 @@
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap rv sec-head">
-    <div>
-      <p class="lbl c-terracota">Portafolio</p>
-      <h2 class="d d-l">Pieles reales,<br>luz real.</h2>
+<section class="sec pf" aria-labelledby="pf-title" data-hrail>
+  <div class="pf-pin">
+    <div class="wrap rv sec-head">
+      <div>
+        <p class="lbl c-terracota">Portafolio</p>
+        <h2 class="d d-l" id="pf-title">Pieles reales,<br>luz real.</h2>
+      </div>
+      <a class="btn ghost" href="/portafolio">Ver portafolio completo</a>
     </div>
-    <a class="btn ghost" href="/portafolio">Ver portafolio completo</a>
-  </div>
-  <div class="rail" role="region" aria-label="Trabajos recientes" tabindex="0">
     <?php
     $rail = [
         ['fotos/ig-clienta-bata-seda', 'Maquillaje de novia con piel luminosa', 'Novia'],
@@ -123,9 +123,33 @@
         ['fotos/ig-novia-reel', 'Novia en bata durante la grabación del reel', 'Detrás de cámaras'],
         ['fotos/catalogo-ojo-detalle', 'Detalle de ojo con sombras cálidas, delineado y pestañas', 'Detalle'],
     ];
-    foreach ($rail as [$photo, $alt, $cap]): ?>
-    <figure class="rv"><div class="ph ar-34"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 78vw, 340px']) ?></div><figcaption class="lbl"><?= e($cap) ?></figcaption></figure>
-    <?php endforeach; ?>
+    $total = count($rail) + 1;
+    ?>
+    <div class="rail-viewport">
+      <ul class="rail" id="pf-rail" tabindex="0" aria-label="Trabajos recientes, <?= $total ?> elementos. Usa las flechas para desplazarte." data-rail-track>
+        <?php foreach ($rail as $i => [$photo, $alt, $cap]): ?>
+        <li class="rail-item" aria-label="<?= $i + 1 ?> de <?= $total ?>">
+          <figure><div class="ph ar-34"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 78vw, 340px']) ?></div><figcaption class="lbl"><span class="rail-n" aria-hidden="true"><?= sprintf('%02d', $i + 1) ?></span><?= e($cap) ?></figcaption></figure>
+        </li>
+        <?php endforeach; ?>
+        <li class="rail-item" aria-label="<?= $total ?> de <?= $total ?>">
+          <a class="rail-more" href="/portafolio">
+            <span class="lbl c-terracota">Portafolio completo</span>
+            <span class="d rail-more-t">Novias, social, editorial y detrás de cámaras.</span>
+            <span class="rail-more-cta">Ver todo el portafolio <?= icon('arrow', 'arr') ?></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap rail-ui" data-rail-ui hidden>
+      <p class="rail-count"><span data-rail-current>01</span><span class="rail-sep" aria-hidden="true"> / </span><span class="sr-only"> de </span><span><?= sprintf('%02d', $total) ?></span></p>
+      <div class="rail-progress" aria-hidden="true"><span data-rail-bar></span></div>
+      <div class="rail-btns">
+        <button class="rail-btn" type="button" aria-controls="pf-rail" aria-label="Trabajo anterior" data-rail-prev><?= icon('chevron-left') ?></button>
+        <button class="rail-btn" type="button" aria-controls="pf-rail" aria-label="Trabajo siguiente" data-rail-next><?= icon('chevron') ?></button>
+      </div>
+      <p class="sr-only" aria-live="polite" data-rail-live></p>
+    </div>
   </div>
 </section>
 
