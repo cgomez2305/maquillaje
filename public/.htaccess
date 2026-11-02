@@ -26,9 +26,9 @@ DirectoryIndex index.php
     RewriteRule (^|/)(composer\.(json|lock)|package(-lock)?\.json|.*\.(sql|log|bak|ini|sh|md))$ - [F,L]
 
     # Archivos estáticos existentes de /assets se sirven tal cual
-    RewriteCond %{REQUEST_URI} ^/assets/
+    # (patrón relativo a esta carpeta: funciona en Apache y LiteSpeed, también tras la reescritura de la raíz)
     RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^ - [L]
+    RewriteRule ^assets/ - [L]
 
     # favicon y security.txt
     RewriteRule ^(favicon\.ico|\.well-known/security\.txt)$ - [L]

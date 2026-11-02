@@ -74,3 +74,16 @@ Los cron corren en hora del servidor (UTC en Hostinger): `10 0 1 * *` UTC equiva
 ## 8. Fuente de marca
 
 Cuando esté la licencia web de **Aristotelica Display ExtraLight**, sube `aristotelica-display-extralight.woff2` a `public/assets/fonts/` y añade la línea `url(…) format('woff2')` indicada en `public/assets/css/tokens.css`. Mientras tanto se usa Comfortaa 300 (autoalojada).
+
+## Estado del despliegue actual (2 nov 2026)
+
+Desplegado con la API de Hostinger (MCP) en el plan Business `u480515229`:
+
+- Sitio `maquillajebucaramanga.com`, PHP 8.3 con `sodium` activado, `display_errors` y `expose_php` en Off.
+- El proyecto completo está en `public_html/` (las subidas por API van ahí). El `.htaccess` de la raíz sirve solo `public/` y bloquea `app/`, `config/`, `storage/`, `vendor/`, `.env`… (verificado: 403).
+- Base de datos `u480515229_mubf` con las migraciones aplicadas (triggers incluidos).
+- `.env` de producción **solo en el servidor** (`public_html/.env`). Descárgalo desde el administrador de archivos de hPanel y guárdalo en un lugar seguro: contiene `APP_KEY`, sin la cual no se descifran los respaldos.
+- Cron (hora del servidor = UTC; Bogotá = UTC−5): recordatorios `*/15 * * * *`, encuestas `5 * * * *`, alertas `10 * * * *`, resumen semanal `0 13 * * 1` (lunes 8:00 Bogotá), cierre de periodo `10 5 1 * *` (día 1, 00:10 Bogotá), sitemap `0 8 * * *`, respaldo `5 8 * * *` (3:05 Bogotá), retención `30 9 1 * *`. Binario: `/opt/alt/php83/usr/bin/php`.
+- Redesplegar: generar el paquete (código + `vendor/` sin pruebas de PHPMailer) **incluyendo el `.env` del servidor**, porque el despliegue por archivo reemplaza el contenido de `public_html`.
+
+Pendiente para activar del todo: buzón y SMTP (hoy `MAIL_DRIVER=log`: los correos quedan en `storage/logs/mail.log`), `PARTNER_EMAIL`, datos de abono `PAY_*`, llaves de Wompi y GA4/GTM, y los usuarios del panel.
