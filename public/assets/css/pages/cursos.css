@@ -1,0 +1,41 @@
+/* Cursos (Cursos.dc.html) */
+.crs-hero { grid-template-columns: 1.1fr .9fr; padding-top: 96px; padding-bottom: 120px; align-items: end; }
+.crs-h1 { margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400; }
+.crs-title { font-size: clamp(56px, 7.4vw, 116px); }
+.crs-lead { font-size: 18px; line-height: 1.65; color: var(--nude-medio); }
+.crs-hero .btn.ghost-light { box-shadow: inset 0 0 0 1px rgba(251, 248, 245, .4); }
+
+.crs-pillars { gap: 0; border-top: 1px solid rgba(23, 19, 18, .14); }
+.crs-pillars > div { padding: 36px 32px 0 0; }
+.crs-pillars .d { font-size: 44px; }
+.crs-pillar-txt { margin-top: 14px; color: var(--texto-tarjeta); line-height: 1.6; }
+
+.crs-list { padding-top: 96px; }
+.course { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 72px; padding: 88px 0; border-top: 1px solid rgba(23, 19, 18, .14); scroll-margin-top: calc(var(--nav-h) + 8px); }
+.course:last-child { border-bottom: 1px solid rgba(23, 19, 18, .14); }
+.crs-desc { max-width: 440px; }
+.crs-price { display: flex; align-items: baseline; gap: 10px; }
+.crs-price .d { font-size: 64px; }
+.crs-mods-lbl { margin-bottom: 8px; }
+.crs-mods { list-style: none; margin: 0; padding: 0; }
+.mod { display: flex; gap: 24px; padding: 20px 0; border-bottom: 1px solid rgba(23, 19, 18, .1); font-size: 16px; }
+.mod span:first-child { color: var(--terracota); font-size: 12px; letter-spacing: .2em; padding-top: 4px; min-width: 40px; }
+.crs-note { margin-top: 24px; font-size: 15px; color: var(--terracota); }
+
+.crs-faq { grid-template-columns: .8fr 1.2fr; align-items: start; }
+.crs-cta { gap: 36px; }
+.crs-cta .crs-deco { width: 520px; right: -150px; top: auto; bottom: -160px; }
+
+@media (max-width: 960px) {
+  .crs-hero { grid-template-columns: minmax(0, 1fr); gap: 48px; padding-top: 56px; padding-bottom: 72px; }
+  .crs-title { font-size: clamp(48px, 13vw, 64px); }
+  .crs-pillars { gap: 0; }
+  .crs-pillars > div { padding: 32px 0; border-bottom: 1px solid var(--linea); }
+  .crs-pillars > div:last-child { border-bottom: 0; }
+  .crs-pillars .d { font-size: 36px; }
+  .crs-list { padding-top: 56px; }
+  .course { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 64px 0; }
+  .crs-price .d { font-size: 52px; }
+  .crs-faq { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .crs-cta .crs-deco { width: 340px; right: -120px; bottom: -110px; }
+}

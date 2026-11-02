@@ -1,0 +1,66 @@
+/* Novias y quinceañeras (Novias.dc.html) */
+.nv-hero { padding-top: 56px; }
+.nv-hero-grid { grid-template-columns: 1.15fr .85fr; align-items: end; padding-top: 48px; }
+.nv-h1 { margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400; }
+.nv-hero-d { font-size: clamp(56px, 8vw, 128px); }
+.nv-hero-side { padding-bottom: 16px; }
+.nv-price { display: flex; align-items: baseline; gap: 16px; }
+.nv-price .d { font-size: 48px; }
+.nv-price .c-topo { font-size: 15px; }
+
+.nv-cover-wrap { padding-top: 72px; }
+.nv-cover { border-radius: 0; height: 82vh; min-height: 560px; max-height: 860px; }
+.nv-cover img { object-position: 50% 42%; }
+
+.nv-inc-head { align-items: end; margin-bottom: 72px; }
+.nv-on-dark { font-size: 17px; line-height: 1.7; color: var(--nude-medio); }
+.nv-inc-grid { gap: 0; }
+.inc { padding: 40px 32px 40px 0; border-top: 1px solid rgba(251, 248, 245, .2); }
+.inc-n { font-size: 56px; color: var(--salmon); }
+.inc h3 { margin: 28px 0 12px; font-size: 20px; font-weight: 400; }
+.inc p:last-child { color: var(--nude-oscuro); line-height: 1.6; font-size: 15px; }
+.nv-inc-more { margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(251, 248, 245, .2); font-size: 16px; line-height: 1.7; color: var(--nude-medio); max-width: 860px; }
+
+.nv-steps-head { margin-bottom: 40px; }
+.nv-steps { list-style: none; margin: 0; padding: 0; }
+.step { display: grid; grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr); gap: 48px; padding: 48px 0; border-top: 1px solid var(--linea); align-items: start; }
+.step:last-child { border-bottom: 1px solid var(--linea); }
+.step-n { padding-top: 10px; }
+.step-t { font-size: 36px; line-height: 1.1; letter-spacing: -0.03em; }
+.step-p { font-size: 16px; }
+
+.nv-cortejo { grid-template-columns: .9fr 1.1fr; }
+
+.nv-season { grid-template-columns: 1.2fr .8fr; }
+.nv-season-d { font-size: clamp(36px, 4vw, 60px); line-height: 1.1; }
+.nv-season-cta { display: flex; justify-content: flex-end; }
+
+.nv-faq-grid { grid-template-columns: .8fr 1.2fr; align-items: start; }
+
+.nv-cta .deco { right: auto; top: auto; left: -160px; bottom: -180px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .big { animation: big linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+    @keyframes big { from { letter-spacing: .02em; opacity: .2; } to { letter-spacing: -0.035em; opacity: 1; } }
+  }
+}
+
+@media (max-width: 960px) {
+  .nv-hero { padding-top: 32px; }
+  .nv-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 32px; }
+  .nv-hero-d { font-size: clamp(48px, 13vw, 64px); }
+  .nv-cover-wrap { padding-top: 48px; }
+  .nv-cover { height: 70vh; min-height: 420px; }
+  .nv-inc-head { gap: 28px; margin-bottom: 48px; }
+  .inc { padding: 32px 16px 32px 0; }
+  .inc-n { font-size: 44px; }
+  .inc h3 { margin-top: 20px; }
+  .nv-inc-more { margin-top: 40px; }
+  .step { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 36px 0; }
+  .step-n { padding-top: 0; }
+  .step-t { font-size: 30px; }
+  .nv-cortejo, .nv-season, .nv-faq-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .nv-season-cta { justify-content: flex-start; }
+  .nv-cta .deco { left: -120px; bottom: -120px; }
+}

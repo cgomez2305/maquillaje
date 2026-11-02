@@ -1,0 +1,93 @@
+/* Artículo del diario (Articulo.dc.html) · C17 barra de lectura y tabla de contenido */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; background: var(--salmon); transform-origin: left; transform: scaleX(0); z-index: 50; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .progress { display: none; } }
+
+.art-head { padding-top: 56px; padding-bottom: 56px; max-width: 1056px; }
+.art-kicker { margin-top: 48px; }
+.art-title { font-size: clamp(44px, 5.6vw, 84px); line-height: 1.04; margin-top: 24px; }
+.art-byline { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--linea); }
+.art-date { margin-top: 4px; font-size: 13px; color: var(--topo); }
+.avatar { width: 52px; height: 52px; border-radius: 50%; flex: none; }
+.avatar img { object-position: 30% 15%; }
+.avatar.lg { width: 88px; height: 88px; }
+
+.share { display: flex; gap: 10px; align-items: center; position: relative; }
+.share a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--tinta); box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .2); transition: transform 100ms ease-out, box-shadow .3s ease; }
+.share a:hover { box-shadow: inset 0 0 0 1px var(--tinta); color: var(--tinta); }
+.share a:active { transform: scale(.94); }
+.share .ic.sm { width: 18px; height: 18px; }
+.copied { position: absolute; right: 0; top: calc(100% + 8px); font-size: 12px; color: var(--topo); white-space: nowrap; }
+
+.art-cover-wrap { padding-bottom: 96px; }
+.art-cover { aspect-ratio: 21 / 9; border-radius: var(--r-pack); }
+.art-cover img { object-position: 50% 40%; }
+
+.layout { display: grid; grid-template-columns: 240px minmax(0, 720px); gap: 96px; justify-content: center; }
+.toc { position: sticky; top: 120px; align-self: start; display: flex; flex-direction: column; gap: 4px; }
+.toc-title { margin-bottom: 14px; }
+.toc a { text-decoration: none; font-size: 14px; color: var(--topo); padding: 10px 0 10px 16px; border-left: 1px solid rgba(23, 19, 18, .14); transition: color .3s ease, border-color .3s ease; }
+.toc a:hover, .toc a[aria-current="true"] { color: var(--tinta); border-left-color: var(--tinta); }
+
+.prose { min-width: 0; }
+.prose > blockquote:first-child { background: var(--arena); border-left: 0; border-radius: 24px; padding: 36px 40px; margin: 0 0 40px; scroll-margin-top: 110px; }
+.prose > blockquote:first-child p:first-child { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; color: var(--terracota); margin: 0 0 16px; line-height: 1.5; }
+.prose > blockquote:first-child p + p { margin: 0; font-size: 20px; line-height: 1.6; color: var(--tinta); }
+.prose blockquote { margin: 0 0 22px; padding-left: 20px; border-left: 2px solid var(--salmon); }
+.prose h2 { font-family: var(--font-display); font-weight: 200; font-size: 40px; line-height: 1.1; letter-spacing: -0.03em; margin: 72px 0 24px; scroll-margin-top: 110px; }
+.prose h3 { font-size: 22px; margin: 40px 0 16px; }
+.prose p, .prose li { font-size: 18px; line-height: 1.75; color: var(--prosa); }
+.prose p { margin: 0 0 22px; }
+.prose ul, .prose ol { margin: 0 0 22px; padding-left: 22px; }
+.prose li { margin-bottom: 8px; }
+.prose li::marker { color: var(--salmon); }
+.prose strong { font-weight: 500; color: var(--tinta); }
+.prose a { color: var(--terracota); text-underline-offset: 3px; }
+.prose a:hover { color: var(--tinta); }
+.prose table { width: 100%; border-collapse: collapse; font-size: 16px; margin: 8px 0 28px; display: block; overflow-x: auto; }
+.prose th, .prose td { text-align: left; padding: 16px 12px 16px 0; border-bottom: 1px solid var(--linea); vertical-align: top; }
+.prose td:last-child { white-space: nowrap; }
+.prose thead th { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: var(--topo); }
+.prose figure { margin: 32px 0; }
+.prose figure img { border-radius: var(--r-foto); }
+.prose figcaption { margin-top: 10px; font-size: 13px; color: var(--topo); }
+
+.art-cta { background: var(--tinta); color: var(--porcelana); border-radius: var(--r-pack); padding: 48px 44px; margin: 48px 0; display: flex; flex-direction: column; gap: 20px; }
+.prose .art-cta p { margin: 0; color: inherit; }
+.prose .art-cta .lbl { color: var(--salmon); font-size: 12px; line-height: 1.5; }
+.prose .art-cta-title { font-size: 36px; line-height: 1.1; color: var(--porcelana); }
+.prose .art-cta a { color: inherit; text-decoration: none; }
+.prose .art-cta .btn.salmon { color: var(--tinta); }
+
+.prose .faq summary { font-size: 19px; }
+.prose .faq details > div p { font-size: 16px; line-height: 1.7; color: var(--cacao); margin: 0; }
+
+.author { display: flex; gap: 24px; align-items: center; margin-top: 64px; padding: 32px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+.prose .author p { margin: 0; }
+.prose .author .lbl { font-size: 12px; line-height: 1.5; }
+.prose .author-name { margin: 8px 0 6px; font-size: 19px; color: var(--tinta); }
+.prose .author-bio { font-size: 15px; line-height: 1.6; color: var(--texto-tarjeta); }
+
+.ar-43 { aspect-ratio: 4 / 3; }
+.more-title { font-size: clamp(36px, 4vw, 56px); }
+.more-post { font-size: 28px; line-height: 1.15; }
+.bg-arena .all-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+
+@media (max-width: 1180px) {
+  .layout { grid-template-columns: minmax(0, 720px); gap: 0; }
+  .toc { display: none; }
+}
+@media (max-width: 960px) {
+  .art-head { padding-top: 32px; padding-bottom: 40px; }
+  .art-kicker { margin-top: 32px; }
+  .art-title { font-size: clamp(36px, 10vw, 52px); }
+  .art-cover-wrap { padding-bottom: 56px; }
+  .art-cover { aspect-ratio: 4 / 3; border-radius: 20px; }
+  .prose > blockquote:first-child { padding: 28px 24px; }
+  .prose > blockquote:first-child p + p { font-size: 18px; }
+  .prose h2 { font-size: 32px; margin-top: 56px; }
+  .prose p, .prose li { font-size: 17px; }
+  .art-cta { padding: 36px 24px; }
+  .prose .art-cta-title { font-size: 30px; }
+  .author { align-items: flex-start; }
+  .bg-arena .all-head { margin-bottom: 32px; }
+}

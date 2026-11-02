@@ -51,7 +51,8 @@ return [
         'change_notice_days' => 1,
         // Horas de inicio ofrecidas (hora de Bogotá). Ajustables desde el panel (tabla settings).
         'slots' => ['05:00', '07:00', '09:00', '11:00', '14:00', '16:00'],
-        'slot_minutes' => 120,
+        'slot_minutes' => 120,          // duración mínima de una cita
+        'minutes_per_person' => 90,     // duración = max(slot_minutes, personas × minutes_per_person)
         'max_people' => 4,              // «4 o más» se registra como 4 y la nota aclara
         'event_types' => [
             'boda' => 'Boda',
@@ -68,6 +69,13 @@ return [
             'recomendacion' => 'Recomendación',
             'otro' => 'Otro',
         ],
+    ],
+
+    // Datos del abono (§1.3): NO se publican en la web; solo van en el correo de confirmación.
+    'payments' => [
+        'nequi' => (Env::get('PAY_NEQUI') ?: '[Número de Nequi pendiente]'),
+        'bancolombia' => (Env::get('PAY_BANCOLOMBIA') ?: '[Cuenta Bancolombia pendiente]'),
+        'holder' => (Env::get('PAY_HOLDER') ?: '[Titular de la cuenta pendiente]'),
     ],
 
     // §9.3 · deben coincidir con el acuerdo escrito entre las partes

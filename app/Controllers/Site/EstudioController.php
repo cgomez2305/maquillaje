@@ -1,0 +1,167 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Controllers\Site;
+
+use App\Controllers\Controller;
+use App\Domain\Leads\LeadService;
+use App\Domain\Notifications\Mailer;
+use App\Http\FormGuard;
+use App\Http\Request;
+use App\Http\Response;
+
+/**
+ * Estudio y contacto. La cotización guarda un lead (WEB-…) y luego abre WhatsApp
+ * con el mensaje armado que incluye el código (§7, §9.3).
+ */
+final class EstudioController extends Controller
+{
+    private const SERVICES = [
+        'novia' => 'Novia · Pack 3',
+        'quince' => 'Quinceañera · Pack 3',
+        'social' => 'Social o grado · Pack 1',
+        'domicilio' => 'A domicilio · Pack 2',
+        'curso-auto' => 'Curso de automaquillaje',
+        'curso-pro' => 'Curso de maquillaje profesional',
+    ];
+
+    private const PLACES = [
+        'estudio' => 'En el estudio, Floridablanca',
+        'bucaramanga' => 'A domicilio en Bucaramanga',
+        'floridablanca' => 'A domicilio en Floridablanca',
+        'piedecuesta' => 'A domicilio en Piedecuesta',
+        'giron' => 'A domicilio en Girón',
+    ];
+
+    public function index(Request $request): Response
+    {
+        return $this->render();
+    }
+
+    public function cotizar(Request $request): Response
+    {
+        $old = [
+            'nombre' => $request->str('nombre', 120),
+            'telefono' => $request->str('telefono', 20),
+            'fecha' => $request->str('fecha', 10),
+            'hora' => $request->str('hora', 5),
+            'servicio' => $request->str('servicio', 20),
+            'lugar' => $request->str('lugar', 20),
+            'mensaje' => $request->str('mensaje', 1000),
+            'autorizo' => $request->str('autorizo', 1),
+        ];
+
+        $guard = FormGuard::check($request, 'cotizacion');
+        if ($guard !== null) {
+            return $this->render($old, [], $guard, 422);
+        }
+
+        $errors = [];
+        if (mb_strlen($old['nombre']) < 2) {
+            $errors['nombre'] = 'Escribe tu nombre.';
+        }
+        $phone = phone_e164($old['telefono']);
+        if ($phone === null) {
+            $errors['telefono'] = 'Escribe un número de celular válido, por ejemplo 300 000 0000.';
+        }
+        $tz = new \DateTimeZone((string) config('app.timezone'));
+        $date = null;
+        if ($old['fecha'] !== '') {
+            $date = \DateTimeImmutable::createFromFormat('!Y-m-d', $old['fecha'], $tz);
+            $today = new \DateTimeImmutable('today', $tz);
+            $min = $today->modify('+' . (int) config('app.booking.min_days_ahead', 2) . ' days');
+            if ($date === false || $date->format('Y-m-d') !== $old['fecha']) {
+                $errors['fecha'] = 'Elige una fecha válida.';
+                $date = null;
+            } elseif ($date < $min) {
+                $errors['fecha'] = 'Agendamos con mínimo 2 días de anticipación. Para hoy o mañana, escríbenos por WhatsApp.';
+            } elseif ($date > $today->modify('+2 years')) {
+                $errors['fecha'] = 'Elige una fecha dentro de los próximos dos años.';
+            }
+        }
+        if ($old['hora'] !== '' && !preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', $old['hora'])) {
+            $errors['hora'] = 'Elige una hora válida.';
+        }
+        if (!isset(self::SERVICES[$old['servicio']])) {
+            $errors['servicio'] = 'Elige un servicio de la lista.';
+        }
+        if (!isset(self::PLACES[$old['lugar']])) {
+            $errors['lugar'] = 'Elige un lugar de la lista.';
+        }
+        if ($old['autorizo'] !== '1') {
+            $errors['autorizo'] = 'Necesitamos tu autorización para responderte.';
+        }
+        if ($errors) {
+            return $this->render($old, $errors, null, 422);
+        }
+
+        $payload = [
+            'servicio' => $old['servicio'],
+            'fecha' => $old['fecha'] ?: null,
+            'hora' => $old['hora'] ?: null,
+            'lugar' => $old['lugar'],
+            'mensaje' => $old['mensaje'] ?: null,
+        ];
+        try {
+            $lead = LeadService::create('cotizacion', [
+                'name' => $old['nombre'],
+                'phone_e164' => $phone,
+                'payload' => $payload,
+                'origin' => 'estudio-cotizacion',
+                'consent_at' => now_utc(),
+            ]);
+        } catch (\Throwable $e) {
+            app_log('error', 'Cotización no guardada: ' . $e->getMessage());
+            return $this->render($old, [], 'No pudimos registrar tu cotización. Inténtalo de nuevo o escríbenos por WhatsApp.', 500);
+        }
+
+        $when = $date ? fecha_larga($date) : null;
+        if ($when !== null && $old['hora'] !== '') {
+            $when .= ', ' . hora(\DateTimeImmutable::createFromFormat('H:i', $old['hora'], $tz) ?: new \DateTimeImmutable('now', $tz));
+        }
+
+        Mailer::send(Mailer::owner(), 'Nueva cotización ' . $lead['code'] . ' · ' . self::SERVICES[$old['servicio']], 'cotizacion-duena', [
+            'code' => $lead['code'],
+            'name' => $old['nombre'],
+            'phone' => $phone,
+            'service' => self::SERVICES[$old['servicio']],
+            'place' => self::PLACES[$old['lugar']],
+            'when' => $when,
+            'message' => $old['mensaje'],
+        ], 'cotizacion-' . $lead['code']);
+
+        $lines = [
+            'Hola, vengo de la web · ' . $lead['code'] . '.',
+            'Quiero cotizar: ' . self::SERVICES[$old['servicio']] . '.',
+        ];
+        if ($when !== null) {
+            $lines[] = 'Fecha: ' . $when . '.';
+        } elseif ($old['hora'] !== '') {
+            $lines[] = 'Hora: ' . $old['hora'] . '.';
+        }
+        $lines[] = 'Lugar: ' . self::PLACES[$old['lugar']] . '.';
+        $lines[] = 'Mi nombre es ' . $old['nombre'] . '.';
+        if ($old['mensaje'] !== '') {
+            $lines[] = $old['mensaje'];
+        }
+
+        return Response::redirect(wa_direct(implode("\n", $lines)), 303)->header('Cache-Control', 'no-store');
+    }
+
+    /** @param array<string,string> $old @param array<string,string> $errors */
+    private function render(array $old = [], array $errors = [], ?string $formError = null, int $status = 200): Response
+    {
+        $tz = new \DateTimeZone((string) config('app.timezone'));
+        return $this->page('estudio', 'site/estudio', [
+            'old' => $old + ['servicio' => 'novia', 'lugar' => 'estudio'],
+            'errors' => $errors,
+            'formError' => $formError,
+            'services' => self::SERVICES,
+            'places' => self::PLACES,
+            'minDate' => (new \DateTimeImmutable('today', $tz))->modify('+' . (int) config('app.booking.min_days_ahead', 2) . ' days')->format('Y-m-d'),
+            'css' => ['pages/estudio.css'],
+            'preload' => ['key' => 'fotos/catalogo-brindis-estudio', 'sizes' => '(max-width: 960px) 100vw, 580px'],
+            'waOrigin' => 'estudio',
+        ], $status);
+    }
+}

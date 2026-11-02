@@ -41,13 +41,16 @@ final class Kernel
         if ($path !== '/' && str_ends_with($path, '/')) {
             return self::canonicalRedirect(rtrim($path, '/') ?: '/', $request);
         }
-        if (!$request->isPanel() && !str_starts_with($path, '/reserva/') && !str_starts_with($path, '/encuesta/') && $path !== strtolower($path)) {
-            return self::canonicalRedirect(strtolower($path), $request);
-        }
-
         $router = new Router();
         (require BASE_PATH . '/config/routes.php')($router);
         $match = $router->match($request);
+        if ($match === null && $path !== strtolower($path)) {
+            // URLs en minúscula: solo redirige si la versión en minúscula existe (los códigos y tokens conservan mayúsculas)
+            $lower = new Http\Request($request->method, strtolower($path), [], [], $request->server, []);
+            if ($router->match($lower) !== null) {
+                return self::canonicalRedirect(strtolower($path), $request);
+            }
+        }
         if ($match === null) {
             throw new Http\HttpException(404);
         }

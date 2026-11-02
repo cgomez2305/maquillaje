@@ -1,0 +1,38 @@
+/* Páginas legales: plantilla editorial de texto */
+.legal-head { padding-top: 56px; padding-bottom: 72px; }
+.legal-head h1 { margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400; padding-top: 48px; }
+.legal-head .d { font-size: clamp(48px, 6vw, 92px); }
+.legal-head .lead { max-width: 640px; }
+.legal-meta { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid var(--linea); font-size: 14px; color: var(--topo); max-width: 720px; }
+.legal-meta strong { display: block; font-weight: 500; color: var(--tinta); margin-top: 6px; font-size: 15px; }
+
+.legal-layout { display: grid; grid-template-columns: 240px minmax(0, 720px); gap: 96px; justify-content: start; padding-bottom: var(--section-y); }
+.legal-toc { position: sticky; top: 120px; align-self: start; display: flex; flex-direction: column; gap: 4px; }
+.legal-toc a { text-decoration: none; font-size: 14px; color: var(--topo); padding: 10px 0 10px 16px; border-left: 1px solid rgba(23, 19, 18, .14); transition: color .3s ease, border-color .3s ease; }
+.legal-toc a:hover { color: var(--tinta); border-left-color: var(--tinta); }
+
+.prose h2 { font-family: var(--font-display); font-weight: 200; font-size: 36px; line-height: 1.1; letter-spacing: -0.03em; margin: 64px 0 20px; scroll-margin-top: 110px; }
+.prose h2:first-child { margin-top: 0; }
+.prose h3 { font-size: 18px; font-weight: 500; margin: 32px 0 12px; color: var(--tinta); }
+.prose p, .prose li { font-size: 17px; line-height: 1.75; color: var(--prosa); }
+.prose p { margin: 0 0 20px; }
+.prose ul, .prose ol { margin: 0 0 20px; padding-left: 22px; }
+.prose li { margin-bottom: 8px; }
+.prose li::marker { color: var(--salmon); }
+.prose strong { font-weight: 500; color: var(--tinta); }
+.prose a { color: var(--terracota); }
+.prose .box { background: var(--arena); border-radius: 20px; padding: 24px 28px; margin: 0 0 24px; }
+.prose .box p:last-child { margin-bottom: 0; }
+
+@media (max-width: 1180px) {
+  .legal-layout { grid-template-columns: minmax(0, 720px); gap: 0; }
+  .legal-toc { display: none; }
+}
+@media (max-width: 960px) {
+  .legal-head { padding-top: 32px; padding-bottom: 48px; }
+  .legal-head h1 { padding-top: 32px; }
+  .legal-head .d { font-size: clamp(44px, 12vw, 60px); }
+  .prose h2 { font-size: 30px; margin-top: 52px; }
+  .prose p, .prose li { font-size: 16px; }
+  .prose .box { padding: 20px; }
+}

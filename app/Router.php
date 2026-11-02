@@ -49,7 +49,8 @@ final class Router
 
     private function compile(string $pattern): string
     {
-        $regex = preg_replace_callback('/\{([a-z_]+)(?::([^}]+))?\}/', static function (array $m): string {
+        // {nombre} o {nombre:regex}; la regex puede llevar cuantificadores como \d{4} o {2,3}
+        $regex = preg_replace_callback('/\{([a-z_]+)(?::((?:[^{}]|\{\d+(?:,\d*)?\})+))?\}/', static function (array $m): string {
             $inner = $m[2] ?? '[a-z0-9]+(?:-[a-z0-9]+)*';
             return '(?P<' . $m[1] . '>' . $inner . ')';
         }, $pattern);

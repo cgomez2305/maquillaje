@@ -67,11 +67,13 @@ foreach ($schema ?? [] as $block) {
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <div class="page">
-<?= App\View::partial('partials/header', ['path' => $path]) ?>
+<?= App\View::partial(empty($focus) ? 'partials/header' : 'partials/header-focus', ['path' => $path]) ?>
 <main id="contenido">
 <?= $content ?>
 </main>
+<?php if (empty($focus)): ?>
 <?= App\View::partial('partials/footer', []) ?>
+<?php endif; ?>
 <?php if (empty($hideFab)): ?>
 <?= App\View::partial('partials/fab-whatsapp', ['origin' => $waOrigin ?? ltrim($path, '/')]) ?>
 <?php endif; ?>

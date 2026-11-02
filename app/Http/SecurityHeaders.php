@@ -31,7 +31,7 @@ final class SecurityHeaders
             "frame-ancestors 'none'",
             "base-uri 'self'",
             "object-src 'none'",
-            "form-action 'self' {$wompi}",
+            "form-action 'self' {$wompi} https://wa.me https://api.whatsapp.com",
         ]) . ($request->isHttps() ? '; upgrade-insecure-requests' : '');
 
         $response

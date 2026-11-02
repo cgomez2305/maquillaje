@@ -22,7 +22,7 @@ $dark = !empty($dark);
     <div class="wrap-row cta-actions">
       <a class="btn<?= $dark ? ' light' : '' ?>" href="<?= e($href) ?>"<?= !empty($wa) ? ' rel="nofollow"' : '' ?>><?= e($button) ?> <?= icon('arrow', 'arr') ?></a>
       <?php if (!empty($secondaryText)): ?>
-      <a class="btn <?= $dark ? 'ghost-light' : 'ghost' ?>" href="<?= e($secondaryHref ?? '/reservar') ?>"><?= e($secondaryText) ?></a>
+      <a class="btn <?= $dark ? 'ghost-light' : 'ghost' ?>" href="<?= e($secondaryHref ?? '/reservar') ?>"<?= str_starts_with((string) ($secondaryHref ?? ''), '/wa') ? ' rel="nofollow"' : '' ?>><?= e($secondaryText) ?></a>
       <?php endif; ?>
     </div>
   </div>

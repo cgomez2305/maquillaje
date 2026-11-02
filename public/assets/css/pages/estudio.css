@@ -1,0 +1,54 @@
+/* Estudio y contacto (Estudio.dc.html) */
+.est-hero { padding-top: 56px; padding-bottom: 120px; }
+.est-hero-grid { padding-top: 48px; align-items: end; }
+.hero-h1 { margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400; }
+.est-title { font-size: clamp(56px, 7.4vw, 116px); }
+.est-data { margin: 0; border-top: 1px solid var(--linea); }
+.est-data > div { display: flex; justify-content: space-between; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--linea); }
+.est-data dt { padding-top: 4px; }
+.est-data dd { margin: 0; text-align: right; font-size: 17px; }
+.est-data a { text-decoration: none; }
+.est-sub { color: var(--topo); font-size: 15px; }
+
+/* Mapa: ilustración de respaldo + mapa real de Google + barra de vidrio */
+.map { display: block; position: relative; overflow: hidden; border-radius: 32px; height: 460px; background: #EFE7E0; }
+.map-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-pin { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); display: grid; place-items: center; }
+.map-pin img { width: 64px; height: 64px; position: relative; border-radius: 50%; box-shadow: 0 0 0 6px var(--porcelana); }
+.ping { position: absolute; width: 56px; height: 56px; border-radius: 50%; background: var(--salmon); animation: ping 2.4s var(--ease) infinite; }
+@keyframes ping { 0% { transform: scale(.6); opacity: .7; } 100% { transform: scale(2.6); opacity: 0; } }
+.map-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(.4) sepia(.18) saturate(.85) contrast(.95); }
+.map-bar {
+  position: absolute; left: 32px; bottom: 32px; right: 32px; display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; flex-wrap: wrap; padding: 18px 22px; border-radius: 20px; text-decoration: none; color: var(--tinta); font-size: 16px;
+  background: rgba(251, 248, 245, .86); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  box-shadow: 0 18px 40px -24px rgba(23, 19, 18, .35);
+}
+.map-bar:hover { color: var(--terracota); }
+.map-open { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; }
+
+.est-quote { grid-template-columns: .8fr 1.2fr; align-items: start; }
+.est-quote-p { max-width: 400px; }
+.est-send { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.est-note { font-size: 13px; color: var(--topo); }
+.est-err { font-size: 13px; color: #9A3A28; }
+
+.est-zones-head { margin-bottom: 48px; }
+.est-zones { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid rgba(23, 19, 18, .14); }
+.est-zones > div { padding: 32px 32px 0 0; }
+.est-zones .d { font-size: 40px; }
+.est-zone-mode { margin-top: 12px; color: var(--texto-tarjeta); }
+
+@media (prefers-reduced-motion: reduce) { .ping { animation: none; } }
+@media (prefers-reduced-transparency: reduce) { .map-bar { background: var(--porcelana); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+@media (max-width: 960px) {
+  .est-hero { padding-top: 32px; padding-bottom: 72px; }
+  .est-hero-grid { padding-top: 32px; gap: 48px; }
+  .est-title { font-size: clamp(48px, 13vw, 64px); }
+  .est-quote { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .map { height: 360px; border-radius: 24px; }
+  .map-bar { left: 12px; right: 12px; bottom: 12px; padding: 14px 16px; font-size: 14px; }
+  .est-zones-head { margin-bottom: 32px; }
+  .est-zones .d { font-size: 34px; }
+  .est-zones > div { padding: 24px 16px 8px 0; }
+}
