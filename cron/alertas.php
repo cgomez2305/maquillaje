@@ -9,7 +9,7 @@ declare(strict_types=1);
  *   php cron/alertas.php --resumen
  */
 
-require __DIR__ . '/_lock.php';
+require_once __DIR__ . '/_lock.php';
 
 use App\Domain\Alerts\AlertService;
 use App\Domain\Notifications\Mailer;

@@ -7,7 +7,7 @@ declare(strict_types=1);
  *   php cron/retencion.php [--simular]
  */
 
-require __DIR__ . '/_lock.php';
+require_once __DIR__ . '/_lock.php';
 
 use App\Domain\Clients\AnonymizeService;
 

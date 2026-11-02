@@ -7,7 +7,7 @@ declare(strict_types=1);
  *   php cron/sitemap.php
  */
 
-require __DIR__ . '/_lock.php';
+require_once __DIR__ . '/_lock.php';
 
 use App\Controllers\Site\SitemapController;
 use App\Http\Request;

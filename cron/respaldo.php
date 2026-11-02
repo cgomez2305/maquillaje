@@ -19,7 +19,7 @@ declare(strict_types=1);
  * y prueba la restauración una vez al mes en una base vacía.
  */
 
-require __DIR__ . '/_lock.php';
+require_once __DIR__ . '/_lock.php';
 
 use App\Support\Db;
 

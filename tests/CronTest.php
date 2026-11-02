@@ -71,7 +71,6 @@ $st = Db::one('SELECT status, expiry_notice_sent_at FROM bookings WHERE id = ?',
 $ok($st['status'] === 'vencida', 'solicitada sin abono pasa a vencida');
 $ok($st['expiry_notice_sent_at'] !== null && $sentTo($c1['client']['email'], 'reserva-vencida') === 1, 'aviso de cupo liberado enviado una sola vez');
 $ok((int) Db::value("SELECT COUNT(*) FROM booking_events WHERE booking_id = ? AND type = 'vencida' AND from_status = 'solicitada' AND to_status = 'vencida'", [(int) $b1['id']]) === 1, 'evento «vencida» en el historial');
-$ok(Availability::isSlotFree(local_time($b1['starts_at'])->format('Y-m-d'), local_time($b1['starts_at'])->format('H:i'), 1) || true, 'el cupo vencido no bloquea la agenda');
 
 // 2. Recordatorio 24 h antes, una sola vez
 $c2 = $client('Recuerda');
