@@ -37,7 +37,7 @@ $timeLabel = static function (string $hhmm): string {
   <p class="rsv-intro in d2">Tres pasos y te enviamos el código de tu reserva. La fecha queda confirmada cuando recibimos el abono del 50 %.</p>
 
   <div class="rsv-layout">
-    <form class="rsv-form" method="post" action="/reservar" novalidate data-reservar data-step="<?= e((string) $step) ?>">
+    <form class="rsv-form" id="paso" method="post" action="/reservar" novalidate data-reservar data-step="<?= e((string) $step) ?>">
       <?= csrf_field() ?>
       <input type="hidden" name="step" value="<?= e((string) $step) ?>">
 

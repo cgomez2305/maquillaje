@@ -119,7 +119,7 @@ final class ReservarController extends Controller
         if ($action === 'back') {
             $state['step'] = max(1, $step - 1);
             $this->save($state);
-            return Response::redirect('/reservar', 303);
+            return Response::redirect('/reservar#paso', 303);
         }
 
         $errors = match ($step) {
@@ -162,7 +162,8 @@ final class ReservarController extends Controller
 
         $state['step'] = $step + 1;
         $this->save($state);
-        return Response::redirect('/reservar', 303);
+        // Entre pasos se aterriza en el indicador de progreso (en móvil el título ocupa la primera pantalla)
+        return Response::redirect('/reservar#paso', 303);
     }
 
     private function render(array $state, array $errors, int $status = 200): Response

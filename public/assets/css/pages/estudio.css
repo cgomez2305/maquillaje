@@ -52,3 +52,9 @@
   .est-zones .d { font-size: 34px; }
   .est-zones > div { padding: 24px 16px 8px 0; }
 }
+
+/* Contacto: área táctil de 44 px sin alterar el espaciado */
+.est-data dd a { display: inline-flex; align-items: center; min-height: 44px; margin: -11px 0; }
+
+/* Mapa diferido (app.js): oculto hasta tener src, se ve la ilustración de respaldo */
+.map-frame[data-src] { visibility: hidden; }

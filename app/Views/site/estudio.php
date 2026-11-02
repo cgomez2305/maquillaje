@@ -50,7 +50,9 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
       <span class="ping"></span>
       <img src="<?= e(img_src('marca/isotipo-salmon', 120)) ?>" alt="" width="64" height="64">
     </div>
-    <iframe class="map-frame" title="Mapa: estudio Make Up by Fletcher en <?= e($b['address']) ?>, Floridablanca" src="https://www.google.com/maps?q=<?= $mapQuery ?>&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <?php $mapSrc = 'https://www.google.com/maps?q=' . $mapQuery . '&z=16&output=embed'; ?>
+    <iframe class="map-frame" title="Mapa: estudio Make Up by Fletcher en <?= e($b['address']) ?>, Floridablanca" data-src="<?= e($mapSrc) ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <noscript><iframe class="map-frame" title="Mapa: estudio Make Up by Fletcher en <?= e($b['address']) ?>, Floridablanca" src="<?= e($mapSrc) ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></noscript>
     <a class="map-bar" href="<?= e($b['maps_url']) ?>" target="_blank" rel="noopener">
       <span>Make Up by Fletcher · <?= e($b['address']) ?>, Floridablanca</span>
       <span class="map-open">Abrir en Google Maps <?= icon('arrow', 'arr') ?></span>

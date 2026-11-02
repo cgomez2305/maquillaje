@@ -25,7 +25,7 @@ except ImportError:
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "docs", "entrega", "recursos")
 OUT = os.path.join(ROOT, "public", "assets", "img")
-WIDTHS = [480, 768, 1200, 1600]
+WIDTHS = [480, 600, 768, 1200, 1600]
 
 # Logos: solo los que usa el sitio, reducidos (los originales de 4500 px no se publican)
 BRAND = {

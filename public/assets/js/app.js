@@ -59,18 +59,63 @@ if (location.hash === '#menu') { history.replaceState(null, '', location.pathnam
 window.matchMedia('(min-width: 1181px)').addEventListener?.('change', (m) => { if (m.matches) closeMenu(); });
 
 /* ---------- Movimiento ---------- */
+// Entradas al hacer scroll (.rv): IntersectionObserver + transición CSS. Un solo observador para toda la
+// página en lugar de un ScrollTrigger por elemento: mucho menos trabajo en el hilo principal (TBT/INP).
+// Al terminar se quitan las clases para que los estilos propios (hover, etc.) vuelvan a aplicar.
+function finishReveal(el) {
+  el.classList.remove('rv', 'is-in');
+  el.style.transitionDelay = '';
+}
+function reveal(el, delay = el.dataset.delay) {
+  if (!el.classList.contains('rv') || el.classList.contains('is-in')) return;
+  if (delay) el.style.transitionDelay = `${parseFloat(delay)}s`;
+  const done = (e) => { if (e.target === el) { el.removeEventListener('transitionend', done); finishReveal(el); } };
+  el.addEventListener('transitionend', done);
+  setTimeout(() => finishReveal(el), 1600); // por si no hay transición (p. ej. pestaña en segundo plano)
+  el.classList.add('is-in');
+}
+function initReveal() {
+  const els = document.querySelectorAll('.rv');
+  if (!els.length) return;
+  if (!root.classList.contains('js') || !('IntersectionObserver' in window)) {
+    els.forEach(finishReveal);
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    for (const en of entries) {
+      if (en.isIntersecting) { io.unobserve(en.target); reveal(en.target); }
+    }
+  }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
+  els.forEach((el) => io.observe(el));
+  // Si el foco llega a un bloque que todavía no se reveló (navegación con teclado), se muestra al instante
+  document.addEventListener('focusin', (e) => {
+    const rv = e.target.closest?.('.rv');
+    if (rv) { io.unobserve(rv); reveal(rv, '0'); }
+  });
+}
+initReveal();
+
+// Iframes pesados (mapa de Google en Estudio): se cargan solo cuando están por entrar en pantalla y
+// después del evento load, para no competir con la imagen principal. Sin JS se usa el <noscript>.
+function initLazyFrames() {
+  const frames = document.querySelectorAll('iframe[data-src]');
+  if (!frames.length) return;
+  const load = (f) => { f.src = f.dataset.src; f.removeAttribute('data-src'); };
+  if (!('IntersectionObserver' in window)) { frames.forEach(load); return; }
+  const io = new IntersectionObserver((entries) => {
+    for (const en of entries) if (en.isIntersecting) { io.unobserve(en.target); load(en.target); }
+  }, { rootMargin: '300px 0px' });
+  frames.forEach((f) => io.observe(f));
+}
+if (document.readyState === 'complete') initLazyFrames();
+else window.addEventListener('load', initLazyFrames, { once: true });
+
+// Parallax (.px), recorte (.grow) y barra de lectura: GSAP + ScrollTrigger con scrub. GSAP solo se carga
+// en las páginas que lo usan (ver layouts/site.php) y se inicializa en tiempo ocioso tras la carga.
 function initMotion() {
   const { gsap, ScrollTrigger } = window;
-  if (!gsap || !ScrollTrigger || reduceMotion) { root.classList.remove('js'); return; }
+  if (!gsap || !ScrollTrigger || reduceMotion) return;
   gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray('.rv').forEach((el) => {
-    gsap.fromTo(el, { y: 56, autoAlpha: 0 }, {
-      y: 0, autoAlpha: 1, duration: 1.1, ease: 'expo.out',
-      delay: parseFloat(el.dataset.delay || '0'),
-      scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-    });
-  });
 
   gsap.utils.toArray('.px').forEach((wrap) => {
     const img = wrap.querySelector('img');
@@ -92,12 +137,11 @@ function initMotion() {
   gsap.utils.toArray('[data-progress]').forEach((bar) => {
     gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: true } });
   });
-
-  root.classList.remove('js');
 }
 
-if (document.readyState === 'complete') initMotion();
-else window.addEventListener('load', initMotion, { once: true });
+const idle = (fn) => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 200));
+if (document.readyState === 'complete') idle(initMotion);
+else window.addEventListener('load', () => idle(initMotion), { once: true });
 
 /* ---------- Consentimiento y analítica ---------- */
 const CONSENT_KEY = 'mubf_consent';
