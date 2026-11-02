@@ -87,3 +87,7 @@ Desplegado con la API de Hostinger (MCP) en el plan Business `u480515229`:
 - Redesplegar: generar el paquete (código + `vendor/` sin pruebas de PHPMailer) **incluyendo el `.env` del servidor**, porque el despliegue por archivo reemplaza el contenido de `public_html`.
 
 Pendiente para activar del todo: buzón y SMTP (hoy `MAIL_DRIVER=log`: los correos quedan en `storage/logs/mail.log`), `PARTNER_EMAIL`, datos de abono `PAY_*`, llaves de Wompi y GA4/GTM, y los usuarios del panel.
+
+### Despliegue de la auditoría (2 nov 2026)
+
+Subidos por archivo (sin reemplazar `public_html`, para conservar `storage/`) los 75 archivos cambiados desde `6121bf4`, migración `004_sesiones_validas.sql` aplicada con un cron de un solo uso y caché del CDN limpiada. Verificado en vivo: redirecciones http/www sin `/public/`, rutas con `//` o caracteres de control en 404, archivos internos en 403, webhook sin firma rechazado y Lighthouse móvil 98–100 en rendimiento y 100 en accesibilidad, buenas prácticas y SEO en las 10 páginas clave.
