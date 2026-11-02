@@ -13,7 +13,6 @@ foreach ($cal['days'] as $d) {
     $total += count(array_filter($d['bookings'], static fn($b) => $b['status'] !== 'realizada'));
 }
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-reservas.css')) ?>">
 <div class="top">
   <div class="stack gap-8"><p class="lbl">Agenda</p><h1 class="d"><?= e(ucfirst(mes_nombre((int) $start->format('n'))) . ' ' . $start->format('Y')) ?></h1></div>
   <div class="top-actions">

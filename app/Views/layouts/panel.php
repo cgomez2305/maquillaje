@@ -43,6 +43,9 @@ $error = App\Http\Session::flash('error');
 <link rel="preload" href="/assets/fonts/comfortaa-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="<?= e(asset('css/tokens.css')) ?>">
 <link rel="stylesheet" href="<?= e(asset('css/panel.css')) ?>">
+<?php foreach (['panel-reservas.css', 'panel-comisiones.css', 'panel-extra.css'] as $sheet): ?>
+<link rel="stylesheet" href="<?= e(asset('css/' . $sheet)) ?>">
+<?php endforeach; ?>
 </head>
 <body class="panel">
 <a class="skip" href="#contenido">Saltar al contenido</a>

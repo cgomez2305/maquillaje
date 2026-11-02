@@ -18,7 +18,6 @@ $day = static function (?string $utc): string {
 $pill = ['abierto' => '', 'en_aprobacion' => 'warn', 'cerrado' => 'good', 'pagado' => 'good'][$status] ?? '';
 $total = $x['servicesAmount'] + $x['ordersAmount'];
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-comisiones.css')) ?>">
 <div class="top">
   <div class="stack gap-8"><p class="lbl">Liquidación</p><h1 class="d">Comisiones · <?= e(ReportService::periodName($p)) ?></h1></div>
   <div class="top-actions">

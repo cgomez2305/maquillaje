@@ -9,7 +9,6 @@ $fmt = static fn(?string $utc): string => $utc ? fecha_corta(local_time($utc)) .
 $vigente = $c['web_attributed_until'] && $c['web_attributed_until'] >= now_utc();
 $done = array_sum(array_map(static fn(array $b): int => $b['status'] === 'realizada' ? (int) $b['total'] : 0, $bookings));
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-extra.css')) ?>">
 <div class="top">
   <div><p class="lbl"><a href="/panel/clientas">Clientas</a> / Ficha</p><h1 class="d"><?= e($c['name']) ?></h1></div>
   <div class="top-actions">

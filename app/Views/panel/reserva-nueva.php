@@ -10,7 +10,6 @@ $aria = static fn(string $f): string => isset($errors[$f]) ? ' aria-invalid="tru
 $v = static fn(string $f): string => e((string) ($old[$f] ?? ''));
 $svcShort = ['pack1' => 'Pack 1 · Maquillaje social', 'pack2' => 'Pack 2 · Full experience', 'pack3' => 'Pack 3 · Novias y quinceañeras'];
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-reservas.css')) ?>">
 <div class="top">
   <div class="stack gap-8"><p class="lbl"><a href="/panel/reservas">Reservas</a> / Nueva</p><h1 class="d">Reserva manual</h1></div>
 </div>

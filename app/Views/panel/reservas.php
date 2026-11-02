@@ -33,7 +33,6 @@ $hidden = static function () use ($filter, $q, $sort): string {
 };
 $canWrite = in_array($role, ['owner', 'staff'], true);
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-reservas.css')) ?>">
 <div class="top">
   <div class="stack gap-8"><p class="lbl">Agenda y registro</p><h1 class="d">Reservas</h1></div>
   <div class="top-actions">

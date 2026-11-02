@@ -11,7 +11,6 @@ $lastDay = (int) $d['range']['end']->modify('-1 day')->format('j');
 $abbr = mb_substr(mes_nombre($month), 0, 3);
 $delta = $d['requestsDelta'];
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-comisiones.css')) ?>">
 <div class="top">
   <div class="stack gap-8"><p class="lbl">Resumen del mes</p><h1 class="d"><?= e($monthName . ' ' . $year) ?></h1></div>
   <div class="top-actions">

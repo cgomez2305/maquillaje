@@ -22,7 +22,6 @@ $when = static function (string $utc): string {
     return $t ? fecha_corta($t) . ' · ' . $t->format('G:i') : '';
 };
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-comisiones.css')) ?>">
 <div class="top">
   <div class="stack gap-8"><p class="lbl">Registro inmutable</p><h1 class="d">Historial</h1></div>
   <div class="top-actions"><a class="btn<?= $tab === 'verificar' ? ' ghost' : '' ?>" href="/panel/historial/verificar">Verificar cadena</a></div>

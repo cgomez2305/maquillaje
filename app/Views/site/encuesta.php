@@ -27,7 +27,7 @@ $labels = [1 => 'Mal', 2 => 'Regular', 3 => 'Bien', 4 => 'Muy bien', 5 => 'Excel
         <?php if ($reviewUrl): ?>
         <a class="btn" href="<?= e($reviewUrl) ?>" rel="noopener" target="_blank">Dejar reseña en Google</a>
         <?php else: ?>
-        <span class="btn" aria-disabled="true"><span class="pending">[Enlace de reseña de Google pendiente]</span></span>
+        <p class="enc-pending"><span class="pending">[Enlace de reseña de Google pendiente]</span></p>
         <?php endif; ?>
         <a class="btn ghost" href="/">Volver al inicio</a>
       </div>

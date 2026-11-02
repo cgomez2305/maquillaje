@@ -17,7 +17,6 @@ for ($i = 0; $i < 12; $i++) {
 }
 $giftStatus = ['activo' => 'con', 'canjeado' => 'rea', 'anulado' => 'can'];
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-extra.css')) ?>">
 <div class="top">
   <div><p class="lbl">Pagos con Wompi</p><h1 class="d">Ventas en línea</h1></div>
   <form class="top-actions" method="get" action="/panel/ventas">
@@ -89,8 +88,8 @@ $giftStatus = ['activo' => 'con', 'canjeado' => 'rea', 'anulado' => 'can'];
     </div>
   </section>
 
-  <section class="card" id="canje" aria-labelledby="canje-t">
-    <h2 class="d card-title" id="canje-t">Canjear un bono</h2>
+  <section class="card stack" id="canje" aria-labelledby="canje-t">
+    <h2 class="d" id="canje-t">Canjear un bono</h2>
     <?php if (!$canRedeem): ?>
       <p class="muted small">Solo la dueña canjea bonos. El canje crea una reserva confirmada que no vuelve a comisionar: la comisión ya se generó con el pago del bono.</p>
     <?php else: ?>

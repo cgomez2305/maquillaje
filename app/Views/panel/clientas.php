@@ -4,7 +4,6 @@ use App\Controllers\Panel\ClientasController;
 use App\Panel\Auth;
 $isPartner = Auth::is('partner');
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-extra.css')) ?>">
 <div class="top">
   <div><p class="lbl">Base de clientas</p><h1 class="d">Clientas</h1></div>
   <form class="top-actions" method="get" action="/panel/clientas" role="search">

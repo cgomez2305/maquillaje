@@ -6,7 +6,7 @@
 .enc-n { font-family: var(--font-display); font-weight: 200; font-size: 22px; margin-right: 4px; }
 .enc-nav { align-items: center; flex-wrap: wrap; }
 .enc-nav .rsv-hint { margin: 0; max-width: 420px; }
-.enc .rsv-done .btn[aria-disabled="true"] { pointer-events: none; }
+.enc-pending { align-self: center; font-size: 14px; }
 @media (max-width: 960px) {
   .enc-rating { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .enc-rating .slot:last-child { grid-column: 1 / -1; }

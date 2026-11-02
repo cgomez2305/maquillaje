@@ -9,7 +9,6 @@ $err = static fn(string $f): string => isset($errors[$f]) ? '<p class="flash err
 $fmt = static fn(string $utc): string => fecha_corta(local_time($utc)) . ' · ' . hora(local_time($utc));
 $cats = ['service' => 'Servicio', 'course' => 'Curso', 'product' => 'Producto', 'gift' => 'Bono'];
 ?>
-<link rel="stylesheet" href="<?= e(asset('css/panel-extra.css')) ?>">
 <div class="top">
   <div><p class="lbl">Solo la dueña</p><h1 class="d">Ajustes</h1></div>
   <nav class="chips" aria-label="Secciones">
