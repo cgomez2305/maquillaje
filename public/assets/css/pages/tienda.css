@@ -143,3 +143,6 @@
   .buy .fg { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .steps .step-text { padding-right: 16px; }
 }
+
+/* Pedido */
+.gift-code { font-size: clamp(32px, 4vw, 48px); letter-spacing: .02em; }

@@ -1,0 +1,13 @@
+# Defensa en profundidad: si por error se sube el proyecto completo a public_html,
+# todo se sirve desde public/ y nada de app/, config/, storage/, vendor/… es accesible.
+Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|config|database|storage|vendor|cron|tests|tools|docs)(/|$) - [F,L]
+    RewriteRule (^|/)\.(?!well-known/) - [F,L]
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+    Require all denied
+</IfModule>

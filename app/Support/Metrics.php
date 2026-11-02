@@ -27,6 +27,19 @@ final class Metrics
         }
     }
 
+    /** Visita anónima a una página pública (sin bots, sin cookies ni IP). */
+    public static function visit(): void
+    {
+        $ua = (string) ($_SERVER['HTTP_USER_AGENT'] ?? '');
+        if ($ua === '' || preg_match('/bot|crawl|spider|slurp|preview|facebookexternalhit|curl|wget|python|headless|lighthouse|playwright/i', $ua)) {
+            return;
+        }
+        if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET' || PHP_SAPI === 'cli') {
+            return;
+        }
+        self::bump('visits');
+    }
+
     /** @return array<string,int> */
     public static function totals(string $fromDay, string $toDay): array
     {

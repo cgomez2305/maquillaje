@@ -35,7 +35,7 @@ $b = config('app.business');
         <a href="/precios-maquillaje-bucaramanga#domicilio">Piedecuesta y Girón a domicilio</a>
       </nav>
     </div>
-    <p class="d foot-word" aria-hidden="true">Fletcher</p>
+    <div class="d foot-word" aria-hidden="true" data-word="Fletcher"></div>
     <div class="foot-legal">
       <p>© <?= e(gmdate('Y')) ?> Make Up by Fletcher · maquillajebucaramanga.com</p>
       <nav aria-label="Legal">

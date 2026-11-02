@@ -5,6 +5,8 @@ namespace App\Controllers\Site;
 
 use App\Controllers\Controller;
 use App\Domain\Catalog;
+use App\Domain\Orders\OrderService;
+use App\Http\FormGuard;
 use App\Http\HttpException;
 use App\Http\Request;
 use App\Http\Response;
@@ -54,11 +56,64 @@ final class TiendaController extends Controller
         return $this->renderProduct($product);
     }
 
-    /*
-     * comprar(Request): POST /tienda/{slug}/comprar → crea el pedido pendiente y abre Wompi.
-     * pedido(Request):  GET /tienda/pedido/{reference} → «estamos verificando tu pago».
-     * (Se implementan en la fase 6; si la validación falla, reutilizar renderProduct() con $errors y $old.)
+    /** POST /tienda/{slug}/comprar → valida, crea el pedido pendiente y lleva al checkout de Wompi. */
+    public function comprar(Request $request): Response
+    {
+        $product = $this->safe(static fn(): ?array => ProductRepository::findActiveBySlug($request->param('slug')), null);
+        if ($product === null || !ProductRepository::isPurchasable($product)) {
+            throw new HttpException(404);
+        }
+        $old = [];
+        foreach (['name' => 120, 'phone' => 30, 'email' => 190, 'gift_recipient' => 120, 'gift_message' => 300] as $f => $len) {
+            $old[$f] = $request->str($f, $len);
+        }
+        $old['consent'] = $request->input('consent') === '1' ? '1' : '';
+        $old['terms'] = $request->input('terms') === '1' ? '1' : '';
+
+        [$errors, $buyer] = OrderService::validate($old, $product);
+        if ($errors === []) {
+            $spam = FormGuard::check($request, 'compra');
+            if ($spam !== null) {
+                return $this->renderProduct($product, [], $old, $spam, 422);
+            }
+            try {
+                $order = OrderService::create($product, $buyer);
+            } catch (\RuntimeException $e) {
+                return $this->renderProduct($product, [], $old, 'Este producto ya no está disponible. Escríbenos por WhatsApp.', 409);
+            }
+            return Response::redirect('/tienda/pedido/' . $order['reference'] . '?t=' . $order['public_token'] . '&pagar=1', 303);
+        }
+        return $this->renderProduct($product, $errors, $old, null, 422);
+    }
+
+    /**
+     * GET /tienda/pedido/{reference}?t=… — antes del pago muestra el botón a Wompi; al volver de Wompi
+     * solo muestra el estado guardado («estamos verificando tu pago»): nunca confirma por la URL.
      */
+    public function pedido(Request $request): Response
+    {
+        $order = OrderService::findByReference($request->param('reference'));
+        $token = $request->str('t', 60);
+        if ($order === null || $token === '' || !hash_equals((string) $order['public_token'], $token)) {
+            throw new HttpException(404);
+        }
+        $codes = $order['status'] === 'aprobada' ? \App\Support\Db::all('SELECT code, recipient, value FROM gift_codes WHERE order_item_id = ?', [(int) $order['item_id']]) : [];
+        $returned = $request->str('id', 80) !== '' || $request->str('env', 20) !== '';
+        return $this->page('tienda', 'site/pedido', [
+            'o' => $order,
+            'codes' => $codes,
+            'pay' => $order['status'] === 'pendiente' && !$returned,
+            'autopay' => $request->str('pagar', 2) === '1' && $order['status'] === 'pendiente',
+            'returned' => $returned,
+            'checkout' => OrderService::checkout($order),
+            'path' => '/tienda',
+            'meta' => ['title' => 'Pedido ' . $order['reference'] . ' · Make Up by Fletcher', 'description' => 'Estado de tu pedido', 'robots' => 'noindex, nofollow', 'canonical' => '/tienda'],
+            'crumbs' => [['Inicio', '/'], ['Tienda', '/tienda'], ['Pedido ' . $order['reference'], null]],
+            'css' => ['pages/tienda.css', 'pages/reservar.css'],
+            'js' => ['pedido.js'],
+            'hideFab' => true,
+        ]);
+    }
 
     /**
      * Ficha de producto. Reutilizable para volver a mostrar el formulario con errores.

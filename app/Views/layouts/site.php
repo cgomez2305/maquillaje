@@ -75,7 +75,7 @@ foreach ($schema ?? [] as $block) {
 <?= App\View::partial('partials/footer', []) ?>
 <?php endif; ?>
 <?php if (empty($hideFab)): ?>
-<?= App\View::partial('partials/fab-whatsapp', ['origin' => $waOrigin ?? ltrim($path, '/')]) ?>
+<aside aria-label="Contacto rápido"><?= App\View::partial('partials/fab-whatsapp', ['origin' => $waOrigin ?? ltrim($path, '/')]) ?></aside>
 <?php endif; ?>
 </div>
 <?= App\View::partial('partials/consent', []) ?>

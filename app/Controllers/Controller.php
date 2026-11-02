@@ -25,6 +25,9 @@ abstract class Controller
             $data['crumbs'] = [['Inicio', '/'], [$seo['crumb'], null]];
         }
         $data['meta'] = $meta;
+        if ($status === 200 && empty($meta['robots'])) {
+            \App\Support\Metrics::visit();
+        }
         $data['path'] = $data['path'] ?? ($seo['path'] ?? '/');
         return Response::html(View::render($view, $data, 'site'), $status);
     }
