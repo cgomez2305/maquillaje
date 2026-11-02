@@ -239,7 +239,7 @@ function img(string $key, string $alt, array $o = []): string
     $html .= '<source type="image/webp" srcset="' . $set('webp') . '" sizes="' . e($sizes) . '">';
     $html .= '<img src="' . $base . $fallbackW . '.' . $m['ext'] . '" srcset="' . $set($m['ext']) . '" sizes="' . e($sizes) . '"'
         . ' width="' . (int) $m['w'] . '" height="' . (int) $m['h'] . '" alt="' . e($alt) . '"'
-        . ' loading="' . $loading . '" decoding="' . ($loading === 'eager' ? 'sync' : 'async') . '"' . $fp . $class . $extra . '>';
+        . ' loading="' . $loading . '"' . (!empty($o['priority']) ? '' : ' decoding="async"') . $fp . $class . $extra . '>';
     return $html . '</picture>';
 }
 

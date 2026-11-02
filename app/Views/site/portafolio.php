@@ -26,9 +26,9 @@
   </div>
   <p class="sr-only" aria-live="polite" data-pf-status></p>
   <div class="pf-grid" data-pf-grid>
-    <?php foreach ($items as $it): ?>
+    <?php foreach ($items as $n => $it): ?>
     <a class="it" href="<?= e($it['full']) ?>" data-cat="<?= e($it['cat']) ?>" data-label="<?= e($it['cat_label']) ?>" aria-label="Ampliar: <?= e($it['alt']) ?>">
-      <span class="ph<?= $it['crop'] !== '' ? ' ' . e($it['crop']) : '' ?>"><?= img($it['key'], $it['alt'], ['sizes' => '(max-width: 960px) 50vw, 420px']) ?></span>
+      <span class="ph<?= $it['crop'] !== '' ? ' ' . e($it['crop']) : '' ?>"><?= img($it['key'], $it['alt'], ['sizes' => '(max-width: 960px) 50vw, 420px', 'eager' => $n < 4, 'priority' => $n === 0]) ?></span>
       <span class="lbl c-topo pf-cap"><?= e($it['cat_label']) ?></span>
     </a>
     <?php endforeach; ?>

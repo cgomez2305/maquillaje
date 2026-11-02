@@ -36,7 +36,7 @@ $recommended = [
     ];
     foreach ($cats as $i => [$href, $label, $photo, $alt]): ?>
     <a class="cat rv" href="<?= e($href) ?>" data-delay="<?= e((string) ($i * 0.06)) ?>">
-      <?= img($photo, $alt, ['sizes' => '(max-width: 960px) 50vw, 310px']) ?>
+      <?= img($photo, $alt, ['sizes' => '(max-width: 960px) 50vw, 310px', 'eager' => $i < 2, 'priority' => $i === 0]) ?>
       <span><?= e($label) ?> <?= icon('arrow', 'arr') ?></span>
     </a>
     <?php endforeach; ?>

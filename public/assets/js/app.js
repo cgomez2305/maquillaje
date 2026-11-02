@@ -173,7 +173,8 @@ function hideBanner() { if (banner) banner.hidden = true; }
 
 const consent = readConsent();
 if (consent?.analytics) loadGtm();
-if (!consent && banner) banner.hidden = false;
+// El banner aparece cuando las fuentes ya cargaron: así no cambia de alto (ni se desplaza, CLS) al cambiar la fuente
+if (!consent && banner) (document.fonts?.ready || Promise.resolve()).then(() => { banner.hidden = false; });
 
 banner?.addEventListener('click', (e) => {
   const btn = e.target.closest('[data-consent]');
