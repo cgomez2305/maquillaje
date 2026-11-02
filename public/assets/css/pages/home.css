@@ -1,0 +1,39 @@
+/* Inicio (Main.dc.html) */
+.hero { display: grid; grid-template-columns: 1.12fr .88fr; gap: 72px; align-items: center; padding-top: 72px; padding-bottom: 112px; }
+.hero-h1 { margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400; }
+.hero-facts { display: flex; gap: 40px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid var(--linea); margin: 0; }
+.hero-facts dd { margin: 8px 0 0; font-size: 15px; }
+.hero-media { position: relative; }
+.hero-sun { position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; background: var(--salmon); right: -14%; top: -7%; }
+
+.firma { grid-template-columns: .55fr 1.45fr; align-items: start; }
+.firma-ph { max-width: 300px; }
+.firma-quote { font-size: clamp(34px, 3.9vw, 58px); line-height: 1.12; letter-spacing: -0.03em; }
+
+.novias-band { grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
+.novias-band-ph { border-radius: 0; min-height: 760px; }
+.novias-band-txt { padding: 120px 0 120px 80px; justify-content: center; }
+.novias-band-p { font-size: 17px; line-height: 1.7; color: var(--nude-medio); max-width: 480px; }
+.novias-band-cta { padding-top: 12px; }
+
+.cursos-band { background: var(--arena); border-radius: 32px; overflow: hidden; }
+.cursos-band-txt { padding: 88px 0 88px 88px; }
+.cursos-band-ph { border-radius: 0; height: 100%; min-height: 620px; }
+.addr { font-style: normal; }
+
+.reviews-head { margin-bottom: 56px; }
+.faq-grid { grid-template-columns: .8fr 1.2fr; align-items: start; }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 48px; padding-top: 40px; padding-bottom: 72px; }
+  .hero .d-hero { font-size: clamp(48px, 13vw, 64px); }
+  .hero-facts { gap: 24px 32px; }
+  .firma, .faq-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .novias-band { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0; }
+  .novias-band-ph { min-height: 480px; margin: 0 calc(var(--gutter) * -1); }
+  .novias-band-txt { padding: 64px 0; }
+  .cursos-band { gap: 0; }
+  .cursos-band-txt { padding: 48px 24px; }
+  .cursos-band-ph { min-height: 420px; }
+  .reviews-head { margin-bottom: 40px; }
+}

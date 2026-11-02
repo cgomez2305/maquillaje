@@ -1,0 +1,11 @@
+/vendor/
+.env
+/storage/uploads/*
+!/storage/uploads/comprobantes/
+/storage/uploads/comprobantes/*
+/storage/logs/*
+/storage/cache/*
+/storage/backups/*
+!/storage/**/.gitkeep
+.DS_Store
+/node_modules/

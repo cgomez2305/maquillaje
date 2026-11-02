@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sistema de componentes · Make Up by Fletcher</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Fletcher Display';src:local('Aristotelica Display ExtraLight'),local('AristotelicaDisplay-ExtraLight'),local('Aristotelica Display ExLight'),local('Aristotelica Display Trial ExtraLight');font-weight:200;font-display:swap}
+body{margin:0;background:#FBF8F5}
+*{box-sizing:border-box}
+a{color:#171312}a:hover{color:#A5462F}
+.d{font-family:'Fletcher Display','Comfortaa',sans-serif;font-weight:200;line-height:1.02;letter-spacing:-0.035em;margin:0}
+.lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;border-radius:999px;background:#171312;color:#FBF8F5;text-decoration:none;font-size:14px;letter-spacing:.04em;border:0;font-family:inherit;cursor:pointer;transition:transform 100ms ease-out,background-color .35s ease}
+.btn:hover{background:#A5462F;color:#FBF8F5}
+.btn:active{transform:scale(.97)}
+.card{background:#FFFFFF;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:20px;box-shadow:0 0 0 1px rgba(23,19,18,.07)}
+.stage{background:#FBF8F5;border-radius:16px;padding:28px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;min-height:170px}
+.el{font-size:13px;line-height:1.55;color:#5F544F;margin:0;padding-top:16px;border-top:1px solid rgba(23,19,18,.08)}
+.el b{font-weight:500;color:#171312}
+.mx{width:100%;border-collapse:collapse;font-size:14px}
+.mx th,.mx td{padding:14px 10px;border-bottom:1px solid rgba(23,19,18,.1);text-align:center}
+.mx th:first-child,.mx td:first-child{text-align:left}
+.mx thead th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:#6E625C;vertical-align:bottom}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#F98F7D}
+.no{color:#C9BEB7}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes mq{to{transform:translateX(-50%)}}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 5600px; box-sizing: border-box; padding: 96px 88px; background: #F5EFEA; color: #171312; font-family: 'DM Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 96px">
+
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: center; gap: 14px"><img src="/_blob/0354371a7407d57f48c61f26ab47636f" alt="" style="width: 44px; height: 44px"><p class="lbl" style="color: #A5462F">Make Up by Fletcher · maquillajebucaramanga.com</p></div>
+<h1 class="d" style="font-size: 104px">Sistema de componentes</h1>
+</div>
+<p style="margin: 0; max-width: 420px; font-size: 16px; line-height: 1.7; color: #4F4540">Tokens, componentes y dónde se usa cada uno. Cada pieza indica cómo montarla en WordPress con Elementor para que las páginas nuevas salgan del mismo sistema.</p>
+</div>
+
+<section style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; align-items: baseline; gap: 20px"><p class="lbl" style="color: #A5462F">01</p><h2 class="d" style="font-size: 52px">Color</h2></div>
+<div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background-color: #F98F7D; background-image: radial-gradient(55% 75% at 12% 18%, rgba(255,214,199,.95) 0%, rgba(255,214,199,0) 62%), radial-gradient(45% 65% at 88% 22%, rgba(242,234,227,.9) 0%, rgba(242,234,227,0) 58%), radial-gradient(60% 80% at 72% 105%, rgba(226,108,86,.85) 0%, rgba(226,108,86,0) 60%), radial-gradient(40% 60% at 30% 95%, rgba(250,170,150,.8) 0%, rgba(250,170,150,0) 60%)"></div><p style="margin: 0; font-size: 15px">Mesh Fletcher</p><p style="margin: 0; font-size: 13px; color: #6E625C">Solo bloques de llamada</p></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background: #FBF8F5; box-shadow: inset 0 0 0 1px rgba(23,19,18,.1)"></div><p style="margin: 0; font-size: 15px">Porcelana</p><p style="margin: 0; font-size: 13px; color: #6E625C">#FBF8F5 · fondo</p></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background: #F2EAE3"></div><p style="margin: 0; font-size: 15px">Arena</p><p style="margin: 0; font-size: 13px; color: #6E625C">#F2EAE3 · bloques</p></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background: #171312"></div><p style="margin: 0; font-size: 15px">Tinta</p><p style="margin: 0; font-size: 13px; color: #6E625C">#171312 · texto y botones</p></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background: #F98F7D"></div><p style="margin: 0; font-size: 15px">Salmón Fletcher</p><p style="margin: 0; font-size: 13px; color: #6E625C">#F98F7D · marca, nunca texto</p></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background: #A5462F"></div><p style="margin: 0; font-size: 15px">Terracota</p><p style="margin: 0; font-size: 13px; color: #6E625C">#A5462F · etiquetas y hover</p></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background: #4F4540"></div><p style="margin: 0; font-size: 15px">Cacao</p><p style="margin: 0; font-size: 13px; color: #6E625C">#4F4540 · párrafos</p></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 140px; border-radius: 18px; background: #6E625C"></div><p style="margin: 0; font-size: 15px">Topo</p><p style="margin: 0; font-size: 13px; color: #6E625C">#6E625C · datos secundarios</p></div>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px">
+<div style="display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; align-items: baseline; gap: 20px"><p class="lbl" style="color: #A5462F">02</p><h2 class="d" style="font-size: 52px">Tipografía</h2></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(23,19,18,.12)"><p class="d" style="font-size: 96px">Display XL</p><p style="margin: 0; font-size: 13px; color: #6E625C; text-align: right">Aristotelica Display ExtraLight<br>56–116 px · interlínea 1.02 · tracking −3,5 %</p></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(23,19,18,.12)"><p class="d" style="font-size: 64px">Display L</p><p style="margin: 0; font-size: 13px; color: #6E625C; text-align: right">Títulos de sección · 44–76 px</p></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(23,19,18,.12)"><p class="d" style="font-size: 36px">Display M · tarjetas</p><p style="margin: 0; font-size: 13px; color: #6E625C; text-align: right">28–40 px</p></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(23,19,18,.12)"><p class="lbl" style="color: #A5462F">Etiqueta en mayúsculas</p><p style="margin: 0; font-size: 13px; color: #6E625C; text-align: right">DM Sans 500 · 12 px · tracking +20 %</p></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(23,19,18,.12)"><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4F4540; max-width: 380px">Párrafo con acabado natural y duradero, para leer con calma.</p><p style="margin: 0; font-size: 13px; color: #6E625C; text-align: right">DM Sans 400 · 17–18 px · 1.7</p></div>
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #6E625C">El tracking cambia con el tamaño: negativo en display, positivo en etiquetas. Respaldo web del display: Comfortaa 300.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; align-items: baseline; gap: 20px"><p class="lbl" style="color: #A5462F">03</p><h2 class="d" style="font-size: 52px">Espacio y forma</h2></div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 56px; font-size: 13px; color: #6E625C">8</span><span style="height: 12px; width: 8px; background: #F98F7D; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 56px; font-size: 13px; color: #6E625C">16</span><span style="height: 12px; width: 16px; background: #F98F7D; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 56px; font-size: 13px; color: #6E625C">28</span><span style="height: 12px; width: 28px; background: #F98F7D; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 56px; font-size: 13px; color: #6E625C">40</span><span style="height: 12px; width: 40px; background: #F98F7D; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 56px; font-size: 13px; color: #6E625C">72</span><span style="height: 12px; width: 72px; background: #F98F7D; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 56px; font-size: 13px; color: #6E625C">96</span><span style="height: 12px; width: 96px; background: #F98F7D; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 56px; font-size: 13px; color: #6E625C">160</span><span style="height: 12px; width: 160px; background: #F98F7D; border-radius: 3px"></span></div>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #6E625C">Secciones a 140–160 px en escritorio y 96 px en móvil. Contenedor de 1320 px con margen de 40 px (20 px en móvil).</p>
+<div style="display: flex; gap: 16px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><span style="width: 64px; height: 64px; background: #F2EAE3; border-radius: 20px"></span><span style="font-size: 12px; color: #6E625C">20 foto</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><span style="width: 64px; height: 64px; background: #F2EAE3; border-radius: 28px"></span><span style="font-size: 12px; color: #6E625C">28 pack</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><span style="width: 64px; height: 64px; background: #F2EAE3; border-radius: 40px 40px 12px 12px"></span><span style="font-size: 12px; color: #6E625C">arco</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><span style="width: 96px; height: 44px; background: #171312; border-radius: 999px"></span><span style="font-size: 12px; color: #6E625C">píldora</span></div>
+</div>
+<div style="background: #FFFFFF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 13px; line-height: 1.55; color: #4F4540; box-shadow: 0 0 0 1px rgba(23,19,18,.07)">
+<p class="lbl" style="color: #A5462F">Movimiento</p>
+<p style="margin: 0"><b style="font-weight: 500; color: #171312">Presión:</b> escala 0,97 en 100 ms al pulsar.</p>
+<p style="margin: 0"><b style="font-weight: 500; color: #171312">Entradas:</b> subir 56 px y aparecer al entrar en pantalla (0–45 %).</p>
+<p style="margin: 0"><b style="font-weight: 500; color: #171312">Parallax:</b> imagen a escala 1,14, recorre ±7 %.</p>
+<p style="margin: 0"><b style="font-weight: 500; color: #171312">Curva:</b> cubic-bezier(.16, 1, .3, 1). Sin animación si el sistema pide movimiento reducido.</p>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; align-items: baseline; gap: 20px"><p class="lbl" style="color: #A5462F">04</p><h2 class="d" style="font-size: 52px">Componentes</h2></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+
+<div class="card"><p class="lbl" style="color: #6E625C">C01 · Botones</p>
+<div class="stage"><a class="btn" href="#">Reservar fecha</a><a class="btn" href="#" style="background: transparent; color: #171312; box-shadow: inset 0 0 0 1px rgba(23,19,18,.28)">Ver precios</a><a class="btn" href="#" style="background: #F98F7D; color: #171312">WhatsApp</a></div>
+<p class="el"><b>Elementor:</b> widget Botón con estilos globales «Primario», «Fantasma» y «Salmón». CSS de presión en el sitio.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C02 · Encabezado de vidrio</p>
+<div class="stage" style="padding: 0; overflow: hidden; align-items: stretch"><div style="flex: 1; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; background: rgba(251,248,245,.74); border-bottom: 1px solid rgba(23,19,18,.07)"><span style="display: flex; align-items: center; gap: 8px"><img src="/_blob/0354371a7407d57f48c61f26ab47636f" alt="" style="width: 28px; height: 28px"><span class="d" style="font-size: 20px">Fletcher</span></span><span style="font-size: 12px; color: #4F4540">Novias · Servicios · Cursos</span></div></div>
+<p class="el"><b>Elementor:</b> Theme Builder › Encabezado, contenedor sticky con backdrop-filter. En 1180 px pasa a botón de menú.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C03 · Menú móvil</p>
+<div class="stage" style="flex-direction: column; align-items: stretch; gap: 0; justify-content: flex-start"><span class="d" style="font-size: 26px; padding: 8px 0; border-bottom: 1px solid rgba(23,19,18,.08)">Novias</span><span class="d" style="font-size: 26px; padding: 8px 0; border-bottom: 1px solid rgba(23,19,18,.08); color: #A5462F">Servicios</span><span class="d" style="font-size: 26px; padding: 8px 0">Cursos</span></div>
+<p class="el"><b>Elementor:</b> Popup a pantalla completa con animación de entrada; enlaces en display de 38 px.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C04 · Arco y sello</p>
+<div class="stage"><div style="position: relative; width: 120px; height: 150px"><div style="position: absolute; width: 90px; height: 90px; border-radius: 50%; background: #F98F7D; right: -16px; top: -10px"></div><div style="position: relative; width: 120px; height: 150px; border-radius: 999px 999px 14px 14px; overflow: hidden"><img src="/_blob/46cc4ad7d192f77a526d8816a191f96f" alt="" style="width: 100%; height: 100%; object-fit: cover"></div><div style="position: absolute; left: -30px; bottom: 10px; width: 64px; height: 64px; border-radius: 50%; background: rgba(251,248,245,.9); display: grid; place-items: center; box-shadow: 0 10px 24px -12px rgba(23,19,18,.4)"><img src="/_blob/a08ae57d5edd08d37c49b005ee5be8c8" alt="" style="width: 28px"></div></div></div>
+<p class="el"><b>Elementor:</b> widget Imagen con radio «999 999 28 28». Sello: SVG con texto circular girando 24 s.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C05 · Tarjeta de servicio</p>
+<div class="stage" style="justify-content: flex-start; align-items: stretch"><div style="display: flex; gap: 14px; align-items: center; width: 100%"><div style="width: 84px; height: 104px; border-radius: 14px; overflow: hidden; flex: none"><img src="/_blob/f901d2f40ac059d92eb8cabb471a5abd" alt="" style="width: 100%; height: 100%; object-fit: cover"></div><div style="display: flex; flex-direction: column; gap: 6px"><span class="d" style="font-size: 24px">Maquillaje social</span><span style="font-size: 13px; color: #6E625C">200.000 COP</span></div></div></div>
+<p class="el"><b>Elementor:</b> Loop Item (foto 4:5, etiqueta de vidrio, título, precio y línea) dentro de un Loop Grid.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C06 · Tarjeta de pack</p>
+<div class="stage" style="background: #171312; color: #FBF8F5; flex-direction: column; align-items: flex-start; gap: 8px"><span class="lbl" style="color: #F98F7D">Pack 02</span><span class="d" style="font-size: 26px">Full experience</span><span class="d" style="font-size: 34px">250.000</span></div>
+<p class="el"><b>Elementor:</b> widget Tabla de precios con lista de incluidos; variante destacada en tinta.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C07 · Fila de precio</p>
+<div class="stage" style="flex-direction: column; align-items: stretch; gap: 0"><div style="display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid rgba(23,19,18,.12); border-bottom: 1px solid rgba(23,19,18,.12)"><span><span style="display: block; font-size: 16px">Automaquillaje</span><span style="font-size: 12px; color: #6E625C">5 módulos</span></span><span style="font-size: 14px">400.000 COP</span></div></div>
+<p class="el"><b>Elementor:</b> widget Lista de precios con separador de 1 px.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C08 · Paso numerado</p>
+<div class="stage" style="justify-content: flex-start; align-items: flex-start; flex-direction: column; gap: 6px"><span class="d" style="font-size: 44px; color: #F98F7D">01</span><span style="font-size: 16px">Prueba previa</span><span style="font-size: 13px; color: #6E625C">Unos días antes del evento</span></div>
+<p class="el"><b>Elementor:</b> Contenedor en cuadrícula de 4 columnas (2 en móvil) con títulos y texto.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C09 · Acordeón de preguntas</p>
+<div class="stage" style="flex-direction: column; align-items: stretch; gap: 0"><div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(23,19,18,.12); font-size: 16px"><span>¿Cómo separo mi fecha?</span><svg viewBox="0 0 28 28" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 6v16M6 14h16"></path></svg></div><div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(23,19,18,.12); font-size: 16px"><span>¿Van a domicilio?</span><svg viewBox="0 0 28 28" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 6v16M6 14h16"></path></svg></div></div>
+<p class="el"><b>Elementor:</b> widget Acordeón con el marcado FAQ activado (schema para Google).</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C10 · Chips de filtro</p>
+<div class="stage"><span style="padding: 12px 18px; border-radius: 999px; background: #171312; color: #FBF8F5; font-size: 13px">Todo</span><span style="padding: 12px 18px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(23,19,18,.22); font-size: 13px">Novias</span><span style="padding: 12px 18px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(23,19,18,.22); font-size: 13px">Social</span></div>
+<p class="el"><b>Elementor:</b> Taxonomy Filter conectado al Loop Grid del portafolio y del diario.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C11 · Tarjeta de artículo</p>
+<div class="stage" style="justify-content: flex-start; align-items: stretch"><div style="display: flex; gap: 14px; align-items: center"><div style="width: 84px; height: 104px; border-radius: 14px; overflow: hidden; flex: none"><img src="/_blob/932a382fb3815dec07dac88a5d9ed632" alt="" style="width: 100%; height: 100%; object-fit: cover"></div><div style="display: flex; flex-direction: column; gap: 6px"><span class="lbl" style="color: #A5462F; font-size: 10px">Novias</span><span class="d" style="font-size: 20px; line-height: 1.15">Precio del maquillaje de novia</span><span style="font-size: 12px; color: #6E625C">6 min</span></div></div></div>
+<p class="el"><b>Elementor:</b> Loop Item de entradas: imagen destacada, categoría, título, extracto y tiempo de lectura.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C12 · Bloque de llamada</p>
+<div class="stage" style="background: #F98F7D; flex-direction: column; gap: 14px"><span class="d" style="font-size: 32px">Reserva tu fecha.</span><a class="btn" href="#" style="min-height: 44px; font-size: 13px">Escribir por WhatsApp</a></div>
+<p class="el"><b>Elementor:</b> Plantilla guardada (Global) para cerrar cada página; variantes salmón y tinta.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C13 · Campo de formulario</p>
+<div class="stage" style="flex-direction: column; align-items: stretch; gap: 8px"><span style="font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #5F544F">Fecha del evento</span><span style="padding: 10px 0 12px; border-bottom: 1px solid #171312; font-size: 16px; color: #8A7E78">dd / mm / aaaa</span></div>
+<p class="el"><b>Elementor:</b> widget Formulario con campos de línea inferior; acción «Redirigir» a WhatsApp con el mensaje armado.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C14 · Botón flotante</p>
+<div class="stage"><span style="display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 20px 0 16px; border-radius: 999px; background: rgba(23,19,18,.86); color: #FBF8F5; font-size: 14px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"></path></svg>Reservar</span></div>
+<p class="el"><b>Elementor:</b> botón fijo en el pie de la plantilla global; en móvil solo el icono.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C15 · Marquesina</p>
+<div class="stage" style="overflow: hidden; justify-content: flex-start"><div style="display: flex; gap: 28px; align-items: center; width: max-content; animation: mq 18s linear infinite"><span class="d" style="font-size: 30px">Novias</span><span style="width: 8px; height: 8px; border-radius: 50%; background: #F98F7D"></span><span class="d" style="font-size: 30px">Grados</span><span style="width: 8px; height: 8px; border-radius: 50%; background: #F98F7D"></span><span class="d" style="font-size: 30px">Cursos</span><span style="width: 8px; height: 8px; border-radius: 50%; background: #F98F7D"></span><span class="d" style="font-size: 30px">Novias</span><span style="width: 8px; height: 8px; border-radius: 50%; background: #F98F7D"></span><span class="d" style="font-size: 30px">Grados</span><span style="width: 8px; height: 8px; border-radius: 50%; background: #F98F7D"></span><span class="d" style="font-size: 30px">Cursos</span></div></div>
+<p class="el"><b>Elementor:</b> contenedor con el texto duplicado y animación CSS (o widget Marquee de un complemento).</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C16 · Reseña</p>
+<div class="stage" style="flex-direction: column; align-items: flex-start; gap: 10px; justify-content: flex-start"><span style="color: #F98F7D; letter-spacing: 4px; font-size: 14px" aria-label="5 estrellas">★★★★★</span><span style="font-size: 15px; line-height: 1.5">[Reseña real de Google]</span><span class="lbl" style="color: #6E625C; font-size: 10px">[Nombre] · Novia</span></div>
+<p class="el"><b>Elementor:</b> widget Testimonio o un complemento que lea las reseñas de Google Business Profile.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C17 · Barra de lectura y tabla de contenido</p>
+<div class="stage" style="flex-direction: column; align-items: stretch; gap: 14px"><span style="height: 2px; background: linear-gradient(90deg, #F98F7D 60%, rgba(23,19,18,.1) 60%)"></span><span style="font-size: 13px; padding-left: 12px; border-left: 1px solid #171312">Qué incluye el precio</span><span style="font-size: 13px; padding-left: 12px; border-left: 1px solid rgba(23,19,18,.14); color: #6E625C">Precios para el cortejo</span></div>
+<p class="el"><b>Elementor:</b> widget Tabla de contenido fijo en la plantilla de entrada; barra de progreso por CSS.</p></div>
+
+<div class="card"><p class="lbl" style="color: #6E625C">C18 · Pie de página</p>
+<div class="stage" style="background: #171312; flex-direction: column; gap: 6px"><img src="/_blob/65d90913073962a29883be8be68c9067" alt="" style="width: 96px"><span class="d" style="font-size: 54px; color: #2A2321">Fletcher</span></div>
+<p class="el"><b>Elementor:</b> Theme Builder › Pie, cuatro columnas con enlaces por servicio y por zona (enlazado interno para SEO).</p></div>
+
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 40px">
+<div style="display: flex; align-items: baseline; gap: 20px"><p class="lbl" style="color: #A5462F">05</p><h2 class="d" style="font-size: 52px">Mapa de uso</h2></div>
+<p style="margin: 0; max-width: 460px; font-size: 14px; line-height: 1.6; color: #5F544F">Qué componente usa cada vista. Una página nueva (por ejemplo, una landing de Piedecuesta) debería armarse solo con estas piezas.</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 24px; padding: 32px 36px; box-shadow: 0 0 0 1px rgba(23,19,18,.07)">
+<table class="mx">
+<thead><tr><th scope="col">Componente</th><th scope="col">Inicio</th><th scope="col">Novias</th><th scope="col">Servicios</th><th scope="col">Cursos</th><th scope="col">Portafolio</th><th scope="col">Estudio</th><th scope="col">Tienda</th><th scope="col">Diario</th><th scope="col">Artículo</th></tr></thead>
+<tbody>
+<tr><th scope="row" style="font-weight: 400">C01 Botones · C02 Encabezado · C03 Menú · C14 Flotante · C18 Pie</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">C04 Arco y sello</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="no">—</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C05 Tarjeta de servicio</th><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C06 Tarjeta de pack</th><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C07 Fila de precio</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C08 Paso numerado</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C09 Acordeón de preguntas</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">C10 Chips de filtro</th><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C11 Tarjeta de artículo</th><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">C12 Bloque de llamada</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+<tr><th scope="row" style="font-weight: 400">C13 Campo de formulario</th><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td><td><span class="dot"></span></td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C15 Marquesina · C16 Reseña</th><td><span class="dot"></span></td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th scope="row" style="font-weight: 400">C17 Barra de lectura y tabla de contenido</th><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td><span class="dot"></span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5600}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

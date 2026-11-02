@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Panel · Comisiones</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Fletcher Display';src:local('Aristotelica Display ExtraLight'),local('AristotelicaDisplay-ExtraLight'),local('Aristotelica Display ExLight'),local('Aristotelica Display Trial ExtraLight');font-weight:200;font-display:swap}
+body{margin:0;background:#F5EFEA;color:#171312;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#171312}a:hover{color:#A5462F}
+.d{font-family:'Fletcher Display','Comfortaa',sans-serif;font-weight:200;line-height:1.05;letter-spacing:-0.03em;margin:0}
+.lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin:0;color:#6E625C}
+.app{display:flex;flex-wrap:wrap;min-height:100vh}
+.side{flex:1 1 240px;max-width:260px;background:#FBF8F5;border-right:1px solid rgba(23,19,18,.08);padding:28px 20px;display:flex;flex-direction:column;gap:28px}
+.side nav{display:flex;flex-direction:column;gap:4px}
+.side nav a{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 14px;border-radius:12px;text-decoration:none;font-size:14px;color:#4F4540;transition:background-color .25s ease}
+.side nav a:hover{background:rgba(23,19,18,.04);color:#171312}
+.side nav a[aria-current="page"]{background:#171312;color:#FBF8F5}
+.side nav svg{width:18px;height:18px;flex:none}
+.main{flex:999 1 640px;min-width:0;padding:32px 40px 64px;display:flex;flex-direction:column;gap:24px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:0 12px;border-radius:999px;font-size:12px;background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(23,19,18,.1)}
+.card{background:#FFFFFF;border-radius:20px;padding:24px;box-shadow:0 0 0 1px rgba(23,19,18,.06)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{text-align:left;padding:14px 10px 14px 0;border-bottom:1px solid rgba(23,19,18,.08)}
+.tbl th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:#6E625C}
+.tbl td.n,.tbl th.n{text-align:right;padding-right:0;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:#171312;color:#FBF8F5;text-decoration:none;font-size:13px;border:0;font-family:inherit;cursor:pointer;transition:transform 100ms ease-out}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:#171312;box-shadow:inset 0 0 0 1px rgba(23,19,18,.2)}
+.ok{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(23,19,18,.08)}
+.ok:last-child{border-bottom:0}
+.ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;flex:none}
+@media (max-width:1180px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:minmax(0,1fr)}.split>*{min-width:0}}
+@media (max-width:760px){.side{max-width:none;flex-basis:100%;border-right:0;border-bottom:1px solid rgba(23,19,18,.08);padding:16px 20px;gap:12px}.side nav{flex-direction:row;overflow-x:auto}.side nav a{flex:none}.side .who{display:none!important}.app{flex-direction:column}.side{width:100%;min-width:0}.side nav{min-width:0;max-width:100%}.main{width:100%;flex:1 1 auto}.main{padding:24px 20px 48px}.tbl-wrap{overflow-x:auto}.kpis{grid-template-columns:1fr}}
+</style>
+</helmet>
+<div class="app">
+<aside class="side">
+<div style="display: flex; align-items: center; gap: 10px"><img src="/_blob/0354371a7407d57f48c61f26ab47636f" alt="" style="width: 32px; height: 32px"><span class="d" style="font-size: 22px">Fletcher</span><span class="pill" style="margin-left: auto; min-height: 24px; font-size: 11px">Panel</span></div>
+<nav aria-label="Panel">
+<a href="Panel-Resumen.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 4v3h6V4z"></path></svg>Resumen</a>
+<a href="Panel-Reservas.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>Reservas</a>
+<a href="Panel-Comisiones.dc.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19L19 5M7 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></svg>Comisiones</a>
+<a href="Panel-Reservas.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"></path></svg>Clientas</a>
+<a href="Panel-Comisiones.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16l-1.5 12h-13zM9 7a3 3 0 0 1 6 0"></path></svg>Ventas en línea</a>
+<a href="Panel-Reservas.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 8v5l3 2"></path><circle cx="12" cy="12" r="9"></circle></svg>Historial</a>
+</nav>
+<div class="who" style="margin-top: auto; display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 16px; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(23,19,18,.06)">
+<p style="margin: 0; font-size: 14px">Carlos Gómez</p>
+<p style="margin: 0; font-size: 12px; color: #6E625C">Socio · solo lectura</p>
+</div>
+</aside>
+
+<main class="main">
+<div class="top">
+<div style="display: flex; flex-direction: column; gap: 8px"><p class="lbl">Liquidación</p><h1 class="d" style="font-size: 44px">Comisiones · noviembre 2026</h1></div>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap"><span class="pill" style="background: #FFF4E5; color: #8A5300">Datos y porcentajes de ejemplo</span><span class="pill">Corte abierto</span><button class="btn ghost" type="button">Exportar CSV</button></div>
+</div>
+
+<div class="kpis">
+<div class="card"><p class="lbl">Servicios realizados</p><p class="d" style="font-size: 36px; margin-top: 14px">3.100.000</p><p style="margin: 6px 0 0; font-size: 13px; color: #6E625C">COP · 7 reservas web</p></div>
+<div class="card"><p class="lbl">Ventas en línea</p><p class="d" style="font-size: 36px; margin-top: 14px">400.000</p><p style="margin: 6px 0 0; font-size: 13px; color: #6E625C">COP · 1 curso pagado con Wompi</p></div>
+<div class="card"><p class="lbl">Proyectado (confirmadas)</p><p class="d" style="font-size: 36px; margin-top: 14px">1.450.000</p><p style="margin: 6px 0 0; font-size: 13px; color: #6E625C">COP · aún no realizadas</p></div>
+<div class="card" style="background: #171312; color: #FBF8F5"><p class="lbl" style="color: #F98F7D">Comisión del corte</p><p class="d" style="font-size: 40px; margin-top: 14px">370.000</p><p style="margin: 6px 0 0; font-size: 13px; color: #BDB1A9">COP · 310.000 servicios + 60.000 cursos</p></div>
+</div>
+
+<div class="split">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<section class="card" aria-labelledby="lq">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap"><h2 id="lq" class="d" style="font-size: 26px">Servicios realizados</h2><span style="font-size: 12px; color: #6E625C">Solo cuentan las reservas marcadas como realizadas</span></div>
+<div class="tbl-wrap"><table class="tbl" style="margin-top: 8px">
+<thead><tr><th scope="col">Código</th><th scope="col">Servicio</th><th scope="col">Realizada</th><th scope="col">Origen</th><th scope="col" class="n">Valor</th><th scope="col" class="n">Tasa</th><th scope="col" class="n">Comisión</th></tr></thead>
+<tbody>
+<tr><td>MBF-2610-0088</td><td>Pack 3 · Novia</td><td>1 nov</td><td>Formulario web</td><td class="n">600.000</td><td class="n">10 %</td><td class="n">60.000</td></tr>
+<tr><td>MBF-2610-0091</td><td>Pack 3 · Quince</td><td>2 nov</td><td>Google Business</td><td class="n">600.000</td><td class="n">10 %</td><td class="n">60.000</td></tr>
+<tr><td>MBF-2610-0102</td><td>Pack 1 ×3</td><td>7 nov</td><td>WhatsApp WEB</td><td class="n">600.000</td><td class="n">10 %</td><td class="n">60.000</td></tr>
+<tr><td>MBF-2611-0109</td><td>Pack 2</td><td>8 nov</td><td>Formulario web</td><td class="n">250.000</td><td class="n">10 %</td><td class="n">25.000</td></tr>
+<tr><td>MBF-2610-0097</td><td>Pack 1</td><td>9 nov</td><td>Formulario web</td><td class="n">200.000</td><td class="n">10 %</td><td class="n">20.000</td></tr>
+<tr><td>MBF-2611-0112</td><td>Pack 2</td><td>14 nov</td><td>Clienta web recurrente</td><td class="n">250.000</td><td class="n">10 %</td><td class="n">25.000</td></tr>
+<tr><td>MBF-2611-0115</td><td>Pack 3 · Novia</td><td>15 nov</td><td>Formulario web</td><td class="n">600.000</td><td class="n">10 %</td><td class="n">60.000</td></tr>
+<tr><td colspan="4" style="font-weight: 500">Total servicios</td><td class="n" style="font-weight: 500">3.100.000</td><td class="n"></td><td class="n" style="font-weight: 500">310.000</td></tr>
+</tbody>
+</table></div>
+</section>
+<section class="card" aria-labelledby="vl">
+<h2 id="vl" class="d" style="font-size: 26px">Ventas en línea</h2>
+<div class="tbl-wrap"><table class="tbl" style="margin-top: 8px">
+<thead><tr><th scope="col">Pedido</th><th scope="col">Producto</th><th scope="col">Pago</th><th scope="col">Referencia Wompi</th><th scope="col" class="n">Valor</th><th scope="col" class="n">Tasa</th><th scope="col" class="n">Comisión</th></tr></thead>
+<tbody>
+<tr><td>PED-1021</td><td>Curso de automaquillaje</td><td>6 nov · aprobado</td><td style="color: #6E625C">1234-5678-xxxx</td><td class="n">400.000</td><td class="n">15 %</td><td class="n">60.000</td></tr>
+</tbody>
+</table></div>
+</section>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<section class="card" aria-labelledby="ap">
+<h2 id="ap" class="d" style="font-size: 26px">Cierre del corte</h2>
+<p style="margin: 8px 0 0; font-size: 13px; line-height: 1.6; color: #5F544F">El corte se cierra cuando ambas partes lo aprueban. Después ya no se puede editar.</p>
+<div style="margin-top: 10px">
+<div class="ok"><span class="ic" style="background: #E8F1EA; color: #2F6B3D"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg></span><div><p style="margin: 0; font-size: 14px">María Paula Fletcher</p><p style="margin: 2px 0 0; font-size: 12px; color: #6E625C">Aprobó el 1 dic · 9:12</p></div></div>
+<div class="ok"><span class="ic" style="background: #FFF4E5; color: #8A5300"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4v5M8 11.5v.5"></path></svg></span><div><p style="margin: 0; font-size: 14px">Carlos Gómez</p><p style="margin: 2px 0 0; font-size: 12px; color: #6E625C">Pendiente de tu aprobación</p></div></div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px"><button class="btn" type="button">Aprobar corte</button><button class="btn ghost" type="button">Comentar</button></div>
+</section>
+<section class="card" aria-labelledby="tx">
+<h2 id="tx" class="d" style="font-size: 26px">Tasas pactadas</h2>
+<div style="margin-top: 10px; font-size: 14px">
+<div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(23,19,18,.08)"><span>Servicios de maquillaje</span><span>10 %</span></div>
+<div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(23,19,18,.08)"><span>Cursos</span><span>15 %</span></div>
+<div style="display: flex; justify-content: space-between; padding: 12px 0"><span>Tienda y bonos</span><span>10 %</span></div>
+</div>
+<p style="margin: 8px 0 0; font-size: 12px; line-height: 1.6; color: #6E625C">Cada reserva guarda la tasa vigente al crearse. Cambiar una tasa no altera reservas anteriores.</p>
+</section>
+<section class="card" aria-labelledby="ca">
+<h2 id="ca" class="d" style="font-size: 26px">Cortes anteriores</h2>
+<div style="margin-top: 10px; font-size: 14px">
+<div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(23,19,18,.08)"><span>Octubre 2026</span><span>210.000 · pagado 5 nov</span></div>
+<div style="display: flex; justify-content: space-between; padding: 12px 0"><span>Septiembre 2026</span><span>95.000 · pagado 4 oct</span></div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

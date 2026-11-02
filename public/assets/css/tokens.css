@@ -1,0 +1,69 @@
+/* Make Up by Fletcher · design tokens (README §6.1) */
+
+/* Fuente display de marca. Cuando la licencia web de Aristotelica Display esté disponible,
+   añadir aquí: url('/assets/fonts/aristotelica-display-extralight.woff2') format('woff2') */
+@font-face {
+  font-family: 'Fletcher Display';
+  src: local('Aristotelica Display ExtraLight'), local('AristotelicaDisplay-ExtraLight'),
+       local('Aristotelica Display ExLight'), local('Aristotelica Display Trial ExtraLight');
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/assets/fonts/comfortaa-var.woff2') format('woff2');
+  font-weight: 300 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/assets/fonts/dm-sans-var.woff2') format('woff2');
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
+:root {
+  /* Color */
+  --porcelana: #FBF8F5;
+  --arena: #F2EAE3;
+  --tinta: #171312;
+  --salmon: #F98F7D;      /* decorativo, nunca para texto sobre claro */
+  --terracota: #A5462F;
+  --cacao: #4F4540;
+  --topo: #6E625C;
+  --linea: rgba(23, 19, 18, .12);
+  --linea-suave: rgba(23, 19, 18, .07);
+  --texto-tarjeta: #5F544F;
+  --prosa: #3E3531;
+  --blanco: #FFFFFF;
+  --nude-claro: #E9DFD7;
+  --nude-medio: #D9CEC7;
+  --nude-oscuro: #BDB1A9;
+  --gris-pie: #A0948C;
+  --tinta-2: #2A2321;
+  --tinta-3: #2E2725;
+  --placeholder: #8A7E78;
+  --deshabilitado: #B5A9A2;
+
+  /* Tipografía */
+  --font-display: 'Fletcher Display', 'Comfortaa', sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Espaciado */
+  --s-1: 8px; --s-2: 16px; --s-3: 28px; --s-4: 40px; --s-5: 72px; --s-6: 96px;
+  --section-y: 128px;
+  --container: 1320px;
+  --gutter: 40px;
+  --nav-h: 78px;
+
+  /* Radios */
+  --r-foto: 20px; --r-pack: 28px; --r-cta: 40px; --r-pill: 999px;
+  --r-arco: 999px 999px 28px 28px;
+
+  /* Movimiento */
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+@media (max-width: 960px) {
+  :root { --section-y: 80px; --gutter: 20px; }
+}

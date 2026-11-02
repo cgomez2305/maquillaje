@@ -1,0 +1,179 @@
+{
+ "fotos/catalogo-alumna-curso": {
+  "ext": "jpg",
+  "h": 1500,
+  "w": 994,
+  "widths": [
+   480,
+   768,
+   994
+  ]
+ },
+ "fotos/catalogo-asesoria-estudio": {
+  "ext": "jpg",
+  "h": 1016,
+  "w": 678,
+  "widths": [
+   480,
+   678
+  ]
+ },
+ "fotos/catalogo-brindis-estudio": {
+  "ext": "jpg",
+  "h": 1500,
+  "w": 994,
+  "widths": [
+   480,
+   768,
+   994
+  ]
+ },
+ "fotos/catalogo-maria-paula-tablero": {
+  "ext": "jpg",
+  "h": 1500,
+  "w": 999,
+  "widths": [
+   480,
+   768,
+   999
+  ]
+ },
+ "fotos/catalogo-modelo-hero": {
+  "ext": "jpg",
+  "h": 1500,
+  "w": 1000,
+  "widths": [
+   480,
+   768,
+   1000
+  ]
+ },
+ "fotos/catalogo-ojo-detalle": {
+  "ext": "jpg",
+  "h": 1500,
+  "w": 998,
+  "widths": [
+   480,
+   768,
+   998
+  ]
+ },
+ "fotos/catalogo-paleta": {
+  "ext": "jpg",
+  "h": 1500,
+  "w": 1000,
+  "widths": [
+   480,
+   768,
+   1000
+  ]
+ },
+ "fotos/ig-clienta-bata-seda": {
+  "ext": "jpg",
+  "h": 1280,
+  "w": 720,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "fotos/ig-estudio-bn": {
+  "ext": "jpg",
+  "h": 1280,
+  "w": 722,
+  "widths": [
+   480,
+   722
+  ]
+ },
+ "fotos/ig-maquillaje-social": {
+  "ext": "jpg",
+  "h": 880,
+  "w": 720,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "fotos/ig-novia-reel": {
+  "ext": "jpg",
+  "h": 1280,
+  "w": 720,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "fotos/ig-novia-tiara": {
+  "ext": "jpg",
+  "h": 1280,
+  "w": 960,
+  "widths": [
+   480,
+   768,
+   960
+  ]
+ },
+ "marca/isotipo-negativo": {
+  "ext": "png",
+  "h": 360,
+  "w": 360,
+  "widths": [
+   80,
+   160
+  ]
+ },
+ "marca/isotipo-nude": {
+  "ext": "png",
+  "h": 360,
+  "w": 360,
+  "widths": [
+   360
+  ]
+ },
+ "marca/isotipo-salmon": {
+  "ext": "png",
+  "h": 360,
+  "w": 360,
+  "widths": [
+   120,
+   240
+  ]
+ },
+ "marca/logo-nude": {
+  "ext": "png",
+  "h": 542,
+  "w": 700,
+  "widths": [
+   336,
+   700
+  ]
+ },
+ "marca/logo-salmon": {
+  "ext": "png",
+  "h": 542,
+  "w": 700,
+  "widths": [
+   336,
+   700
+  ]
+ },
+ "marca/wordmark-nude": {
+  "ext": "png",
+  "h": 272,
+  "w": 900,
+  "widths": [
+   450,
+   900
+  ]
+ },
+ "marca/wordmark-salmon": {
+  "ext": "png",
+  "h": 272,
+  "w": 900,
+  "widths": [
+   450,
+   900
+  ]
+ }
+}

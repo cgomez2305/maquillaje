@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Inicio · Make Up by Fletcher</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Fletcher Display';src:local('Aristotelica Display ExtraLight'),local('AristotelicaDisplay-ExtraLight'),local('Aristotelica Display ExLight'),local('Aristotelica Display Trial ExtraLight');font-weight:200;font-display:swap}
+body{margin:0;background:#FBF8F5;color:#171312;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#171312}a:hover{color:#A5462F}
+img{display:block;max-width:100%}
+.d{font-family:'Fletcher Display','Comfortaa',sans-serif;font-weight:200;line-height:1.02;letter-spacing:-0.035em;margin:0}
+.lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.nav{position:sticky;top:0;z-index:30;background:rgba(251,248,245,.74);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(23,19,18,.07)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{text-decoration:none;font-size:13px;letter-spacing:.06em;color:#171312;position:relative;padding:14px 0}
+.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:8px;height:1px;background:#171312;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover::after,.nav-links a[aria-current="page"]::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;border-radius:999px;background:#171312;color:#FBF8F5;text-decoration:none;font-size:14px;letter-spacing:.04em;border:0;font-family:inherit;cursor:pointer;transition:transform 100ms ease-out,background-color .35s ease}
+.btn:hover{background:#A5462F;color:#FBF8F5}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:#171312;box-shadow:inset 0 0 0 1px rgba(23,19,18,.28)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1px #171312;color:#171312;background:rgba(23,19,18,.03)}
+.btn.light{background:#FBF8F5;color:#171312}
+.btn.light:hover{background:#F98F7D;color:#171312}
+.menu-btn{display:none}
+.arr{width:16px;height:16px;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+a:hover .arr{transform:translateX(4px)}
+.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:72px;align-items:center;padding-top:72px;padding-bottom:112px}
+.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 28px 28px;overflow:hidden;background:#F2EAE3}
+.arch img{width:100%;height:100%;object-fit:cover}
+.seal{position:absolute;left:-70px;bottom:64px;width:150px;height:150px;border-radius:50%;background:rgba(251,248,245,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:grid;place-items:center;box-shadow:0 20px 50px -24px rgba(23,19,18,.35)}
+.seal svg{position:absolute;inset:0;width:100%;height:100%}
+.marq{overflow:hidden;border-top:1px solid rgba(23,19,18,.1);border-bottom:1px solid rgba(23,19,18,.1);padding:26px 0}
+.marq-t{display:flex;gap:56px;width:max-content;align-items:center}
+.dot{width:10px;height:10px;border-radius:50%;background:#F98F7D;flex:none}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px;align-items:center}
+.card{text-decoration:none;color:#171312;display:flex;flex-direction:column;gap:22px}
+.card:hover{color:#171312}
+.ph{overflow:hidden;border-radius:20px;background:#F2EAE3;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+.card:hover .ph img{transform:scale(1.045)}
+.tag{position:absolute;top:16px;left:16px;padding:8px 14px;border-radius:999px;background:rgba(251,248,245,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:12px;letter-spacing:.08em}
+.hr{height:1px;background:rgba(23,19,18,.12);border:0;margin:0}
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 40px 24px;scrollbar-width:none;overscroll-behavior-x:contain}
+.rail figure{flex:none;width:340px;margin:0;scroll-snap-align:start}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid rgba(251,248,245,.2)}
+.steps div{padding:28px 28px 0 0}
+details{border-bottom:1px solid rgba(23,19,18,.12)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:30px 0;font-size:22px}
+summary::-webkit-details-marker{display:none}
+summary .pl{width:28px;height:28px;flex:none;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+details[open] summary .pl{transform:rotate(45deg)}
+.fab{position:fixed;right:28px;bottom:28px;z-index:40;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 22px 0 18px;border-radius:999px;background:rgba(23,19,18,.82);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);color:#FBF8F5;text-decoration:none;font-size:14px;transition:transform 100ms ease-out;box-shadow:0 18px 40px -18px rgba(23,19,18,.6)}
+.fab:hover{color:#FBF8F5}.fab:active{transform:scale(.96)}
+.foot a{color:#E9DFD7;text-decoration:none}.foot a:hover{color:#F98F7D}
+.in{animation:in 1.2s cubic-bezier(.16,1,.3,1) both}
+@keyframes in{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.marq-t{animation:mq 38s linear infinite}
+.seal svg{animation:spin 24s linear infinite}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+@keyframes rv{from{opacity:0;transform:translateY(56px)}to{opacity:1;transform:none}}
+.px img{animation:px linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes px{from{transform:translateY(-7%) scale(1.14)}to{transform:translateY(7%) scale(1.14)}}
+.grow{animation:grow linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+@keyframes grow{from{clip-path:inset(12% 10% 12% 10% round 28px)}to{clip-path:inset(0 0 0 0 round 0)}}
+}}
+@media (prefers-reduced-motion:reduce){.marq-t,.seal svg,.in{animation:none}}
+@media (prefers-reduced-transparency:reduce){.nav{background:#FBF8F5;backdrop-filter:none}.fab{background:#171312;backdrop-filter:none}}
+@media (max-width:960px){
+.wrap{padding-left:20px!important;padding-right:20px!important}.nav-links,.hide-m{display:none}.menu-btn{display:inline-flex}
+.hero,.g2{grid-template-columns:1fr;gap:48px}.hero{padding-top:40px;padding-bottom:72px}
+.g3{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+.seal{left:auto;right:16px;bottom:-40px;width:120px;height:120px}
+.rail{padding:0 20px 20px}.rail figure{width:78vw}
+.fab span{display:none}.fab{padding:0 16px}
+}
+.sheet{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:70;background:rgba(251,248,245,.95);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);display:flex;flex-direction:column;padding:0 20px max(24px,env(safe-area-inset-bottom));overflow:hidden;animation:sheet .55s cubic-bezier(.16,1,.3,1) both}
+@keyframes sheet{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;height:78px;flex:none}
+.sheet nav{display:flex;flex-direction:column;justify-content:center;padding:clamp(8px,2vh,24px) 0;flex-grow:1;min-height:0}
+.sheet nav a{font-family:'Fletcher Display','Comfortaa',sans-serif;font-weight:200;font-size:clamp(28px,4.6vh,38px);letter-spacing:-0.03em;text-decoration:none;color:#171312;padding:clamp(6px,1.4vh,12px) 0;border-bottom:1px solid rgba(23,19,18,.08);display:flex;justify-content:space-between;align-items:center;animation:in .8s cubic-bezier(.16,1,.3,1) both}
+.sheet nav a[aria-current="page"]{color:#A5462F}
+@media (max-width:1180px){.nav-links{display:none}.menu-btn{display:inline-flex}}
+@media (max-width:960px){
+[style*="padding: 128px"]{padding-top:80px!important;padding-bottom:80px!important}
+[style*="padding-bottom: 128px"],[style*="padding-bottom: 128px"]{padding-bottom:96px!important}
+.cta{padding:72px 24px!important;border-radius:28px!important}
+.dk-txt{padding:72px 0!important}.dk-ph{min-height:480px!important}
+.crs-txt{padding:48px 24px!important}
+summary{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){.sheet,.sheet nav a{animation:none}}
+.mesh{background-color:#F98F7D;background-image:radial-gradient(55% 75% at 12% 18%,rgba(255,214,199,.95) 0%,rgba(255,214,199,0) 62%),radial-gradient(45% 65% at 88% 22%,rgba(242,234,227,.9) 0%,rgba(242,234,227,0) 58%),radial-gradient(60% 80% at 72% 105%,rgba(226,108,86,.85) 0%,rgba(226,108,86,0) 60%),radial-gradient(40% 60% at 30% 95%,rgba(250,170,150,.8) 0%,rgba(250,170,150,0) 60%)}
+.mesh-dark{background-color:#171312;background-image:radial-gradient(50% 70% at 90% 0%,rgba(249,143,125,.22) 0%,rgba(249,143,125,0) 60%),radial-gradient(40% 60% at 0% 100%,rgba(165,70,47,.25) 0%,rgba(165,70,47,0) 60%)}
+@media (max-width:960px){.g2,.feat,.nl{grid-template-columns:1fr!important;gap:40px!important}.g2>.dk-txt{padding:64px 0!important}h1 .d,h1.d{font-size:clamp(48px,13vw,64px)!important}}
+@media (max-height:640px){.sheet nav a{font-size:26px!important;padding:6px 0!important}.sheet-top{height:64px}}
+</style>
+</helmet>
+
+<div style="position: relative; overflow-x: clip">
+
+<header class="nav">
+<div class="wrap nav-in">
+<a href="Main.dc.html" aria-label="Make Up by Fletcher, inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<img src="/_blob/0354371a7407d57f48c61f26ab47636f" alt="" style="width: 40px; height: 40px">
+<span class="d" style="font-size: 26px; letter-spacing: -0.02em; color: #171312">Fletcher</span>
+</a>
+<nav class="nav-links" aria-label="Principal">
+<a href="Novias.dc.html">Novias</a>
+<a href="Servicios.dc.html">Servicios y precios</a>
+<a href="Cursos.dc.html">Cursos</a>
+<a href="Portafolio.dc.html">Portafolio</a>
+<a href="Tienda.dc.html">Tienda</a>
+<a href="Blog.dc.html">Diario</a>
+<a href="Estudio.dc.html">Estudio</a>
+</nav>
+<div style="display: flex; gap: 10px; align-items: center">
+<a class="btn hide-m" href="Reservar.dc.html" style="min-height: 44px; padding: 0 22px; font-size: 13px">Reservar fecha</a>
+<button class="btn ghost menu-btn" type="button" aria-label="Abrir menú" aria-expanded="{{menuAria}}" onClick="{{toggleMenu}}" style="min-height: 44px; width: 44px; padding: 0">
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>
+</button>
+</div>
+</div>
+</header>
+
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div class="sheet" role="dialog" aria-modal="true" aria-label="Menú">
+<div class="sheet-top">
+<a href="Main.dc.html" aria-label="Make Up by Fletcher, inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none"><img src="/_blob/0354371a7407d57f48c61f26ab47636f" alt="" style="width: 40px; height: 40px"><span class="d" style="font-size: 26px; letter-spacing: -0.02em; color: #171312">Fletcher</span></a>
+<button class="btn ghost" type="button" onClick="{{toggleMenu}}" aria-label="Cerrar menú" style="min-height: 44px; width: 44px; padding: 0"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<nav aria-label="Menú móvil">
+<a href="Main.dc.html" aria-current="page">Inicio</a>
+<a href="Novias.dc.html" style="animation-delay: .04s">Novias</a>
+<a href="Servicios.dc.html" style="animation-delay: .08s">Servicios y precios</a>
+<a href="Cursos.dc.html" style="animation-delay: .12s">Cursos</a>
+<a href="Portafolio.dc.html" style="animation-delay: .16s">Portafolio</a>
+<a href="Tienda.dc.html" style="animation-delay: .2s">Tienda</a>
+<a href="Blog.dc.html" style="animation-delay: .24s">Diario</a>
+<a href="Estudio.dc.html" style="animation-delay: .28s">Estudio</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 14px; flex: none">
+<a class="btn" href="Reservar.dc.html">Reservar fecha</a>
+<a class="btn ghost" href="https://wa.me/message/H3JAJC64G4RQM1">Escribir por WhatsApp</a>
+</div>
+</div>
+</sc-if>
+
+<main>
+
+<section class="wrap hero">
+<div style="display: flex; flex-direction: column; gap: 40px">
+<h1 style="margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400">
+<span class="lbl in" style="color: #A5462F">Maquillaje profesional en Bucaramanga</span>
+<span class="d in" style="font-size: clamp(56px, 7.4vw, 112px); animation-delay: .08s">Natural.<br>Duradero.<br>Tuyo.</span>
+</h1>
+<p class="in" style="margin: 0; max-width: 470px; font-size: 18px; line-height: 1.65; color: #4F4540; animation-delay: .18s">Maquillaje para novias, quinceañeras, grados y eventos sociales, con acabado natural que se mantiene impecable de la primera foto a la última canción. Estudio en Floridablanca y servicio a domicilio.</p>
+<div class="in" style="display: flex; gap: 12px; flex-wrap: wrap; animation-delay: .26s">
+<a class="btn" href="https://wa.me/message/H3JAJC64G4RQM1">Agendar por WhatsApp
+<svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"></path></svg></a>
+<a class="btn ghost" href="Servicios.dc.html">Ver servicios y precios</a>
+</div>
+<div class="in" style="display: flex; gap: 40px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid rgba(23,19,18,.12); animation-delay: .34s">
+<div><p class="lbl" style="color: #6E625C">Estudio</p><p style="margin: 8px 0 0; font-size: 15px">Floridablanca, Santander</p></div>
+<div><p class="lbl" style="color: #6E625C">Servicio</p><p style="margin: 8px 0 0; font-size: 15px">En estudio y a domicilio</p></div>
+<div><p class="lbl" style="color: #6E625C">Desde</p><p style="margin: 8px 0 0; font-size: 15px">200.000 COP</p></div>
+</div>
+</div>
+<div class="in" style="position: relative; animation-delay: .12s">
+<div aria-hidden="true" style="position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; background: {{acento}}; right: -14%; top: -7%"></div>
+<div class="arch px">
+<img src="/_blob/46cc4ad7d192f77a526d8816a191f96f" alt="Modelo con maquillaje de piel luminosa y bata negra de Make Up by Fletcher, entre flores" style="object-position: 50% 30%">
+</div>
+<div class="seal" aria-hidden="true">
+<svg viewBox="0 0 150 150"><defs><path id="sealc" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"></path></defs><text font-family="DM Sans, sans-serif" font-size="9.5" letter-spacing="2" fill="#171312"><textPath href="#sealc" textLength="360" lengthAdjust="spacing">MAKE UP ARTIST · BUCARAMANGA · FLORIDABLANCA · </textPath></text></svg>
+<img src="/_blob/a08ae57d5edd08d37c49b005ee5be8c8" alt="" style="width: 58px; height: 58px">
+</div>
+</div>
+</section>
+
+<div class="marq" aria-hidden="true">
+<div class="marq-t">
+<span class="d" style="font-size: 44px">Novias</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Quinceañeras</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Grados</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Maquillaje social</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">A domicilio</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Cursos</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Novias</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Quinceañeras</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Grados</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Maquillaje social</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">A domicilio</span><span class="dot"></span>
+<span class="d" style="font-size: 44px">Cursos</span><span class="dot"></span>
+</div>
+</div>
+
+<section class="wrap" style="padding: 128px 40px">
+<div class="g2" style="grid-template-columns: .55fr 1.45fr; align-items: start">
+<div class="rv" style="display: flex; flex-direction: column; gap: 20px">
+<div class="ph" style="aspect-ratio: 4/5; max-width: 300px"><img src="/_blob/97d5d43ed59d6271619dd7ece070783e" alt="María Paula Fletcher en su estudio, junto al tablero de clase" style="object-position: 30% 20%"></div>
+<p class="lbl" style="color: #6E625C">María Paula Fletcher · Creadora de MUBF</p>
+</div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 40px">
+<p class="lbl" style="color: #A5462F">La firma</p>
+<p class="d" style="font-size: clamp(34px, 3.9vw, 58px); line-height: 1.12; letter-spacing: -0.03em">Creemos en una piel que se ve como piel. Luz donde hace falta, color con intención y una fijación pensada para <span style="color: #A5462F">llorar, abrazar y bailar</span> sin retoques de emergencia.</p>
+<a href="Estudio.dc.html" style="display: inline-flex; align-items: center; gap: 10px; font-size: 15px; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 6px; align-self: flex-start">Conoce el estudio <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"></path></svg></a>
+</div>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 128px">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; margin-bottom: 56px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p class="lbl" style="color: #A5462F">Servicios</p>
+<h2 class="d" style="font-size: clamp(44px, 5vw, 76px)">Tres experiencias,<br>un mismo acabado.</h2>
+</div>
+<a class="btn ghost" href="Servicios.dc.html">Comparar servicios</a>
+</div>
+<div class="g3">
+<a class="card rv" href="Servicios.dc.html">
+<div class="ph" style="aspect-ratio: 4/5"><img src="/_blob/f901d2f40ac059d92eb8cabb471a5abd" alt="Maquillaje social con ojos ahumados suaves y labios nude"><span class="tag">Pack 01</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><h3 class="d" style="font-size: 32px">Maquillaje social</h3><p style="margin: 0; font-size: 15px; white-space: nowrap">200.000 COP</p></div>
+<p style="margin: 0; color: #5F544F; line-height: 1.6; font-size: 15px">Asesoría, maquillaje social y pestañas. Ideal para grados, cenas, sesiones y eventos.</p>
+<hr class="hr">
+</a>
+<a class="card rv" href="Servicios.dc.html" style="animation-range: entry 8% entry 53%">
+<div class="ph" style="aspect-ratio: 4/5"><img src="/_blob/e145ab4c7afabfc47f23fb3065106232" alt="Novia en bata de seda durante el maquillaje en casa"><span class="tag">Pack 02</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><h3 class="d" style="font-size: 32px">Full experience a domicilio</h3><p style="margin: 0; font-size: 15px; white-space: nowrap">250.000 COP</p></div>
+<p style="margin: 0; color: #5F544F; line-height: 1.6; font-size: 15px">Una sesión premium en la comodidad de tu casa: skin care con mascarilla y masaje, silla y luz de estudio, pestañas y kit de retoque.</p>
+<hr class="hr">
+</a>
+<a class="card rv" href="Novias.dc.html" style="animation-range: entry 16% entry 61%">
+<div class="ph" style="aspect-ratio: 4/5"><img src="/_blob/932a382fb3815dec07dac88a5d9ed632" alt="Detalle de ojo maquillado para novia con sombras cálidas y delineado" style="object-position: 50% 35%"><span class="tag">Pack 03</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><h3 class="d" style="font-size: 32px">Novias y quinceañeras</h3><p style="margin: 0; font-size: 15px; white-space: nowrap">600.000 COP</p></div>
+<p style="margin: 0; color: #5F544F; line-height: 1.6; font-size: 15px">Prueba previa con dos propuestas, skin care, maquillaje el día del evento, video reel y extra fijación.</p>
+<hr class="hr">
+</a>
+</div>
+</section>
+
+<section style="background: #171312; color: #FBF8F5">
+<div class="wrap g2" style="grid-template-columns: 1fr 1fr; gap: 0; padding: 0 40px; align-items: stretch">
+<div class="ph px grow dk-ph" style="border-radius: 0; min-height: 760px"><img src="/_blob/bd4a9b729ee7fd523d7eeba0abed6453" alt="Clienta en bata de seda con maquillaje natural y recogido para su boda" style="position: absolute; inset: 0"></div>
+<div class="dk-txt" style="padding: 120px 0 120px 80px; display: flex; flex-direction: column; justify-content: center; gap: 36px">
+<p class="lbl rv" style="color: #F98F7D">Novias · Quinceañeras</p>
+<h2 class="d rv" style="font-size: clamp(44px, 4.8vw, 72px)">El día que más<br>te van a mirar.</h2>
+<p class="rv" style="margin: 0; font-size: 17px; line-height: 1.7; color: #D9CEC7; max-width: 480px">Una prueba previa para encontrar tu versión, dos propuestas para elegir con calma y una fijación pensada para doce horas de abrazos, fotos y pista.</p>
+<div class="steps rv">
+<div><p class="lbl" style="color: #F98F7D">01</p><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.5">Prueba previa</p></div>
+<div><p class="lbl" style="color: #F98F7D">02</p><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.5">Dos propuestas</p></div>
+<div><p class="lbl" style="color: #F98F7D">03</p><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.5">Video reel</p></div>
+<div><p class="lbl" style="color: #F98F7D">04</p><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.5">Extra fijación</p></div>
+</div>
+<div class="rv" style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 12px">
+<a class="btn light" href="Novias.dc.html">Conocer la experiencia novia</a>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding: 128px 0">
+<div class="wrap rv" style="display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; margin-bottom: 56px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p class="lbl" style="color: #A5462F">Portafolio</p>
+<h2 class="d" style="font-size: clamp(44px, 5vw, 76px)">Pieles reales,<br>luz real.</h2>
+</div>
+<a class="btn ghost" href="Portafolio.dc.html">Ver portafolio completo</a>
+</div>
+<div class="rail" aria-label="Trabajos recientes">
+<figure class="rv"><div class="ph" style="aspect-ratio: 3/4"><img src="/_blob/bd4a9b729ee7fd523d7eeba0abed6453" alt="Maquillaje de novia con piel luminosa"></div><figcaption class="lbl" style="margin-top: 16px; color: #6E625C">Novia</figcaption></figure>
+<figure class="rv"><div class="ph" style="aspect-ratio: 3/4"><img src="/_blob/f901d2f40ac059d92eb8cabb471a5abd" alt="Maquillaje social con ojo ahumado"></div><figcaption class="lbl" style="margin-top: 16px; color: #6E625C">Social</figcaption></figure>
+<figure class="rv"><div class="ph" style="aspect-ratio: 3/4"><img src="/_blob/46cc4ad7d192f77a526d8816a191f96f" alt="Modelo con piel luminosa y bata negra de Make Up by Fletcher"></div><figcaption class="lbl" style="margin-top: 16px; color: #6E625C">Editorial</figcaption></figure>
+<figure class="rv"><div class="ph" style="aspect-ratio: 3/4"><img src="/_blob/a5e2d73b151355062d8ad5115c400132" alt="Aplicación de corrector con pincel desde la paleta"></div><figcaption class="lbl" style="margin-top: 16px; color: #6E625C">Proceso</figcaption></figure>
+<figure class="rv"><div class="ph" style="aspect-ratio: 3/4"><img src="/_blob/e145ab4c7afabfc47f23fb3065106232" alt="Novia en bata durante la grabación del reel"></div><figcaption class="lbl" style="margin-top: 16px; color: #6E625C">Detrás de cámaras</figcaption></figure>
+<figure class="rv"><div class="ph" style="aspect-ratio: 3/4"><img src="/_blob/932a382fb3815dec07dac88a5d9ed632" alt="Detalle de ojo con sombras cálidas, delineado y pestañas"></div><figcaption class="lbl" style="margin-top: 16px; color: #6E625C">Detalle</figcaption></figure>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 128px">
+<div style="background: #F2EAE3; border-radius: 32px; overflow: hidden" class="g2 rv">
+<div class="crs-txt" style="padding: 88px 0 88px 88px; display: flex; flex-direction: column; gap: 32px">
+<p class="lbl" style="color: #A5462F">Cursos de maquillaje</p>
+<h2 class="d" style="font-size: clamp(40px, 4.4vw, 66px)">Aprende la técnica<br>detrás del acabado.</h2>
+<div style="display: flex; flex-direction: column">
+<hr class="hr">
+<div style="display: flex; justify-content: space-between; gap: 24px; padding: 24px 0"><div><p style="margin: 0; font-size: 20px">Automaquillaje</p><p style="margin: 6px 0 0; color: #5F544F; font-size: 14px">5 módulos · para ti</p></div><p style="margin: 0; font-size: 16px">400.000 COP</p></div>
+<hr class="hr">
+<div style="display: flex; justify-content: space-between; gap: 24px; padding: 24px 0"><div><p style="margin: 0; font-size: 20px">Maquillaje profesional</p><p style="margin: 6px 0 0; color: #5F544F; font-size: 14px">7 módulos · para trabajar en el oficio</p></div><p style="margin: 0; font-size: 16px">1.500.000 COP</p></div>
+<hr class="hr">
+</div>
+<a class="btn" href="Cursos.dc.html" style="align-self: flex-start">Ver contenido de los cursos</a>
+</div>
+<div class="ph px" style="border-radius: 0; height: 100%; min-height: 620px"><img src="/_blob/7902e4f08aee6afa5dd526b5740667ca" alt="Alumna tomando apuntes durante un curso de maquillaje en el estudio" style="position: absolute; inset: 0"></div>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 128px">
+<div class="g2">
+<div class="ph px rv" style="aspect-ratio: 4/5; border-radius: 999px 999px 24px 24px"><img src="/_blob/aa63ff792d32972938017f77fa31c2de" alt="María Paula Fletcher brindando con una clienta en el estudio de Floridablanca" style="position: absolute; inset: 0"></div>
+<div style="display: flex; flex-direction: column; gap: 32px">
+<p class="lbl rv" style="color: #A5462F">El estudio</p>
+<h2 class="d rv" style="font-size: clamp(44px, 5vw, 76px)">Floridablanca,<br>a tu medida.</h2>
+<p class="rv" style="margin: 0; font-size: 17px; line-height: 1.7; color: #4F4540; max-width: 460px">Un espacio con luz de estudio para que el maquillaje se vea igual en el espejo, en la foto y en persona. Si prefieres no moverte, llevamos el estudio a tu casa en Bucaramanga, Floridablanca, Piedecuesta o Girón.</p>
+<div class="rv" style="display: flex; flex-direction: column; gap: 4px; font-size: 16px">
+<p style="margin: 0">Carrera 29 #158-08</p>
+<p style="margin: 0; color: #6E625C">Floridablanca, Santander</p>
+</div>
+<div class="rv" style="display: flex; gap: 12px; flex-wrap: wrap">
+<a class="btn" href="Estudio.dc.html">Cómo llegar</a>
+<a class="btn ghost" href="https://wa.me/message/H3JAJC64G4RQM1">Pedir servicio a domicilio</a>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background: #F2EAE3; padding: 128px 0">
+<div class="wrap">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 56px">
+<p class="lbl" style="color: #A5462F">Reseñas en Google</p>
+<h2 class="d" style="font-size: clamp(44px, 5vw, 76px)">Lo que dicen ellas.</h2>
+</div>
+<div class="g3">
+<figure class="rv" style="margin: 0; background: #FBF8F5; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 28px; min-height: 300px">
+<svg viewBox="0 0 90 14" width="90" height="14" aria-label="5 estrellas" role="img"><g fill="#F98F7D"><path d="M7 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L7 10.5 2.8 13l1.1-4.8L.2 5l4.9-.4z"></path><path d="M26 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L26 10.5 21.8 13l1.1-4.8L19.2 5l4.9-.4z"></path><path d="M45 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L45 10.5 40.8 13l1.1-4.8L38.2 5l4.9-.4z"></path><path d="M64 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L64 10.5 59.8 13l1.1-4.8L57.2 5l4.9-.4z"></path><path d="M83 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L83 10.5 78.8 13l1.1-4.8L76.2 5l4.9-.4z"></path></g></svg>
+<blockquote style="margin: 0; font-size: 19px; line-height: 1.55; flex-grow: 1">[Reseña real de una novia, copiada de Google Business Profile]</blockquote>
+<figcaption class="lbl" style="color: #6E625C">[Nombre] · Novia</figcaption>
+</figure>
+<figure class="rv" style="margin: 0; background: #FBF8F5; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 28px; min-height: 300px; animation-range: entry 8% entry 53%">
+<svg viewBox="0 0 90 14" width="90" height="14" aria-label="5 estrellas" role="img"><g fill="#F98F7D"><path d="M7 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L7 10.5 2.8 13l1.1-4.8L.2 5l4.9-.4z"></path><path d="M26 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L26 10.5 21.8 13l1.1-4.8L19.2 5l4.9-.4z"></path><path d="M45 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L45 10.5 40.8 13l1.1-4.8L38.2 5l4.9-.4z"></path><path d="M64 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L64 10.5 59.8 13l1.1-4.8L57.2 5l4.9-.4z"></path><path d="M83 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L83 10.5 78.8 13l1.1-4.8L76.2 5l4.9-.4z"></path></g></svg>
+<blockquote style="margin: 0; font-size: 19px; line-height: 1.55; flex-grow: 1">[Reseña real de una quinceañera o su mamá]</blockquote>
+<figcaption class="lbl" style="color: #6E625C">[Nombre] · Quinceañera</figcaption>
+</figure>
+<figure class="rv" style="margin: 0; background: #FBF8F5; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 28px; min-height: 300px; animation-range: entry 16% entry 61%">
+<svg viewBox="0 0 90 14" width="90" height="14" aria-label="5 estrellas" role="img"><g fill="#F98F7D"><path d="M7 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L7 10.5 2.8 13l1.1-4.8L.2 5l4.9-.4z"></path><path d="M26 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L26 10.5 21.8 13l1.1-4.8L19.2 5l4.9-.4z"></path><path d="M45 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L45 10.5 40.8 13l1.1-4.8L38.2 5l4.9-.4z"></path><path d="M64 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L64 10.5 59.8 13l1.1-4.8L57.2 5l4.9-.4z"></path><path d="M83 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L83 10.5 78.8 13l1.1-4.8L76.2 5l4.9-.4z"></path></g></svg>
+<blockquote style="margin: 0; font-size: 19px; line-height: 1.55; flex-grow: 1">[Reseña real de una clienta de maquillaje social o grados]</blockquote>
+<figcaption class="lbl" style="color: #6E625C">[Nombre] · Grado</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="wrap" style="padding: 128px 40px">
+<div class="g2" style="grid-template-columns: .8fr 1.2fr; align-items: start">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px">
+<p class="lbl" style="color: #A5462F">Preguntas frecuentes</p>
+<h2 class="d" style="font-size: clamp(44px, 5vw, 72px)">Antes de<br>reservar.</h2>
+</div>
+<div class="rv">
+<details open>
+<summary><span>¿Cuánto cuesta un maquillaje de novia en Bucaramanga?</span><svg class="pl" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 6v16M6 14h16"></path></svg></summary>
+<p style="margin: 0 0 30px; max-width: 620px; font-size: 16px; line-height: 1.7; color: #4F4540">El Pack 3 para novias y quinceañeras cuesta 600.000 COP e incluye prueba previa, dos propuestas de maquillaje, video reel y extra fijación. La mamá, las damas y las invitadas pueden sumar el Pack 1 (200.000 COP) o el Pack 2 (250.000 COP).</p>
+</details>
+<details>
+<summary><span>¿Hacen maquillaje a domicilio?</span><svg class="pl" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 6v16M6 14h16"></path></svg></summary>
+<p style="margin: 0 0 30px; max-width: 620px; font-size: 16px; line-height: 1.7; color: #4F4540">Sí. El Pack 2 (250.000 COP) lleva silla y luz de estudio a tu casa u hotel, con skin care previo y kit de retoque.</p>
+</details>
+<details>
+<summary><span>¿Cómo separo mi fecha?</span><svg class="pl" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 6v16M6 14h16"></path></svg></summary>
+<p style="margin: 0 0 30px; max-width: 620px; font-size: 16px; line-height: 1.7; color: #4F4540">Escríbenos por WhatsApp con tu nombre, teléfono, correo, dirección y el servicio. La fecha queda reservada con un abono del 50 % por Nequi o Bancolombia. Si no puedes asistir, reagendamos tu cita: el abono no se devuelve.</p>
+</details>
+<details>
+<summary><span>¿Con cuánta anticipación debo reservar?</span><svg class="pl" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 6v16M6 14h16"></path></svg></summary>
+<p style="margin: 0 0 30px; max-width: 620px; font-size: 16px; line-height: 1.7; color: #4F4540">Mínimo con 2 días de anticipación. Para bodas y quince años conviene más tiempo: las fechas de octubre a diciembre, temporada de bodas y grados, son las primeras en llenarse.</p>
+</details>
+</div>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 128px">
+<div class="rv cta mesh" style="position: relative; overflow: hidden; border-radius: 40px; padding: 120px 88px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 36px">
+<img src="/_blob/e9769c79ab4d5799740d91201289bc52" alt="" aria-hidden="true" style="position: absolute; width: 560px; right: -140px; top: -120px; opacity: .35">
+<p class="lbl" style="color: #171312; position: relative">Agenda 2026 · 2027</p>
+<h2 class="d" style="font-size: clamp(48px, 6.4vw, 104px); position: relative; color: #171312">Reserva tu fecha.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; max-width: 520px; position: relative; color: #171312">Cuéntanos el día, la hora y el tipo de evento. Te respondemos con disponibilidad y la propuesta para ti.</p>
+<a class="btn" href="https://wa.me/message/H3JAJC64G4RQM1" style="position: relative">Escribir por WhatsApp
+<svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"></path></svg></a>
+</div>
+</section>
+
+</main>
+
+<footer class="foot" style="background: #171312; color: #E9DFD7; padding: 112px 0 40px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 80px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<img src="/_blob/65d90913073962a29883be8be68c9067" alt="Fletcher, make up artist" style="width: 168px">
+<p style="margin: 0; font-size: 14px; line-height: 1.7; color: #BDB1A9">Maquillaje profesional con acabado natural y duradero en Bucaramanga y Floridablanca.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<p class="lbl" style="color: #F98F7D">Servicios</p>
+<a href="Novias.dc.html">Maquillaje de novia</a>
+<a href="Novias.dc.html">Maquillaje para quinceañeras</a>
+<a href="Servicios.dc.html">Maquillaje para grados</a>
+<a href="Servicios.dc.html">Maquillaje social</a>
+<a href="Servicios.dc.html">Maquillaje a domicilio</a>
+<a href="Cursos.dc.html">Cursos de maquillaje</a>
+<a href="Tienda.dc.html">Tienda</a>
+<a href="Blog.dc.html">Diario de belleza</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<p class="lbl" style="color: #F98F7D">Estudio</p>
+<p style="margin: 0">Carrera 29 #158-08<br>Floridablanca, Santander</p>
+<a href="https://wa.me/message/H3JAJC64G4RQM1">+57 316 191 0936</a>
+<a href="mailto:makeupbyfletcher@gmail.com">makeupbyfletcher@gmail.com</a>
+<a href="https://www.instagram.com/makeupbyfletcher/">Instagram · @makeupbyfletcher</a>
+<a href="https://www.tiktok.com/@makeupbyfletcher">TikTok · @makeupbyfletcher</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<p class="lbl" style="color: #F98F7D">Zonas</p>
+<a href="Servicios.dc.html">Maquillaje en Bucaramanga</a>
+<a href="Estudio.dc.html">Maquillaje en Floridablanca</a>
+<a href="Servicios.dc.html">Piedecuesta y Girón a domicilio</a>
+</div>
+</div>
+<p class="d" aria-hidden="true" style="font-size: clamp(80px, 17vw, 260px); line-height: .8; color: #2A2321; letter-spacing: -0.05em; text-align: center">Fletcher</p>
+<div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #A0948C; border-top: 1px solid #2E2725; padding-top: 28px">
+<p style="margin: 0">© 2026 Make Up by Fletcher · maquillajebucaramanga.com</p>
+<p style="margin: 0">Diseño y SEO · ClikRank</p>
+</div>
+</div>
+</footer>
+
+<a class="fab" href="https://wa.me/message/H3JAJC64G4RQM1" aria-label="Escribir por WhatsApp">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"></path><path d="M9 9.5c.3 1.8 2.2 3.9 4.2 4.5l1.2-1.1 1.8.8"></path></svg>
+<span>Reservar</span>
+</a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"acento":{"editor":"color","default":"#F98F7D","options":["#F98F7D","#E9C9B6","#C7836A","#B9C2AE"]},"$preview":{"width":1440,"height":8200}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { menu: false };
+}
+renderVals() {
+return {
+acento: this.props.acento ?? '#F98F7D',
+menuOpen: this.state.menu,
+menuAria: this.state.menu ? 'true' : 'false',
+toggleMenu: () => this.setState({ menu: !this.state.menu })
+};
+}
+}
+</script>
+</body>
+</html>

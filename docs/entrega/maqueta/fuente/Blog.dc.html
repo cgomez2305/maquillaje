@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Diario de belleza · Make Up by Fletcher</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Fletcher Display';src:local('Aristotelica Display ExtraLight'),local('AristotelicaDisplay-ExtraLight'),local('Aristotelica Display ExLight'),local('Aristotelica Display Trial ExtraLight');font-weight:200;font-display:swap}
+body{margin:0;background:#FBF8F5;color:#171312;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#171312}a:hover{color:#A5462F}
+img{display:block;max-width:100%}
+.d{font-family:'Fletcher Display','Comfortaa',sans-serif;font-weight:200;line-height:1.02;letter-spacing:-0.035em;margin:0}
+.lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.nav{position:sticky;top:0;z-index:30;background:rgba(251,248,245,.74);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(23,19,18,.07)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{text-decoration:none;font-size:13px;letter-spacing:.06em;color:#171312;position:relative;padding:14px 0}
+.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:8px;height:1px;background:#171312;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover::after,.nav-links a[aria-current="page"]::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;border-radius:999px;background:#171312;color:#FBF8F5;text-decoration:none;font-size:14px;letter-spacing:.04em;border:0;font-family:inherit;cursor:pointer;transition:transform 100ms ease-out,background-color .35s ease}
+.btn:hover{background:#A5462F;color:#FBF8F5}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:#171312;box-shadow:inset 0 0 0 1px rgba(23,19,18,.28)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1px #171312;color:#171312;background:rgba(23,19,18,.03)}
+.menu-btn{display:none}
+.arr{width:16px;height:16px;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+a:hover .arr{transform:translateX(4px)}
+.ph{overflow:hidden;border-radius:20px;background:#F2EAE3;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+.post{text-decoration:none;color:#171312;display:flex;flex-direction:column;gap:18px}
+.post:hover{color:#171312}
+.post:hover img{transform:scale(1.045)}
+.post:hover h3{color:#A5462F}
+.post h3{transition:color .35s ease}
+.meta{display:flex;gap:14px;align-items:center;font-size:13px;color:#6E625C}
+.meta span+span::before{content:'';display:inline-block;width:3px;height:3px;border-radius:50%;background:#B5A9A2;margin-right:14px;vertical-align:middle}
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 28px}
+.feat{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 22px;border-radius:999px;border:0;font-family:inherit;font-size:14px;cursor:pointer;background:transparent;color:#171312;box-shadow:inset 0 0 0 1px rgba(23,19,18,.22);transition:transform 100ms ease-out,background-color .35s ease,color .35s ease}
+.chip:hover{box-shadow:inset 0 0 0 1px #171312}
+.chip:active{transform:scale(.96)}
+.chip.on{background:#171312;color:#FBF8F5;box-shadow:none}
+.pop{animation:pop .7s cubic-bezier(.16,1,.3,1) both}
+@keyframes pop{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.f input{font-family:inherit;font-size:17px;color:#FBF8F5;background:transparent;border:0;border-bottom:1px solid rgba(251,248,245,.35);padding:12px 0 14px;outline:none;width:100%}
+.f input::placeholder{color:#A0948C}
+.f input:focus{border-bottom-color:#FBF8F5}
+.fab{position:fixed;right:28px;bottom:28px;z-index:40;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 22px 0 18px;border-radius:999px;background:rgba(23,19,18,.82);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);color:#FBF8F5;text-decoration:none;font-size:14px;transition:transform 100ms ease-out;box-shadow:0 18px 40px -18px rgba(23,19,18,.6)}
+.fab:hover{color:#FBF8F5}.fab:active{transform:scale(.96)}
+.foot a{color:#E9DFD7;text-decoration:none}.foot a:hover{color:#F98F7D}
+.in{animation:in 1.2s cubic-bezier(.16,1,.3,1) both}
+@keyframes in{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.sheet{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:70;background:rgba(251,248,245,.95);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);display:flex;flex-direction:column;padding:0 20px max(24px,env(safe-area-inset-bottom));overflow:hidden;animation:sheet .55s cubic-bezier(.16,1,.3,1) both}
+@keyframes sheet{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;height:78px;flex:none}
+.sheet nav{display:flex;flex-direction:column;justify-content:center;padding:clamp(8px,2vh,24px) 0;flex-grow:1;min-height:0}
+.sheet nav a{font-family:'Fletcher Display','Comfortaa',sans-serif;font-weight:200;font-size:clamp(28px,4.6vh,38px);letter-spacing:-0.03em;text-decoration:none;color:#171312;padding:clamp(6px,1.4vh,12px) 0;border-bottom:1px solid rgba(23,19,18,.08);display:flex;justify-content:space-between;align-items:center;animation:in .8s cubic-bezier(.16,1,.3,1) both}
+.sheet nav a[aria-current="page"]{color:#A5462F}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+@keyframes rv{from{opacity:0;transform:translateY(56px)}to{opacity:1;transform:none}}
+}}
+@media (prefers-reduced-motion:reduce){.in,.pop,.sheet,.sheet nav a{animation:none}}
+@media (prefers-reduced-transparency:reduce){.nav,.sheet{background:#FBF8F5;backdrop-filter:none}.fab{background:#171312;backdrop-filter:none}}
+@media (max-width:1180px){.nav-links{display:none}.menu-btn{display:inline-flex}}
+@media (max-width:960px){
+.wrap{padding-left:20px!important;padding-right:20px!important}.hide-m{display:none}
+.posts{grid-template-columns:1fr;gap:48px}.feat{grid-template-columns:1fr;gap:32px}
+.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}.chip{flex:none}
+.nl{grid-template-columns:1fr!important;padding:56px 24px!important;gap:32px!important}
+[style*="padding-bottom: 128px"]{padding-bottom:96px!important}
+.fab span{display:none}.fab{padding:0 16px}
+}
+.mesh{background-color:#F98F7D;background-image:radial-gradient(55% 75% at 12% 18%,rgba(255,214,199,.95) 0%,rgba(255,214,199,0) 62%),radial-gradient(45% 65% at 88% 22%,rgba(242,234,227,.9) 0%,rgba(242,234,227,0) 58%),radial-gradient(60% 80% at 72% 105%,rgba(226,108,86,.85) 0%,rgba(226,108,86,0) 60%),radial-gradient(40% 60% at 30% 95%,rgba(250,170,150,.8) 0%,rgba(250,170,150,0) 60%)}
+.mesh-dark{background-color:#171312;background-image:radial-gradient(50% 70% at 90% 0%,rgba(249,143,125,.22) 0%,rgba(249,143,125,0) 60%),radial-gradient(40% 60% at 0% 100%,rgba(165,70,47,.25) 0%,rgba(165,70,47,0) 60%)}
+@media (max-width:960px){.g2,.feat,.nl{grid-template-columns:1fr!important;gap:40px!important}.g2>.dk-txt{padding:64px 0!important}h1 .d,h1.d{font-size:clamp(48px,13vw,64px)!important}}
+@media (max-height:640px){.sheet nav a{font-size:26px!important;padding:6px 0!important}.sheet-top{height:64px}}
+</style>
+</helmet>
+
+<div style="position: relative; overflow-x: clip">
+
+<header class="nav">
+<div class="wrap nav-in">
+<a href="Main.dc.html" aria-label="Make Up by Fletcher, inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<img src="/_blob/0354371a7407d57f48c61f26ab47636f" alt="" style="width: 40px; height: 40px">
+<span class="d" style="font-size: 26px; letter-spacing: -0.02em; color: #171312">Fletcher</span>
+</a>
+<nav class="nav-links" aria-label="Principal">
+<a href="Novias.dc.html">Novias</a>
+<a href="Servicios.dc.html">Servicios y precios</a>
+<a href="Cursos.dc.html">Cursos</a>
+<a href="Portafolio.dc.html">Portafolio</a>
+<a href="Tienda.dc.html">Tienda</a>
+<a href="Blog.dc.html" aria-current="page">Diario</a>
+<a href="Estudio.dc.html">Estudio</a>
+</nav>
+<div style="display: flex; gap: 10px; align-items: center">
+<a class="btn hide-m" href="Reservar.dc.html" style="min-height: 44px; padding: 0 22px; font-size: 13px">Reservar fecha</a>
+<button class="btn ghost menu-btn" type="button" aria-label="Abrir menú" aria-expanded="{{menuAria}}" onClick="{{toggleMenu}}" style="min-height: 44px; width: 44px; padding: 0">
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>
+</button>
+</div>
+</div>
+</header>
+
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div class="sheet" role="dialog" aria-modal="true" aria-label="Menú">
+<div class="sheet-top">
+<a href="Main.dc.html" aria-label="Make Up by Fletcher, inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none"><img src="/_blob/0354371a7407d57f48c61f26ab47636f" alt="" style="width: 40px; height: 40px"><span class="d" style="font-size: 26px; letter-spacing: -0.02em; color: #171312">Fletcher</span></a>
+<button class="btn ghost" type="button" onClick="{{toggleMenu}}" aria-label="Cerrar menú" style="min-height: 44px; width: 44px; padding: 0"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<nav aria-label="Menú móvil">
+<a href="Main.dc.html">Inicio</a>
+<a href="Novias.dc.html" style="animation-delay: .04s">Novias</a>
+<a href="Servicios.dc.html" style="animation-delay: .08s">Servicios y precios</a>
+<a href="Cursos.dc.html" style="animation-delay: .12s">Cursos</a>
+<a href="Portafolio.dc.html" style="animation-delay: .16s">Portafolio</a>
+<a href="Tienda.dc.html" style="animation-delay: .2s">Tienda</a>
+<a href="Blog.dc.html" aria-current="page" style="animation-delay: .24s">Diario</a>
+<a href="Estudio.dc.html" style="animation-delay: .28s">Estudio</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 14px; flex: none">
+<a class="btn" href="Reservar.dc.html">Reservar fecha</a>
+<a class="btn ghost" href="https://wa.me/message/H3JAJC64G4RQM1">Escribir por WhatsApp</a>
+</div>
+</div>
+</sc-if>
+
+<main>
+
+<section class="wrap" style="padding: 56px 40px 72px">
+<nav aria-label="Ruta" class="in" style="font-size: 13px; color: #6E625C; display: flex; gap: 10px"><a href="Main.dc.html" style="color: #6E625C">Inicio</a><span aria-hidden="true">/</span><span>Diario</span></nav>
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 40px; flex-wrap: wrap; padding-top: 48px">
+<h1 style="margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400">
+<span class="lbl in" style="color: #A5462F">Diario de belleza · Blog de maquillaje</span>
+<span class="d in" style="font-size: clamp(56px, 7.4vw, 116px); animation-delay: .08s">Lo que aprendemos<br>en la silla.</span>
+</h1>
+<p class="in" style="margin: 0 0 12px; max-width: 420px; font-size: 17px; line-height: 1.65; color: #4F4540; animation-delay: .2s">Guías honestas sobre maquillaje de novia, grados, cuidado de la piel y automaquillaje, escritas por María Paula Fletcher desde el estudio.</p>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 128px">
+<a class="post feat in" href="Articulo.dc.html" style="animation-delay: .26s">
+<div class="ph" style="aspect-ratio: 16/10"><img src="/_blob/932a382fb3815dec07dac88a5d9ed632" alt="Detalle de ojo maquillado para novia con sombras cálidas" style="object-position: 50% 35%"></div>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<p class="lbl" style="color: #A5462F">Destacado · Novias</p>
+<h2 class="d" style="font-size: clamp(36px, 3.6vw, 54px); line-height: 1.08">¿Cuánto cuesta un maquillaje de novia en Bucaramanga en 2026?</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4F4540">Precios reales, qué incluye cada paquete, cuánto suma el cortejo y cómo separar la fecha sin sorpresas.</p>
+<div class="meta"><span>María Paula Fletcher</span><span>6 min de lectura</span></div>
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 15px; border-bottom: 1px solid currentColor; padding-bottom: 6px; align-self: flex-start">Leer la guía <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"></path></svg></span>
+</div>
+</a>
+</section>
+
+<section class="wrap" style="padding-bottom: 128px">
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; border-top: 1px solid rgba(23,19,18,.12); padding-top: 48px">
+<h2 class="d" style="font-size: clamp(36px, 3.6vw, 52px)">Todas las guías</h2>
+<div class="chips" role="group" aria-label="Filtrar por tema">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="6">
+<button type="button" class="chip {{c.on}}" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}">{{c.label}}</button>
+</sc-for>
+</div>
+</div>
+<div class="posts">
+<sc-for list="{{posts}}" as="p" hint-placeholder-count="8">
+<a class="post pop" href="Articulo.dc.html">
+<div class="ph" style="aspect-ratio: 4/5"><img src="{{p.src}}" alt="{{p.alt}}"><span style="position: absolute; top: 16px; left: 16px; padding: 8px 14px; border-radius: 999px; background: rgba(251,248,245,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 12px; letter-spacing: .08em">{{p.cat}}</span></div>
+<h3 class="d" style="font-size: 30px; line-height: 1.12">{{p.title}}</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5F544F">{{p.ex}}</p>
+<div class="meta"><span>{{p.kw}}</span><span>{{p.min}} min</span></div>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 128px">
+<div class="nl rv mesh-dark" style="display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; color: #FBF8F5; border-radius: 40px; padding: 96px 88px; position: relative; overflow: hidden">
+<img src="/_blob/e9769c79ab4d5799740d91201289bc52" alt="" aria-hidden="true" style="position: absolute; width: 420px; right: -120px; top: -140px; opacity: .08">
+<div style="display: flex; flex-direction: column; gap: 22px; position: relative">
+<p class="lbl" style="color: #F98F7D">Guía gratuita para novias</p>
+<h2 class="d" style="font-size: clamp(36px, 4vw, 60px)">Tu checklist de belleza, mes a mes.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #D9CEC7; max-width: 440px">Qué hacer con la piel, la prueba de maquillaje y el día de la boda, en una sola página. Te la enviamos al correo.</p>
+</div>
+<form style="display: flex; flex-direction: column; gap: 28px; position: relative" aria-label="Recibir la guía gratuita">
+<div class="f" style="display: flex; flex-direction: column; gap: 10px"><label for="nl-nombre" style="font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #BDB1A9">Nombre</label><input id="nl-nombre" type="text" placeholder="Tu nombre" autocomplete="name"></div>
+<div class="f" style="display: flex; flex-direction: column; gap: 10px"><label for="nl-correo" style="font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #BDB1A9">Correo</label><input id="nl-correo" type="email" placeholder="tu@correo.com" autocomplete="email"></div>
+<div class="f" style="display: flex; flex-direction: column; gap: 10px"><label for="nl-fecha" style="font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #BDB1A9">Fecha de tu boda</label><input id="nl-fecha" type="date"></div>
+<button class="btn" type="button" style="background: #F98F7D; color: #171312; align-self: flex-start">Enviarme la guía</button>
+</form>
+</div>
+</section>
+
+</main>
+
+<footer class="foot" style="background: #171312; color: #E9DFD7; padding: 112px 0 40px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 80px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<img src="/_blob/65d90913073962a29883be8be68c9067" alt="Fletcher, make up artist" style="width: 168px">
+<p style="margin: 0; font-size: 14px; line-height: 1.7; color: #BDB1A9">Maquillaje profesional con acabado natural y duradero en Bucaramanga y Floridablanca.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<p class="lbl" style="color: #F98F7D">Servicios</p>
+<a href="Novias.dc.html">Maquillaje de novia</a>
+<a href="Novias.dc.html">Maquillaje para quinceañeras</a>
+<a href="Servicios.dc.html">Maquillaje para grados</a>
+<a href="Servicios.dc.html">Maquillaje social</a>
+<a href="Servicios.dc.html">Maquillaje a domicilio</a>
+<a href="Cursos.dc.html">Cursos de maquillaje</a>
+<a href="Tienda.dc.html">Tienda</a>
+<a href="Blog.dc.html">Diario de belleza</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<p class="lbl" style="color: #F98F7D">Estudio</p>
+<p style="margin: 0">Carrera 29 #158-08<br>Floridablanca, Santander</p>
+<a href="https://wa.me/message/H3JAJC64G4RQM1">+57 316 191 0936</a>
+<a href="mailto:makeupbyfletcher@gmail.com">makeupbyfletcher@gmail.com</a>
+<a href="https://www.instagram.com/makeupbyfletcher/">Instagram · @makeupbyfletcher</a>
+<a href="https://www.tiktok.com/@makeupbyfletcher">TikTok · @makeupbyfletcher</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<p class="lbl" style="color: #F98F7D">Zonas</p>
+<a href="Servicios.dc.html">Maquillaje en Bucaramanga</a>
+<a href="Estudio.dc.html">Maquillaje en Floridablanca</a>
+<a href="Servicios.dc.html">Piedecuesta y Girón a domicilio</a>
+</div>
+</div>
+<p class="d" aria-hidden="true" style="font-size: clamp(80px, 17vw, 260px); line-height: .8; color: #2A2321; letter-spacing: -0.05em; text-align: center">Fletcher</p>
+<div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #A0948C; border-top: 1px solid #2E2725; padding-top: 28px">
+<p style="margin: 0">© 2026 Make Up by Fletcher · maquillajebucaramanga.com</p>
+<p style="margin: 0">Diseño y SEO · ClikRank</p>
+</div>
+</div>
+</footer>
+
+<a class="fab" href="https://wa.me/message/H3JAJC64G4RQM1" aria-label="Escribir por WhatsApp">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"></path><path d="M9 9.5c.3 1.8 2.2 3.9 4.2 4.5l1.2-1.1 1.8.8"></path></svg>
+<span>Reservar</span>
+</a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4200}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { menu: false, cat: 'Todo' };
+}
+renderVals() {
+const all = [
+{ cat: 'Novias', title: 'Prueba de maquillaje de novia: cuándo hacerla y qué llevar', ex: 'El paso que evita sorpresas el día de la boda, explicado paso a paso.', kw: 'prueba de maquillaje novia', min: 5, src: '/_blob/e145ab4c7afabfc47f23fb3065106232', alt: 'Novia en bata de seda durante la prueba de maquillaje' },
+{ cat: 'Novias', title: 'Maquillaje para boda de día o de noche: cómo cambia el look', ex: 'Luz natural, flash y salón: qué ajustar en piel, ojos y labios.', kw: 'maquillaje para boda', min: 6, src: '/_blob/bd4a9b729ee7fd523d7eeba0abed6453', alt: 'Clienta en bata de seda con maquillaje natural para su boda' },
+{ cat: 'Grados', title: 'Maquillaje para grados: verte bien con toga, flash y calor', ex: 'Un look que aguanta la ceremonia, las fotos familiares y la celebración.', kw: 'maquillaje para grados', min: 4, src: '/_blob/f901d2f40ac059d92eb8cabb471a5abd', alt: 'Maquillaje social con piel luminosa y ojo ahumado suave' },
+{ cat: 'Quinceañeras', title: 'Maquillaje para quinceañera: natural, fotogénico y de su edad', ex: 'Cómo lograr un look especial sin que se vea mayor de lo que es.', kw: 'maquillaje para quinceañera', min: 5, src: '/_blob/46cc4ad7d192f77a526d8816a191f96f', alt: 'Modelo con piel luminosa entre flores' },
+{ cat: 'Tips de piel', title: 'Cómo hacer que el maquillaje dure todo el día en el calor de Bucaramanga', ex: 'Preparación, sellado y retoques para doce horas sin brillos.', kw: 'maquillaje de larga duración', min: 7, src: '/_blob/a5e2d73b151355062d8ad5115c400132', alt: 'Aplicación de corrector con pincel desde la paleta' },
+{ cat: 'Tips de piel', title: 'Skin care antes del maquillaje: por qué es la mitad del resultado', ex: 'Mascarilla, masaje e hidratación: lo que hacemos antes de la primera brocha.', kw: 'skin care antes del maquillaje', min: 5, src: '/_blob/932a382fb3815dec07dac88a5d9ed632', alt: 'Detalle de piel y ojo maquillado' },
+{ cat: 'Cursos', title: 'Automaquillaje: errores comunes en la piel y cómo evitarlos', ex: 'Base de más, corrector mal ubicado y polvo que se marca: soluciones simples.', kw: 'curso de automaquillaje', min: 6, src: '/_blob/7902e4f08aee6afa5dd526b5740667ca', alt: 'Alumna tomando apuntes en un curso de maquillaje' },
+{ cat: 'Cursos', title: 'Cómo empezar a trabajar como maquilladora profesional', ex: 'Formación, kit inicial y primeras clientas, desde la experiencia del estudio.', kw: 'curso de maquillaje profesional', min: 8, src: '/_blob/97d5d43ed59d6271619dd7ece070783e', alt: 'María Paula Fletcher enseñando frente al tablero' },
+{ cat: 'Servicios', title: '¿Vale la pena el maquillaje a domicilio? Lo que debes saber', ex: 'Qué se lleva, cuánto espacio necesitas y cuándo conviene más ir al estudio.', kw: 'maquillaje a domicilio bucaramanga', min: 4, src: '/_blob/aa63ff792d32972938017f77fa31c2de', alt: 'Clienta y maquilladora brindando en el estudio' }
+];
+const cats = ['Todo', 'Novias', 'Quinceañeras', 'Grados', 'Tips de piel', 'Cursos', 'Servicios'];
+const cat = this.state.cat;
+return {
+chips: cats.map((c) => ({ label: c, on: c === cat ? 'on' : '', pressed: c === cat ? 'true' : 'false', pick: () => this.setState({ cat: c }) })),
+posts: all.filter((p) => cat === 'Todo' || p.cat === cat),
+menuOpen: this.state.menu,
+menuAria: this.state.menu ? 'true' : 'false',
+toggleMenu: () => this.setState({ menu: !this.state.menu })
+};
+}
+}
+</script>
+</body>
+</html>

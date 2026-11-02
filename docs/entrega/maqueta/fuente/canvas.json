@@ -1,0 +1,295 @@
+{
+ "v": 3,
+ "attachments": {},
+ "boards": {
+  "Artboard-kksg.dc.html": {
+   "h": 600,
+   "page": "page-jpfj56",
+   "title": "Artboard 1",
+   "w": 800,
+   "x": 0,
+   "y": 0
+  },
+  "Articulo.dc.html": {
+   "expand": "fill",
+   "h": 6600,
+   "is_interactive": true,
+   "title": "09 · Artículo del diario",
+   "w": 1440,
+   "x": 12160,
+   "y": 0
+  },
+  "Blog.dc.html": {
+   "expand": "fill",
+   "h": 5400,
+   "is_interactive": true,
+   "title": "08 · Diario (blog)",
+   "w": 1440,
+   "x": 10640,
+   "y": 0
+  },
+  "Componentes.dc.html": {
+   "h": 5600,
+   "title": "Sistema de componentes",
+   "w": 1440,
+   "x": 13680,
+   "y": 0
+  },
+  "Cursos.dc.html": {
+   "expand": "fill",
+   "h": 5900,
+   "is_interactive": true,
+   "title": "04 · Cursos",
+   "w": 1440,
+   "x": 4560,
+   "y": 0
+  },
+  "Estudio.dc.html": {
+   "expand": "fill",
+   "h": 3900,
+   "is_interactive": true,
+   "title": "06 · Estudio y contacto",
+   "w": 1440,
+   "x": 7600,
+   "y": 0
+  },
+  "Main.dc.html": {
+   "expand": "fill",
+   "h": 8000,
+   "is_interactive": true,
+   "title": "01 · Inicio",
+   "w": 1440,
+   "x": 0,
+   "y": 0
+  },
+  "Movil-Articulo.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Artículo",
+   "w": 390,
+   "x": 12160,
+   "y": 8800
+  },
+  "Movil-Cursos.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Cursos",
+   "w": 390,
+   "x": 4560,
+   "y": 8800
+  },
+  "Movil-Diario.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Diario",
+   "w": 390,
+   "x": 10640,
+   "y": 8800
+  },
+  "Movil-Estudio.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Estudio",
+   "w": 390,
+   "x": 7600,
+   "y": 8800
+  },
+  "Movil-Inicio.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Inicio",
+   "w": 390,
+   "x": 0,
+   "y": 8800
+  },
+  "Movil-Novias.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Novias",
+   "w": 390,
+   "x": 1520,
+   "y": 8800
+  },
+  "Movil-Portafolio.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Portafolio",
+   "w": 390,
+   "x": 6080,
+   "y": 8800
+  },
+  "Movil-Servicios.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Servicios",
+   "w": 390,
+   "x": 3040,
+   "y": 8800
+  },
+  "Movil-Tienda.dc.html": {
+   "h": 844,
+   "is_interactive": true,
+   "title": "Móvil · Tienda",
+   "w": 390,
+   "x": 9120,
+   "y": 8800
+  },
+  "Novias.dc.html": {
+   "expand": "fill",
+   "h": 6900,
+   "is_interactive": true,
+   "title": "02 · Novias y quinceañeras",
+   "w": 1440,
+   "x": 1520,
+   "y": 0
+  },
+  "Portafolio.dc.html": {
+   "expand": "fill",
+   "h": 4400,
+   "is_interactive": true,
+   "title": "05 · Portafolio",
+   "w": 1440,
+   "x": 6080,
+   "y": 0
+  },
+  "Servicios.dc.html": {
+   "expand": "fill",
+   "h": 5800,
+   "is_interactive": true,
+   "title": "03 · Servicios y precios",
+   "w": 1440,
+   "x": 3040,
+   "y": 0
+  },
+  "Tienda.dc.html": {
+   "expand": "fill",
+   "h": 4500,
+   "is_interactive": true,
+   "title": "07 · Tienda",
+   "w": 1440,
+   "x": 9120,
+   "y": 0
+  },
+  "Reservar.dc.html": {
+   "x": 0,
+   "y": 10400,
+   "w": 1440,
+   "h": 1500,
+   "title": "10 · Reservar (público)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Movil-Reservar.dc.html": {
+   "x": 1520,
+   "y": 10400,
+   "w": 390,
+   "h": 844,
+   "title": "Móvil · Reservar",
+   "is_interactive": true
+  },
+  "Panel-Resumen.dc.html": {
+   "x": 2120,
+   "y": 10400,
+   "w": 1440,
+   "h": 1240,
+   "title": "Panel · Resumen (socio)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Panel-Reservas.dc.html": {
+   "x": 3640,
+   "y": 10400,
+   "w": 1440,
+   "h": 1100,
+   "title": "Panel · Reservas (dueña)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Panel-Comisiones.dc.html": {
+   "x": 5160,
+   "y": 10400,
+   "w": 1440,
+   "h": 1200,
+   "title": "Panel · Comisiones (socio)",
+   "expand": "fill",
+   "is_interactive": true
+  }
+ },
+ "createdOnFiles": {
+  "at": "2026-11-02T15:30:00Z",
+  "v": 1
+ },
+ "designSystems": [],
+ "launch": {
+  "view": "canvas"
+ },
+ "noteOrder": [
+  "titulo",
+  "movil",
+  "panel"
+ ],
+ "notes": {
+  "movil": {
+   "kind": "title1",
+   "maxW": 8000,
+   "text": "Versión móvil · 390 × 844 (se desplaza dentro)",
+   "w": 240,
+   "x": 0,
+   "y": 8480
+  },
+  "titulo": {
+   "kind": "title1",
+   "maxW": 8000,
+   "text": "maquillajebucaramanga.com · Make Up by Fletcher",
+   "w": 240,
+   "x": 0,
+   "y": -320
+  },
+  "panel": {
+   "kind": "title1",
+   "maxW": 6600,
+   "text": "Reservas y panel de control",
+   "w": 240,
+   "x": 0,
+   "y": 10080
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "Novias.dc.html",
+  "Servicios.dc.html",
+  "Cursos.dc.html",
+  "Portafolio.dc.html",
+  "Estudio.dc.html",
+  "Tienda.dc.html",
+  "Blog.dc.html",
+  "Articulo.dc.html",
+  "Componentes.dc.html",
+  "Movil-Inicio.dc.html",
+  "Movil-Novias.dc.html",
+  "Movil-Servicios.dc.html",
+  "Movil-Cursos.dc.html",
+  "Movil-Portafolio.dc.html",
+  "Movil-Estudio.dc.html",
+  "Movil-Tienda.dc.html",
+  "Movil-Diario.dc.html",
+  "Movil-Articulo.dc.html",
+  "Reservar.dc.html",
+  "Movil-Reservar.dc.html",
+  "Panel-Resumen.dc.html",
+  "Panel-Reservas.dc.html",
+  "Panel-Comisiones.dc.html",
+  "Artboard-kksg.dc.html"
+ ],
+ "pages": [
+  {
+   "id": "page-1",
+   "name": "Page 1"
+  },
+  {
+   "id": "page-jpfj56",
+   "name": "Page 2"
+  }
+ ],
+ "title": "Make Up by Fletcher — Web"
+}

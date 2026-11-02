@@ -1,0 +1,27 @@
+{
+    "name": "clikrank/makeupbyfletcher",
+    "description": "Sitio, reservas, tienda y panel de Make Up by Fletcher (maquillajebucaramanga.com). PHP puro, sin framework.",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.2",
+        "ext-pdo": "*",
+        "ext-mbstring": "*",
+        "ext-sodium": "*",
+        "ext-fileinfo": "*",
+        "ext-openssl": "*",
+        "phpmailer/phpmailer": "6.9.3"
+    },
+    "autoload": {
+        "psr-4": { "App\\": "app/" },
+        "files": ["app/Support/helpers.php"]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": { "php": "8.2.0" }
+    },
+    "scripts": {
+        "test": "php tests/run.php"
+    }
+}
