@@ -89,11 +89,44 @@
 .meta span + span::before { content: ''; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--deshabilitado); margin-right: 14px; vertical-align: middle; }
 
 /* C12 · Bloque de llamada */
-.mesh { background-color: var(--arena); }
-.mesh-dark { background-color: var(--tinta); color: var(--porcelana); }
+/* C12 · Degradado de malla (llamadas a la acción). La capa de color se desplaza muy despacio, como luz
+   sobre la piel, y un grano fino le da textura de papel impreso. Quieto con movimiento reducido. */
+.mesh { background-color: var(--salmon); isolation: isolate; }
+.mesh::before, .mesh-dark::before {
+  content: ''; position: absolute; inset: -25%; z-index: -1; pointer-events: none;
+  animation: mesh-drift 22s ease-in-out infinite alternate;
+}
+.mesh::before {
+  background-image:
+    radial-gradient(55% 75% at 12% 18%, rgba(255, 214, 199, .95) 0%, rgba(255, 214, 199, 0) 62%),
+    radial-gradient(45% 65% at 88% 22%, rgba(242, 234, 227, .9) 0%, rgba(242, 234, 227, 0) 58%),
+    radial-gradient(60% 80% at 72% 105%, rgba(226, 108, 86, .85) 0%, rgba(226, 108, 86, 0) 60%),
+    radial-gradient(40% 60% at 30% 95%, rgba(250, 170, 150, .8) 0%, rgba(250, 170, 150, 0) 60%);
+}
+.mesh-dark { background-color: var(--tinta); color: var(--porcelana); isolation: isolate; }
+.mesh-dark::before {
+  background-image:
+    radial-gradient(50% 70% at 90% 0%, rgba(249, 143, 125, .26) 0%, rgba(249, 143, 125, 0) 60%),
+    radial-gradient(40% 60% at 0% 100%, rgba(165, 70, 47, .3) 0%, rgba(165, 70, 47, 0) 60%);
+}
+.mesh::after, .mesh-dark::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .14; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.mesh-dark::after { mix-blend-mode: screen; opacity: .08; }
+@keyframes mesh-drift {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  50% { transform: translate3d(4%, -3%, 0) rotate(6deg) scale(1.06); }
+  100% { transform: translate3d(-3%, 4%, 0) rotate(-4deg) scale(1.02); }
+}
+/* Etiqueta de la llamada como pastilla con punto */
+.cta > .lbl { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: var(--r-pill); background: rgba(251, 248, 245, .55); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--tinta); }
+.cta > .lbl::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--terracota); }
+.cta.mesh-dark > .lbl, .mesh-dark .cta-label { background: rgba(251, 248, 245, .1); color: var(--porcelana); }
+.cta.mesh-dark > .lbl::before { background: var(--salmon); }
 .cta { position: relative; overflow: hidden; border-radius: var(--r-cta); padding: var(--pad-panel-y) var(--pad-panel-x); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 36px; color: var(--tinta); }
 .cta > * { position: relative; }
-.cta .deco { position: absolute; width: 560px; right: -140px; top: -120px; opacity: .18; pointer-events: none; }
+.cta .deco { position: absolute; width: 560px; right: -140px; top: -120px; opacity: .35; pointer-events: none; }
 .cta .deco img { width: 100%; height: auto; }
 .cta p.txt { font-size: 18px; line-height: 1.6; max-width: 520px; }
 .cta.mesh-dark { color: var(--porcelana); }
@@ -190,7 +223,7 @@ body.rail-active .fab { opacity: 0; visibility: hidden; transform: translateY(12
 .consent .btn { min-height: 44px; padding: 0 18px; font-size: 13px; }
 .consent fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 
-@media (prefers-reduced-motion: reduce) { .marq-t, .seal svg { animation: none; } .pk, .pk:hover { transition: none; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .marq-t, .seal svg, .mesh::before, .mesh-dark::before { animation: none; } .pk, .pk:hover { transition: none; transform: none; } }
 @media (prefers-reduced-transparency: reduce) { .consent, .tag, .seal { background: var(--porcelana); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 
 @media (max-width: 960px) {
@@ -356,6 +389,5 @@ html.js [data-facemap].is-on .fm-lbl { opacity: 1; filter: none; }
   main .stack > .btn.self-start,
   main .rv > .btn:only-child { flex: 1 1 100%; width: 100%; align-self: stretch; }
   main :is(.wrap-row, .cta-actions) { gap: 10px; }
+  main .cta .cta-actions { width: 100%; }
 }
-.cta.mesh .lbl { color: var(--terracota); }
-.cta.mesh-dark .lbl { color: var(--salmon); }
