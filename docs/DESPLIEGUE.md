@@ -110,3 +110,4 @@ Subidos por archivo (sin reemplazar `public_html`, para conservar `storage/`) lo
 ### Componentes de autor, fases 1 y 2 (4 nov 2026)
 
 Subidos 30 archivos (incluido `fx.js` y la foto `novia-rostro`) y caché limpiada. Verificado en vivo sin errores de consola: frase entintada, servicios con foto que sigue el cursor y cierre en órbita (Inicio), mapa del rostro, baraja del proceso y pestañas de look (Novias), menú editorial con índice activo (Precios), cursos apilados, collage del Estudio y filtros numerados del portafolio. Lighthouse móvil en vivo: rendimiento 97–100, accesibilidad, buenas prácticas y SEO 100.
+- Espacios y uniformidad (4 nov 2026): 12 archivos y migración 006 aplicada (cron de un solo uso, ya borrado). Auditoría en vivo en 360/390/768/1024/1440 px sin textos fuera de su caja ni scroll horizontal; Lighthouse móvil 99–100 y 100 en accesibilidad, buenas prácticas y SEO.
