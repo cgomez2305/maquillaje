@@ -145,10 +145,6 @@
 .marq-t .d { font-size: 44px; }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--salmon); flex: none; }
 
-/* C16 · Reseña */
-.review { background: var(--porcelana); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 28px; min-height: 300px; }
-.review blockquote { font-size: 19px; line-height: 1.55; flex-grow: 1; }
-.review figcaption { color: var(--topo); }
 
 /* Riel horizontal de fotos (portafolio de Inicio). rail.js lo sincroniza con el scroll en escritorio */
 .rail-viewport { position: relative; }
@@ -225,7 +221,6 @@ body.rail-active .fab { opacity: 0; visibility: hidden; transform: translateY(12
   .pk { padding: 32px 24px; }
   .marq-t .d { font-size: 36px; }
   .marq-t { gap: 40px; }
-  .review { padding: 32px; min-height: 0; }
   .consent { left: 12px; right: 12px; bottom: 12px; max-width: none; }
 }
 .cta .cta-actions { justify-content: center; }

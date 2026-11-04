@@ -13,7 +13,7 @@ $from = static fn(array $items): int => min(array_map(static fn(array $p): int =
 $bars = [
     '/maquillaje-de-novia-bucaramanga' => ['Pack novias', money($packs['pack3']['price']), '/reservar?servicio=pack3', 'Reservar prueba'],
     '/cursos-de-maquillaje-bucaramanga' => ['Cursos desde', money($from($courses)), '#automaquillaje', 'Ver cursos'],
-    '/tienda' => ['Bonos de regalo', 'para servicios', '#bonos', 'Ver bonos'],
+    '/tienda' => ['Tienda', 'Próximamente', wa_href('barra-tienda', 'bono'), 'Pedir bono'],
 ];
 [$noteLabel, $noteValue, $bookHref, $bookText] = $bars[$path ?? ''] ?? ['Servicios desde', money($from($packs)), '/reservar', 'Reservar'];
 $wa = wa_href('fab-' . ($origin !== '' ? $origin : 'inicio'));

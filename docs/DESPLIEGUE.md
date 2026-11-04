@@ -98,3 +98,10 @@ Subidos por archivo (sin reemplazar `public_html`, para conservar `storage/`) lo
 - Migración `005_portadas_fotos_profesionales.sql`: las portadas del diario que usaban fotos de Instagram pasan a las profesionales.
 - Móvil: barra de acción fija (precio de referencia + WhatsApp + Reservar), menú de decisión con precios en el hero de Inicio, packs, servicios, bonos y galería de novias en carrusel con imán, selector de packs y tabla comparativa sin desplazamiento lateral, comparador de cursos, categorías de tienda como pastillas, filtros fijos en el portafolio, total y «Continuar» fijos en `/reservar` (sin pack preseleccionado), pie compacto y tipografía mínima de 13 px.
 - Desplegado el 4 nov 2026 (483 archivos + migración 005), y después el menú móvil visual, los íconos normalizados y los carruseles alineados (7 archivos). Lighthouse móvil en vivo: 88–100 en rendimiento, 100 en accesibilidad, buenas prácticas y SEO.
+
+### Sin panel ni pagos en línea (4 nov 2026)
+
+- Se retiraron el panel (`/panel`), los pagos con Wompi (`/webhooks/wompi`, `/tienda/{producto}`), el estado de reservas (`/reserva/…`), las encuestas, las comisiones, la atribución y los correos. Las tablas siguen en la BD (no se borró ningún dato).
+- Todas las solicitudes van a WhatsApp con mensaje predeterminado. La tienda queda en «próximamente» (`noindex`, fuera del sitemap); las direcciones antiguas de producto redirigen con 301 a `/tienda`.
+- Cron vigentes: `sitemap.php` y `respaldo.php`. Se eliminaron `recordatorios`, `encuestas`, `alertas`, `cierre-periodo` y `retencion`.
+- `.env`: ya no se usan `MAIL_*`, `OWNER_EMAIL`, `PARTNER_EMAIL`, `PAY_*` ni `WOMPI_*`.

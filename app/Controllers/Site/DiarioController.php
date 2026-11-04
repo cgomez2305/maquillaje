@@ -5,15 +5,10 @@ namespace App\Controllers\Site;
 
 use App\Controllers\Controller;
 use App\Domain\Catalog;
-use App\Domain\Leads\LeadService;
-use App\Domain\Notifications\Mailer;
-use App\Http\FormGuard;
 use App\Http\HttpException;
 use App\Http\Request;
 use App\Http\Response;
-use App\Http\Session;
 use App\Repositories\PostRepository;
-use App\Support\Db;
 use App\Support\HtmlSanitizer;
 use App\Support\Schema;
 
@@ -48,11 +43,6 @@ final class DiarioController extends Controller
             'posts' => $posts,
             'topics' => $topics,
             'upcoming' => $posts === [] ? PostRepository::upcoming() : [],
-            'guide' => [
-                'ok' => Session::flash('guia_ok'),
-                'errors' => Session::flash('guia_errors') ?? [],
-                'old' => Session::flash('guia_old') ?? [],
-            ],
             'css' => ['pages/diario.css'],
             'js' => ['diario.js'],
             'crumbs' => [['Inicio', '/'], ['Diario', null]],
@@ -114,99 +104,6 @@ final class DiarioController extends Controller
             'js' => ['diario.js'],
             'preload' => $post['cover'] ? ['key' => (string) $post['cover'], 'sizes' => '(max-width: 1320px) 100vw, 1240px'] : null,
             'waOrigin' => 'diario-' . substr((string) $post['slug'], 0, 40),
-        ]);
-    }
-
-    /** POST /diario/guia-novias: registra el lead y envía el correo de confirmación (doble opt-in). */
-    public function guia(Request $request): Response
-    {
-        $back = Response::redirect('/diario#guia', 303);
-        $name = $request->str('nombre', 120);
-        $email = mb_strtolower($request->str('correo', 190));
-        $date = $request->str('fecha_boda', 10);
-        $old = ['nombre' => $name, 'correo' => $email, 'fecha_boda' => $date];
-
-        $spam = FormGuard::check($request, 'guia');
-        if ($spam !== null) {
-            Session::flash('guia_errors', ['form' => $spam]);
-            Session::flash('guia_old', $old);
-            return $back;
-        }
-
-        $errors = [];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors['correo'] = 'Escribe un correo válido.';
-        }
-        $wedding = \DateTimeImmutable::createFromFormat('!Y-m-d', $date, new \DateTimeZone(config('app.timezone')));
-        $today = new \DateTimeImmutable('today', new \DateTimeZone(config('app.timezone')));
-        if ($wedding === false || $wedding->format('Y-m-d') !== $date) {
-            $errors['fecha_boda'] = 'Indica la fecha de tu boda.';
-        } elseif ($wedding < $today || $wedding > $today->modify('+3 years')) {
-            $errors['fecha_boda'] = 'La fecha debe ser a partir de hoy y en los próximos tres años.';
-        }
-        if (($request->post['acepto'] ?? '') !== '1') {
-            $errors['acepto'] = 'Necesitamos tu autorización para enviarte la guía.';
-        }
-        if ($errors !== []) {
-            Session::flash('guia_errors', $errors);
-            Session::flash('guia_old', $old);
-            return $back;
-        }
-
-        $token = self::lowerToken();
-        try {
-            $lead = LeadService::create('guia_novias', [
-                'name' => $name !== '' ? $name : null,
-                'email' => $email,
-                'payload' => ['wedding_date' => $date],
-                'confirm_token_hash' => hash('sha256', $token),
-                'consent_at' => now_utc(),
-                'origin' => 'diario-guia',
-            ]);
-            Mailer::send($email, 'Confirma tu correo para recibir la guía de novias', 'guia-confirmar', [
-                'name' => $name,
-                'link' => url('/diario/confirmar/' . $token),
-            ], 'guia-confirmar-' . $lead['id']);
-        } catch (\Throwable $e) {
-            app_log('error', 'Alta de guía fallida: ' . $e->getMessage());
-            Session::flash('guia_errors', ['form' => 'No pudimos registrar tu correo. Inténtalo de nuevo en unos minutos.']);
-            Session::flash('guia_old', $old);
-            return $back;
-        }
-
-        Session::flash('guia_ok', $email);
-        return $back;
-    }
-
-    /** GET /diario/confirmar/{token}: confirma una sola vez y envía la guía. */
-    public function confirmar(Request $request): Response
-    {
-        $hash = hash('sha256', $request->param('token'));
-        $lead = Db::one("SELECT id, name, email, confirmed_at FROM leads WHERE kind = 'guia_novias' AND confirm_token_hash = ?", [$hash]);
-        if ($lead === null) {
-            throw new HttpException(404);
-        }
-        $first = $lead['confirmed_at'] === null;
-        if ($first) {
-            Db::run('UPDATE leads SET confirmed_at = ? WHERE id = ? AND confirmed_at IS NULL', [now_utc(), (int) $lead['id']]);
-            Mailer::send((string) $lead['email'], 'Tu guía de belleza para novias · Make Up by Fletcher', 'guia-novias', [
-                'name' => (string) ($lead['name'] ?? ''),
-                'posts' => array_slice(PostRepository::published(), 0, 4),
-                'pack3' => Catalog::price('pack3'),
-            ], 'guia-novias-' . $lead['id']);
-        }
-
-        return $this->page('diario', 'site/guia-confirmada', [
-            'first' => $first,
-            'meta' => [
-                'title' => 'Correo confirmado · Guía para novias · Fletcher',
-                'description' => 'Confirmaste tu correo para recibir la guía de belleza para novias de Make Up by Fletcher.',
-                'canonical' => '/diario',
-                'robots' => 'noindex, nofollow',
-            ],
-            'path' => '/diario',
-            'crumbs' => [['Inicio', '/'], ['Diario', '/diario'], ['Guía para novias', null]],
-            'css' => ['pages/diario.css'],
         ]);
     }
 

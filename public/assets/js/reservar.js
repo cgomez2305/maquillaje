@@ -1,75 +1,60 @@
 /**
- * Reservar: mejora progresiva del formulario por pasos.
- * - Actualiza el resumen lateral al instante.
- * - Al elegir un día, consulta /reservar/disponibilidad y desactiva las horas ocupadas.
- * - Eventos de analítica booking_start, booking_step y booking_submit (§13).
- * Sin este archivo, cada paso funciona igual con POST normales.
+ * Reservar (solicitud por WhatsApp): total estimado y vista previa del mensaje al instante.
+ * Sin este archivo el formulario funciona igual: el servidor arma el mensaje y abre WhatsApp.
  */
 const form = document.querySelector('[data-reservar]');
 const track = (event, params = {}) => (window.mubfTrack ? window.mubfTrack(event, params) : null);
 
 if (form) {
-  const step = Number(form.dataset.step || '1');
   const money = (n) => `${Math.round(n).toLocaleString('es-CO')} COP`;
-  // El resumen aparece dos veces (lateral y barra fija en móvil): se actualizan todas las copias
-  const sum = (key) => {
-    const els = [...document.querySelectorAll(`[data-sum="${key}"]`)];
-    return els.length ? { set textContent(v) { els.forEach((el) => { el.textContent = v; }); } } : null;
-  };
-  const priceOf = () => Number(form.querySelector('input[name="service"]:checked')?.dataset.price || 0);
-  const peopleOf = () => Number(form.querySelector('input[name="people"]:checked')?.value || 0);
+  const set = (key, text) => document.querySelectorAll(`[data-sum="${key}"]`).forEach((el) => { el.textContent = text; });
+  const val = (name) => form.querySelector(`[name="${name}"]:checked`) || form.querySelector(`[name="${name}"]`);
+  const deposit = 0.5;
+  const maxPeople = form.querySelectorAll('input[name="people"]').length;
 
-  if (step === 1) track('booking_start');
-  track('booking_step', { step });
-
+  track('booking_start');
   document.querySelector('[data-focus-on-load]')?.focus();
 
-  form.addEventListener('change', (e) => {
-    const input = e.target;
-    if (!(input instanceof HTMLInputElement) || input.type !== 'radio') return;
-    const label = input.dataset.label || input.dataset.name;
-    if (input.name === 'service' && sum('service')) sum('service').textContent = input.dataset.name;
-    if (input.name === 'people' && sum('people')) sum('people').textContent = label;
-    if (input.name === 'date' && sum('date')) { sum('date').textContent = label; loadSlots(input.value); }
-    if (input.name === 'time' && sum('time')) sum('time').textContent = label;
-    if (input.name === 'location' && sum('location')) sum('location').textContent = label;
-    if ((input.name === 'service' || input.name === 'people') && priceOf() && peopleOf()) {
-      const total = priceOf() * peopleOf();
-      sum('total').textContent = money(total);
-      sum('deposit').textContent = money(Math.floor(total / 2));
-    }
-  });
-
-  async function loadSlots(date) {
-    const box = form.querySelector('[data-slots]');
-    if (!box) return;
-    box.setAttribute('aria-busy', 'true');
-    try {
-      const people = new URL(location.href).searchParams.get('people') || form.dataset.people || '1';
-      const res = await fetch(`/reservar/disponibilidad?date=${encodeURIComponent(date)}&people=${encodeURIComponent(people)}`, { headers: { Accept: 'application/json' } });
-      if (!res.ok) return;
-      const { slots } = await res.json();
-      box.querySelectorAll('input[name="time"]').forEach((r) => {
-        const free = slots.includes(r.value);
-        r.disabled = !free;
-        r.closest('.slot')?.classList.toggle('off', !free);
-        if (!free && r.checked) {
-          r.checked = false;
-          if (sum('time')) sum('time').textContent = '—';
-        }
-      });
-    } catch { /* sin red: el servidor valida al enviar */ } finally {
-      box.removeAttribute('aria-busy');
-    }
+  function longDate(ymd) {
+    if (!ymd) return '';
+    const [y, m, d] = ymd.split('-').map(Number);
+    const s = new Date(y, m - 1, d).toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    return s.charAt(0).toUpperCase() + s.slice(1);
   }
 
-  form.addEventListener('submit', (e) => {
-    const action = e.submitter?.value;
-    if (step === 3 && action === 'next') {
-      track('booking_submit', { service: form.dataset.service || '', value: priceOf() * peopleOf() });
+  function update() {
+    const service = form.querySelector('input[name="service"]:checked');
+    const peopleEl = form.querySelector('input[name="people"]:checked');
+    const people = Number(peopleEl?.value || 1);
+    const time = form.querySelector('input[name="time"]:checked');
+    const loc = form.querySelector('input[name="location"]:checked');
+    const zone = val('zone')?.value.trim();
+    const eventSel = form.querySelector('[name="event"]');
+    const name = val('name')?.value.trim();
+    const notes = val('notes')?.value.trim();
+    const date = val('date')?.value;
+
+    const lines = [];
+    if (service) lines.push(`• Servicio: ${service.dataset.name} (${money(Number(service.dataset.price))} por persona)`);
+    lines.push(`• Personas: ${peopleEl?.dataset.label || 1}`);
+    if (eventSel?.value) lines.push(`• Evento: ${eventSel.options[eventSel.selectedIndex].text}`);
+    if (date) lines.push(`• Fecha: ${longDate(date)}`);
+    if (time?.value) lines.push(`• Hora de inicio: ${time.dataset.label}`);
+    lines.push(`• Lugar: ${loc?.value === 'home' ? `A domicilio${zone ? ` · ${zone}` : ''}` : 'En el estudio de Floridablanca'}`);
+    if (service) {
+      const total = Number(service.dataset.price) * Math.min(people, maxPeople);
+      lines.push(`• Total estimado: ${money(total)}${people >= maxPeople ? ' o más' : ''}`);
+      set('total', money(total));
+      set('deposit', money(Math.floor(total * deposit)));
     }
-    if (e.submitter) {
-      e.submitter.setAttribute('aria-disabled', 'true');
-    }
-  });
+    if (name) lines.push(`• Mi nombre: ${name}`);
+    if (notes) lines.push(`• Nota: ${notes}`);
+    const box = document.querySelector('[data-sum="lines"]');
+    if (box) box.replaceChildren(...lines.flatMap((l, i) => (i ? [document.createElement('br'), l] : [l])));
+  }
+
+  form.addEventListener('change', update);
+  form.addEventListener('input', update);
+  form.addEventListener('submit', () => track('booking_submit', { service: form.querySelector('input[name="service"]:checked')?.value || '' }));
+  update();
 }

@@ -29,7 +29,7 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
       </h1>
       <dl class="est-data in d3">
         <div><dt class="lbl c-topo">Dirección</dt><dd><?= e($b['address']) ?><br><?= e($b['city']) ?>, <?= e($b['region']) ?></dd></div>
-        <div><dt class="lbl c-topo">Horario</dt><dd><span class="pending">[Días y horas de atención]</span><br><span class="est-sub">Solo con cita previa</span></dd></div>
+        <div><dt class="lbl c-topo">Horario</dt><dd>Solo con cita previa<br><span class="est-sub">Agenda por WhatsApp</span></dd></div>
         <div><dt class="lbl c-topo">WhatsApp</dt><dd><a href="<?= e(wa_href('estudio-datos', 'estudio')) ?>" rel="nofollow"><?= e($b['phone_display']) ?></a></dd></div>
         <div><dt class="lbl c-topo">Correo</dt><dd><a href="mailto:<?= e($b['email']) ?>"><?= e($b['email']) ?></a></dd></div>
       </dl>
@@ -69,19 +69,17 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
     <div class="rv stack gap-24">
       <p class="lbl c-terracota">Cotiza tu servicio</p>
       <h2 class="d d-l2">Cuéntanos<br>tu fecha.</h2>
-      <p class="body-l est-quote-p">El mensaje se abre en WhatsApp ya redactado. Te respondemos con disponibilidad y precio.</p>
+      <p class="body-l est-quote-p">Llena lo básico y el mensaje se abre en WhatsApp ya redactado. Te respondemos con disponibilidad y precio.</p>
     </div>
     <form class="rv stack gap-40" method="post" action="/estudio-maquillaje-floridablanca/cotizar#cotizar" aria-label="Cotizar servicio de maquillaje" novalidate>
       <?= csrf_field() ?>
-      <?= spam_fields() ?>
       <?php if (!empty($formError)): ?>
       <p class="notice err" role="alert"><?= e($formError) ?></p>
       <?php elseif ($errors): ?>
       <p class="notice err" role="alert">Revisa los campos marcados.</p>
       <?php endif; ?>
       <div class="fg">
-        <div class="<?= $fcls('nombre') ?>"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" maxlength="120" required value="<?= e($old['nombre'] ?? '') ?>"<?= $aria('nombre') ?>><?= $err('nombre') ?></div>
-        <div class="<?= $fcls('telefono') ?>"><label for="tel">Teléfono</label><input id="tel" name="telefono" type="tel" placeholder="300 000 0000" autocomplete="tel" inputmode="tel" maxlength="20" required value="<?= e($old['telefono'] ?? '') ?>"<?= $aria('telefono') ?>><?= $err('telefono') ?></div>
+        <div class="<?= $fcls('nombre') ?>"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="given-name" maxlength="80" required value="<?= e($old['nombre'] ?? '') ?>"<?= $aria('nombre') ?>><?= $err('nombre') ?></div>
         <div class="<?= $fcls('fecha') ?>"><label for="fecha">Fecha del evento</label><input id="fecha" name="fecha" type="date" min="<?= e($minDate) ?>" value="<?= e($old['fecha'] ?? '') ?>"<?= $aria('fecha') ?>><?= $err('fecha') ?></div>
         <div class="<?= $fcls('hora') ?>"><label for="hora">Hora del evento</label><input id="hora" name="hora" type="time" value="<?= e($old['hora'] ?? '') ?>"<?= $aria('hora') ?>><?= $err('hora') ?></div>
         <div class="<?= $fcls('servicio') ?>"><label for="servicio">Servicio</label>
@@ -93,14 +91,10 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
             <?php foreach ($places as $k => $label): ?><option value="<?= e($k) ?>"<?= ($old['lugar'] ?? '') === $k ? ' selected' : '' ?>><?= e($label) ?></option><?php endforeach; ?>
           </select><?= $err('lugar') ?></div>
       </div>
-      <div class="<?= $fcls('mensaje') ?>"><label for="msg">Mensaje</label><textarea id="msg" name="mensaje" rows="3" maxlength="1000" placeholder="Hora del evento, número de personas, referencias de look"<?= $aria('mensaje') ?>><?= e($old['mensaje'] ?? '') ?></textarea><?= $err('mensaje') ?></div>
-      <div class="stack gap-8">
-        <label class="ckb"><input type="checkbox" name="autorizo" value="1" required<?= !empty($old['autorizo']) ? ' checked' : '' ?><?= $aria('autorizo') ?>> <span>Autorizo el tratamiento de mis datos para responder esta cotización, según la <a href="/politica-de-privacidad">política de tratamiento de datos</a> (Ley 1581 de 2012).</span></label>
-        <?= isset($errors['autorizo']) ? '<p class="err est-err" id="autorizo-err">' . e($errors['autorizo']) . '</p>' : '' ?>
-      </div>
+      <div class="<?= $fcls('mensaje') ?>"><label for="msg">Mensaje</label><textarea id="msg" name="mensaje" rows="3" maxlength="400" placeholder="Número de personas, referencias de look"<?= $aria('mensaje') ?>><?= e($old['mensaje'] ?? '') ?></textarea><?= $err('mensaje') ?></div>
       <div class="est-send">
-        <button class="btn" type="submit">Enviar por WhatsApp <?= icon('arrow', 'arr') ?></button>
-        <p class="est-note">Mínimo 2 días de anticipación · abono del 50 % por Nequi o Bancolombia.</p>
+        <button class="btn" type="submit"><?= icon('whatsapp') ?> Enviar por WhatsApp</button>
+        <p class="est-note">Tus datos no se guardan en la web: van solo en el mensaje que tú envías. Mínimo 2 días de anticipación.</p>
       </div>
     </form>
   </div>

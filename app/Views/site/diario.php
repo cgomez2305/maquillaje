@@ -5,15 +5,8 @@
  * @var list<array<string,mixed>> $posts
  * @var list<string> $topics
  * @var list<array{title:string,category:string}> $upcoming
- * @var array{ok:?string,errors:array<string,string>,old:array<string,string>} $guide
  * @var list<array{0:string,1:?string}> $crumbs
  */
-$err = $guide['errors'];
-$old = $guide['old'];
-$fieldErr = static function (string $k) use ($err): string {
-    return isset($err[$k]) ? '<p class="err" id="err-' . e($k) . '">' . e($err[$k]) . '</p>' : '';
-};
-$aria = static fn(string $k): string => isset($err[$k]) ? ' aria-invalid="true" aria-describedby="err-' . e($k) . '"' : '';
 ?>
 <section class="wrap blog-hero">
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
@@ -88,40 +81,12 @@ $aria = static fn(string $k): string => isset($err[$k]) ? ' aria-invalid="true" 
     <div class="stack gap-22 nl-txt">
       <p class="lbl c-salmon">Guía gratuita para novias</p>
       <h2 class="d nl-title">Tu checklist de belleza, mes a mes.</h2>
-      <p class="nl-p">Qué hacer con la piel, la prueba de maquillaje y el día de la boda, en una sola página. Te la enviamos al correo.</p>
+      <p class="nl-p">Qué hacer con la piel, la prueba de maquillaje y el día de la boda, en una sola página.</p>
     </div>
-    <?php if ($guide['ok']): ?>
-    <div class="nl-ok" role="status">
-      <p class="lbl c-salmon">Revisa tu correo</p>
-      <p class="d nl-ok-title">Te escribimos a <?= e($guide['ok']) ?>.</p>
-      <p class="nl-p">Abre el correo y confirma tu dirección para recibir la guía. Si no lo ves en unos minutos, revisa la carpeta de promociones o de correo no deseado.</p>
+    <div class="nl-form nl-wa">
+      <p class="nl-p">Pídela por WhatsApp y te la enviamos al chat, junto con las fechas disponibles para tu prueba de maquillaje.</p>
+      <a class="btn salmon self-start" href="<?= e(wa_href('diario-guia', 'guia')) ?>" rel="nofollow"><?= icon('whatsapp') ?> Recibir la guía por WhatsApp</a>
     </div>
-    <?php else: ?>
-    <form class="nl-form" method="post" action="/diario/guia-novias" aria-label="Recibir la guía gratuita" novalidate>
-      <?= csrf_field() ?>
-      <?= spam_fields() ?>
-      <?php if (isset($err['form'])): ?><p class="notice err" role="alert"><?= e($err['form']) ?></p><?php endif; ?>
-      <div class="f on-dark">
-        <label for="nl-nombre">Nombre</label>
-        <input id="nl-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" maxlength="120" value="<?= e($old['nombre'] ?? '') ?>">
-      </div>
-      <div class="f on-dark<?= isset($err['correo']) ? ' has-err' : '' ?>">
-        <label for="nl-correo">Correo</label>
-        <input id="nl-correo" name="correo" type="email" placeholder="tu@correo.com" autocomplete="email" required maxlength="190" value="<?= e($old['correo'] ?? '') ?>"<?= $aria('correo') ?>>
-        <?= $fieldErr('correo') ?>
-      </div>
-      <div class="f on-dark<?= isset($err['fecha_boda']) ? ' has-err' : '' ?>">
-        <label for="nl-fecha">Fecha de tu boda</label>
-        <input id="nl-fecha" name="fecha_boda" type="date" required min="<?= e(local_time(now_utc())?->format('Y-m-d')) ?>" value="<?= e($old['fecha_boda'] ?? '') ?>"<?= $aria('fecha_boda') ?>>
-        <?= $fieldErr('fecha_boda') ?>
-      </div>
-      <div class="nl-ckwrap">
-        <label class="ckb nl-ck"><input type="checkbox" name="acepto" value="1" required<?= $aria('acepto') ?>> <span>Autorizo el tratamiento de mis datos para recibir la guía y novedades, según la <a href="/politica-de-privacidad">política de datos</a> (Ley 1581 de 2012).</span></label>
-        <?= $fieldErr('acepto') ?>
-      </div>
-      <button class="btn salmon self-start" type="submit">Enviarme la guía <?= icon('arrow', 'arr') ?></button>
-    </form>
-    <?php endif; ?>
   </div>
 </section>
 
@@ -129,7 +94,7 @@ $aria = static fn(string $k): string => isset($err[$k]) ? ' aria-invalid="true" 
     'label' => 'Agenda 2026 · 2027',
     'title' => 'Reserva tu fecha.',
     'text' => 'Cuéntanos el día, la hora y el tipo de evento. Te respondemos con disponibilidad y la propuesta para ti.',
-    'button' => 'Reservar en línea',
+    'button' => 'Armar mi solicitud',
     'href' => '/reservar',
     'secondaryText' => 'Escribir por WhatsApp',
     'secondaryHref' => wa_href('diario-cta'),

@@ -164,7 +164,7 @@
     <h2 class="d d-xl">Separa tu fecha.</h2>
     <div class="wrap-row cta-actions">
       <a class="btn" href="<?= e(wa_href('novias-cta', 'novias')) ?>" rel="nofollow">Escribir por WhatsApp <?= icon('arrow', 'arr') ?></a>
-      <a class="btn ghost" href="/reservar">Reservar en línea</a>
+      <a class="btn ghost" href="/reservar?servicio=pack3">Armar mi solicitud</a>
     </div>
   </div>
 </section>

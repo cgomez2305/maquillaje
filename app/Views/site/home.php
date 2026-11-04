@@ -199,24 +199,6 @@
   </div>
 </section>
 
-<section class="bg-arena sec">
-  <div class="wrap">
-    <div class="rv stack gap-18 reviews-head">
-      <p class="lbl c-terracota">Reseñas en Google</p>
-      <h2 class="d d-l">Lo que dicen ellas.</h2>
-    </div>
-    <div class="g3 m-snap">
-      <?php foreach ([['[Reseña real de una novia, copiada de Google Business Profile]', 'Novia'], ['[Reseña real de una quinceañera o su mamá]', 'Quinceañera'], ['[Reseña real de una clienta de maquillaje social o grados]', 'Grado']] as $i => [$quote, $type]): ?>
-      <figure class="review rv" data-delay="<?= e((string) ($i * 0.08)) ?>">
-        <?= App\View::partial('partials/stars', []) ?>
-        <blockquote><span class="pending"><?= e($quote) ?></span></blockquote>
-        <figcaption class="lbl"><span class="pending">[Nombre]</span> · <?= e($type) ?></figcaption>
-      </figure>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
-
 <section class="wrap sec">
   <div class="g2 faq-grid">
     <div class="rv stack gap-18">
@@ -234,6 +216,6 @@
     'button' => 'Escribir por WhatsApp',
     'href' => wa_href('inicio-cta'),
     'wa' => true,
-    'secondaryText' => 'Reservar en línea',
+    'secondaryText' => 'Armar mi solicitud',
     'secondaryHref' => '/reservar',
 ]) ?>

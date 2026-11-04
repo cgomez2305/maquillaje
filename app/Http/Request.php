@@ -110,11 +110,6 @@ final class Request
         return str_contains($this->header('Accept'), 'application/json') || $this->header('X-Requested-With') === 'fetch';
     }
 
-    public function isPanel(): bool
-    {
-        return $this->path === '/panel' || str_starts_with($this->path, '/panel/');
-    }
-
     public function param(string $key): string
     {
         return $this->params[$key] ?? '';

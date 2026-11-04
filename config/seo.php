@@ -27,7 +27,7 @@ return [
     'cursos' => [
         'path' => '/cursos-de-maquillaje-bucaramanga',
         'title' => 'Cursos de maquillaje en Bucaramanga · Make Up by Fletcher',
-        'description' => 'Cursos de maquillaje en Bucaramanga y Floridablanca: automaquillaje en 5 módulos y maquillaje profesional en 7 módulos. Inscríbete y paga en línea.',
+        'description' => 'Cursos de maquillaje en Bucaramanga y Floridablanca: automaquillaje en 5 módulos y maquillaje profesional en 7 módulos. Inscríbete por WhatsApp.',
         'crumb' => 'Cursos',
     ],
     'portafolio' => [
@@ -44,8 +44,8 @@ return [
     ],
     'tienda' => [
         'path' => '/tienda',
-        'title' => 'Tienda de maquillaje y bonos de regalo · Fletcher',
-        'description' => 'Tienda de maquillaje en Bucaramanga: bonos de regalo para packs y cursos, kits y productos elegidos por María Paula Fletcher. Pago seguro en línea.',
+        'title' => 'Tienda · Próximamente · Make Up by Fletcher',
+        'description' => 'Muy pronto: bonos de regalo, kits y productos elegidos por María Paula Fletcher. Mientras tanto, pide tu bono de regalo por WhatsApp.',
         'crumb' => 'Tienda',
     ],
     'diario' => [
@@ -69,7 +69,7 @@ return [
     'terminos' => [
         'path' => '/terminos',
         'title' => 'Términos, reservas y abonos · Make Up by Fletcher',
-        'description' => 'Condiciones de reserva de Make Up by Fletcher: anticipación mínima, abono del 50 %, reagendamiento, cambios y compras en la tienda en línea.',
+        'description' => 'Condiciones de reserva de Make Up by Fletcher: solicitud por WhatsApp, anticipación mínima, abono del 50 %, reagendamiento y cambios.',
         'crumb' => 'Términos y reservas',
     ],
 ];

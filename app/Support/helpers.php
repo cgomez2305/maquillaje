@@ -67,17 +67,6 @@ function csrf_field(): string
     return '<input type="hidden" name="_token" value="' . e(Csrf::token()) . '">';
 }
 
-/**
- * Campos anti-spam para formularios públicos: honeypot + marca de tiempo firmada.
- */
-function spam_fields(): string
-{
-    $ts = (string) time();
-    $sig = hash_hmac('sha256', $ts, app_key());
-    return '<div class="hp" aria-hidden="true"><label>No llenar<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>'
-        . '<input type="hidden" name="_ts" value="' . e($ts . '.' . $sig) . '">';
-}
-
 function app_key(): string
 {
     static $key = null;
@@ -87,27 +76,6 @@ function app_key(): string
         $key = ($decoded !== false && strlen($decoded) >= 32) ? substr($decoded, 0, 32) : hash('sha256', 'mubf-dev-key|' . BASE_PATH, true);
     }
     return $key;
-}
-
-/** Normaliza un teléfono colombiano a E.164 (+573001234567). Devuelve null si no es válido. */
-function phone_e164(string $raw): ?string
-{
-    $digits = preg_replace('/\D+/', '', $raw) ?? '';
-    if (str_starts_with(trim($raw), '+') && !str_starts_with($digits, '57')) {
-        // Internacional distinto de Colombia: aceptar 8–15 dígitos
-        return (strlen($digits) >= 8 && strlen($digits) <= 15) ? '+' . $digits : null;
-    }
-    if (str_starts_with($digits, '0057')) {
-        $digits = substr($digits, 2);
-    }
-    if (strlen($digits) === 12 && str_starts_with($digits, '57')) {
-        $digits = substr($digits, 2);
-    }
-    // Celular (10 dígitos, empieza por 3) o fijo nacional (60X + 7 dígitos)
-    if (strlen($digits) === 10 && ($digits[0] === '3' || str_starts_with($digits, '60'))) {
-        return '+57' . $digits;
-    }
-    return null;
 }
 
 /** +573161910936 → «+57 316 191 0936» */

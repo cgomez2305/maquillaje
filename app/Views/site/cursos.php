@@ -53,8 +53,7 @@
       <p class="body-l crs-desc"><?= e($c['text']) ?></p>
       <p class="crs-price"><span class="d"><?= e(money($c['price'], false)) ?></span><span class="c-topo fs-15">COP</span></p>
       <div class="wrap-row">
-        <a class="btn" href="<?= e($c['buy']) ?>">Inscribirme y pagar en línea <?= icon('arrow', 'arr') ?></a>
-        <a class="btn ghost" href="<?= e(wa_href('cursos-' . $c['id'], 'cursos')) ?>" rel="nofollow">Preguntar por WhatsApp</a>
+        <a class="btn" href="<?= e($c['buy']) ?>" rel="nofollow"><?= icon('whatsapp') ?> Inscribirme por WhatsApp</a>
       </div>
     </div>
     <div>

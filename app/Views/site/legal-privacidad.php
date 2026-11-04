@@ -45,25 +45,20 @@ $toc = [
     </ul>
 
     <h2 id="datos">2. Datos que recolectamos</h2>
-    <p>Pedimos solo lo necesario para prestar el servicio:</p>
+    <p>El sitio <strong>no guarda los datos que escribes en los formularios</strong>. Cuando pides una reserva, una cotización, un curso, un bono o la guía para novias, el sitio arma el mensaje y lo abre en tu WhatsApp; solo nos llega si tú lo envías. A partir de ese chat tratamos:</p>
     <ul>
-      <li><strong>Reservas:</strong> nombre, teléfono (WhatsApp), correo electrónico, dirección (cuando el servicio es a domicilio), fecha de cumpleaños, tipo de evento, cómo nos conociste y las notas que quieras dejar.</li>
-      <li><strong>Cotizaciones:</strong> nombre, teléfono, fecha, hora, servicio, lugar y mensaje.</li>
-      <li><strong>Compras en la tienda:</strong> nombre, correo, teléfono, datos de envío o recogida y, en los bonos, el nombre de quien recibe el regalo. Los datos de tu tarjeta o cuenta los recibe directamente la pasarela Wompi: nosotros nunca los vemos ni los guardamos.</li>
-      <li><strong>Guía gratuita para novias:</strong> correo y fecha de la boda.</li>
+      <li><strong>Solicitudes de servicio:</strong> nombre, número de WhatsApp, servicio, fecha, hora, lugar (barrio y ciudad si es a domicilio), tipo de evento y las notas que quieras dejar.</li>
       <li><strong>Comprobantes de abono</strong> que nos envías para confirmar tu fecha.</li>
-      <li><strong>Datos técnicos:</strong> la página por la que llegaste y parámetros de campaña (UTM) guardados en una cookie propia durante 30 días, y la dirección IP de forma temporal para proteger los formularios contra abuso.</li>
+      <li><strong>Datos técnicos del sitio:</strong> conteos anónimos de visitas y clics (sin IP, cookies ni identificadores) y, solo si lo aceptas, la analítica de Google.</li>
     </ul>
-    <p>No recolectamos datos sensibles ni datos de menores de edad sin autorización de su representante legal. En el caso de quinceañeras, la reserva la hace y autoriza su madre, padre o acudiente.</p>
 
     <h2 id="finalidades">3. Finalidades</h2>
     <ul>
-      <li>Gestionar tu reserva: confirmarla, enviarte el código, el resumen, los datos para el abono, recordatorios y avisos de cambios.</li>
-      <li>Procesar pagos de cursos, bonos y productos, y enviarte la confirmación de compra.</li>
+      <li>Responder tu solicitud, confirmar la disponibilidad, enviarte los datos para el abono, recordatorios y avisos de cambios.</li>
+      <li>Coordinar cursos y bonos de regalo.</li>
       <li>Comunicarnos contigo por WhatsApp, correo o teléfono sobre el servicio que pediste.</li>
-      <li>Enviarte una encuesta después del servicio para conocer tu experiencia y pedirte, si quieres, una reseña.</li>
-      <li>Llevar el registro contable de reservas, ventas y comisiones, y cumplir obligaciones legales y tributarias.</li>
-      <li>Enviarte novedades, promociones y contenido de belleza <strong>solo si lo autorizas</strong> marcando la casilla correspondiente. Puedes retirar esta autorización cuando quieras.</li>
+      <li>Cumplir obligaciones legales y tributarias.</li>
+      <li>Enviarte novedades y promociones <strong>solo si lo autorizas</strong>. Puedes retirar esta autorización cuando quieras.</li>
       <li>Medir de forma agregada el uso del sitio para mejorarlo (solo con tu consentimiento de cookies de analítica).</li>
     </ul>
 
@@ -79,7 +74,7 @@ $toc = [
     </ul>
 
     <h2 id="procedimiento">5. Cómo ejercer tus derechos</h2>
-    <p>Escríbenos a <a href="mailto:<?= e($b['email']) ?>"><?= e($b['email']) ?></a> con el asunto «Datos personales», tu nombre, el teléfono o correo con el que te registraste, la solicitud concreta y, si es un reclamo, los hechos y documentos que lo soportan.</p>
+    <p>Escríbenos a <a href="mailto:<?= e($b['email']) ?>"><?= e($b['email']) ?></a> con el asunto «Datos personales», tu nombre, el número de WhatsApp con el que nos escribiste, la solicitud concreta y, si es un reclamo, los hechos y documentos que lo soportan.</p>
     <div class="box">
       <p><strong>Consultas:</strong> respondemos en un máximo de 10 días hábiles desde que recibimos la solicitud, prorrogables 5 días hábiles más avisándote el motivo.</p>
       <p><strong>Reclamos</strong> (corrección, actualización, supresión o revocatoria): respondemos en un máximo de 15 días hábiles, prorrogables 8 días hábiles más avisándote el motivo. Si el reclamo está incompleto, te pediremos completarlo dentro de los 5 días siguientes.</p>
@@ -87,26 +82,23 @@ $toc = [
     <p>Para proteger tu información, verificaremos tu identidad antes de entregar o modificar datos.</p>
 
     <h2 id="conservacion">6. Conservación y supresión</h2>
-    <p>Conservamos tus datos mientras sean necesarios para las finalidades descritas. Si no tienes reservas, compras ni contacto con nosotros durante <strong>3 años</strong>, anonimizamos tus datos de forma automática.</p>
-    <p>Cuando pides la supresión, <strong>anonimizamos</strong> tu nombre, correo, teléfono y dirección: se reemplazan por un código irreversible. Conservamos sin datos de identificación el registro de reservas, pagos y comisiones, porque es información contable que la ley nos obliga a guardar.</p>
+    <p>Conservamos tus datos mientras sean necesarios para las finalidades descritas. Cuando pides la supresión, borramos la conversación y los datos de contacto, salvo la información contable que la ley nos obliga a guardar.</p>
 
     <h2 id="encargados">7. Encargados y transferencias</h2>
     <p>Para operar el sitio compartimos datos estrictamente necesarios con proveedores que actúan como encargados del tratamiento:</p>
     <ul>
-      <li><strong>Hostinger:</strong> alojamiento del sitio y de la base de datos, y servicio de correo.</li>
-      <li><strong>Wompi (Bancolombia):</strong> procesamiento de pagos en línea.</li>
+      <li><strong>Hostinger:</strong> alojamiento del sitio y servicio de correo.</li>
       <li><strong>Google (Google Analytics y Google Tag Manager):</strong> analítica del sitio, solo si la aceptas.</li>
-      <li><strong>WhatsApp (Meta):</strong> cuando decides escribirnos por ese canal.</li>
-      <li><strong>ClikRank</strong> (diseño, desarrollo y posicionamiento del sitio): accede al registro de reservas y ventas con teléfonos y correos enmascarados, para el cálculo de comisiones.</li>
+      <li><strong>WhatsApp (Meta):</strong> el canal por el que nos envías tus solicitudes.</li>
     </ul>
     <p>Algunos de estos proveedores pueden almacenar información fuera de Colombia, en países con niveles adecuados de protección o bajo cláusulas contractuales que la garantizan.</p>
 
     <h2 id="cookies">8. Cookies y analítica</h2>
-    <p>Usamos cookies <strong>necesarias</strong> para que el sitio funcione (sesión del formulario y protección contra envíos falsos) y una cookie propia que recuerda la campaña por la que llegaste durante 30 días.</p>
+    <p>Usamos cookies <strong>necesarias</strong> para que el sitio funcione (sesión del formulario y protección contra envíos falsos).</p>
     <p>Las cookies de <strong>analítica</strong> de Google solo se cargan si las aceptas en el aviso de cookies. Puedes cambiar tu decisión en cualquier momento desde el enlace «Cookies» al pie de cada página.</p>
 
     <h2 id="seguridad">9. Seguridad</h2>
-    <p>El sitio funciona solo con conexión cifrada (HTTPS). El acceso al panel interno exige contraseña y doble factor de autenticación, los comprobantes se guardan fuera del acceso público y cada cambio en una reserva queda en un historial que no se puede editar.</p>
+    <p>El sitio funciona solo con conexión cifrada (HTTPS) y no almacena los datos de los formularios. Los comprobantes y conversaciones se manejan únicamente en WhatsApp.</p>
 
     <h2 id="vigencia">10. Vigencia y cambios</h2>
     <p>Esta política rige desde el <?= e($vigencia) ?>. Si la cambiamos de forma sustancial, lo publicaremos en esta página y, si tenemos tu correo, te avisaremos antes de aplicar los cambios.</p>

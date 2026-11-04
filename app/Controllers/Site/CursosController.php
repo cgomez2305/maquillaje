@@ -26,7 +26,7 @@ final class CursosController extends Controller
                 'modules_label' => 'Aprenderás · 5 módulos de 1 a 1,5 horas',
                 'modules' => ['Teoría básica', 'Maquillaje de piel', 'Maquillaje de ojos para día', 'Maquillaje de ojos para noche', 'Maquillaje de ojos glam', 'Maquillaje de cejas', 'Maquillaje de labios'],
                 'note' => null,
-                'buy' => '/tienda/curso-automaquillaje',
+                'buy' => wa_href('cursos-automaquillaje', 'curso-auto'),
                 'schema_desc' => 'Curso presencial de automaquillaje en Floridablanca: teoría básica, piel, ojos día, noche y glam, cejas y labios. 5 módulos de 1 a 1,5 horas.',
             ],
             [
@@ -38,7 +38,7 @@ final class CursosController extends Controller
                 'modules_label' => 'Aprenderás · 7 módulos de 2 a 3 horas',
                 'modules' => ['Teoría básica', 'Maquillaje de piel', 'Maquillaje social para día, noche y glam', 'Maquillaje de novias y quinceañeras', 'Maquillaje editorial y para sesión de fotos', 'Maquillaje de cejas', 'Maquillaje de labios'],
                 'note' => 'Debes venir acompañada de una modelo de práctica.',
-                'buy' => '/tienda/curso-maquillaje-profesional',
+                'buy' => wa_href('cursos-profesional', 'curso-pro'),
                 'schema_desc' => 'Curso presencial de maquillaje profesional en Floridablanca: piel, social día, noche y glam, novias, quinceañeras, editorial, sesión de fotos, cejas y labios. 7 módulos de 2 a 3 horas. Requiere modelo de práctica.',
             ],
         ];
@@ -50,8 +50,8 @@ final class CursosController extends Controller
         $faq = [
             ['q' => '¿Necesito experiencia previa?', 'a' => 'No. Los dos cursos empiezan por teoría básica. En el curso profesional debes venir con una modelo de práctica.'],
             ['q' => '¿Los productos están incluidos?', 'a' => 'Recibes una lista de materiales con un descuento especial en una tienda aliada. Mientras los consigues, puedes empezar con el kit de maquillaje de María Paula.'],
-            ['q' => '¿Cuándo empieza el próximo grupo?', 'a' => '[Fecha de inicio y horario del próximo grupo].', 'pending' => true],
-            ['q' => '¿Cómo separo mi cupo?', 'a' => 'Inscríbete en línea con pago seguro (tarjeta, PSE o Nequi) o escríbenos por WhatsApp: el cupo también queda separado con un abono del 50 % por Nequi o Bancolombia.'],
+            ['q' => '¿Cuándo empieza el próximo grupo?', 'a' => 'Abrimos grupos durante todo el año con cupos limitados. Escríbenos por WhatsApp con el botón «Inscribirme» y te enviamos la fecha y el horario del próximo grupo.'],
+            ['q' => '¿Cómo separo mi cupo?', 'a' => 'Escríbenos por WhatsApp con el botón «Inscribirme» de cada curso: te contamos la fecha del próximo grupo y el cupo queda separado con un abono del 50 % por Nequi o Bancolombia.'],
         ];
 
         $schema = [];

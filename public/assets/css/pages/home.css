@@ -21,7 +21,6 @@
 .cursos-band-ph { border-radius: 0; height: 100%; min-height: 620px; }
 .addr { font-style: normal; }
 
-.reviews-head { margin-bottom: 56px; }
 .faq-grid { grid-template-columns: .8fr 1.2fr; align-items: start; }
 
 /* Menú de decisión rápida del hero (solo móvil): las cuatro opciones con su precio en la primera pantalla */
@@ -52,5 +51,4 @@
   .cursos-band { gap: 0; }
   .cursos-band-txt { padding: 48px 24px; }
   .cursos-band-ph { min-height: 0; height: 280px; }
-  .reviews-head { margin-bottom: 40px; }
 }

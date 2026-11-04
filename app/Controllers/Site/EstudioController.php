@@ -4,15 +4,11 @@ declare(strict_types=1);
 namespace App\Controllers\Site;
 
 use App\Controllers\Controller;
-use App\Domain\Leads\LeadService;
-use App\Domain\Notifications\Mailer;
-use App\Http\FormGuard;
 use App\Http\Request;
 use App\Http\Response;
 
 /**
- * Estudio y contacto. La cotización guarda un lead (WEB-…) y luego abre WhatsApp
- * con el mensaje armado que incluye el código (§7, §9.3).
+ * Estudio y contacto. La cotización no se guarda: arma el mensaje y abre WhatsApp con él (§7).
  */
 final class EstudioController extends Controller
 {
@@ -41,28 +37,17 @@ final class EstudioController extends Controller
     public function cotizar(Request $request): Response
     {
         $old = [
-            'nombre' => $request->str('nombre', 120),
-            'telefono' => $request->str('telefono', 20),
+            'nombre' => $request->str('nombre', 80),
             'fecha' => $request->str('fecha', 10),
             'hora' => $request->str('hora', 5),
             'servicio' => $request->str('servicio', 20),
             'lugar' => $request->str('lugar', 20),
-            'mensaje' => $request->str('mensaje', 1000),
-            'autorizo' => $request->str('autorizo', 1),
+            'mensaje' => $request->str('mensaje', 400),
         ];
-
-        $guard = FormGuard::check($request, 'cotizacion');
-        if ($guard !== null) {
-            return $this->render($old, [], $guard, 422);
-        }
 
         $errors = [];
         if (mb_strlen($old['nombre']) < 2) {
             $errors['nombre'] = 'Escribe tu nombre.';
-        }
-        $phone = phone_e164($old['telefono']);
-        if ($phone === null) {
-            $errors['telefono'] = 'Escribe un número de celular válido, por ejemplo 300 000 0000.';
         }
         $tz = new \DateTimeZone((string) config('app.timezone'));
         $date = null;
@@ -88,62 +73,28 @@ final class EstudioController extends Controller
         if (!isset(self::PLACES[$old['lugar']])) {
             $errors['lugar'] = 'Elige un lugar de la lista.';
         }
-        if ($old['autorizo'] !== '1') {
-            $errors['autorizo'] = 'Necesitamos tu autorización para responderte.';
-        }
         if ($errors) {
             return $this->render($old, $errors, null, 422);
         }
 
-        $payload = [
-            'servicio' => $old['servicio'],
-            'fecha' => $old['fecha'] ?: null,
-            'hora' => $old['hora'] ?: null,
-            'lugar' => $old['lugar'],
-            'mensaje' => $old['mensaje'] ?: null,
-        ];
-        try {
-            $lead = LeadService::create('cotizacion', [
-                'name' => $old['nombre'],
-                'phone_e164' => $phone,
-                'payload' => $payload,
-                'origin' => 'estudio-cotizacion',
-                'consent_at' => now_utc(),
-            ]);
-        } catch (\Throwable $e) {
-            app_log('error', 'Cotización no guardada: ' . $e->getMessage());
-            return $this->render($old, [], 'No pudimos registrar tu cotización. Inténtalo de nuevo o escríbenos por WhatsApp.', 500);
-        }
-
         $when = $date ? fecha_larga($date) : null;
-        if ($when !== null && $old['hora'] !== '') {
-            $when .= ', ' . hora(\DateTimeImmutable::createFromFormat('H:i', $old['hora'], $tz) ?: new \DateTimeImmutable('now', $tz));
+        if ($old['hora'] !== '') {
+            $h = hora(\DateTimeImmutable::createFromFormat('H:i', $old['hora'], $tz) ?: new \DateTimeImmutable('now', $tz));
+            $when = $when !== null ? $when . ', ' . $h : 'Hora: ' . $h;
         }
-
-        Mailer::send(Mailer::owner(), 'Nueva cotización ' . $lead['code'] . ' · ' . self::SERVICES[$old['servicio']], 'cotizacion-duena', [
-            'code' => $lead['code'],
-            'name' => $old['nombre'],
-            'phone' => $phone,
-            'service' => self::SERVICES[$old['servicio']],
-            'place' => self::PLACES[$old['lugar']],
-            'when' => $when,
-            'message' => $old['mensaje'],
-        ], 'cotizacion-' . $lead['code']);
-
-        $lines = [
-            'Hola, vengo de la web · ' . $lead['code'] . '.',
-            'Quiero cotizar: ' . self::SERVICES[$old['servicio']] . '.',
-        ];
+        $lines = ['Hola, Make Up by Fletcher. Quiero cotizar un servicio:', ''];
+        $lines[] = '• Servicio: ' . self::SERVICES[$old['servicio']];
         if ($when !== null) {
-            $lines[] = 'Fecha: ' . $when . '.';
-        } elseif ($old['hora'] !== '') {
-            $lines[] = 'Hora: ' . $old['hora'] . '.';
+            $lines[] = '• Fecha: ' . $when;
         }
-        $lines[] = 'Lugar: ' . self::PLACES[$old['lugar']] . '.';
-        $lines[] = 'Mi nombre es ' . $old['nombre'] . '.';
+        $lines[] = '• Lugar: ' . self::PLACES[$old['lugar']];
+        $lines[] = '• Mi nombre: ' . $old['nombre'];
         if ($old['mensaje'] !== '') {
-            $lines[] = $old['mensaje'];
+            $lines[] = '• Nota: ' . $old['mensaje'];
         }
+        $lines[] = '';
+        $lines[] = '¿Tienen disponibilidad?';
+        \App\Support\Metrics::bump('quotes');
 
         return Response::redirect(wa_direct(implode("\n", $lines)), 303)->header('Cache-Control', 'no-store');
     }

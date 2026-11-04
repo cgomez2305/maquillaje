@@ -5,17 +5,8 @@
 .rsv-intro { margin: 20px 0 56px; font-size: 17px; line-height: 1.65; color: var(--cacao); max-width: 560px; }
 .rsv-layout { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 56px; align-items: start; }
 
-.rsv-steps { display: flex; gap: 8px; margin: 0 0 48px; padding: 0; list-style: none; }
-.rsv-st { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-.rsv-st .bar { height: 2px; border-radius: 2px; background: rgba(23, 19, 18, .12); overflow: hidden; display: block; }
-.rsv-st .bar span { display: block; height: 100%; background: var(--tinta); transform-origin: left; transform: scaleX(0); transition: transform .7s var(--ease); }
-.rsv-st.on .bar span { transform: scaleX(1); }
-.rsv-st .t { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--topo); }
-.rsv-st.on .t { color: var(--tinta); }
 .rsv-alert { margin-bottom: 32px; }
 .rsv-h2 { font-size: 36px; margin-bottom: 28px; }
-.pane { animation: pane .6s var(--ease) both; }
-@keyframes pane { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .rsv-opts { display: flex; flex-direction: column; gap: 12px; }
 .rsv-group { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
@@ -23,6 +14,19 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .rsv-hint { margin: 16px 0 0; font-size: 13px; line-height: 1.55; color: var(--topo); }
 .rsv-hint a { color: var(--topo); }
 .rsv .err { margin: 10px 0 0; font-size: 13px; color: #9A3A28; }
+
+/* Bloques del formulario de solicitud */
+.rsv-block { display: flex; flex-direction: column; gap: 16px; padding: 0 0 40px; margin-bottom: 40px; border-bottom: 1px solid rgba(23, 19, 18, .08); }
+.rsv-block legend { padding: 0; margin-bottom: 20px; display: flex; align-items: baseline; gap: 14px; }
+.rsv-n { font-family: var(--font-body); font-size: 13px; letter-spacing: .16em; color: var(--terracota); }
+.rsv-date { max-width: 320px; }
+.rsv-date input { min-height: 48px; }
+.rsv-zone { max-width: 420px; margin-top: 8px; }
+.rsv-form:not(:has(input[name="location"][value="home"]:checked)) .rsv-zone:not(.has-err) { display: none; }
+.slot .ic { width: 16px; height: 16px; margin-right: 8px; }
+.slot span { display: inline-flex; align-items: center; }
+.rsv-send .ic { width: 20px; height: 20px; }
+.bubble { background: #E7F6E1; border-radius: 18px 18px 18px 4px; padding: 16px 18px; font-size: 14px; line-height: 1.6; color: var(--tinta); display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 0 rgba(23, 19, 18, .06); }
 
 /* Tarjeta de opción */
 .opt {
@@ -51,28 +55,11 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .slot:has(input:focus-visible) { outline: 2px solid var(--terracota); outline-offset: 3px; }
 .slot.off, .slot:has(input:disabled) { background: transparent; color: var(--deshabilitado); text-decoration: line-through; cursor: not-allowed; box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .06); }
 
-/* Calendario */
-.rsv-cal-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-.rsv-cal-head .rsv-h2 { margin-bottom: 0; }
-.rsv-month { display: flex; align-items: center; gap: 8px; font-size: 15px; }
-.cal-nav { width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .14); }
-.cal-nav:hover { box-shadow: inset 0 0 0 1px var(--tinta); }
-.cal-nav .ic { width: 16px; height: 16px; }
-.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
-.cal .h { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--topo); text-align: center; padding: 8px 0; }
-.day {
-  aspect-ratio: 1; border-radius: 14px; background: var(--blanco); font-size: 15px; color: var(--tinta); cursor: pointer;
-  box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .08); display: grid; place-items: center;
-  transition: box-shadow .25s ease, background-color .25s ease, transform 100ms ease-out;
-}
-.day:hover { box-shadow: inset 0 0 0 1px var(--tinta); }
-.day:active { transform: scale(.95); }
-.day.off { background: transparent; color: var(--deshabilitado); box-shadow: none; cursor: default; text-decoration: line-through; }
-.day:has(input:checked) { background: var(--tinta); color: var(--porcelana); }
-.day:has(input:focus-visible) { outline: 2px solid var(--terracota); outline-offset: 2px; }
-.day.blank { visibility: hidden; }
 
-.rsv-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 28px; border-top: 1px solid rgba(23, 19, 18, .1); }
+.rsv-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; }
+.rsv-mini { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.rsv-mini > span { font-size: 13px; color: var(--topo); }
+.rsv-mini strong { font-weight: 400; font-size: 18px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .rsv .fg { gap: 30px 32px; }
 
 /* Resumen */
@@ -89,19 +76,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .sum .hr { margin: 4px 0; background: rgba(23, 19, 18, .1); }
 .sum-note { font-size: 12px; line-height: 1.6; color: var(--topo); }
 
-/* Estado / confirmación (paso 4) */
-.rsv-done { border-radius: 32px; padding: 48px 40px; display: flex; flex-direction: column; gap: 22px; color: var(--tinta); }
-.rsv-done h2 { font-size: clamp(36px, 4.6vw, 60px); }
-.rsv-done p.txt { font-size: 16px; line-height: 1.65; max-width: 520px; }
-.rsv-next { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 40px; border-top: 1px solid var(--linea); }
-.rsv-next > div { padding: 24px 20px 0 0; }
-.rsv-next p + p { margin-top: 10px; font-size: 15px; line-height: 1.5; }
-.rsv-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: var(--r-pill); font-size: 13px; background: var(--porcelana); align-self: flex-start; }
-.rsv-chip::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.rsv-chip.solicitada { color: #8A5300; } .rsv-chip.confirmada { color: #2F6B3D; } .rsv-chip.realizada { color: #2D4E80; }
-.rsv-chip.cancelada, .rsv-chip.no_asistio, .rsv-chip.vencida { color: #9A3A28; }
 
-@media (prefers-reduced-motion: reduce) { .pane { animation: none; } .rsv-st .bar span { transition: none; } }
 @media (max-width: 960px) {
   .rsv { padding-top: 32px; }
   .rsv-intro { margin-bottom: 40px; }
@@ -111,10 +86,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .rsv-title { font-size: 44px; }
   .rsv-head { gap: 12px; }
   .rsv-intro { font-size: 15px; margin: 12px 0 28px; }
-  .rsv-steps { margin-bottom: 28px; }
-  .rsv-st .t { font-size: 13px; letter-spacing: .01em; text-transform: none; }
   .sum-note { font-size: 13px; }
-  .cal .h { font-size: 12px; letter-spacing: .06em; }
   /* Barra fija: total, abono y «Continuar» siempre visibles mientras se elige */
   .rsv-nav {
     position: sticky; bottom: 0; z-index: 20; align-items: center; gap: 10px;
@@ -123,16 +95,12 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
     border-top: 1px solid var(--linea-suave); box-shadow: 0 -18px 40px -30px rgba(23, 19, 18, .35);
   }
   .rsv-nav .btn { min-height: 48px; padding: 0 18px; }
-  .rsv-back[disabled] { display: none; }
-  .rsv-mini { display: flex; flex-direction: column; line-height: 1.2; margin-right: auto; min-width: 0; }
-  .rsv-mini > span { font-size: 13px; color: var(--topo); }
-  .rsv-mini strong { font-weight: 400; font-size: 17px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rsv-block { padding-bottom: 28px; margin-bottom: 28px; }
+  .rsv-block legend { margin-bottom: 14px; }
+  .rsv-date { max-width: none; }
+  .sum { order: -1; display: none; }
   .opt { padding: 20px; }
   .opt-name { font-size: 24px; }
   .rsv-h2 { font-size: 30px; }
-  .cal { gap: 4px; }
-  .day { border-radius: 10px; font-size: 14px; }
-  .rsv-done { padding: 40px 24px; }
-  .rsv-next { grid-template-columns: minmax(0, 1fr); }
 }
 .rsv .crumbs + .rsv-head { margin-top: 32px; }

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Domain\Attribution\AttributionService;
 use App\Http\Csrf;
 use App\Http\Request;
 use App\Http\Response;
@@ -63,10 +62,6 @@ final class Kernel
         $request->params = $match['params'];
         $options = $match['options'];
 
-        if (!$request->isPanel() && $request->method === 'GET') {
-            AttributionService::captureFromRequest($request);
-        }
-
         if ($request->method === 'POST' && ($options['csrf'] ?? true) && !Csrf::verify($request)) {
             if ($request->wantsJson()) {
                 return Response::json(['error' => 'La sesión caducó. Recarga la página e inténtalo de nuevo.'], 419);
@@ -111,7 +106,7 @@ final class Kernel
         ];
         [$title, $text] = $titles[$status] ?? $titles[500];
         try {
-            $layout = $request->isPanel() ? 'panel-bare' : 'site';
+            $layout = 'site';
             $html = View::render('site/error', [
                 'status' => $status,
                 'title' => $title,

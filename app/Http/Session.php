@@ -4,18 +4,15 @@ declare(strict_types=1);
 namespace App\Http;
 
 /**
- * Sesión PHP con cookies endurecidas (§14.2). Arranque perezoso: el sitio público solo
- * abre sesión cuando hay un formulario (CSRF) o un flujo de reserva.
- * El panel usa otra cookie, SameSite=Strict y caducidad por inactividad y absoluta.
+ * Sesión PHP con cookies endurecidas (§14.2). Arranque perezoso: solo se abre cuando hay un
+ * formulario (token CSRF). No guarda datos personales: las solicitudes van directo a WhatsApp.
  */
 final class Session
 {
-    private static bool $panel = false;
     private static bool $secure = true;
 
     public static function configure(Request $request): void
     {
-        self::$panel = $request->isPanel();
         self::$secure = $request->isHttps() || config('app.env') === 'production';
     }
 
@@ -37,13 +34,13 @@ final class Session
             ini_set('session.sid_bits_per_character', '6');
         }
         ini_set('session.gc_maxlifetime', (string) (60 * 60 * 12));
-        session_name(self::$panel ? 'mubf_panel' : 'mubf_s');
+        session_name('mubf_s');
         session_set_cookie_params([
             'lifetime' => 0,
-            'path' => self::$panel ? '/panel' : '/',
+            'path' => '/',
             'secure' => self::$secure,
             'httponly' => true,
-            'samesite' => self::$panel ? 'Strict' : 'Lax',
+            'samesite' => 'Lax',
         ]);
         $dir = BASE_PATH . '/storage/cache/sessions';
         if (!is_dir($dir)) {

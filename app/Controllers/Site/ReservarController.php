@@ -4,220 +4,110 @@ declare(strict_types=1);
 namespace App\Controllers\Site;
 
 use App\Controllers\Controller;
-use App\Domain\Booking\Availability;
-use App\Domain\Booking\BookingService;
-use App\Domain\Booking\BookingStateMachine;
-use App\Domain\Booking\SlotTakenException;
 use App\Domain\Catalog;
-use App\Http\FormGuard;
-use App\Http\HttpException;
 use App\Http\Request;
 use App\Http\Response;
-use App\Http\Session;
 use App\Support\Metrics;
-use DateTimeImmutable;
+use App\Support\WhatsApp;
 
 /**
- * /reservar (§7.1): tres pasos + confirmación. Cada paso es un POST (funciona sin JavaScript);
- * reservar.js actualiza el resumen y la disponibilidad de horas sin recargar.
+ * /reservar: la clienta elige servicio, personas, fecha, hora y lugar, y se abre WhatsApp con la
+ * solicitud ya escrita. La disponibilidad y el abono se confirman por chat. No se guarda nada en la BD.
+ * Funciona sin JavaScript (POST → 303 a wa.me); reservar.js añade el total y la vista previa del mensaje.
  */
 final class ReservarController extends Controller
 {
-    private const KEY = 'reserva';
-
     public function index(Request $request): Response
     {
-        $state = $this->state();
-
-        if ($request->isPost()) {
-            return $this->handlePost($request, $state);
-        }
-
+        $packs = Catalog::packs();
+        $old = [
+            'service' => '', 'people' => '1', 'date' => '', 'time' => '', 'location' => 'studio',
+            'zone' => '', 'event' => '', 'name' => '', 'notes' => '',
+        ];
         $pre = $request->str('servicio', 10);
-        if (in_array($pre, BookingService::PACKS, true)) {
-            $state['service'] = $pre;
-            $state['step'] = 1;
-            $this->save($state);
-            return Response::redirect('/reservar', 303);
+        if (isset($packs[$pre])) {
+            $old['service'] = $pre;
         }
-        if (empty($state['started'])) {
-            $state['started'] = true;
-            $this->save($state);
+
+        if (!$request->isPost()) {
             Metrics::bump('booking_starts');
-        }
-        return $this->render($state, []);
-    }
-
-    /** JSON: horas libres de un día (para reservar.js). */
-    public function disponibilidad(Request $request): Response
-    {
-        $date = $request->str('date', 10);
-        $people = max(1, min(4, $request->int('people', 1)));
-        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
-            return Response::json(['slots' => []], 422);
-        }
-        return Response::json(['date' => $date, 'slots' => Availability::slotsForDay($date, $people)]);
-    }
-
-    /** /reserva/{code}?t=token — estado y confirmación para la clienta. */
-    public function estado(Request $request): Response
-    {
-        $code = $request->param('code');
-        $token = $request->str('t', 60);
-        $b = BookingService::findByCode($code);
-        if ($b === null || $token === '' || !hash_equals((string) $b['public_token'], $token)) {
-            throw new HttpException(404);
-        }
-        $start = local_time($b['starts_at']);
-        return $this->page('reservar', 'site/reserva-estado', [
-            'b' => $b,
-            'isNew' => $request->str('nueva', 2) === '1',
-            'fecha' => $start ? fecha_larga($start) : '',
-            'hora' => $start ? hora($start) : '',
-            'statusLabel' => BookingStateMachine::LABELS[$b['status']] ?? $b['status'],
-            'waUrl' => wa_direct('Hola, envío el comprobante del abono de mi reserva ' . $b['code']),
-            'meta' => ['title' => 'Reserva ' . $b['code'] . ' · Make Up by Fletcher', 'description' => 'Estado de tu reserva', 'robots' => 'noindex, nofollow', 'canonical' => '/reservar'],
-            'crumbs' => [],
-            'css' => ['pages/reservar.css'],
-            'focus' => true,
-            'hideFab' => true,
-        ]);
-    }
-
-    private function handlePost(Request $request, array $state): Response
-    {
-        $step = max(1, min(3, $request->int('step', (int) $state['step'])));
-        $action = $request->str('action', 10);
-        $mes = $request->str('mes', 7);
-
-        // Guardar lo enviado en este paso (aunque se vaya hacia atrás)
-        if ($step === 1) {
-            $state['service'] = $request->str('service', 10) ?: $state['service'];
-            $state['people'] = $request->int('people', (int) $state['people']);
-        } elseif ($step === 2) {
-            foreach (['date' => 10, 'time' => 5, 'location' => 6] as $f => $len) {
-                $v = $request->str($f, $len);
-                if ($v !== '') {
-                    $state[$f] = $v;
-                }
-            }
-        } else {
-            foreach (['name' => 120, 'phone' => 30, 'email' => 190, 'birthday' => 10, 'address' => 255, 'event_type' => 20, 'how_found' => 20, 'notes' => 1000] as $f => $len) {
-                $state['details'][$f] = $request->str($f, $len);
-            }
-            $state['details']['consent'] = $request->input('consent') === '1';
-            $state['details']['marketing'] = $request->input('marketing') === '1';
+            return $this->render($old, []);
         }
 
-        if ($mes !== '' && preg_match('/^\d{4}-\d{2}$/', $mes)) {
-            $state['month'] = $mes;
-            $state['step'] = 2;
-            $this->save($state);
-            return Response::redirect('/reservar#calendario', 303);
+        foreach (['service' => 10, 'people' => 2, 'date' => 10, 'time' => 5, 'location' => 6, 'zone' => 80, 'event' => 20, 'name' => 80, 'notes' => 400] as $f => $len) {
+            $old[$f] = trim($request->str($f, $len));
         }
-
-        if ($action === 'back') {
-            $state['step'] = max(1, $step - 1);
-            $this->save($state);
-            return Response::redirect('/reservar#paso', 303);
-        }
-
-        $errors = match ($step) {
-            1 => BookingService::validateService($state),
-            2 => BookingService::validateSchedule($state),
-            default => [],
-        };
-        if ($step === 3) {
-            [$errors, $clean] = BookingService::validateDetails($state['details'], (string) $state['location']);
-            $errors += BookingService::validateService($state) + BookingService::validateSchedule($state);
-            if ($errors === []) {
-                $spam = FormGuard::check($request, 'reserva');
-                if ($spam !== null) {
-                    $errors['form'] = $spam;
-                }
-            }
-            if ($errors === []) {
-                try {
-                    $booking = BookingService::createFromWeb([
-                        'service' => $state['service'], 'people' => (int) $state['people'], 'date' => $state['date'],
-                        'time' => $state['time'], 'location' => $state['location'],
-                    ], $clean, $request->ip(), $request->userAgent());
-                } catch (SlotTakenException) {
-                    $state['step'] = 2;
-                    $state['time'] = null;
-                    $this->save($state);
-                    return $this->render($state, ['time' => 'Alguien acaba de tomar esa hora. Elige otra, por favor.'], 409);
-                }
-                Session::forget(self::KEY);
-                Session::flash('booking_done', ['service' => $booking['service_code'], 'total' => (int) $booking['total']]);
-                return Response::redirect('/reserva/' . $booking['code'] . '?t=' . $booking['public_token'] . '&nueva=1', 303);
-            }
-        }
-
+        $errors = $this->validate($old, $packs);
         if ($errors !== []) {
-            $state['step'] = $step;
-            $this->save($state);
-            return $this->render($state, $errors, 422);
+            return $this->render($old, $errors, 422);
         }
-
-        $state['step'] = $step + 1;
-        $this->save($state);
-        // Entre pasos se aterriza en el indicador de progreso (en móvil el título ocupa la primera pantalla)
-        return Response::redirect('/reservar#paso', 303);
+        Metrics::bump('booking_submits');
+        return Response::redirect(wa_direct(WhatsApp::serviceRequest([
+            'service' => $old['service'], 'people' => (int) $old['people'], 'date' => $old['date'], 'time' => $old['time'],
+            'location' => $old['location'], 'zone' => $old['zone'], 'event' => $old['event'], 'name' => $old['name'], 'notes' => $old['notes'],
+        ])), 303)->header('Cache-Control', 'no-store');
     }
 
-    private function render(array $state, array $errors, int $status = 200): Response
+    /** @return array<string,string> */
+    private function validate(array $d, array $packs): array
     {
-        $tz = Availability::tz();
-        $first = Availability::firstDay();
-        $last = Availability::lastDay();
-        $month = $state['month'] ?? null;
-        if ($month === null && !empty($state['date'])) {
-            $month = substr((string) $state['date'], 0, 7);
+        $e = [];
+        if (!isset($packs[$d['service']])) {
+            $e['service'] = 'Elige el servicio que necesitas.';
         }
-        $monthStart = new DateTimeImmutable(($month ?? $first->format('Y-m')) . '-01', $tz);
-        if ($monthStart < $first->modify('first day of this month')) {
-            $monthStart = $first->modify('first day of this month');
+        $maxPeople = (int) config('app.booking.max_people', 4);
+        if (!ctype_digit($d['people']) || (int) $d['people'] < 1 || (int) $d['people'] > $maxPeople) {
+            $e['people'] = 'Indica cuántas personas se maquillan.';
         }
-        if ($monthStart > $last) {
-            $monthStart = $last->modify('first day of this month');
+        $date = \DateTimeImmutable::createFromFormat('!Y-m-d', $d['date'], new \DateTimeZone('America/Bogota'));
+        [$min, $max] = $this->dateRange();
+        if (!$date || $date->format('Y-m-d') !== $d['date']) {
+            $e['date'] = 'Elige la fecha de tu evento.';
+        } elseif ($d['date'] < $min || $d['date'] > $max) {
+            $e['date'] = 'Agendamos con mínimo ' . (int) config('app.booking.min_days_ahead', 2) . ' días de anticipación.';
         }
-        $people = max(1, (int) $state['people']);
-        $days = (int) $state['step'] === 2 ? Availability::month((int) $monthStart->format('Y'), (int) $monthStart->format('n'), $people) : [];
-        $slots = \App\Support\Settings::slots();
-        $freeSlots = (!empty($state['date']) && (int) $state['step'] === 2) ? Availability::slotsForDay((string) $state['date'], $people) : $slots;
-        $quote = in_array($state['service'], BookingService::PACKS, true) ? BookingService::quote((string) $state['service'], $people) : null;
+        if ($d['time'] !== '' && !in_array($d['time'], (array) config('app.booking.slots'), true)) {
+            $e['time'] = 'Elige una hora de la lista.';
+        }
+        if (!in_array($d['location'], ['studio', 'home'], true)) {
+            $e['location'] = 'Elige dónde será el maquillaje.';
+        } elseif ($d['location'] === 'home' && mb_strlen($d['zone']) < 3) {
+            $e['zone'] = 'Escribe el barrio y la ciudad del servicio.';
+        }
+        if ($d['event'] !== '' && !isset(config('app.booking.event_types')[$d['event']])) {
+            $e['event'] = 'Elige el tipo de evento.';
+        }
+        if (mb_strlen($d['name']) < 2) {
+            $e['name'] = 'Escribe tu nombre.';
+        }
+        return $e;
+    }
 
+    /** @return array{0:string,1:string} fechas mínima y máxima (Bogotá) */
+    private function dateRange(): array
+    {
+        $today = new \DateTimeImmutable('today', new \DateTimeZone('America/Bogota'));
+        return [
+            $today->modify('+' . (int) config('app.booking.min_days_ahead', 2) . ' days')->format('Y-m-d'),
+            $today->modify('+' . (int) config('app.booking.max_days_ahead', 540) . ' days')->format('Y-m-d'),
+        ];
+    }
+
+    private function render(array $old, array $errors, int $status = 200): Response
+    {
+        [$min, $max] = $this->dateRange();
         return $this->page('reservar', 'site/reservar', [
-            's' => $state,
+            'old' => $old,
             'errors' => $errors,
             'packs' => Catalog::packs(),
-            'quote' => $quote,
-            'monthStart' => $monthStart,
-            'prevMonth' => $monthStart > $first->modify('first day of this month') ? $monthStart->modify('-1 month')->format('Y-m') : null,
-            'nextMonth' => $monthStart->modify('+1 month') <= $last ? $monthStart->modify('+1 month')->format('Y-m') : null,
-            'days' => $days,
-            'slots' => $slots,
-            'freeSlots' => $freeSlots,
+            'minDate' => $min,
+            'maxDate' => $max,
             'crumbs' => [],
             'css' => ['pages/reservar.css'],
             'js' => ['reservar.js'],
             'focus' => true,
             'hideFab' => true,
-            'meta' => ['robots' => 'index, follow'],
+            'meta' => ['robots' => 'noindex, follow'],
         ], $status);
-    }
-
-    /** @return array<string,mixed> */
-    private function state(): array
-    {
-        $s = Session::get(self::KEY);
-        $default = ['step' => 1, 'service' => '', 'people' => 1, 'date' => null, 'time' => null, 'location' => 'studio', 'month' => null, 'details' => [], 'started' => false];
-        return is_array($s) ? $s + $default : $default;
-    }
-
-    private function save(array $state): void
-    {
-        Session::put(self::KEY, $state);
     }
 }

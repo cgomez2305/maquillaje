@@ -41,7 +41,7 @@ $rows = [
     ['/', 'Inicio', 'Make Up by Fletcher', 'home'],
     ['/precios-maquillaje-bucaramanga', 'Servicios y precios', 'Compara los tres packs', 'tag'],
     ['/portafolio', 'Portafolio', 'Novias, social y detrás de cámaras', 'image'],
-    ['/tienda', 'Tienda', 'Bonos de regalo y kits', 'bag'],
+    ['/tienda', 'Tienda', 'Próximamente · bonos y kits', 'bag'],
     ['/diario', 'Diario', 'Guías de maquillaje', 'book'],
     ['/estudio-maquillaje-floridablanca', 'Estudio', 'Floridablanca · cómo llegar', 'pin'],
 ];

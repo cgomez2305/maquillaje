@@ -1,1 +1,0 @@
-<svg class="stars" viewBox="0 0 90 14" width="90" height="14" role="img" aria-label="5 estrellas"><g fill="#F98F7D"><?php foreach ([7, 26, 45, 64, 83] as $x): ?><path transform="translate(<?= $x - 7 ?> 0)" d="M7 0l1.9 4.6 4.9.4-3.7 3.2 1.1 4.8L7 10.5 2.8 13l1.1-4.8L.2 5l4.9-.4z"/><?php endforeach; ?></g></svg>

@@ -57,7 +57,7 @@ final class Response
         }
         $host = strtolower((string) parse_url($to, PHP_URL_HOST));
         $scheme = strtolower((string) parse_url($to, PHP_URL_SCHEME));
-        $allowed = ['wa.me', 'api.whatsapp.com', 'checkout.wompi.co', parse_url((string) config('app.url'), PHP_URL_HOST)];
+        $allowed = ['wa.me', 'api.whatsapp.com', parse_url((string) config('app.url'), PHP_URL_HOST)];
         return $scheme === 'https' && in_array($host, $allowed, true);
     }
 
