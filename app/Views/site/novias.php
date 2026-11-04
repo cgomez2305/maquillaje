@@ -72,7 +72,7 @@
 <section class="wrap sec nv-fm" aria-labelledby="nv-fm-t">
   <div class="rv stack gap-18 nv-fm-head">
     <p class="lbl c-terracota">El acabado, punto por punto</p>
-    <h2 class="d d-l" id="nv-fm-t">Así se ve el Pack 3<br>en tu piel.</h2>
+    <h2 class="d d-l" id="nv-fm-t">Así se ve el <span class="nowrap">Pack 3</span><br class="hide-m"> en tu piel.</h2>
   </div>
   <div class="fm" data-facemap>
     <figure class="fm-fig">

@@ -30,7 +30,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
 /* Tarjeta de opción */
 .opt {
-  width: 100%; text-align: left; color: var(--tinta); background: var(--blanco); border-radius: 22px; padding: 24px 26px;
+  width: 100%; text-align: left; color: var(--tinta); background: var(--blanco); border-radius: 22px; padding: var(--pad-item);
   display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 20px; cursor: pointer;
   box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .1); transition: box-shadow .3s ease, transform 100ms ease-out;
 }
@@ -39,7 +39,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .opt:has(input:checked) { box-shadow: inset 0 0 0 2px var(--tinta); }
 .opt:has(input:focus-visible) { outline: 2px solid var(--terracota); outline-offset: 3px; }
 .opt-main { display: flex; flex-direction: column; gap: 6px; }
-.opt-name { font-size: 28px; }
+.opt-name { font-size: 28px; overflow-wrap: anywhere; }
 .opt-price { font-size: 16px; align-self: center; white-space: nowrap; }
 .opt-desc { grid-column: 1 / -1; font-size: 14px; line-height: 1.55; color: var(--texto-tarjeta); }
 
@@ -64,7 +64,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
 /* Resumen */
 .sum {
-  position: sticky; top: 110px; background: var(--blanco); border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 20px;
+  position: sticky; top: 110px; background: var(--blanco); border-radius: 28px; padding: var(--pad-box); display: flex; flex-direction: column; gap: 20px;
   box-shadow: 0 0 0 1px rgba(23, 19, 18, .07), 0 30px 60px -40px rgba(23, 19, 18, .35);
 }
 .sum-name { font-size: 30px; line-height: 1.05; }
@@ -81,7 +81,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .rsv { padding-top: 32px; }
   .rsv-intro { margin-bottom: 40px; }
   .rsv-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .sum { position: static; padding: 24px; }
+  .sum { position: static; }
   .rsv .fg { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .rsv-title { font-size: 44px; }
   .rsv-head { gap: 12px; }
@@ -99,7 +99,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .rsv-block legend { margin-bottom: 14px; }
   .rsv-date { max-width: none; }
   .sum { order: -1; display: none; }
-  .opt { padding: 20px; }
   .opt-name { font-size: 24px; }
   .rsv-h2 { font-size: 30px; }
 }

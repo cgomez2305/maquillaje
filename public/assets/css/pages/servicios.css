@@ -75,10 +75,16 @@
 .sv-zones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 480px; border-bottom: 1px solid var(--linea); }
 .sv-zones li { padding: 18px 0; border-top: 1px solid var(--linea); }
 
-.sv-cta { flex-direction: row; justify-content: space-between; align-items: center; text-align: left; gap: 40px; flex-wrap: wrap; padding: 112px 88px; }
+.sv-cta { flex-direction: row; justify-content: space-between; align-items: center; text-align: left; gap: 40px; flex-wrap: wrap; }
 .sv-cta-txt { max-width: 640px; }
 .sv-cta-d { font-size: clamp(40px, 4.6vw, 70px); }
 
+@media (min-width: 961px) and (max-width: 1240px) {
+  .sv-menu { grid-template-columns: 200px minmax(0, 1fr); gap: 40px; }
+  .sv-row { grid-template-columns: 220px minmax(0, 1fr); gap: 32px; }
+  .sv-row-head { grid-template-columns: auto minmax(0, 1fr); }
+  .sv-row-head .sv-pk-price { grid-column: 2; }
+}
 @media (max-width: 960px) {
   .sv-hero { padding-top: 32px; padding-bottom: 48px; }
   .sv-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-top: 32px; }
@@ -101,5 +107,5 @@
   .sv-tbl tbody th { line-height: 1.35; }
   .sv-tbl-p { font-size: 13px; }
   .sv-home { grid-template-columns: minmax(0, 1fr); gap: 48px; }
-  .sv-cta { padding: 64px 24px; flex-direction: column; align-items: flex-start; gap: 32px; }
+  .sv-cta { flex-direction: column; align-items: flex-start; gap: 32px; }
 }

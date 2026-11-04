@@ -36,7 +36,7 @@
 .est-zones-head { margin-bottom: 48px; }
 .est-zones { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid rgba(23, 19, 18, .14); }
 .est-zones > div { padding: 32px 32px 0 0; }
-.est-zones .d { font-size: 40px; }
+.est-zones .d { font-size: clamp(30px, 3vw, 40px); overflow-wrap: anywhere; }
 .est-zone-mode { margin-top: 12px; color: var(--texto-tarjeta); }
 
 @media (prefers-reduced-motion: reduce) { .ping { animation: none; } }
@@ -52,7 +52,7 @@
   .est-hero-grid > .stack { gap: 28px; }
   .map-bar { left: 12px; right: 12px; bottom: 12px; padding: 14px 16px; font-size: 14px; }
   .est-zones-head { margin-bottom: 32px; }
-  .est-zones .d { font-size: 34px; }
+  .est-zones .d { font-size: 30px; }
   .est-zones > div { padding: 24px 16px 8px 0; }
 }
 
@@ -84,3 +84,5 @@
   .cl2, .cl3, .cl4 { flex: 0 0 calc((100% - 20px) / 3); }
   .cl2 .ph, .cl3 .ph, .cl4 .ph { aspect-ratio: 4 / 5; }
 }
+
+.est-data dd { overflow-wrap: anywhere; }

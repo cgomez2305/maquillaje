@@ -36,6 +36,7 @@
 .hq-p { font-size: 15px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .hq-i { width: 16px; height: 16px; color: var(--terracota); }
 
+@media (max-width: 1180px) { .novias-band .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 960px) {
   .hero { grid-template-columns: minmax(0, 1fr); gap: 48px; padding-top: 32px; padding-bottom: 72px; }
   .hero > .stack { gap: 28px; }

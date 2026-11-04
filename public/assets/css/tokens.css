@@ -60,10 +60,17 @@
   --r-foto: 20px; --r-pack: 28px; --r-cta: 40px; --r-pill: 999px;
   --r-arco: 999px 999px 28px 28px;
 
+  /* Relleno interior de cajas: una sola escala para que todas respiren igual */
+  --pad-panel-y: 112px;  /* bloques grandes: llamadas, guía, órbita */
+  --pad-panel-x: 88px;
+  --pad-card: 48px;      /* tarjetas grandes: cursos, packs */
+  --pad-box: 32px;       /* cajas medianas: resumen, notas */
+  --pad-item: 24px;      /* opciones y elementos de lista con fondo */
+
   /* Movimiento */
   --ease: cubic-bezier(.16, 1, .3, 1);
 }
 
 @media (max-width: 960px) {
-  :root { --section-y: 80px; --gutter: 20px; }
+  :root { --section-y: 80px; --gutter: 20px; --pad-panel-y: 64px; --pad-panel-x: 24px; --pad-card: 24px; --pad-box: 24px; --pad-item: 20px; }
 }

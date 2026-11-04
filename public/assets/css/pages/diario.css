@@ -23,7 +23,7 @@
 .upcoming li { display: flex; flex-direction: column; gap: 10px; padding: 24px 0; border-bottom: 1px solid var(--linea); }
 .up-title { font-size: 18px; line-height: 1.4; }
 
-.nl { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; border-radius: var(--r-cta); padding: 96px 88px; position: relative; overflow: hidden; }
+.nl { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; border-radius: var(--r-cta); padding: var(--pad-panel-y) var(--pad-panel-x); position: relative; overflow: hidden; }
 .nl-deco { position: absolute; width: 420px; right: -120px; top: -140px; opacity: .08; pointer-events: none; }
 .nl-deco img { width: 100%; height: auto; }
 .nl-txt, .nl-form, .nl-ok { position: relative; }
@@ -55,7 +55,7 @@
   .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; width: calc(100% + 40px); }
   .chips::-webkit-scrollbar { display: none; }
   .chip { flex: none; }
-  .nl { grid-template-columns: minmax(0, 1fr); padding: 56px 24px; gap: 32px; border-radius: 28px; }
+  .nl { grid-template-columns: minmax(0, 1fr); gap: 32px; border-radius: 28px; }
 }
 
 /* Próximas guías plegadas: no alargan la página ni compiten con la guía descargable */
