@@ -6,9 +6,12 @@
  */
 $check = '<svg class="ck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9.5l4 4 8-9"/></svg>';
 $cards = [
-    'pack1' => ['label' => 'Pack 01 · Servicio base', 'title' => 'Maquillaje social', 'note' => 'Grados, cenas, sesiones de fotos e invitadas de boda.', 'cta' => 'Reservar Pack 1', 'href' => '/reservar?servicio=pack1', 'wa' => false],
-    'pack2' => ['label' => 'Pack 02 · Full experience', 'title' => 'El estudio en tu casa', 'note' => 'Una sesión premium de estudio en la comodidad de tu casa, con música relajante y ventilador de mano para que estés fresca.', 'cta' => 'Reservar Pack 2', 'href' => '/reservar?servicio=pack2', 'wa' => false],
-    'pack3' => ['label' => 'Pack 03 · Novias y quinceañeras', 'title' => 'Tu gran día', 'note' => 'Bodas, quince años y cualquier día que merezca prueba previa.', 'cta' => 'Ver experiencia novia', 'href' => '/maquillaje-de-novia-bucaramanga', 'wa' => false],
+    'pack1' => ['label' => 'Servicio base', 'title' => 'Maquillaje social', 'note' => 'Grados, cenas, sesiones de fotos e invitadas de boda. En el estudio de Floridablanca.', 'cta' => 'Reservar Pack 1', 'href' => '/reservar?servicio=pack1', 'wa' => 'social',
+        'pills' => ['Asesoría previa', 'Maquillaje social', 'Pestañas incluidas'], 'photo' => 'fotos/social-cumple-pastel', 'alt' => 'Clienta con maquillaje social de ojos dorados sonriendo con su torta de cumpleaños'],
+    'pack2' => ['label' => 'Full experience · A domicilio', 'title' => 'El estudio en tu casa', 'note' => 'Una sesión premium en la comodidad de tu casa, con música relajante y ventilador de mano para que estés fresca.', 'cta' => 'Reservar Pack 2', 'href' => '/reservar?servicio=pack2', 'wa' => 'domicilio',
+        'pills' => ['Skin care y masaje', 'Silla y luz de estudio', 'Pestañas incluidas', 'Kit de retoque'], 'photo' => 'fotos/proceso-domicilio', 'alt' => 'Maquilladora aplicando rubor a una novia en bata en su casa'],
+    'pack3' => ['label' => 'Novias y quinceañeras', 'title' => 'Tu gran día', 'note' => 'Bodas, quince años y cualquier día que merezca prueba previa.', 'cta' => 'Reservar Pack 3', 'href' => '/reservar?servicio=pack3', 'wa' => 'novias',
+        'pills' => ['Prueba previa', 'Dos propuestas', 'Video reel', 'Extra fijación'], 'photo' => 'fotos/novia-tiara-ramo', 'alt' => 'Novia con tiara y recogido alto sonriendo con su ramo de hortensias'],
 ];
 $rows = [
     ['Asesoría previa y maquillaje social', [1, 1, 1]],
@@ -38,30 +41,46 @@ $rows = [
   </nav>
 </section>
 
-<section class="wrap sec-b" id="packs">
-  <div class="g3 m-snap sv-packs">
-    <?php $i = 0; foreach ($cards as $code => $c): $dark = $code === 'pack2'; ?>
-    <article class="pk rv<?= $dark ? ' dark' : '' ?>" id="pk-<?= e($code) ?>" data-delay="<?= e((string) ($i++ * 0.06)) ?>">
-      <?php if ($dark): ?>
-      <div class="sv-pk-top"><p class="lbl c-salmon"><?= e($c['label']) ?></p><span class="sv-badge">A domicilio</span></div>
-      <?php else: ?>
-      <p class="lbl c-terracota"><?= e($c['label']) ?></p>
-      <?php endif; ?>
-      <h2 class="d sv-pk-title"><?= e($c['title']) ?></h2>
-      <p class="sv-pk-price"><span class="d"><?= e(money($packs[$code]['price'], false)) ?></span><span class="sv-cop">COP</span></p>
-      <hr class="hr">
-      <ul aria-label="Incluye">
-        <?php foreach ($packs[$code]['includes'] as $item): ?>
-        <li><?= $check ?><?= e($item) ?></li>
-        <?php endforeach; ?>
-      </ul>
-      <p class="sv-pk-note"><?= e($c['note']) ?></p>
-      <a class="btn <?= $dark ? 'light' : 'ghost' ?>" href="<?= e($c['href']) ?>"><?= e($c['cta']) ?></a>
+<section class="wrap sec-b sv-menu" id="packs" aria-label="Packs y precios">
+  <nav class="sv-idx hide-m" aria-label="Packs" data-spy>
+    <p class="lbl c-topo">Catálogo 2026</p>
+    <?php foreach ($cards as $code => $c): ?>
+    <a href="#pk-<?= e($code) ?>"><span class="sv-idx-n">0<?= e(substr($code, -1)) ?></span><span><?= e($c['title']) ?></span><span class="sv-idx-p"><?= e(money($packs[$code]['price'], false)) ?></span></a>
+    <?php endforeach; ?>
+    <a class="btn sm sv-idx-cta" href="/reservar">Armar mi solicitud</a>
+  </nav>
+  <div class="sv-rows">
+    <?php foreach ($cards as $code => $c): ?>
+    <article class="sv-row" id="pk-<?= e($code) ?>">
+      <div class="ph rv sv-row-ph"><?= img($c['photo'], $c['alt'], ['sizes' => '(max-width: 960px) 112px, 300px']) ?></div>
+      <div class="sv-row-body">
+        <div class="sv-row-head">
+          <p class="d sv-row-n" aria-hidden="true">0<?= e(substr($code, -1)) ?></p>
+          <div class="stack gap-8">
+            <p class="lbl c-terracota"><?= e($c['label']) ?></p>
+            <h2 class="d sv-pk-title"><?= e($c['title']) ?></h2>
+          </div>
+          <p class="sv-pk-price"><span class="d"><?= e(money($packs[$code]['price'], false)) ?></span><span class="sv-cop">COP</span></p>
+        </div>
+        <p class="sv-pk-note"><?= e($c['note']) ?></p>
+        <ul class="sv-pills" aria-label="Incluye">
+          <?php foreach ($c['pills'] as $pill): ?><li><?= $check ?><?= e($pill) ?></li><?php endforeach; ?>
+        </ul>
+        <details class="sv-more">
+          <summary><span>Todo lo que incluye</span><?= icon('plus', 'pl') ?></summary>
+          <ul>
+            <?php foreach ($packs[$code]['includes'] as $item): ?><li><?= e($item) ?></li><?php endforeach; ?>
+          </ul>
+        </details>
+        <div class="wrap-row sv-row-cta">
+          <a class="btn" href="<?= e($c['href']) ?>"><?= e($c['cta']) ?> <?= icon('arrow', 'arr') ?></a>
+          <a class="btn ghost" href="<?= e(wa_href('precios-' . $code, $c['wa'])) ?>" rel="nofollow"><?= icon('whatsapp') ?> Preguntar</a>
+        </div>
+      </div>
     </article>
     <?php endforeach; ?>
+    <p class="rv sv-policy">Agenda con mínimo 2 días de anticipación. La fecha se separa con un abono del 50 % por Nequi o Bancolombia (te enviamos los datos por WhatsApp); si no puedes asistir, reagendamos. Avísanos cualquier cambio con 1 día de anticipación.</p>
   </div>
-  <p class="m-snap-hint only-m" aria-hidden="true">Desliza para ver los tres packs <?= icon('arrow', 'arr') ?></p>
-  <p class="rv sv-policy">Agenda con mínimo 2 días de anticipación. La fecha se separa con un abono del 50 % por Nequi o Bancolombia (te enviamos los datos por WhatsApp); si no puedes asistir, reagendamos. Avísanos cualquier cambio con 1 día de anticipación.</p>
 </section>
 
 <section class="wrap sec-b">

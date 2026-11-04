@@ -32,6 +32,8 @@
 .nv-gal { list-style: none; margin: 0; padding: 0; }
 
 .nv-steps-head { margin-bottom: 40px; }
+.nv-fm-head { align-items: center; text-align: center; margin-bottom: 56px; }
+.nv-fm + .sec { padding-top: 0; }
 .nv-steps { list-style: none; margin: 0; padding: 0; }
 .step { display: grid; grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr); gap: 48px; padding: 48px 0; border-top: 1px solid var(--linea); align-items: start; }
 .step:last-child { border-bottom: 1px solid var(--linea); }
@@ -69,6 +71,7 @@
   .inc h3 { margin-top: 20px; }
   .nv-inc-more { margin-top: 32px; }
   .nv-inc-cta .btn { flex: 1 1 100%; }
+  .nv-fm-head { align-items: flex-start; text-align: left; margin-bottom: 32px; }
   .step { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 24px 0; }
   .step-n { padding-top: 0; }
   .step-t { font-size: 26px; }

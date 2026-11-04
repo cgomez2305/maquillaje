@@ -294,6 +294,17 @@
    1600
   ]
  },
+ "fotos/novia-rostro": {
+  "ext": "jpg",
+  "h": 1100,
+  "w": 880,
+  "widths": [
+   480,
+   600,
+   768,
+   880
+  ]
+ },
  "fotos/novia-tiara-ramo": {
   "ext": "jpg",
   "h": 2400,

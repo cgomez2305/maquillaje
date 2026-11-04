@@ -6,6 +6,35 @@
 .sv-hero-p { margin-bottom: 12px; }
 
 #packs, #grados, #domicilio { scroll-margin-top: calc(var(--nav-h) + 16px); }
+
+/* Menú editorial de packs: índice fijo con la sección activa, filas numeradas con foto, etiquetas e inclusión completa */
+.sv-menu { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 72px; align-items: start; }
+.sv-idx { position: sticky; top: calc(var(--nav-h) + 40px); display: flex; flex-direction: column; border-top: 1px solid var(--linea); }
+.sv-idx .lbl { padding: 18px 0 10px; }
+.sv-idx a { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 2px 8px; padding: 14px 0; border-bottom: 1px solid var(--linea); text-decoration: none; color: var(--topo); transition: color .3s ease, padding .45s var(--ease); }
+.sv-idx a:not(.btn):hover { color: var(--tinta); }
+.sv-idx-n { font-size: 13px; letter-spacing: .14em; color: var(--terracota); grid-row: span 2; padding-top: 3px; }
+.sv-idx-p { font-size: 13px; font-variant-numeric: tabular-nums; }
+.sv-idx a[aria-current] { color: var(--tinta); padding-left: 14px; box-shadow: inset 2px 0 0 var(--terracota); }
+.sv-idx .sv-idx-cta { margin-top: 24px; display: inline-flex; color: var(--porcelana); padding: 0 22px; border: 0; }
+.sv-rows { display: flex; flex-direction: column; }
+.sv-row { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 48px; padding: 48px 0; border-top: 1px solid var(--linea); scroll-margin-top: calc(var(--nav-h) + 24px); }
+.sv-row:first-child { padding-top: 0; border-top: 0; }
+.sv-row-ph { aspect-ratio: 4 / 5; border-radius: 160px 160px 22px 22px; }
+.sv-row:nth-child(2) .sv-row-ph { border-radius: 22px; }
+.sv-row-body { display: flex; flex-direction: column; gap: 22px; }
+.sv-row-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; align-items: start; }
+.sv-row-n { font-size: 64px; line-height: .9; color: var(--salmon); letter-spacing: -0.04em; }
+.sv-pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.sv-pills li { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px 0 10px; border-radius: var(--r-pill); background: var(--arena); font-size: 14px; }
+.sv-pills .ck { width: 16px; height: 16px; color: var(--terracota); margin: 0; }
+.sv-more { border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+.sv-more summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: 52px; font-size: 15px; }
+.sv-more summary::-webkit-details-marker { display: none; }
+.sv-more .pl { width: 20px; height: 20px; transition: transform .5s var(--ease); }
+.sv-more[open] .pl { transform: rotate(45deg); }
+.sv-more ul { margin: 0 0 18px; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.55; color: var(--cacao); }
+.sv-row-cta .btn .ic { width: 18px; height: 18px; }
 .sv-packs { gap: 20px; }
 .sv-pk-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .sv-badge { font-size: 12px; padding: 6px 12px; border-radius: var(--r-pill); background: var(--salmon); color: var(--tinta); white-space: nowrap; }
@@ -54,11 +83,16 @@
   .sv-hero { padding-top: 32px; padding-bottom: 48px; }
   .sv-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-top: 32px; }
   .sv-hero-d { font-size: clamp(48px, 13vw, 64px); }
-  .sv-packs { gap: 20px; }
-  .sv-pk-title { font-size: 30px; }
-  .sv-pk-price .d { font-size: 44px; }
-  .sv-packs .pk { gap: 20px; }
-  .sv-packs .pk ul { gap: 10px; font-size: 15px; }
+  .sv-pk-title { font-size: 28px; }
+  .sv-pk-price .d { font-size: 34px; }
+  .sv-menu { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .sv-row { grid-template-columns: 112px minmax(0, 1fr); gap: 16px 18px; padding: 32px 0; }
+  .sv-row-ph { aspect-ratio: 4 / 5; border-radius: 60px 60px 14px 14px; align-self: start; }
+  .sv-row-body { display: contents; }
+  .sv-row-head { grid-column: 2; grid-template-columns: minmax(0, 1fr); gap: 6px; align-self: center; }
+  .sv-row-n { display: none; }
+  .sv-pk-note, .sv-pills, .sv-more, .sv-row-cta { grid-column: 1 / -1; }
+  .sv-row-cta .btn { flex: 1 1 auto; }
   /* Tabla comparativa: cabe en el ancho del teléfono, sin desplazamiento lateral */
   .sv-tbl { min-width: 0; table-layout: fixed; font-size: 14px; }
   .sv-tbl th:first-child { width: 44%; }

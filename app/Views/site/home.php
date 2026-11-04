@@ -38,10 +38,7 @@
     <div class="arch px op-top">
       <?= img('fotos/novia-tiara-retrato', 'Novia con tiara y velo, piel luminosa y labios rosados, sonriendo con su ramo de flores blancas', ['priority' => true, 'sizes' => '(max-width: 960px) 80vw, 520px']) ?>
     </div>
-    <div class="seal" aria-hidden="true">
-      <svg viewBox="0 0 150 150"><defs><path id="sealc" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs><text font-family="DM Sans, sans-serif" font-size="9.5" letter-spacing="2" fill="#171312"><textPath href="#sealc" textLength="360" lengthAdjust="spacing">MAKE UP ARTIST · BUCARAMANGA · FLORIDABLANCA · </textPath></text></svg>
-      <img src="<?= e(img_src('marca/isotipo-salmon', 120)) ?>" alt="" width="58" height="58">
-    </div>
+    <?= App\View::partial('partials/seal', []) ?>
   </div>
 </section>
 
@@ -63,7 +60,7 @@
     </div>
     <div class="rv stack gap-40">
       <p class="lbl c-terracota">La firma</p>
-      <p class="d firma-quote">Creemos en una piel que se ve como piel. Luz donde hace falta, color con intención y una fijación pensada para <span class="c-terracota">llorar, abrazar y bailar</span> sin retoques de emergencia.</p>
+      <p class="d firma-quote" data-ink>Creemos en una piel que se ve como piel<?php foreach (['fotos/novia-rostro', 'fotos/social-cumple-beso', 'fotos/novia-bata-sonrisa'] as $q): ?><span class="qface" aria-hidden="true"><?= img($q, '', ['sizes' => '64px', 'width' => 480]) ?></span><?php endforeach; ?>. Luz donde hace falta, color con intención y una fijación pensada para <span class="c-terracota">llorar, abrazar y bailar</span> sin retoques de emergencia.</p>
       <a class="link-line" href="/estudio-maquillaje-floridablanca">Conoce el estudio <?= icon('arrow', 'arr') ?></a>
     </div>
   </div>
@@ -77,7 +74,25 @@
     </div>
     <a class="btn ghost hide-m" href="/precios-maquillaje-bucaramanga">Comparar servicios</a>
   </div>
-  <div class="g3 m-snap" aria-label="Servicios">
+  <ul class="flist hide-m" data-follow role="list">
+    <?php foreach ([
+        ['01', 'Maquillaje social', 'Asesoría, maquillaje y pestañas para grados, cenas, sesiones y eventos.', $packs['pack1']['price'], '/precios-maquillaje-bucaramanga#pk-pack1', 'fotos/social-cumple-pastel'],
+        ['02', 'Full experience a domicilio', 'Skin care, silla y luz de estudio en tu casa, pestañas y kit de retoque.', $packs['pack2']['price'], '/precios-maquillaje-bucaramanga#pk-pack2', 'fotos/proceso-domicilio'],
+        ['03', 'Novias y quinceañeras', 'Prueba previa con dos propuestas, video reel y extra fijación.', $packs['pack3']['price'], '/maquillaje-de-novia-bucaramanga', 'fotos/novia-ramo-ceremonia'],
+    ] as [$n, $title, $text, $price, $href, $photo]): ?>
+    <li class="frow rv" data-follow-row>
+      <a href="<?= e($href) ?>">
+        <span class="frow-n"><?= e($n) ?></span>
+        <span class="frow-t"><?= e($title) ?></span>
+        <span class="frow-d"><?= e($text) ?></span>
+        <span class="frow-p"><?= e(money($price)) ?></span>
+        <span class="frow-go" aria-hidden="true"><?= icon('arrow', 'arr') ?></span>
+      </a>
+      <span class="frow-ph" data-follow-ph aria-hidden="true"><?= img($photo, '', ['sizes' => '230px', 'width' => 480]) ?></span>
+    </li>
+    <?php endforeach; ?>
+  </ul>
+  <div class="g3 m-snap only-m" aria-label="Servicios">
     <?php
     $cards = [
         ['pack1', 'Pack 01', 'Maquillaje social', 'fotos/social-cumple-pastel', 'Clienta con maquillaje social de ojos dorados y pestañas, sonriendo con su torta de cumpleaños', 'Asesoría, maquillaje social y pestañas. Ideal para grados, cenas, sesiones y eventos.', '/precios-maquillaje-bucaramanga#packs', ''],
@@ -209,13 +224,25 @@
   </div>
 </section>
 
-<?= App\View::partial('partials/cta', [
-    'label' => 'Agenda 2026 · 2027',
-    'title' => 'Reserva tu fecha.',
-    'text' => 'Cuéntanos el día, la hora y el tipo de evento. Te respondemos con disponibilidad y la propuesta para ti.',
-    'button' => 'Escribir por WhatsApp',
-    'href' => wa_href('inicio-cta'),
-    'wa' => true,
-    'secondaryText' => 'Armar mi solicitud',
-    'secondaryHref' => '/reservar',
-]) ?>
+<section class="wrap sec-b">
+  <div class="orbit" data-orbit>
+    <div class="orbit-ring" aria-hidden="true">
+      <div class="orbit-spin">
+        <?php foreach (['novia-tiara-ramo', 'social-cumple-bengala', 'novia-jardin-velo', 'proceso-labios-detalle', 'novia-cortina-retrato', 'social-cumple-globos', 'novia-calas-editorial', 'proceso-rubor-novia'] as $i => $o): ?>
+        <div class="orbit-t o<?= $i + 1 ?>"><div class="ph"><?= img('fotos/' . $o, '', ['sizes' => '112px', 'width' => 480]) ?></div></div>
+        <?php endforeach; ?>
+      </div>
+      <div class="orbit-core"><?= App\View::partial('partials/seal', []) ?></div>
+    </div>
+    <div class="orbit-c rv">
+      <?= App\View::partial('partials/seal', []) ?>
+      <p class="lbl c-terracota">Agenda 2026 · 2027</p>
+      <h2 class="d d-xl">Reserva tu fecha.</h2>
+      <p class="txt">Elige el servicio y la fecha: se abre WhatsApp con tu solicitud escrita y te respondemos con la disponibilidad.</p>
+      <div class="wrap-row cta-actions">
+        <a class="btn" href="/reservar">Armar mi solicitud <?= icon('arrow', 'arr') ?></a>
+        <a class="btn ghost" href="<?= e(wa_href('inicio-cta')) ?>" rel="nofollow"><?= icon('whatsapp') ?> WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>

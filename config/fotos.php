@@ -14,6 +14,7 @@ return [
     'fotos/catalogo-maria-paula-tablero' => 'María Paula Fletcher enseñando frente al tablero',
     'fotos/catalogo-brindis-estudio' => 'Clienta y maquilladora brindando en el estudio',
     'fotos/novia-tiara-retrato' => 'Novia con tiara y velo, piel luminosa y labios rosados, sonriendo con su ramo',
+    'fotos/novia-rostro' => 'Primer plano de una novia con tiara: piel luminosa, pestañas y labios en tono rosado',
     'fotos/novia-tiara-ramo' => 'Novia con tiara y recogido alto sonriendo con su ramo de hortensias',
     'fotos/novia-cortina-retrato' => 'Novia con tiara y vestido de tirantes frente a una cortina violeta',
     'fotos/novia-jardin-cuello' => 'Novia con tiara y vestido de encaje en un jardín, ojos cerrados y piel luminosa',

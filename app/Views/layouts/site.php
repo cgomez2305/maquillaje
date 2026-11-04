@@ -80,8 +80,9 @@ foreach ($schema ?? [] as $block) {
 </div>
 <?= App\View::partial('partials/consent', []) ?>
 <script type="module" src="<?= e(asset('js/app.js')) ?>"></script>
+<script type="module" src="<?= e(asset('js/fx.js')) ?>"></script>
 <?php /* GSAP después de app.js: los diferidos y módulos se ejecutan en orden y app.js (menú, revelado) no debe esperarlo */ ?>
-<?php if (preg_match('/class="[^"]*\b(px|grow)\b|data-hrail|data-progress/', $content) === 1): /* GSAP solo donde hay parallax, recorte, riel o barra de lectura */ ?>
+<?php if (preg_match('/class="[^"]*\b(px|grow)\b|data-hrail|data-progress|data-ink|data-orbit/', $content) === 1): /* GSAP solo donde hay parallax, recorte, riel o barra de lectura */ ?>
 <script src="<?= e(asset('vendor/gsap.min.js')) ?>" defer></script>
 <script src="<?= e(asset('vendor/ScrollTrigger.min.js')) ?>" defer></script>
 <?php endif; ?>

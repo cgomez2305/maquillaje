@@ -69,6 +69,32 @@
   </div>
 </section>
 
+<section class="wrap sec nv-fm" aria-labelledby="nv-fm-t">
+  <div class="rv stack gap-18 nv-fm-head">
+    <p class="lbl c-terracota">El acabado, punto por punto</p>
+    <h2 class="d d-l" id="nv-fm-t">Así se ve el Pack 3<br>en tu piel.</h2>
+  </div>
+  <div class="fm" data-facemap>
+    <figure class="fm-fig">
+      <div class="ph fm-ph"><?= img('fotos/novia-rostro', 'Primer plano de una novia con tiara: piel luminosa, cejas definidas, pestañas y labios en tono rosado', ['sizes' => '(max-width: 960px) 100vw, 460px']) ?></div>
+      <div aria-hidden="true">
+        <div class="fm-pt l fm-1"><span class="fm-lbl">Cejas peinadas<small>definidas sin endurecer el rostro</small></span><span class="fm-line"></span><span class="fm-dot" data-n="1"></span></div>
+        <div class="fm-pt r fm-2"><span class="fm-lbl">Pestañas postizas<small>incluidas en el Pack 3</small></span><span class="fm-line"></span><span class="fm-dot" data-n="2"></span></div>
+        <div class="fm-pt l fm-3"><span class="fm-lbl">Piel satinada<small>luminosa en foto, hasta 12 horas</small></span><span class="fm-line"></span><span class="fm-dot" data-n="3"></span></div>
+        <div class="fm-pt r fm-4"><span class="fm-lbl">Labio de larga duración<small>resiste brindis y besos</small></span><span class="fm-line"></span><span class="fm-dot" data-n="4"></span></div>
+        <div class="fm-pt l fm-5"><span class="fm-lbl">Extra fijación<small>para lágrimas, abrazos y pista</small></span><span class="fm-line"></span><span class="fm-dot" data-n="5"></span></div>
+      </div>
+    </figure>
+    <ol class="fm-list">
+      <li><span>Cejas peinadas<small>definidas sin endurecer el rostro</small></span></li>
+      <li><span>Pestañas postizas<small>incluidas en el Pack 3</small></span></li>
+      <li><span>Piel satinada<small>luminosa en foto, hasta 12 horas</small></span></li>
+      <li><span>Labio de larga duración<small>resiste brindis y besos</small></span></li>
+      <li><span>Extra fijación<small>para lágrimas, abrazos y pista</small></span></li>
+    </ol>
+  </div>
+</section>
+
 <section class="wrap sec">
   <div class="rv stack gap-18 nv-steps-head">
     <p class="lbl c-terracota">El proceso</p>
