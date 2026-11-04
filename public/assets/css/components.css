@@ -241,7 +241,13 @@ body.rail-active .fab { opacity: 0; visibility: hidden; transform: translateY(12
   }
   .m-snap::-webkit-scrollbar { display: none; }
   .m-snap > * { flex: 0 0 min(80vw, 340px); scroll-snap-align: start; }
+  /* En un carrusel horizontal el revelado escalonado (desplazamiento vertical) se veía como alturas distintas:
+     las tarjetas aparecen juntas, alineadas arriba, solo con fundido */
+  html.js .m-snap > .rv { opacity: 1; transform: none; transition: none; }
+  .m-snap .card .between { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .m-snap .card { gap: 18px; }
   .m-43 { aspect-ratio: 4 / 3 !important; }
   .m-43.arch-soft { border-radius: 200px 200px 24px 24px; }
   .m-snap:focus-visible { outline: 2px solid var(--terracota); outline-offset: -2px; }
 }
+@media (max-width: 960px) { .m-snap .card .ph.ar-45 { aspect-ratio: 1 / 1.1; } }

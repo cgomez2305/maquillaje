@@ -4,7 +4,7 @@
  * @var array<string,array{name:string,short:string,price:int,includes:list<string>}> $packs
  * @var list<array{0:string,1:?string}> $crumbs
  */
-$check = '<svg class="ck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true" focusable="false"><path d="M3 9.5l4 4 8-9"/></svg>';
+$check = '<svg class="ck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9.5l4 4 8-9"/></svg>';
 $cards = [
     'pack1' => ['label' => 'Pack 01 · Servicio base', 'title' => 'Maquillaje social', 'note' => 'Grados, cenas, sesiones de fotos e invitadas de boda.', 'cta' => 'Reservar Pack 1', 'href' => '/reservar?servicio=pack1', 'wa' => false],
     'pack2' => ['label' => 'Pack 02 · Full experience', 'title' => 'El estudio en tu casa', 'note' => 'Una sesión premium de estudio en la comodidad de tu casa, con música relajante y ventilador de mano para que estés fresca.', 'cta' => 'Reservar Pack 2', 'href' => '/reservar?servicio=pack2', 'wa' => false],

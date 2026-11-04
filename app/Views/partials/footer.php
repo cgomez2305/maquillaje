@@ -23,10 +23,10 @@ $b = config('app.business');
       <div class="foot-col">
         <p class="lbl">Estudio</p>
         <p><?= e($b['address']) ?><br><?= e($b['city']) ?>, <?= e($b['region']) ?></p>
-        <a href="<?= e(wa_href('footer')) ?>" rel="nofollow"><?= e($b['phone_display']) ?></a>
-        <a href="mailto:<?= e($b['email']) ?>"><?= e($b['email']) ?></a>
-        <a href="<?= e($b['instagram']) ?>" rel="noopener" target="_blank">Instagram · @makeupbyfletcher</a>
-        <a href="<?= e($b['tiktok']) ?>" rel="noopener" target="_blank">TikTok · @makeupbyfletcher</a>
+        <a class="foot-ic" href="<?= e(wa_href('footer')) ?>" rel="nofollow"><?= icon('whatsapp') ?><?= e($b['phone_display']) ?></a>
+        <a class="foot-ic" href="mailto:<?= e($b['email']) ?>"><?= icon('mail') ?><?= e($b['email']) ?></a>
+        <a class="foot-ic" href="<?= e($b['instagram']) ?>" rel="noopener" target="_blank"><?= icon('instagram') ?>Instagram · @makeupbyfletcher</a>
+        <a class="foot-ic" href="<?= e($b['tiktok']) ?>" rel="noopener" target="_blank"><?= icon('tiktok') ?>TikTok · @makeupbyfletcher</a>
       </div>
       <nav class="foot-col" aria-label="Zonas">
         <p class="lbl">Zonas</p>

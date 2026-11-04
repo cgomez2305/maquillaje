@@ -54,7 +54,7 @@ $error = App\Http\Session::flash('error');
     <div class="side-brand"><img src="<?= e(img_src('marca/isotipo-negativo', 80)) ?>" alt="" width="32" height="32"><span class="d">Fletcher</span><span class="pill">Panel</span></div>
     <nav aria-label="Panel">
       <?php foreach ($nav as [$key, $href, $label, $roles]): if (!in_array($role, $roles, true)) { continue; } ?>
-      <a href="<?= e($href) ?>"<?= ($active ?? '') === $key ? ' aria-current="page"' : '' ?>><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><?= $icons[$key] ?></svg><?= e($label) ?></a>
+      <a href="<?= e($href) ?>"<?= ($active ?? '') === $key ? ' aria-current="page"' : '' ?>><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><?= $icons[$key] ?></svg><?= e($label) ?></a>
       <?php endforeach; ?>
     </nav>
     <div class="who">
