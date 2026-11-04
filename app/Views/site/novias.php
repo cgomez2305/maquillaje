@@ -95,27 +95,69 @@
   </div>
 </section>
 
-<section class="wrap sec">
-  <div class="rv stack gap-18 nv-steps-head">
-    <p class="lbl c-terracota">El proceso</p>
-    <h2 class="d d-l big">Del primer mensaje<br>a la última foto.</h2>
+<section class="sec deck-sec" aria-labelledby="nv-deck-t" data-deck>
+  <div class="deck-pin">
+    <div class="wrap rv stack gap-18 nv-steps-head">
+      <p class="lbl c-terracota">El proceso</p>
+      <h2 class="d d-l" id="nv-deck-t">Del primer mensaje<br>a la última foto.</h2>
+    </div>
+    <ol class="deck">
+      <?php
+      $steps = [
+          ['01', 'Separas tu fecha', 'Nos escribes por WhatsApp con la fecha, la hora y el lugar. La fecha queda reservada con un abono del 50 %.', 'fotos/novia-puerta-vestido', 'Novia en bata con tiara frente a su vestido colgado en la puerta'],
+          ['02', 'Prueba en el estudio', 'Analizamos tus rasgos, tu vestido y las fotos que sueñas. Probamos y ajustamos hasta que te veas tú.', 'fotos/proceso-brocha-bn', 'María Paula Fletcher maquillando a una novia durante la prueba'],
+          ['03', 'Eliges tu look', 'Te presentamos dos propuestas y eliges con tiempo, sin presión.', 'fotos/novia-labios-espejo', 'Novia sonriendo frente al espejo mientras le aplican el labial'],
+          ['04', 'El gran día', 'Skin care, maquillaje con luz de estudio, extra fijación y el video reel de tu preparación.', 'fotos/novia-pareja', 'Novia con tiara recibiendo un beso del novio durante la recepción'],
+      ];
+      foreach ($steps as $i => [$n, $title, $text, $photo, $alt]): ?>
+      <li class="deck-card dc<?= $i + 1 ?>">
+        <div class="ph deck-ph"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 96px, 300px']) ?></div>
+        <div class="deck-body">
+          <p class="deck-n"><span class="sr-only">Paso </span><?= e($n) ?></p>
+          <h3 class="d deck-t"><?= e($title) ?></h3>
+          <p class="deck-p"><?= e($text) ?></p>
+        </div>
+      </li>
+      <?php endforeach; ?>
+    </ol>
   </div>
-  <ol class="nv-steps">
-    <?php
-    $steps = [
-        ['Paso 01', 'Separas tu fecha', 'Nos escribes por WhatsApp con la fecha, la hora y el lugar. La fecha queda reservada con un abono del 50 % por Nequi o Bancolombia.'],
-        ['Paso 02', 'Prueba en el estudio', 'Unos días antes del evento analizamos tus rasgos, tu vestido y las fotos que sueñas. Probamos y ajustamos hasta que te veas tú.'],
-        ['Paso 03', 'Eliges tu look', 'Te presentamos dos propuestas y eliges con tiempo, sin presión.'],
-        ['Paso 04', 'El gran día', 'Skin care relajante, maquillaje en silla profesional con luz de estudio, extra fijación y el video reel de tu preparación. Te quedas con el kit de retoque.'],
-    ];
-    foreach ($steps as [$n, $title, $text]): ?>
-    <li class="step rv">
-      <p class="lbl c-terracota step-n"><?= e($n) ?></p>
-      <h3 class="d step-t"><?= e($title) ?></h3>
-      <p class="body-l step-p"><?= e($text) ?></p>
-    </li>
+</section>
+
+<section class="wrap sec-b looks" aria-labelledby="nv-looks-t">
+  <div class="rv stack gap-18 looks-head">
+    <p class="lbl c-terracota">Tu look</p>
+    <h2 class="d d-l" id="nv-looks-t">Natural, glam<br>o editorial.</h2>
+    <p class="body-l mw-460">En la prueba previa te presentamos dos propuestas. Estas son las tres direcciones que más piden nuestras novias.</p>
+  </div>
+  <?php
+  $looks = [
+      ['natural', 'Natural', 'Piel luminosa que se ve como piel, tonos cálidos en ojos y mejillas y pestañas sutiles.', 'Ceremonias de día, jardín o playa, y novias que quieren reconocerse en cada foto.', 'fotos/novia-bata-ramo', 'Novia con maquillaje natural, ondas suaves y ramo de lirios'],
+      ['glam', 'Glam', 'Mirada intensa con sombras doradas, piel pulida y labio definido que resiste toda la noche.', 'Fiestas de noche, salones con luz cálida y fotos con flash.', 'fotos/social-cumple-beso', 'Clienta con maquillaje glam de ojos ahumados dorados'],
+      ['editorial', 'Editorial', 'Acabado limpio y sobrio, con luz en los puntos altos del rostro y un labio en tono piel.', 'Sesiones de fotos, vestidos minimalistas y bodas íntimas.', 'fotos/novia-calas-editorial', 'Novia con maquillaje editorial y velo entre calas blancas'],
+  ];
+  ?>
+  <div class="looks-ui" data-tabs>
+    <div class="looks-tabs" role="tablist" aria-label="Elige un look" hidden>
+      <?php foreach ($looks as $i => [$id, $name, , , $photo]): ?>
+      <button type="button" class="look-tab" role="tab" id="lt-<?= e($id) ?>" aria-controls="lp-<?= e($id) ?>" aria-selected="<?= $i === 0 ? 'true' : 'false' ?>"<?= $i === 0 ? '' : ' tabindex="-1"' ?>>
+        <span class="look-thumb"><?= img($photo, '', ['sizes' => '64px', 'width' => 480]) ?></span>
+        <span class="look-name"><?= e($name) ?></span>
+      </button>
+      <?php endforeach; ?>
+    </div>
+    <?php foreach ($looks as $i => [$id, $name, $text, $for, $photo, $alt]): ?>
+    <div class="look-panel" role="tabpanel" id="lp-<?= e($id) ?>" aria-labelledby="lt-<?= e($id) ?>">
+      <div class="ph look-ph"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 100vw, 560px']) ?></div>
+      <div class="look-txt">
+        <p class="lbl c-terracota">Look 0<?= $i + 1 ?></p>
+        <h3 class="d look-title"><?= e($name) ?></h3>
+        <p class="body-l"><?= e($text) ?></p>
+        <p class="look-for"><span class="lbl c-topo">Ideal para</span><?= e($for) ?></p>
+        <a class="btn self-start" href="/reservar?servicio=pack3">Reservar mi prueba <?= icon('arrow', 'arr') ?></a>
+      </div>
+    </div>
     <?php endforeach; ?>
-  </ol>
+  </div>
 </section>
 
 <section class="wrap sec-b" aria-labelledby="nv-gal-t">

@@ -43,12 +43,14 @@
 </section>
 
 <div class="marq" aria-hidden="true">
-  <div class="marq-t">
-    <?php foreach ([1, 2] as $_): ?>
-      <?php foreach (['Novias', 'Quinceañeras', 'Grados', 'Maquillaje social', 'A domicilio', 'Cursos'] as $w): ?>
-      <span class="d"><?= e($w) ?></span><span class="dot"></span>
+  <div class="marq-s">
+    <div class="marq-t">
+      <?php foreach ([1, 2] as $_): ?>
+        <?php foreach (['Novias', 'Quinceañeras', 'Grados', 'Maquillaje social', 'A domicilio', 'Cursos'] as $k => $w): ?>
+        <span class="d<?= $k % 2 ? ' o' : '' ?>"><?= e($w) ?></span><span class="dot"></span>
+        <?php endforeach; ?>
       <?php endforeach; ?>
-    <?php endforeach; ?>
+    </div>
   </div>
 </div>
 

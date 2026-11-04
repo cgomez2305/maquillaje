@@ -166,7 +166,8 @@ a:hover .arr, button:hover .arr { transform: translateX(4px); }
 .sheet-cta .btn .ic { width: 18px; height: 18px; }
 
 /* Entrada escalonada al abrir */
-.sheet:target .mtile, .sheet.open .mtile, .sheet:target .mrow, .sheet.open .mrow, .sheet.open .msocial, .sheet:target .msocial { animation: in .7s var(--ease) both; }
+.sheet:target .mtile, .sheet.open .mtile, .sheet:target .mrow, .sheet.open .mrow, .sheet.open .msocial, .sheet:target .msocial { animation: focus-in .8s var(--ease) both; }
+@keyframes focus-in { from { opacity: 0; filter: blur(10px); transform: translateY(12px) scale(.98); } to { opacity: 1; filter: none; transform: none; } }
 .mtile:nth-child(2) { animation-delay: .04s !important; } .mtile:nth-child(3) { animation-delay: .08s !important; } .mtile:nth-child(4) { animation-delay: .12s !important; }
 .mrow:nth-child(1) { animation-delay: .14s !important; } .mrow:nth-child(2) { animation-delay: .17s !important; } .mrow:nth-child(3) { animation-delay: .2s !important; }
 .mrow:nth-child(4) { animation-delay: .23s !important; } .mrow:nth-child(5) { animation-delay: .26s !important; } .mrow:nth-child(6) { animation-delay: .29s !important; }

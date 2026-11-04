@@ -166,6 +166,74 @@ function orbit() {
   });
 }
 
+/* ---------- Pestañas (looks de Novias) ---------- */
+function tabs() {
+  document.querySelectorAll('[data-tabs]').forEach((box) => {
+    const list = box.querySelector('[role="tablist"]');
+    const tabsEls = [...box.querySelectorAll('[role="tab"]')];
+    const panels = tabsEls.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+    if (!list || !tabsEls.length) return;
+    list.hidden = false;
+    box.classList.add('is-tabs');
+    const select = (i, focus) => {
+      tabsEls.forEach((t, k) => {
+        const on = k === i;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (panels[k]) panels[k].hidden = !on;
+      });
+      if (focus) tabsEls[i].focus();
+    };
+    tabsEls.forEach((t, i) => {
+      t.addEventListener('click', () => select(i, false));
+      t.addEventListener('keydown', (e) => {
+        const map = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabsEls.length - 1 };
+        if (!(e.key in map)) return;
+        e.preventDefault();
+        select((map[e.key] + tabsEls.length) % tabsEls.length, true);
+      });
+    });
+    select(Math.max(0, tabsEls.findIndex((t) => t.getAttribute('aria-selected') === 'true')), false);
+  });
+}
+
+/* ---------- Escenas con scroll (solo escritorio y con GSAP) ---------- */
+function scenes() {
+  const { gsap, ScrollTrigger } = window;
+  if (reduce || !gsap || !ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 961px) and (min-height: 700px)', () => {
+    // Baraja: las cartas salen apiladas al centro y se abren en abanico
+    document.querySelectorAll('[data-deck]').forEach((sec) => {
+      const deck = sec.querySelector('.deck');
+      const cards = [...sec.querySelectorAll('.deck-card')];
+      if (!deck || !cards.length) return;
+      const box = deck.getBoundingClientRect();
+      const cx = box.left + box.width / 2;
+      const tl = gsap.timeline({ scrollTrigger: { trigger: sec.querySelector('.deck-pin'), start: 'top top', end: '+=900', scrub: 0.8, pin: true, anticipatePin: 1 } });
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        tl.from(c, { x: cx - (r.left + r.width / 2), y: 40, rotation: (i - 1.5) * -3, ease: 'power2.out' }, 0);
+      });
+    });
+    // Collage del Estudio: cada foto flota a su propia velocidad
+    document.querySelectorAll('[data-collage] [data-speed]').forEach((el) => {
+      gsap.fromTo(el, { yPercent: 0 }, {
+        yPercent: -Number(el.dataset.speed), ease: 'none',
+        scrollTrigger: { trigger: el.closest('[data-collage]'), start: 'top bottom', end: 'bottom top', scrub: true },
+      });
+    });
+  });
+  // Cinta de servicios: además de su giro continuo, el scroll la desplaza
+  document.querySelectorAll('.marq').forEach((m) => {
+    gsap.fromTo(m.querySelector('.marq-s'), { x: 0 }, {
+      x: -220, ease: 'none',
+      scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: true },
+    });
+  });
+}
+
 function init() {
   rollButtons();
   onceVisible('[data-facemap]', 'is-on', '0px 0px -25% 0px');
@@ -173,6 +241,8 @@ function init() {
   scrollSpy();
   orbit();
   inkText();
+  tabs();
+  scenes();
 }
 
 // GSAP llega con defer después de este módulo: se espera al evento load para las piezas con scroll

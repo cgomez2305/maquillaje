@@ -44,6 +44,20 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
   </div>
 </section>
 
+<section class="collage" data-collage aria-labelledby="est-col-t">
+  <?php foreach ([
+      ['proceso-estudio-espejo', 'cl1', 30], ['catalogo-asesoria-estudio', 'cl2', 55], ['proceso-brocha-bn', 'cl3', 18],
+      ['catalogo-brindis-estudio', 'cl4', 42], ['proceso-labios-perfil', 'cl5', 66],
+  ] as [$photo, $cls, $speed]): ?>
+  <div class="cl <?= $cls ?>" data-speed="<?= $speed ?>" aria-hidden="true"><div class="ph"><?= img('fotos/' . $photo, '', ['sizes' => '(max-width: 960px) 30vw, 240px', 'width' => 480]) ?></div></div>
+  <?php endforeach; ?>
+  <div class="wrap collage-c rv">
+    <p class="lbl c-terracota">El estudio</p>
+    <h2 class="d collage-t" id="est-col-t">Luz de estudio,<br>espejo de verdad.</h2>
+    <p class="body-l">Lo que ves en el espejo es lo que sale en la foto. Silla profesional, luz pareja y el tiempo que tu piel necesita, en Floridablanca o en tu casa.</p>
+  </div>
+</section>
+
 <section class="wrap sec-b" id="ubicacion">
   <div class="rv map">
     <svg class="map-art" viewBox="0 0 1240 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">

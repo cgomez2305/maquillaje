@@ -6,6 +6,11 @@
 .pf-lead { margin: 0 0 12px; max-width: 400px; font-size: 17px; line-height: 1.65; color: var(--cacao); }
 
 .pf-chips { margin-bottom: 40px; }
+/* Filtros numerados con conteo de fotos */
+.pf-chips .chip { gap: 10px; padding: 0 18px 0 14px; }
+.chip-n { width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 11px; font-weight: 600; box-shadow: inset 0 0 0 1px currentColor; }
+.chip-c { font-size: 12px; color: var(--topo); font-variant-numeric: tabular-nums; }
+.chip.on .chip-c, .chip[aria-pressed="true"] .chip-c { color: var(--nude-claro); }
 .pf-grid { columns: 3; column-gap: 20px; }
 .it {
   break-inside: avoid; margin: 0 0 20px; display: block; width: 100%; padding: 0; border: 0; background: none;

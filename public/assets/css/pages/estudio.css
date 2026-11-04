@@ -61,3 +61,26 @@
 
 /* Mapa diferido (app.js): oculto hasta tener src, se ve la ilustración de respaldo */
 .map-frame[data-src] { visibility: hidden; }
+
+/* Collage: fotos que flotan a distintas velocidades alrededor de la frase (fx.js) */
+.collage { position: relative; min-height: 860px; display: grid; place-items: center; padding: 120px 0; overflow: hidden; }
+.collage-c { position: relative; z-index: 2; max-width: 620px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.collage-t { font-size: clamp(48px, 5.4vw, 84px); }
+.cl { position: absolute; z-index: 1; }
+.cl .ph { border-radius: 20px; box-shadow: 0 30px 60px -36px rgba(23, 19, 18, .5); }
+.cl1 { left: 4%; top: 8%; width: 260px; } .cl1 .ph { aspect-ratio: 3 / 2; rotate: -4deg; }
+.cl2 { right: 6%; top: 4%; width: 190px; } .cl2 .ph { aspect-ratio: 4 / 5; rotate: 5deg; }
+.cl3 { left: 10%; bottom: 6%; width: 180px; } .cl3 .ph { aspect-ratio: 4 / 5; rotate: 3deg; }
+.cl4 { right: 3%; bottom: 10%; width: 240px; } .cl4 .ph { aspect-ratio: 4 / 5; rotate: -3deg; }
+.cl5 { left: 46%; bottom: -2%; width: 130px; } .cl5 .ph { aspect-ratio: 1; border-radius: 50%; }
+@media (max-width: 1180px) { .cl1 { width: 200px; } .cl4 { width: 180px; } .cl5 { display: none; } }
+@media (max-width: 960px) {
+  .collage { min-height: 0; padding: 40px 0 64px; display: flex; flex-direction: column; gap: 32px; }
+  .collage-c { text-align: left; align-items: flex-start; order: -1; }
+  .cl { position: static; width: auto; }
+  .cl1, .cl5 { display: none; }
+  .collage { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 28px 10px; padding-left: var(--gutter); padding-right: var(--gutter); }
+  .collage-c { flex: 1 1 100%; padding: 0; }
+  .cl2, .cl3, .cl4 { flex: 0 0 calc((100% - 20px) / 3); }
+  .cl2 .ph, .cl3 .ph, .cl4 .ph { aspect-ratio: 4 / 5; }
+}

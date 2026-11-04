@@ -143,6 +143,8 @@
 .marq { overflow: hidden; border-top: 1px solid rgba(23, 19, 18, .1); border-bottom: 1px solid rgba(23, 19, 18, .1); padding: 26px 0; }
 .marq-t { display: flex; gap: 56px; width: max-content; align-items: center; animation: mq 38s linear infinite; }
 .marq-t .d { font-size: 44px; }
+.marq-t .d.o { color: transparent; -webkit-text-stroke: 1px var(--tinta); }
+.marq-s { will-change: transform; }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--salmon); flex: none; }
 
 

@@ -51,6 +51,38 @@
 
 .nv-cta .deco { right: auto; top: auto; left: -160px; bottom: -180px; }
 
+/* Proceso como baraja: en escritorio las cartas salen apiladas y se abren en abanico con el scroll (fx.js) */
+.deck-sec { overflow: hidden; }
+.deck-pin { min-height: 0; }
+.deck { list-style: none; margin: 0 auto; padding: 32px 0 24px; display: flex; justify-content: center; max-width: var(--container); }
+.deck-card { flex: none; width: 272px; margin: 0 8px; background: var(--blanco); border-radius: 24px; padding: 12px 12px 26px; box-shadow: 0 1px 0 rgba(23, 19, 18, .06), 0 40px 70px -46px rgba(23, 19, 18, .55); display: flex; flex-direction: column; gap: 18px; transition: translate .5s var(--ease), rotate .5s var(--ease), box-shadow .5s var(--ease); position: relative; }
+.dc1 { rotate: -7deg; translate: 0 34px; z-index: 1; } .dc2 { rotate: -2.5deg; translate: 0 6px; z-index: 2; }
+.dc3 { rotate: 2.5deg; translate: 0 6px; z-index: 3; } .dc4 { rotate: 7deg; translate: 0 34px; z-index: 4; }
+.deck-card:hover { rotate: 0deg; translate: 0 -12px; z-index: 6; box-shadow: 0 50px 80px -40px rgba(23, 19, 18, .55); }
+.deck-ph { aspect-ratio: 4 / 5; border-radius: 16px; }
+.deck-body { padding: 0 10px; display: flex; flex-direction: column; gap: 8px; }
+.deck-n { font-size: 13px; letter-spacing: .16em; color: var(--terracota); }
+.deck-t { font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; }
+.deck-p { font-size: 15px; line-height: 1.55; color: var(--texto-tarjeta); }
+
+/* Pestañas de look: miniaturas redondas que cambian foto y descripción */
+.looks-head { margin-bottom: 40px; }
+.looks-tabs { display: flex; gap: 10px; margin-bottom: 32px; flex-wrap: wrap; }
+.look-tab { display: inline-flex; align-items: center; gap: 12px; padding: 6px 22px 6px 6px; min-height: 56px; border: 0; border-radius: var(--r-pill); background: transparent; box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .16); font: inherit; font-size: 16px; color: var(--tinta); cursor: pointer; transition: background-color .35s ease, color .35s ease, box-shadow .35s ease; }
+.look-tab:hover { box-shadow: inset 0 0 0 1px var(--tinta); }
+.look-tab[aria-selected="true"] { background: var(--tinta); color: var(--porcelana); box-shadow: none; }
+.look-thumb { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex: none; box-shadow: 0 0 0 2px var(--porcelana); }
+.look-thumb img, .look-thumb picture { width: 100%; height: 100%; object-fit: cover; }
+.look-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.look-panel + .look-panel { margin-top: 56px; }
+.looks-ui.is-tabs .look-panel + .look-panel { margin-top: 0; }
+.looks-ui.is-tabs .look-panel:not([hidden]) { animation: look-in .7s var(--ease) both; }
+@keyframes look-in { from { opacity: 0; filter: blur(8px); } to { opacity: 1; filter: none; } }
+.look-ph { aspect-ratio: 4 / 5; border-radius: 280px 280px 24px 24px; max-width: 520px; width: 100%; }
+.look-txt { display: flex; flex-direction: column; gap: 20px; max-width: 480px; }
+.look-title { font-size: clamp(44px, 5vw, 72px); }
+.look-for { display: flex; flex-direction: column; gap: 6px; padding-top: 18px; border-top: 1px solid var(--linea); font-size: 16px; line-height: 1.55; }
+
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .big { animation: big linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
@@ -72,6 +104,17 @@
   .nv-inc-more { margin-top: 32px; }
   .nv-inc-cta .btn { flex: 1 1 100%; }
   .nv-fm-head { align-items: flex-start; text-align: left; margin-bottom: 32px; }
+  .deck { flex-direction: column; padding: 8px var(--gutter) 0; gap: 12px; }
+  .deck-card { width: auto; margin: 0; rotate: none; translate: none; flex-direction: row; align-items: center; gap: 16px; padding: 10px; border-radius: 20px; }
+  .deck-card:hover { translate: none; }
+  .deck-ph { width: 96px; flex: none; border-radius: 14px; }
+  .deck-body { padding: 0 6px 0 0; gap: 4px; }
+  .deck-t { font-size: 22px; }
+  .deck-p { font-size: 14px; }
+  .looks-tabs { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(var(--gutter) * -1) 24px; padding: 2px var(--gutter); scrollbar-width: none; }
+  .look-tab { flex: none; }
+  .look-panel { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .look-ph { aspect-ratio: 4 / 3; border-radius: 200px 200px 20px 20px; }
   .step { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 24px 0; }
   .step-n { padding-top: 0; }
   .step-t { font-size: 26px; }

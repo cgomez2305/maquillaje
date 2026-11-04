@@ -19,15 +19,15 @@
 
 <section class="wrap sec-b">
   <div class="chips pf-chips in d3" role="group" aria-label="Filtrar por tipo de servicio" data-pf-chips hidden>
-    <button type="button" class="chip on" aria-pressed="true" data-cat="todo">Todo</button>
-    <?php foreach ($cats as $slug => $label): ?>
-    <button type="button" class="chip" aria-pressed="false" data-cat="<?= e($slug) ?>"><?= e($label) ?></button>
+    <button type="button" class="chip on" aria-pressed="true" data-cat="todo" data-label="Todo">Todo <span class="chip-c"><?= count($items) ?></span></button>
+    <?php $n = 0; foreach ($cats as $slug => $label): $n++; $count = count(array_filter($items, static fn(array $it): bool => $it['cat'] === $slug)); ?>
+    <button type="button" class="chip" aria-pressed="false" data-cat="<?= e($slug) ?>" data-label="<?= e($label) ?>"><span class="chip-n" aria-hidden="true"><?= $n ?></span><?= e($label) ?> <span class="chip-c"><?= $count ?></span></button>
     <?php endforeach; ?>
   </div>
   <p class="sr-only" aria-live="polite" data-pf-status></p>
   <div class="pf-grid" data-pf-grid>
     <?php foreach ($items as $n => $it): ?>
-    <a class="it" href="<?= e($it['full']) ?>" data-cat="<?= e($it['cat']) ?>" data-label="<?= e($it['cat_label']) ?>" aria-label="Ampliar: <?= e($it['alt']) ?>">
+    <a class="it" href="<?= e($it['full']) ?>" data-cat="<?= e($it['cat']) ?>" data-label="<?= e($it['cat_label']) ?>" aria-label="<?= e($it['cat_label']) ?>: ampliar foto. <?= e($it['alt']) ?>">
       <span class="ph<?= $it['crop'] !== '' ? ' ' . e($it['crop']) : '' ?>"><?= img($it['key'], $it['alt'], ['sizes' => '(max-width: 960px) 50vw, 420px', 'eager' => $n < 4, 'priority' => $n === 0]) ?></span>
       <span class="lbl c-topo pf-cap"><?= e($it['cat_label']) ?></span>
     </a>
