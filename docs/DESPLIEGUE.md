@@ -106,3 +106,7 @@ Subidos por archivo (sin reemplazar `public_html`, para conservar `storage/`) lo
 - Cron vigentes: `sitemap.php` y `respaldo.php`. Se eliminaron `recordatorios`, `encuestas`, `alertas`, `cierre-periodo` y `retencion`.
 - `.env`: ya no se usan `MAIL_*`, `OWNER_EMAIL`, `PARTNER_EMAIL`, `PAY_*` ni `WOMPI_*`.
 - Desplegado el 4 nov 2026: 37 archivos, limpieza única de 106 archivos retirados en el servidor (script autoborrado) y cron eliminados. Quedan solo `sitemap.php` (0 8 * * *) y `respaldo.php` (5 8 * * *). Verificado en vivo: `/reservar` → 303 a wa.me con el mensaje, `/panel` y `/webhooks/wompi` → 404, `/tienda/{producto}` → 301, Lighthouse móvil 96–100 (Tienda y Reservar con `noindex` a propósito).
+
+### Componentes de autor, fases 1 y 2 (4 nov 2026)
+
+Subidos 30 archivos (incluido `fx.js` y la foto `novia-rostro`) y caché limpiada. Verificado en vivo sin errores de consola: frase entintada, servicios con foto que sigue el cursor y cierre en órbita (Inicio), mapa del rostro, baraja del proceso y pestañas de look (Novias), menú editorial con índice activo (Precios), cursos apilados, collage del Estudio y filtros numerados del portafolio. Lighthouse móvil en vivo: rendimiento 97–100, accesibilidad, buenas prácticas y SEO 100.
