@@ -71,11 +71,14 @@ $aria = static fn(string $k): string => isset($err[$k]) ? ' aria-invalid="true" 
     <h2 class="d all-title">Próximas guías</h2>
     <p class="body-l mw-460">Estamos escribiendo estas guías desde el estudio. Recibe la guía para novias mientras tanto.</p>
   </div>
-  <ul class="upcoming">
-    <?php foreach ($upcoming as $u): ?>
-    <li><span class="lbl c-terracota"><?= e($u['category']) ?></span><span class="up-title"><?= e($u['title']) ?></span></li>
-    <?php endforeach; ?>
-  </ul>
+  <details class="upcoming-d">
+    <summary><span>Ver las <?= count($upcoming) ?> guías en preparación</span><?= icon('plus', 'pl') ?></summary>
+    <ul class="upcoming">
+      <?php foreach ($upcoming as $u): ?>
+      <li><span class="lbl c-terracota"><?= e($u['category']) ?></span><span class="up-title"><?= e($u['title']) ?></span></li>
+      <?php endforeach; ?>
+    </ul>
+  </details>
 </section>
 <?php endif; ?>
 

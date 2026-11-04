@@ -29,6 +29,18 @@
 .sv-tbl thead .d { font-size: 28px; }
 .sv-tbl tbody th { font-weight: 400; }
 .sv-tbl td.no { color: var(--placeholder); }
+.sv-tbl .ck { width: 20px; height: 20px; margin: 0 auto; color: var(--terracota); }
+.sv-tbl-p { font-variant-numeric: tabular-nums; }
+
+/* Selector de pack en móvil: los tres precios en la primera pantalla; cada uno lleva a su tarjeta */
+.sv-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }
+.sv-strip a { display: flex; flex-direction: column; gap: 4px; padding: 14px 12px; border-radius: 18px; background: var(--arena); text-decoration: none; color: var(--tinta); min-height: 44px; }
+.sv-strip a:nth-child(2) { background: var(--tinta); color: var(--porcelana); }
+.sv-strip a:nth-child(2) .lbl { color: var(--salmon); }
+.sv-strip .lbl { font-size: 11px; letter-spacing: .12em; color: var(--terracota); }
+.sv-strip-n { font-size: 15px; line-height: 1.25; }
+.sv-strip-p { font-size: 15px; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.pk { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
 .sv-home { grid-template-columns: 1.1fr .9fr; }
 .sv-zones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 480px; border-bottom: 1px solid var(--linea); }
@@ -39,12 +51,21 @@
 .sv-cta-d { font-size: clamp(40px, 4.6vw, 70px); }
 
 @media (max-width: 960px) {
-  .sv-hero { padding-top: 32px; padding-bottom: 64px; }
+  .sv-hero { padding-top: 32px; padding-bottom: 48px; }
   .sv-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-top: 32px; }
   .sv-hero-d { font-size: clamp(48px, 13vw, 64px); }
   .sv-packs { gap: 20px; }
-  .sv-pk-title { font-size: 34px; }
-  .sv-pk-price .d { font-size: 48px; }
+  .sv-pk-title { font-size: 30px; }
+  .sv-pk-price .d { font-size: 44px; }
+  .sv-packs .pk { gap: 20px; }
+  .sv-packs .pk ul { gap: 10px; font-size: 15px; }
+  /* Tabla comparativa: cabe en el ancho del teléfono, sin desplazamiento lateral */
+  .sv-tbl { min-width: 0; table-layout: fixed; font-size: 14px; }
+  .sv-tbl th:first-child { width: 44%; }
+  .sv-tbl th, .sv-tbl td { padding: 14px 4px; }
+  .sv-tbl thead .d { font-size: 18px; }
+  .sv-tbl tbody th { line-height: 1.35; }
+  .sv-tbl-p { font-size: 13px; }
   .sv-home { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   .sv-cta { padding: 64px 24px; flex-direction: column; align-items: flex-start; gap: 32px; }
 }

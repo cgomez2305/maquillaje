@@ -25,7 +25,7 @@ $recommended = [
   </div>
 </section>
 
-<section class="wrap sec-b">
+<section class="wrap sec-b shop-cats">
   <nav class="g4 cats" aria-label="Categorías de la tienda">
     <?php
     $cats = [
@@ -55,7 +55,7 @@ $recommended = [
     <?php if ($gifts === []): ?>
     <p class="notice">Los bonos estarán disponibles muy pronto. Mientras tanto, <a href="<?= e(wa_href('tienda-bonos', 'tienda')) ?>" rel="nofollow">pídelos por WhatsApp</a>.</p>
     <?php else: ?>
-    <div class="g3 gifts">
+    <div class="g3 m-snap gifts">
       <?php foreach ($gifts as $i => $p):
           $dark = $i === 1;
           $code = (string) $p['service_code'];
@@ -78,7 +78,7 @@ $recommended = [
 
 <section id="kits" class="wrap sec">
   <div class="g2">
-    <div class="ph px rv ar-45 arch-soft"><?= img('fotos/catalogo-asesoria-estudio', 'María Paula Fletcher asesorando a una clienta en el estudio', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
+    <div class="ph px rv ar-45 m-43 arch-soft kits-ph"><?= img('fotos/catalogo-asesoria-estudio', 'María Paula Fletcher asesorando a una clienta en el estudio', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
     <div class="stack gap-28">
       <p class="lbl rv c-terracota">Kits Fletcher</p>
       <h2 class="d d-l2 rv">Para retocar<br>y para empezar.</h2>

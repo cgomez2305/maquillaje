@@ -212,7 +212,7 @@ final class ReservarController extends Controller
     private function state(): array
     {
         $s = Session::get(self::KEY);
-        $default = ['step' => 1, 'service' => 'pack3', 'people' => 1, 'date' => null, 'time' => null, 'location' => 'studio', 'month' => null, 'details' => [], 'started' => false];
+        $default = ['step' => 1, 'service' => '', 'people' => 1, 'date' => null, 'time' => null, 'location' => 'studio', 'month' => null, 'details' => [], 'started' => false];
         return is_array($s) ? $s + $default : $default;
     }
 

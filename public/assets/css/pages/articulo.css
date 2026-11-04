@@ -77,6 +77,14 @@
   .toc { display: none; }
 }
 @media (max-width: 960px) {
+  /* Tablas de 3 columnas (servicio · incluye · precio) apiladas: nombre y precio en una línea, detalle debajo */
+  .prose table:has(td:nth-child(3)) thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .prose table:has(td:nth-child(3)) tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid var(--linea); }
+  .prose table:has(td:nth-child(3)) td { padding: 0; border: 0; }
+  .prose table:has(td:nth-child(3)) td:first-child { font-weight: 500; }
+  .prose table:has(td:nth-child(3)) td:last-child { grid-column: 2; grid-row: 1; text-align: right; }
+  .prose table:has(td:nth-child(3)) td:nth-child(2) { grid-column: 1 / -1; font-size: 15px; color: var(--texto-tarjeta); line-height: 1.5; }
+  .prose table:has(td:nth-child(3)) tbody { display: block; }
   .art-head { padding-top: 32px; padding-bottom: 40px; }
   .art-kicker { margin-top: 32px; }
   .art-title { font-size: clamp(36px, 10vw, 52px); }

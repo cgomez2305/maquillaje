@@ -124,14 +124,24 @@
   .shop-hero { padding-top: 32px; padding-bottom: 64px; }
   .shop-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-top: 32px; }
   .shop-h1 { font-size: clamp(48px, 13vw, 64px); }
-  .cats { gap: 12px; }
-  .cat > span { left: 10px; right: 10px; bottom: 10px; padding: 10px 14px; font-size: 13px; }
+  /* Categorías como fila de pastillas: se ven todas sin ocupar media pantalla con fotos */
+  .shop-hero { padding-bottom: 28px; }
+  .cats { display: flex; gap: 8px; overflow-x: auto; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 4px; scrollbar-width: none; }
+  .cats::-webkit-scrollbar { display: none; }
+  .cat { aspect-ratio: auto; flex: none; border-radius: var(--r-pill); background: transparent; box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .22); color: var(--tinta); }
+  .cat:hover { color: var(--tinta); }
+  .cat picture, .cat img { display: none; }
+  .cat > span { position: static; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; font-size: 15px; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; color: inherit; border-radius: var(--r-pill); }
   .cat .arr { display: none; }
-  .gifts { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .cats + * { margin-top: 0; }
+  .gifts { gap: 16px; }
   .gift { min-height: 0; padding: 28px; }
+  .gift-title { font-size: 30px; }
+  .kits-ph { order: 2; }
   .kit-row { flex-direction: column; align-items: flex-start; gap: 14px; }
   .prods { gap: 28px 16px; }
-  .prod .add { padding: 0 14px; font-size: 12px; white-space: normal; text-align: center; }
+  .tile-tag { font-size: 12px; }
+  .prod .add { padding: 0 14px; font-size: 13px; white-space: normal; text-align: center; }
   .prod-head { padding-top: 40px; margin-bottom: 32px; }
   .pdp { padding-top: 32px; }
   .pdp-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; padding-top: 32px; }

@@ -91,3 +91,9 @@ Pendiente para activar del todo: buzón y SMTP (hoy `MAIL_DRIVER=log`: los corre
 ### Despliegue de la auditoría (2 nov 2026)
 
 Subidos por archivo (sin reemplazar `public_html`, para conservar `storage/`) los 75 archivos cambiados desde `6121bf4`, migración `004_sesiones_validas.sql` aplicada con un cron de un solo uso y caché del CDN limpiada. Verificado en vivo: redirecciones http/www sin `/public/`, rutas con `//` o caracteres de control en 404, archivos internos en 403, webhook sin firma rechazado y Lighthouse móvil 98–100 en rendimiento y 100 en accesibilidad, buenas prácticas y SEO en las 10 páginas clave.
+
+### Fotos profesionales y versión móvil (4 nov 2026)
+
+- 30 fotos profesionales (novias, social, proceso) en `docs/entrega/recursos/fotos/` (1600 px de ancho, **sin EXIF**: se quitaron GPS y datos de cámara) y sus variantes AVIF/WebP/JPG. Textos alternativos en `config/fotos.php`.
+- Migración `005_portadas_fotos_profesionales.sql`: las portadas del diario que usaban fotos de Instagram pasan a las profesionales.
+- Móvil: barra de acción fija (precio de referencia + WhatsApp + Reservar), menú de decisión con precios en el hero de Inicio, packs, servicios, bonos y galería de novias en carrusel con imán, selector de packs y tabla comparativa sin desplazamiento lateral, comparador de cursos, categorías de tienda como pastillas, filtros fijos en el portafolio, total y «Continuar» fijos en `/reservar` (sin pack preseleccionado), pie compacto y tipografía mínima de 13 px.

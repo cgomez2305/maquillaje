@@ -33,8 +33,12 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
         <div><dt class="lbl c-topo">WhatsApp</dt><dd><a href="<?= e(wa_href('estudio-datos', 'estudio')) ?>" rel="nofollow"><?= e($b['phone_display']) ?></a></dd></div>
         <div><dt class="lbl c-topo">Correo</dt><dd><a href="mailto:<?= e($b['email']) ?>"><?= e($b['email']) ?></a></dd></div>
       </dl>
+      <div class="est-quick only-m in d3">
+        <a class="btn" href="#cotizar">Cotizar mi servicio</a>
+        <a class="btn ghost" href="<?= e($b['maps_url']) ?>" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
     </div>
-    <div class="ph px in d2 ar-45 arch-soft">
+    <div class="ph px in d2 ar-45 m-43 arch-soft">
       <?= img('fotos/catalogo-brindis-estudio', 'María Paula Fletcher brindando con una clienta en el estudio de Floridablanca', ['priority' => true, 'class' => 'fill', 'sizes' => '(max-width: 960px) 100vw, 580px']) ?>
     </div>
   </div>

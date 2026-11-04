@@ -7,6 +7,9 @@
 .nv-price { display: flex; align-items: baseline; gap: 16px; }
 .nv-price .d { font-size: 48px; }
 .nv-price .c-topo { font-size: 15px; }
+.nv-prices { display: flex; flex-direction: column; gap: 14px; }
+.nv-price-alt { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; min-height: 44px; font-size: 15px; color: var(--cacao); text-decoration: none; border-bottom: 1px solid var(--linea); }
+.nv-price-alt strong { font-weight: 500; color: var(--tinta); }
 
 .nv-cover-wrap { padding-top: 72px; }
 .nv-cover { border-radius: 0; height: 82vh; min-height: 560px; max-height: 860px; }
@@ -19,7 +22,14 @@
 .inc-n { font-size: 56px; color: var(--salmon); }
 .inc h3 { margin: 28px 0 12px; font-size: 20px; font-weight: 400; }
 .inc p:last-child { color: var(--nude-oscuro); line-height: 1.6; font-size: 15px; }
-.nv-inc-more { margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(251, 248, 245, .2); font-size: 16px; line-height: 1.7; color: var(--nude-medio); max-width: 860px; }
+.nv-inc-more { margin-top: 56px; border-top: 1px solid rgba(251, 248, 245, .2); border-bottom: 1px solid rgba(251, 248, 245, .2); max-width: 860px; }
+.nv-inc-more summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; font-size: 17px; color: var(--porcelana); }
+.nv-inc-more summary::-webkit-details-marker { display: none; }
+.nv-inc-more .pl { width: 22px; height: 22px; flex: none; transition: transform .5s var(--ease); }
+.nv-inc-more[open] .pl { transform: rotate(45deg); }
+.nv-inc-more p { padding-bottom: 24px; font-size: 16px; line-height: 1.7; color: var(--nude-medio); }
+.nv-inc-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.nv-gal { list-style: none; margin: 0; padding: 0; }
 
 .nv-steps-head { margin-bottom: 40px; }
 .nv-steps { list-style: none; margin: 0; padding: 0; }
@@ -51,15 +61,19 @@
   .nv-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 32px; }
   .nv-hero-d { font-size: clamp(48px, 13vw, 64px); }
   .nv-cover-wrap { padding-top: 48px; }
-  .nv-cover { height: 70vh; min-height: 420px; }
+  .nv-cover { height: 46svh; min-height: 300px; }
+  .nv-cover img { object-position: 28% 40%; }
   .nv-inc-head { gap: 28px; margin-bottom: 48px; }
   .inc { padding: 32px 16px 32px 0; }
   .inc-n { font-size: 44px; }
   .inc h3 { margin-top: 20px; }
-  .nv-inc-more { margin-top: 40px; }
-  .step { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 36px 0; }
+  .nv-inc-more { margin-top: 32px; }
+  .nv-inc-cta .btn { flex: 1 1 100%; }
+  .step { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 24px 0; }
   .step-n { padding-top: 0; }
-  .step-t { font-size: 30px; }
+  .step-t { font-size: 26px; }
+  .step-p { font-size: 16px; line-height: 1.6; }
+  .nv-season-d { font-size: 28px; line-height: 1.2; }
   .nv-cortejo, .nv-season, .nv-faq-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .nv-season-cta { justify-content: flex-start; }
   .nv-cta .deco { left: -120px; bottom: -120px; }

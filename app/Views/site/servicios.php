@@ -31,12 +31,17 @@ $rows = [
     </h1>
     <p class="lead sv-hero-p in d2">Tres formatos con precio cerrado. En el estudio de Floridablanca o en tu casa, en todo el área metropolitana de Bucaramanga.</p>
   </div>
+  <nav class="sv-strip only-m in d3" aria-label="Ir a un pack">
+    <?php foreach (['pack1' => 'Social', 'pack2' => 'A domicilio', 'pack3' => 'Novias'] as $code => $short): ?>
+    <a href="#pk-<?= e($code) ?>"><span class="lbl"><?= e('Pack 0' . substr($code, -1)) ?></span><span class="sv-strip-n"><?= e($short) ?></span><span class="sv-strip-p"><?= e(money($packs[$code]['price'], false)) ?></span></a>
+    <?php endforeach; ?>
+  </nav>
 </section>
 
 <section class="wrap sec-b" id="packs">
-  <div class="g3 sv-packs">
+  <div class="g3 m-snap sv-packs">
     <?php $i = 0; foreach ($cards as $code => $c): $dark = $code === 'pack2'; ?>
-    <article class="pk rv<?= $dark ? ' dark' : '' ?>" data-delay="<?= e((string) ($i++ * 0.06)) ?>">
+    <article class="pk rv<?= $dark ? ' dark' : '' ?>" id="pk-<?= e($code) ?>" data-delay="<?= e((string) ($i++ * 0.06)) ?>">
       <?php if ($dark): ?>
       <div class="sv-pk-top"><p class="lbl c-salmon"><?= e($c['label']) ?></p><span class="sv-badge">A domicilio</span></div>
       <?php else: ?>
@@ -55,6 +60,7 @@ $rows = [
     </article>
     <?php endforeach; ?>
   </div>
+  <p class="m-snap-hint only-m" aria-hidden="true">Desliza para ver los tres packs <?= icon('arrow', 'arr') ?></p>
   <p class="rv sv-policy">Agenda con mínimo 2 días de anticipación. La fecha se separa con un abono del 50 % por Nequi o Bancolombia (te enviamos los datos por WhatsApp); si no puedes asistir, reagendamos. Avísanos cualquier cambio con 1 día de anticipación.</p>
 </section>
 
@@ -78,14 +84,14 @@ $rows = [
         <tr>
           <th scope="row"><?= e($label) ?></th>
           <?php foreach ($has as $yes): ?>
-          <td<?= $yes ? '' : ' class="no"' ?>><?php if ($yes): ?>Sí<?php else: ?><span aria-hidden="true">—</span><span class="sr-only">No</span><?php endif; ?></td>
+          <td<?= $yes ? '' : ' class="no"' ?>><?php if ($yes): ?><?= $check ?><span class="sr-only">Sí</span><?php else: ?><span aria-hidden="true">—</span><span class="sr-only">No</span><?php endif; ?></td>
           <?php endforeach; ?>
         </tr>
         <?php endforeach; ?>
         <tr>
-          <th scope="row">Precio</th>
+          <th scope="row">Precio <span class="c-topo">(COP)</span></th>
           <?php foreach (['pack1', 'pack2', 'pack3'] as $code): ?>
-          <td class="nowrap"><?= e(money($packs[$code]['price'])) ?></td>
+          <td class="nowrap sv-tbl-p"><?= e(money($packs[$code]['price'], false)) ?></td>
           <?php endforeach; ?>
         </tr>
       </tbody>
@@ -95,7 +101,7 @@ $rows = [
 
 <section class="bg-arena sec" id="grados">
   <div class="wrap g2">
-    <div class="ph px rv ar-45 arch-soft"><?= img('fotos/ig-maquillaje-social', 'Maquillaje social con piel luminosa y ojo ahumado suave', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
+    <div class="ph px rv ar-45 m-43 arch-soft op-top"><?= img('fotos/social-cumple-beso', 'Clienta con maquillaje social de ojos ahumados dorados soplando un beso junto a su torta', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
     <div class="stack gap-32">
       <p class="lbl rv c-terracota">Temporada de grados</p>
       <h2 class="d d-l rv">Maquillaje<br>para grados.</h2>
@@ -118,7 +124,7 @@ $rows = [
       </ul>
       <div class="rv"><a class="btn" href="<?= e(wa_href('servicios-domicilio', 'domicilio')) ?>" rel="nofollow">Pedir maquillaje a domicilio</a></div>
     </div>
-    <div class="ph px rv ar-34"><?= img('fotos/ig-novia-reel', 'Clienta en bata de seda durante un maquillaje a domicilio con luz de estudio', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
+    <div class="ph px rv ar-34 m-43 op-left"><?= img('fotos/proceso-domicilio-h', 'Maquilladora aplicando rubor a una novia en bata en su casa, junto al vestido colgado', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
   </div>
 </section>
 

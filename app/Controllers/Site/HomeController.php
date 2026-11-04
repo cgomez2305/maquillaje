@@ -27,7 +27,7 @@ final class HomeController extends Controller
             'faq' => $faq,
             'css' => ['pages/home.css'],
             'js' => ['rail.js'],
-            'preload' => ['key' => 'fotos/catalogo-modelo-hero', 'sizes' => '(max-width: 960px) 100vw, 520px'],
+            'preload' => ['key' => 'fotos/novia-tiara-retrato', 'sizes' => '(max-width: 960px) 80vw, 520px'],
             'schema' => [Schema::faq($faq)],
             'waOrigin' => 'inicio',
         ]);

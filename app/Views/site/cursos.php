@@ -15,12 +15,22 @@
         <span class="d crs-title in d1">Aprende<br>a ver la luz.</span>
       </h1>
       <p class="crs-lead mw-480 in d2">Dos cursos presenciales en el estudio de Floridablanca: uno para maquillarte tú y otro para hacer del maquillaje tu oficio.</p>
-      <div class="wrap-row in d3">
+      <div class="wrap-row in d3 hide-m">
         <a class="btn light" href="#automaquillaje">Automaquillaje</a>
         <a class="btn ghost-light" href="#profesional">Maquillaje profesional</a>
       </div>
+      <nav class="crs-cmp only-m in d3" aria-label="Comparar cursos">
+        <?php foreach ($cursos as $c): ?>
+        <a href="#<?= e($c['id']) ?>">
+          <span class="lbl"><?= e($c['label']) ?></span>
+          <span class="crs-cmp-n"><?= e($c['title']) ?></span>
+          <span class="crs-cmp-p"><?= e(money($c['price'], false)) ?> <small>COP</small></span>
+          <span class="crs-cmp-go">Ver contenido <?= icon('arrow', 'arr') ?></span>
+        </a>
+        <?php endforeach; ?>
+      </nav>
     </div>
-    <div class="ph px in d1 ar-45 arch-soft crs-hero-ph">
+    <div class="ph px in d1 ar-45 m-43 arch-soft crs-hero-ph">
       <?= img('fotos/catalogo-maria-paula-tablero', 'María Paula Fletcher frente al tablero durante una clase de maquillaje', ['priority' => true, 'sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?>
     </div>
   </div>
@@ -62,7 +72,7 @@
 
 <section class="wrap sec">
   <div class="g2">
-    <div class="ph px rv ar-45"><?= img('fotos/catalogo-alumna-curso', 'Alumna tomando apuntes en el estudio durante un curso', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
+    <div class="ph px rv ar-45 m-43 op-top"><?= img('fotos/proceso-brocha-bn', 'María Paula Fletcher sonriendo mientras maquilla a una novia con brocha, en blanco y negro', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
     <div class="stack gap-28">
       <p class="lbl rv c-terracota">Quién enseña</p>
       <h2 class="d d-m rv">María Paula Fletcher</h2>

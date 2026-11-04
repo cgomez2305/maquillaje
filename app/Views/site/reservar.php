@@ -153,7 +153,8 @@ $timeLabel = static function (string $hhmm): string {
       <?php endif; ?>
 
       <div class="rsv-nav">
-        <button type="submit" class="btn ghost" name="action" value="back" formnovalidate<?= $step === 1 ? ' disabled' : '' ?>>Atrás</button>
+        <button type="submit" class="btn ghost rsv-back" name="action" value="back" formnovalidate<?= $step === 1 ? ' disabled' : '' ?>>Atrás</button>
+        <p class="rsv-mini only-m" aria-hidden="true"><span>Total</span><strong data-sum="total"><?= $quote ? e(money($quote['total'])) : '—' ?></strong><span>Abono <span data-sum="deposit"><?= $quote ? e(money($quote['deposit'])) : '—' ?></span></span></p>
         <button type="submit" class="btn" name="action" value="next"><?= $step === 3 ? 'Enviar reserva' : 'Continuar' ?> <?= icon('arrow', 'arr') ?></button>
       </div>
     </form>

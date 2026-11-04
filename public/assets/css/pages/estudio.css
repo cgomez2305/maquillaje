@@ -42,11 +42,14 @@
 @media (prefers-reduced-motion: reduce) { .ping { animation: none; } }
 @media (prefers-reduced-transparency: reduce) { .map-bar { background: var(--porcelana); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 @media (max-width: 960px) {
-  .est-hero { padding-top: 32px; padding-bottom: 72px; }
+  .est-hero { padding-top: 32px; padding-bottom: 48px; }
   .est-hero-grid { padding-top: 32px; gap: 48px; }
   .est-title { font-size: clamp(48px, 13vw, 64px); }
   .est-quote { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .map { height: 360px; border-radius: 24px; }
+  .map { height: 280px; border-radius: 24px; }
+  .est-quick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .est-quick .btn { padding: 0 12px; }
+  .est-hero-grid > .stack { gap: 28px; }
   .map-bar { left: 12px; right: 12px; bottom: 12px; padding: 14px 16px; font-size: 14px; }
   .est-zones-head { margin-bottom: 32px; }
   .est-zones .d { font-size: 34px; }

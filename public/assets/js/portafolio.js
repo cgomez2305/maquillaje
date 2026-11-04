@@ -38,6 +38,9 @@ if (chipsBox && items.length) {
     });
     if (status) status.textContent = `${shown} ${shown === 1 ? 'foto' : 'fotos'} en ${chip.textContent.trim()}`;
   });
+  // Enlace directo a una categoría (/portafolio#novias): aplica el filtro al cargar
+  const fromHash = chips.find((c) => c.dataset.cat === window.location.hash.slice(1));
+  if (fromHash) fromHash.click();
 }
 
 /* ---------- Visor ---------- */

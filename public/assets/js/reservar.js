@@ -11,7 +11,11 @@ const track = (event, params = {}) => (window.mubfTrack ? window.mubfTrack(event
 if (form) {
   const step = Number(form.dataset.step || '1');
   const money = (n) => `${Math.round(n).toLocaleString('es-CO')} COP`;
-  const sum = (key) => document.querySelector(`[data-sum="${key}"]`);
+  // El resumen aparece dos veces (lateral y barra fija en móvil): se actualizan todas las copias
+  const sum = (key) => {
+    const els = [...document.querySelectorAll(`[data-sum="${key}"]`)];
+    return els.length ? { set textContent(v) { els.forEach((el) => { el.textContent = v; }); } } : null;
+  };
   const priceOf = () => Number(form.querySelector('input[name="service"]:checked')?.dataset.price || 0);
   const peopleOf = () => Number(form.querySelector('input[name="people"]:checked')?.value || 0);
 

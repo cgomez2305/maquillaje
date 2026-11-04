@@ -176,6 +176,25 @@ body.menu-open { overflow: hidden; }
 .fab:active { transform: scale(.96); }
 .fab .ic { width: 22px; height: 22px; }
 
+/* Barra de acción móvil (C14 en móvil): precio de referencia + WhatsApp + Reservar, siempre a mano */
+.mbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 10px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom)) 20px;
+  background: rgba(251, 248, 245, .9); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--linea-suave); box-shadow: 0 -18px 40px -30px rgba(23, 19, 18, .35);
+  transition: transform .45s var(--ease), opacity .3s ease;
+}
+.mbar-note { display: flex; flex-direction: column; gap: 2px; min-width: 0; line-height: 1.2; }
+.mbar-k { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--topo); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mbar-v { font-size: 16px; color: var(--tinta); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mbar-wa { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; color: var(--tinta); box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .22); flex: none; }
+.mbar-wa .ic { width: 22px; height: 22px; }
+.mbar-btn { min-height: 48px; padding: 0 20px; white-space: nowrap; }
+/* Al escribir en un formulario la barra se aparta para no tapar el teclado ni los campos */
+body:has(.page input:focus, .page textarea:focus, .page select:focus) .mbar { transform: translateY(110%); opacity: 0; pointer-events: none; }
+body.menu-open .mbar { visibility: hidden; }
+
 /* Movimiento */
 .in { animation: in 1.2s var(--ease) both; }
 .in.d1 { animation-delay: .08s; } .in.d2 { animation-delay: .16s; } .in.d3 { animation-delay: .24s; }
@@ -209,15 +228,29 @@ html.js .rv.is-in { opacity: 1; transform: none; }
   .g3 { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .sec-head { margin-bottom: 40px; }
-  .fab { right: 16px; bottom: 16px; padding: 0 16px; }
-  .fab span { display: none; }
-  .foot { padding-top: 80px; padding-bottom: 96px; } /* el botón flotante no tapa los enlaces legales */
-  .foot-in { gap: 56px; }
+  /* En móvil la barra de acción reemplaza al botón flotante; el pie deja espacio para ella */
+  .fab { display: none; }
+  body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+  .lbl { font-size: 13px; letter-spacing: .16em; }
+  .tag { font-size: 13px; }
+  .brand { min-height: 44px; }
+  .link-line { min-height: 44px; padding-bottom: 4px; }
+  .crumbs { font-size: 14px; gap: 6px 10px; }
+  .crumbs a { display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0; }
+  /* Pie compacto: enlaces en dos columnas, sin la palabra decorativa (≈ 1 pantalla menos en cada página) */
+  .foot { padding-top: 64px; padding-bottom: 32px; }
+  .foot-in { gap: 40px; }
+  .foot-cols { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .foot-brand img { width: 128px; }
   .foot-col { gap: 0; }
-  .foot-col .lbl { margin-bottom: 6px; }
+  .foot-col .lbl { margin-bottom: 4px; }
   .foot-col p { padding: 6px 0; }
-  .foot-col a { display: flex; align-items: center; min-height: 44px; padding: 0; margin: 0; }
-  .foot-legal nav { gap: 4px 20px; }
+  .foot-col a { display: flex; align-items: center; min-height: 44px; padding: 0; margin: 0; font-size: 15px; line-height: 1.3; }
+  nav.foot-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
+  nav.foot-col .lbl { grid-column: 1 / -1; }
+  .foot-word { display: none; }
+  .foot-legal { font-size: 13px; }
+  .foot-legal nav { gap: 0 20px; }
   .foot-legal a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; margin: 0; }
 }
 @media (max-height: 640px) {

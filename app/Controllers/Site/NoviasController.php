@@ -29,7 +29,7 @@ final class NoviasController extends Controller
             'packs' => $packs,
             'faq' => $faq,
             'css' => ['pages/novias.css'],
-            'preload' => ['key' => 'fotos/catalogo-ojo-detalle', 'sizes' => '100vw'],
+            'preload' => ['key' => 'fotos/novia-labios-espejo', 'sizes' => '100vw'],
             'schema' => [
                 Schema::service(
                     $p3['name'],

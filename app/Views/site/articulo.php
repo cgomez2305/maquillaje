@@ -17,17 +17,7 @@ $serviceLinks = [
     '/cursos-de-maquillaje-bucaramanga' => ['Ver los cursos', 'Cursos', '¿Quieres aprender la técnica? Te contamos fechas.', 'cursos'],
 ];
 // Texto alternativo descriptivo de cada foto de portada (el título no describe la imagen)
-$coverAlts = [
-    'fotos/catalogo-ojo-detalle' => 'Detalle de ojo maquillado para novia con sombras cálidas y delineado',
-    'fotos/ig-novia-reel' => 'Novia en bata de seda durante la prueba de maquillaje',
-    'fotos/ig-clienta-bata-seda' => 'Clienta en bata de seda con maquillaje natural para su boda',
-    'fotos/ig-maquillaje-social' => 'Maquillaje social con piel luminosa y ojo ahumado suave',
-    'fotos/catalogo-modelo-hero' => 'Modelo con piel luminosa entre flores',
-    'fotos/catalogo-paleta' => 'Aplicación de corrector con pincel desde la paleta',
-    'fotos/catalogo-alumna-curso' => 'Alumna tomando apuntes en un curso de maquillaje',
-    'fotos/catalogo-maria-paula-tablero' => 'María Paula Fletcher enseñando frente al tablero',
-    'fotos/catalogo-brindis-estudio' => 'Clienta y maquilladora brindando en el estudio',
-];
+$coverAlts = (array) config('fotos', []);
 $coverAlt = $coverAlts[(string) $post['cover']] ?? (string) $post['title'];
 $linksTo = (string) ($post['links_to'] ?? '');
 $linkBase = strtok($linksTo, '#') ?: '';
@@ -119,9 +109,9 @@ $linkBase = strtok($linksTo, '#') ?: '';
         <?php endforeach; ?>
       <?php else: ?>
         <?php foreach ([
-            ['/maquillaje-de-novia-bucaramanga', 'fotos/ig-novia-reel', 'Novia en bata de seda durante la prueba de maquillaje', 'Novias', 'La experiencia novia, paso a paso'],
-            ['/precios-maquillaje-bucaramanga', 'fotos/ig-maquillaje-social', 'Maquillaje social con ojo ahumado suave', 'Servicios', 'Servicios y precios de maquillaje 2026'],
-            ['/portafolio', 'fotos/catalogo-paleta', 'Aplicación de corrector con pincel desde la paleta', 'Portafolio', 'Pieles reales, luz real: el portafolio'],
+            ['/maquillaje-de-novia-bucaramanga', 'fotos/novia-tiara-ramo', 'Novia con tiara y recogido alto sonriendo con su ramo de hortensias', 'Novias', 'La experiencia novia, paso a paso'],
+            ['/precios-maquillaje-bucaramanga', 'fotos/social-cumple-pastel', 'Clienta con maquillaje social de ojos dorados sonriendo con su torta', 'Servicios', 'Servicios y precios de maquillaje 2026'],
+            ['/portafolio', 'fotos/proceso-rubor-novia', 'Novia con tiara riendo mientras le aplican rubor con brocha', 'Portafolio', 'Pieles reales, luz real: el portafolio'],
         ] as $i => [$href, $photo, $alt, $cat, $label]): ?>
         <a class="post rv" href="<?= e($href) ?>" data-delay="<?= e((string) ($i * 0.08)) ?>">
           <div class="ph ar-43"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 100vw, 420px']) ?></div>

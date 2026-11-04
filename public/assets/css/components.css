@@ -229,3 +229,19 @@ body.rail-active .fab { opacity: 0; visibility: hidden; transform: translateY(12
   .consent { left: 12px; right: 12px; bottom: 12px; max-width: none; }
 }
 .cta .cta-actions { justify-content: center; }
+
+/* Carrusel con imán en móvil: opciones comparables en una sola franja en lugar de una por pantalla */
+.m-snap-hint { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 14px; color: var(--topo); }
+.m-full { width: 100%; margin-top: 20px; }
+@media (max-width: 960px) {
+  .m-snap {
+    display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin: 0 calc(var(--gutter) * -1); padding: 4px var(--gutter) 8px; scroll-padding-inline: var(--gutter);
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .m-snap::-webkit-scrollbar { display: none; }
+  .m-snap > * { flex: 0 0 min(80vw, 340px); scroll-snap-align: start; }
+  .m-43 { aspect-ratio: 4 / 3 !important; }
+  .m-43.arch-soft { border-radius: 200px 200px 24px 24px; }
+  .m-snap:focus-visible { outline: 2px solid var(--terracota); outline-offset: -2px; }
+}

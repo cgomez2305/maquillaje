@@ -126,6 +126,366 @@
    960
   ]
  },
+ "fotos/novia-balcon": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-bata-ramo": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-bata-sonrisa": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-calas-editorial": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-cola-jardin": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-cortina-retrato": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-damas": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-jardin-cuello": {
+  "ext": "jpg",
+  "h": 2347,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-jardin-velo": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-labios-espejo": {
+  "ext": "jpg",
+  "h": 1067,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-madre": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-pareja": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-puerta-vestido": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-ramo-ceremonia": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-tiara-ramo": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-tiara-retrato": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/novia-velo-ventana": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-brocha-bn": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-domicilio": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-domicilio-h": {
+  "ext": "jpg",
+  "h": 1067,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-estudio-espejo": {
+  "ext": "jpg",
+  "h": 1067,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-labios-detalle": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-labios-perfil": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-retoque-jardin": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-rubor-novia": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/proceso-velo-bn": {
+  "ext": "jpg",
+  "h": 1067,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/social-cumple-bengala": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/social-cumple-beso": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/social-cumple-globos": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
+ "fotos/social-cumple-pastel": {
+  "ext": "jpg",
+  "h": 2400,
+  "w": 1600,
+  "widths": [
+   480,
+   600,
+   768,
+   1200,
+   1600
+  ]
+ },
  "marca/isotipo-negativo": {
   "ext": "png",
   "h": 360,

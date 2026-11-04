@@ -57,3 +57,11 @@
   .chip { flex: none; }
   .nl { grid-template-columns: minmax(0, 1fr); padding: 56px 24px; gap: 32px; border-radius: 28px; }
 }
+
+/* Próximas guías plegadas: no alargan la página ni compiten con la guía descargable */
+.upcoming-d { border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+.upcoming-d summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; font-size: 18px; }
+.upcoming-d summary::-webkit-details-marker { display: none; }
+.upcoming-d .pl { width: 22px; height: 22px; flex: none; transition: transform .5s var(--ease); }
+.upcoming-d[open] .pl { transform: rotate(45deg); }
+.upcoming-d .upcoming { padding-bottom: 24px; }

@@ -14,20 +14,34 @@ final class PortafolioController extends Controller
 
     public function index(Request $request): Response
     {
-        // [foto, categoría, alt, clase de encuadre]. La novia con tiara va al final (§6.6: nunca en lugar destacado).
-        // «Retrato editorial»: falta el original en alta; se usa un encuadre cerrado de la foto del catálogo.
+        // [foto, categoría, alt, clase de encuadre]. Fotos profesionales de clientas reales (originales en alta, sin EXIF).
         $photos = [
-            ['fotos/ig-maquillaje-social', 'social', 'Maquillaje social con piel luminosa y ojo ahumado suave', ''],
-            ['fotos/ig-novia-reel', 'detras', 'Novia en bata de seda frente a la cámara durante su preparación', ''],
-            ['fotos/catalogo-modelo-hero', 'editorial', 'Retrato editorial con piel luminosa y ojos en tonos cálidos', 'crop-face'],
-            ['fotos/ig-clienta-bata-seda', 'novias', 'Clienta en bata de seda con maquillaje natural y peinado recogido', ''],
-            ['fotos/catalogo-ojo-detalle', 'editorial', 'Detalle de ojo con sombras cálidas, delineado y pestañas', ''],
-            ['fotos/catalogo-paleta', 'detras', 'Aplicación de corrector con pincel desde la paleta', ''],
-            ['fotos/catalogo-modelo-hero', 'editorial', 'Modelo con piel luminosa y bata negra de Make Up by Fletcher', ''],
-            ['fotos/catalogo-asesoria-estudio', 'detras', 'María Paula Fletcher asesorando a una clienta en el estudio', ''],
-            ['fotos/catalogo-brindis-estudio', 'detras', 'Brindis en el estudio después del maquillaje', ''],
-            ['fotos/ig-estudio-bn', 'detras', 'Estudio de maquillaje en Floridablanca', ''],
-            ['fotos/ig-novia-tiara', 'novias', 'Novia con tiara, recogido alto y ramo de flores blancas', ''],
+            ['fotos/novia-tiara-retrato', 'novias', 'Novia con tiara y velo, piel luminosa y labios rosados, sonriendo con su ramo', ''],
+            ['fotos/social-cumple-pastel', 'social', 'Clienta con maquillaje de ojos dorados y pestañas, sonriendo con su torta de cumpleaños', ''],
+            ['fotos/proceso-rubor-novia', 'detras', 'Novia con tiara riendo mientras le aplican rubor con brocha', ''],
+            ['fotos/novia-calas-editorial', 'editorial', 'Novia con velo y vestido de seda entre calas blancas', ''],
+            ['fotos/novia-jardin-cuello', 'novias', 'Novia con tiara y vestido de encaje en un jardín, ojos cerrados y piel luminosa', ''],
+            ['fotos/proceso-labios-detalle', 'detras', 'Detalle de labios con brillo y pincel de labial', ''],
+            ['fotos/novia-bata-ramo', 'novias', 'Novia en bata de seda con ondas suaves y ramo de lirios blancos', ''],
+            ['fotos/social-cumple-beso', 'social', 'Clienta con ojos ahumados dorados soplando un beso junto a su torta', ''],
+            ['fotos/novia-velo-ventana', 'editorial', 'Novia con velo detrás de una ventana, luz natural y mirada baja', ''],
+            ['fotos/novia-cortina-retrato', 'novias', 'Novia con tiara y vestido de tirantes frente a una cortina violeta', ''],
+            ['fotos/proceso-brocha-bn', 'detras', 'María Paula Fletcher sonriendo mientras maquilla a una novia, en blanco y negro', ''],
+            ['fotos/novia-jardin-velo', 'novias', 'Novia con velo largo y trenza mirando su ramo en un jardín', ''],
+            ['fotos/social-cumple-bengala', 'social', 'Clienta sonriendo con una torta de cumpleaños y una bengala encendida', ''],
+            ['fotos/proceso-estudio-espejo', 'detras', 'Maquilladora preparando a una novia frente al espejo con luces doradas', ''],
+            ['fotos/novia-tiara-ramo', 'novias', 'Novia con tiara y recogido alto sonriendo con su ramo de hortensias', ''],
+            ['fotos/novia-balcon', 'editorial', 'Novia con velo y vestido de seda en un balcón con vista a la ciudad', ''],
+            ['fotos/proceso-labios-perfil', 'detras', 'Perfil de una novia mientras le delinean los labios', ''],
+            ['fotos/novia-madre', 'novias', 'Novia y su mamá abrazadas en batas de seda durante la preparación', ''],
+            ['fotos/social-cumple-globos', 'social', 'Clienta sentada con vestido verde, globos dorados y maquillaje social', ''],
+            ['fotos/novia-cola-jardin', 'novias', 'Novia con velo catedral en un jardín, de espaldas a la cámara', ''],
+            ['fotos/proceso-velo-bn', 'detras', 'Maquilladora retocando a una novia con velo junto a la ventana, en blanco y negro', ''],
+            ['fotos/novia-ramo-ceremonia', 'novias', 'Novia con tiara y vestido de encaje sosteniendo su ramo durante la ceremonia', ''],
+            ['fotos/proceso-retoque-jardin', 'detras', 'Retoque de maquillaje a una novia en el jardín antes de la ceremonia', ''],
+            ['fotos/novia-pareja', 'novias', 'Novia con tiara recibiendo un beso del novio en la frente durante la recepción', ''],
+            ['fotos/novia-damas', 'novias', 'Novia con sus damas de honor en batas verdes y la maquilladora', ''],
+            ['fotos/proceso-domicilio', 'detras', 'Maquilladora aplicando rubor a una novia en bata en su casa, con el vestido al fondo', ''],
         ];
 
         $manifest = json_decode((string) @file_get_contents(BASE_PATH . '/public/assets/img/manifest.json'), true) ?: [];

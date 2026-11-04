@@ -15,7 +15,10 @@
     </h1>
     <div class="stack gap-28 nv-hero-side in d2">
       <p class="lead">Para novias y quinceañeras que quieren reconocerse en las fotos dentro de veinte años. Prueba previa, dos propuestas y fijación extra para todo el día.</p>
-      <p class="nv-price"><span class="d"><?= e(money($packs['pack3']['price'], false)) ?></span><span class="c-topo">COP · Pack 3</span></p>
+      <div class="nv-prices">
+        <p class="nv-price"><span class="d"><?= e(money($packs['pack3']['price'], false)) ?></span><span class="c-topo">COP · Novia o quinceañera</span></p>
+        <a class="nv-price-alt" href="#cortejo"><span>Mamá, damas e invitadas desde <strong><?= e(money($packs['pack1']['price'])) ?></strong></span><?= icon('arrow', 'arr') ?></a>
+      </div>
       <div class="wrap-row">
         <a class="btn" href="<?= e(wa_href('novias-hero', 'novias')) ?>" rel="nofollow">Consultar mi fecha</a>
         <a class="btn ghost" href="#incluye">Qué incluye</a>
@@ -26,7 +29,7 @@
 
 <section class="nv-cover-wrap">
   <div class="ph px in d3 nv-cover">
-    <?= img('fotos/catalogo-ojo-detalle', 'Detalle de ojo maquillado para novia con sombras cálidas, delineado y pestañas', ['priority' => true, 'sizes' => '100vw', 'class' => 'fill']) ?>
+    <?= img('fotos/novia-labios-espejo', 'Novia con tiara y peinado de ondas sonriendo mientras le aplican el labial frente al espejo', ['priority' => true, 'sizes' => '100vw', 'class' => 'fill']) ?>
   </div>
 </section>
 
@@ -55,7 +58,14 @@
       </div>
       <?php endforeach; ?>
     </div>
-    <p class="rv nv-inc-more">También incluye asesoría previa, sesión de relajación con skin care (mascarilla húmeda, masaje facial, esencias aromáticas y masaje de manos con cera tibia), maquillaje el día del evento en silla profesional con luz de estudio, pestañas postizas y kit de retoque con papel de arroz, brillo labial y espejo de bolsillo.</p>
+    <details class="rv nv-inc-more">
+      <summary><span>Ver todo lo que incluye el Pack 3</span><?= icon('plus', 'pl') ?></summary>
+      <p>También incluye asesoría previa, sesión de relajación con skin care (mascarilla húmeda, masaje facial, esencias aromáticas y masaje de manos con cera tibia), maquillaje el día del evento en silla profesional con luz de estudio, pestañas postizas y kit de retoque con papel de arroz, brillo labial y espejo de bolsillo.</p>
+    </details>
+    <div class="rv nv-inc-cta">
+      <a class="btn light" href="/reservar?servicio=pack3">Reservar mi prueba</a>
+      <a class="btn ghost-light" href="<?= e(wa_href('novias-incluye', 'novias')) ?>" rel="nofollow">Consultar mi fecha</a>
+    </div>
   </div>
 </section>
 
@@ -82,9 +92,32 @@
   </ol>
 </section>
 
-<section class="wrap sec-b">
+<section class="wrap sec-b" aria-labelledby="nv-gal-t">
+  <div class="rv sec-head">
+    <div>
+      <p class="lbl c-terracota">Novias MUBF</p>
+      <h2 class="d d-l" id="nv-gal-t">Reales, en su día.</h2>
+    </div>
+    <a class="btn ghost hide-m" href="/portafolio#novias">Ver más novias</a>
+  </div>
+  <ul class="g3 m-snap nv-gal" role="list">
+    <?php foreach ([
+        ['fotos/novia-tiara-ramo', 'Novia con tiara y recogido alto sonriendo con su ramo de hortensias'],
+        ['fotos/novia-bata-ramo', 'Novia en bata de seda con ondas suaves y ramo de lirios blancos'],
+        ['fotos/novia-cola-jardin', 'Novia con velo catedral en un jardín, de espaldas a la cámara'],
+        ['fotos/novia-cortina-retrato', 'Novia con tiara y vestido de tirantes frente a una cortina violeta'],
+        ['fotos/novia-pareja', 'Novia con tiara recibiendo un beso del novio en la frente durante la recepción'],
+        ['fotos/novia-balcon', 'Novia con velo y vestido de seda en un balcón con vista a la ciudad'],
+    ] as [$photo, $alt]): ?>
+    <li class="rv"><div class="ph ar-34"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 80vw, 400px']) ?></div></li>
+    <?php endforeach; ?>
+  </ul>
+  <p class="m-snap-hint only-m" aria-hidden="true">Desliza para ver más <?= icon('arrow', 'arr') ?></p>
+</section>
+
+<section class="wrap sec-b" id="cortejo">
   <div class="g2 nv-cortejo">
-    <div class="ph px rv ar-45 arch-soft"><?= img('fotos/ig-novia-reel', 'Novia en bata de seda frente a la cámara durante su preparación', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
+    <div class="ph px rv ar-45 m-43 arch-soft"><?= img('fotos/novia-madre', 'Novia y su mamá abrazadas en batas de seda blanca y rosa durante la preparación', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
     <div class="stack gap-32">
       <p class="lbl rv c-terracota">Para el cortejo</p>
       <h2 class="d d-m rv">Mamá, damas<br>e invitadas.</h2>
@@ -103,7 +136,7 @@
       <p class="lbl c-terracota">Temporada de bodas</p>
       <p class="d nv-season-d">Octubre, noviembre y diciembre son los meses más pedidos. Las fechas de 2027 ya se están separando.</p>
     </div>
-    <div class="rv nv-season-cta"><a class="btn" href="<?= e(wa_href('novias-temporada', 'novias')) ?>" rel="nofollow">Ver disponibilidad 2027</a></div>
+    <div class="rv nv-season-cta"><a class="btn" href="/reservar?servicio=pack3">Ver fechas disponibles</a></div>
   </div>
 </section>
 

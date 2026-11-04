@@ -87,10 +87,10 @@ def main():
     iso.resize((32, 32), Image.LANCZOS).save(os.path.join(OUT, "favicon-32.png"), optimize=True)
     iso.save(os.path.join(ROOT, "public", "favicon.ico"), sizes=[(16, 16), (32, 32), (48, 48)])
     # imagen Open Graph 1200x630 con la foto del hero
-    hero = Image.open(os.path.join(SRC, "fotos", "catalogo-modelo-hero.jpg")).convert("RGB")
+    hero = Image.open(os.path.join(SRC, "fotos", "novia-tiara-retrato.jpg")).convert("RGB")
     hw, hh = hero.size
     crop_h = round(hw * 630 / 1200)
-    top = round(hh * 0.18)
+    top = round(hh * 0.16)
     og = hero.crop((0, top, hw, top + crop_h)).resize((1200, 630), Image.LANCZOS)
     og.save(os.path.join(OUT, "og-default.jpg"), "JPEG", quality=82, optimize=True)
     with open(os.path.join(OUT, "manifest.json"), "w", encoding="utf-8") as fh:
