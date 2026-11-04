@@ -105,3 +105,4 @@ Subidos por archivo (sin reemplazar `public_html`, para conservar `storage/`) lo
 - Todas las solicitudes van a WhatsApp con mensaje predeterminado. La tienda queda en «próximamente» (`noindex`, fuera del sitemap); las direcciones antiguas de producto redirigen con 301 a `/tienda`.
 - Cron vigentes: `sitemap.php` y `respaldo.php`. Se eliminaron `recordatorios`, `encuestas`, `alertas`, `cierre-periodo` y `retencion`.
 - `.env`: ya no se usan `MAIL_*`, `OWNER_EMAIL`, `PARTNER_EMAIL`, `PAY_*` ni `WOMPI_*`.
+- Desplegado el 4 nov 2026: 37 archivos, limpieza única de 106 archivos retirados en el servidor (script autoborrado) y cron eliminados. Quedan solo `sitemap.php` (0 8 * * *) y `respaldo.php` (5 8 * * *). Verificado en vivo: `/reservar` → 303 a wa.me con el mensaje, `/panel` y `/webhooks/wompi` → 404, `/tienda/{producto}` → 301, Lighthouse móvil 96–100 (Tienda y Reservar con `noindex` a propósito).
