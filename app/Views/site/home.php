@@ -10,7 +10,7 @@
   <div class="stack gap-40">
     <h1 class="hero-h1">
       <span class="lbl c-terracota">Maquillaje profesional en Bucaramanga</span>
-      <span class="d d-hero">Que te veas tú<br>hasta la última <em>canción.</em></span>
+      <span class="d d-hero hero-t">Que te veas tú hasta la última canción.</span>
     </h1>
     <p class="lead mw-470">Maquillaje para novias, quinceañeras, grados y eventos sociales, con acabado natural que se mantiene impecable de la primera foto a la última del álbum. Estudio en Floridablanca y servicio a domicilio.</p>
     <div class="wrap-row">

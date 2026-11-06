@@ -11,7 +11,7 @@
 .legal-toc a { text-decoration: none; font-size: 14px; color: var(--topo); padding: 10px 0 10px 16px; border-left: 1px solid rgba(23, 19, 18, .14); transition: color .3s ease, border-color .3s ease; }
 .legal-toc a:hover { color: var(--tinta); border-left-color: var(--tinta); }
 
-.prose h2 { font-family: var(--font-display); font-weight: 300; font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; margin: 64px 0 20px; scroll-margin-top: 110px; }
+.prose h2 { font-family: var(--font-display); font-weight: 200; font-size: 36px; line-height: 1.1; letter-spacing: -0.03em; margin: 64px 0 20px; scroll-margin-top: 110px; }
 .prose h2:first-child { margin-top: 0; }
 .prose h3 { font-size: 18px; font-weight: 500; margin: 32px 0 12px; color: var(--tinta); }
 .prose p, .prose li { font-size: 17px; line-height: 1.75; color: var(--prosa); }

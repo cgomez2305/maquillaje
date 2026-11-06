@@ -177,7 +177,7 @@
 .rail-more-t { font-size: 32px; line-height: 1.1; letter-spacing: -0.03em; }
 .rail-more-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; border-bottom: 1px solid currentColor; padding-bottom: 6px; align-self: flex-start; }
 .rail-ui { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 28px; margin-top: 16px; }
-.rail-count { font-family: var(--font-display); font-weight: 300; font-size: 28px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; min-width: 4.5ch; }
+.rail-count { font-family: var(--font-display); font-weight: 200; font-size: 28px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; min-width: 4.5ch; }
 .rail-sep { color: var(--deshabilitado); }
 .rail-progress { height: 2px; background: var(--linea); border-radius: 2px; overflow: hidden; }
 .rail-progress span { display: block; height: 100%; background: var(--tinta); transform-origin: left; transform: scaleX(0); }
@@ -224,7 +224,7 @@ body.rail-active .fab { opacity: 0; visibility: hidden; transform: translateY(12
   .seal img { width: 48px; height: 48px; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .faq summary { font-size: 19px; }
-  .cta { border-radius: var(--r-cta); }
+  .cta { border-radius: 28px; }
   .cta .deco { width: 360px; right: -120px; top: -90px; }
   .rail-item { width: 78vw; max-width: 360px; }
   .rail { padding: 0 20px 16px; scrollbar-width: none; }
@@ -279,7 +279,7 @@ body.rail-active .fab { opacity: 0; visibility: hidden; transform: translateY(12
 }
 .frow > a:hover, .frow > a:focus-visible { color: var(--tinta); padding-left: 16px; }
 .frow-n { font-size: 13px; letter-spacing: .16em; color: var(--terracota); }
-.frow-t { font-family: var(--font-display); font-weight: 300; font-size: clamp(30px, 3vw, 44px); line-height: 1.05; letter-spacing: -0.03em; }
+.frow-t { font-family: var(--font-display); font-weight: 200; font-size: clamp(30px, 3vw, 44px); line-height: 1.05; letter-spacing: -0.03em; }
 .frow-d { font-size: 15px; line-height: 1.6; color: var(--texto-tarjeta); max-width: 420px; }
 .frow-p { font-size: 16px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .frow-go { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .22); transition: background-color .35s ease, color .35s ease, box-shadow .35s ease; }

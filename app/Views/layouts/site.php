@@ -46,7 +46,7 @@ foreach ($schema ?? [] as $block) {
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/img/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/comfortaa-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dm-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <?php if (!empty($preload)): ?>
 <?= App\Support\Schema::preloadImage($preload['key'], $preload['sizes'] ?? '100vw') ?>

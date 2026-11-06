@@ -22,7 +22,8 @@
 .sv-row:first-child { padding-top: 0; border-top: 0; }
 .sv-row-ph { aspect-ratio: 4 / 5; border-radius: var(--r-foto); }
 .sv-row-body { display: flex; flex-direction: column; gap: 22px; }
-.sv-row-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; align-items: start; }
+.sv-row-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px 20px; align-items: start; }
+.sv-row-head .sv-pk-price { grid-column: 2; }
 .sv-row-n { font-size: 64px; line-height: .9; color: var(--salmon); letter-spacing: -0.04em; }
 .sv-pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .sv-pills li { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px 0 10px; border-radius: var(--r-pill); background: var(--arena); font-size: 14px; }
@@ -96,6 +97,7 @@
   .sv-row-body { display: contents; }
   .sv-row-head { grid-column: 2; grid-template-columns: minmax(0, 1fr); gap: 6px; align-self: center; }
   .sv-row-n { display: none; }
+  .sv-row-head .sv-pk-price { grid-column: auto; }
   .sv-pk-note, .sv-pills, .sv-more, .sv-row-cta { grid-column: 1 / -1; }
   .sv-row-cta .btn { flex: 1 1 auto; }
   /* Tabla comparativa: cabe en el ancho del teléfono, sin desplazamiento lateral */

@@ -55,7 +55,7 @@
   .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; width: calc(100% + 40px); }
   .chips::-webkit-scrollbar { display: none; }
   .chip { flex: none; }
-  .nl { grid-template-columns: minmax(0, 1fr); gap: 32px; border-radius: var(--r-cta); }
+  .nl { grid-template-columns: minmax(0, 1fr); gap: 32px; border-radius: 28px; }
 }
 
 /* Próximas guías plegadas: no alargan la página ni compiten con la guía descargable */

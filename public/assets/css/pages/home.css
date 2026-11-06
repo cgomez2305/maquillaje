@@ -1,6 +1,7 @@
 /* Inicio (Main.dc.html) */
 .hero { display: grid; grid-template-columns: 1.12fr .88fr; gap: 72px; align-items: center; padding-top: 72px; padding-bottom: 112px; }
 .hero-h1 { margin: 0; display: flex; flex-direction: column; gap: 28px; font-weight: 400; }
+.hero-t { font-size: clamp(52px, 6vw, 92px); line-height: 1.04; text-wrap: balance; }
 .hero-facts { display: flex; gap: 40px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid var(--linea); margin: 0; }
 .hero-facts dd { margin: 8px 0 0; font-size: 15px; }
 .hero-media { position: relative; }
