@@ -121,7 +121,7 @@ function inkText() {
   gsap.registerPlugin(ScrollTrigger);
   els.forEach((el) => {
     el.classList.add('ink-on');
-    gsap.fromTo(el.querySelectorAll('.ink-w, .qface'), { opacity: 0.18 }, {
+    gsap.fromTo(el.querySelectorAll('.ink-w, .qface'), { opacity: 0.48 }, {
       opacity: 1, ease: 'none', stagger: 0.05,
       scrollTrigger: { trigger: el, start: 'top 82%', end: 'bottom 52%', scrub: 0.6 },
     });
