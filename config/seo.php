@@ -14,7 +14,7 @@ return [
     ],
     'novias' => [
         'path' => '/maquillaje-de-novia-bucaramanga',
-        'title' => 'Maquillaje de novia en Bucaramanga y Floridablanca · Fletcher',
+        'title' => 'Maquillaje de novia en Bucaramanga · Make Up by Fletcher',
         'description' => 'Maquillaje de novia y quinceañera en Bucaramanga: prueba previa con dos propuestas, skin care, video reel y extra fijación. Pack 3 por 600.000 COP.',
         'crumb' => 'Novias y quinceañeras',
     ],
@@ -57,7 +57,7 @@ return [
     'reservar' => [
         'path' => '/reservar',
         'title' => 'Reservar maquillaje en Bucaramanga · Make Up by Fletcher',
-        'description' => 'Reserva tu maquillaje en Bucaramanga y Floridablanca en tres pasos: elige el servicio, la fecha y deja tus datos. Separa tu fecha con el 50 %.',
+        'description' => 'Arma tu solicitud de maquillaje en Bucaramanga y Floridablanca: servicio, fecha y lugar. Se abre WhatsApp con el mensaje listo para separar tu fecha.',
         'crumb' => 'Reservar',
     ],
     'privacidad' => [

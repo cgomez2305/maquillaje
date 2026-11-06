@@ -24,13 +24,23 @@ final class SitemapController extends Controller
             if (in_array($key, ['reservar', 'tienda'], true) || !isset($page['path'])) {
                 continue;
             }
-            $urls[] = ['loc' => url($page['path']), 'priority' => self::PRIORITY[$key] ?? '0.5', 'lastmod' => null];
+            $urls[] = ['key' => $key, 'loc' => url($page['path']), 'priority' => self::PRIORITY[$key] ?? '0.5', 'lastmod' => self::lastmod($key)];
         }
 
         try {
+            $latest = null;
             foreach (Db::all("SELECT slug, COALESCE(updated_at, published_at) AS mod_at FROM posts WHERE status = 'publicado' AND published_at <= UTC_TIMESTAMP() ORDER BY published_at DESC") as $p) {
-                $urls[] = ['loc' => url('/diario/' . $p['slug']), 'priority' => '0.6', 'lastmod' => $p['mod_at'] ? gmdate('Y-m-d', (int) strtotime($p['mod_at'] . ' UTC')) : null];
+                $mod = $p['mod_at'] ? gmdate('Y-m-d', (int) strtotime($p['mod_at'] . ' UTC')) : null;
+                $latest = max($latest ?? '', $mod ?? '') ?: null;
+                $urls[] = ['loc' => url('/diario/' . $p['slug']), 'priority' => '0.6', 'lastmod' => $mod];
             }
+            // El índice del diario cambia cuando cambia su artículo más reciente
+            foreach ($urls as &$u) {
+                if (($u['key'] ?? '') === 'diario' && $latest !== null) {
+                    $u['lastmod'] = max((string) $u['lastmod'], $latest);
+                }
+            }
+            unset($u);
         } catch (\Throwable $e) {
             app_log('warning', 'Sitemap sin BD: ' . $e->getMessage());
         }
@@ -45,6 +55,24 @@ final class SitemapController extends Controller
         $xml .= '</urlset>' . "\n";
 
         return Response::text($xml, 'application/xml')->header('Cache-Control', 'public, max-age=3600');
+    }
+
+    /** Vistas de cada página: su fecha de modificación es la de la página (para que Google priorice el rastreo). */
+    private const VIEWS = [
+        'home' => ['site/home', 'Site/HomeController'], 'novias' => ['site/novias', 'Site/NoviasController'],
+        'servicios' => ['site/servicios', 'Site/ServiciosController'], 'cursos' => ['site/cursos', 'Site/CursosController'],
+        'portafolio' => ['site/portafolio', 'Site/PortafolioController'], 'estudio' => ['site/estudio', 'Site/EstudioController'],
+        'diario' => ['site/diario', 'Site/DiarioController'], 'privacidad' => ['site/legal-privacidad'], 'terminos' => ['site/legal-terminos'],
+    ];
+
+    private static function lastmod(string $key): ?string
+    {
+        $files = [];
+        foreach (self::VIEWS[$key] ?? [] as $i => $f) {
+            $files[] = BASE_PATH . ($i === 0 ? '/app/Views/' . $f . '.php' : '/app/Controllers/' . $f . '.php');
+        }
+        $times = array_filter(array_map(static fn(string $f): int|false => @filemtime($f), $files));
+        return $times ? gmdate('Y-m-d', max($times)) : null;
     }
 
     public function robots(Request $request): Response
