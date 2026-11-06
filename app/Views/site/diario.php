@@ -12,19 +12,18 @@
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
   <div class="blog-hero-row">
     <h1 class="hero-h1">
-      <span class="lbl in c-terracota">Diario de belleza · Blog de maquillaje</span>
-      <span class="d blog-h1 in d1">Lo que aprendemos<br>en la silla.</span>
+      <span class="lbl c-terracota">Diario de belleza · Blog de maquillaje</span>
+      <span class="d blog-h1">Lo que aprendemos<br>en la silla.</span>
     </h1>
-    <p class="body-l blog-intro in d2">Guías honestas sobre maquillaje de novia, grados, cuidado de la piel y automaquillaje, escritas por María Paula Fletcher desde el estudio.</p>
+    <p class="body-l blog-intro">Guías honestas sobre maquillaje de novia, grados, cuidado de la piel y automaquillaje, escritas por María Paula Fletcher desde el estudio.</p>
   </div>
 </section>
 
 <?php if ($featured !== null): ?>
 <section class="wrap sec-b">
-  <a class="post feat in d3" href="/diario/<?= e($featured['slug']) ?>">
+  <a class="post feat" href="/diario/<?= e($featured['slug']) ?>">
     <div class="ph feat-ph op-35"><?= img((string) $featured['cover'], (string) $featured['title'], ['sizes' => '(max-width: 960px) 100vw, 720px', 'priority' => true]) ?></div>
     <div class="stack gap-22">
-      <p class="lbl c-terracota">Destacado · <?= e($featured['category']) ?></p>
       <h2 class="d feat-title"><?= e($featured['title']) ?></h2>
       <p class="body-l"><?= e($featured['excerpt']) ?></p>
       <div class="meta"><span>María Paula Fletcher</span><span><?= e((string) $featured['reading_minutes']) ?> min de lectura</span></div>
@@ -76,10 +75,9 @@
 <?php endif; ?>
 
 <section class="wrap sec-b" id="guia">
-  <div class="nl rv mesh-dark">
+  <div class="nl mesh-dark">
     <div class="nl-deco" aria-hidden="true"><img src="<?= e(img_src('marca/isotipo-nude', 360)) ?>" alt="" width="360" height="360" loading="lazy"></div>
     <div class="stack gap-22 nl-txt">
-      <p class="lbl c-salmon">Guía gratuita para novias</p>
       <h2 class="d nl-title">Tu checklist de belleza, mes a mes.</h2>
       <p class="nl-p">Qué hacer con la piel, la prueba de maquillaje y el día de la boda, en una sola página.</p>
     </div>

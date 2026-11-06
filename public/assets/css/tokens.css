@@ -15,6 +15,22 @@
   font-weight: 300 700;
   font-display: swap;
 }
+/* Títulos: Fraunces (serif con eje óptico, licencia OFL, autoalojada). Ligera y de alto contraste en tamaños
+   grandes; la cursiva marca el acento de cada título. DM Sans queda solo para texto corrido y controles. */
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/assets/fonts/fraunces-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/assets/fonts/fraunces-italic-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 @font-face {
   font-family: 'DM Sans';
   src: url('/assets/fonts/dm-sans-var.woff2') format('woff2');
@@ -46,7 +62,8 @@
   --deshabilitado: #B5A9A2;
 
   /* Tipografía */
-  --font-display: 'Fletcher Display', 'Comfortaa', sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-brand: 'Fletcher Display', 'Comfortaa', sans-serif; /* solo el logotipo «Fletcher» */
   --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Espaciado */
@@ -57,7 +74,9 @@
   --nav-h: 78px;
 
   /* Radios */
-  --r-foto: 20px; --r-pack: 28px; --r-cta: 40px; --r-pill: 999px;
+  /* Radios con criterio: fotos rectas (editorial); cajas con un radio mínimo; píldora solo para lo que se toca;
+     el arco es la firma de la marca y se reserva para tres fotos (portada de Inicio, mapa del rostro y looks). */
+  --r-foto: 0; --r-box: 4px; --r-pack: var(--r-box); --r-cta: var(--r-box); --r-pill: 999px;
   --r-arco: 999px 999px 28px 28px;
 
   /* Relleno interior de cajas: una sola escala para que todas respiren igual */

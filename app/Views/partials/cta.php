@@ -14,9 +14,8 @@
 $dark = !empty($dark);
 ?>
 <section class="wrap sec-b">
-  <div class="rv cta <?= $dark ? 'mesh-dark' : 'mesh' ?>">
+  <div class="cta <?= $dark ? 'mesh-dark' : 'mesh' ?>">
     <div class="deco" aria-hidden="true"><img src="<?= e(img_src('marca/isotipo-nude', 360)) ?>" alt="" width="360" height="360" loading="lazy"></div>
-    <p class="lbl"><?= e($label) ?></p>
     <h2 class="d d-xl"><?= e($title) ?></h2>
     <p class="txt"><?= e($text) ?></p>
     <div class="wrap-row cta-actions">

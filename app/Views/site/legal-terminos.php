@@ -19,11 +19,11 @@ $toc = [
 <section class="wrap legal-head">
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
   <h1>
-    <span class="lbl in c-terracota">Políticas de reserva</span>
-    <span class="d in d1">Términos, reservas y abonos.</span>
+    <span class="lbl c-terracota">Políticas de reserva</span>
+    <span class="d">Términos, reservas y abonos.</span>
   </h1>
-  <p class="lead in d2 mt-16">Las reglas claras para separar tu fecha, cambiarla si lo necesitas e inscribirte en un curso o regalar un bono.</p>
-  <div class="legal-meta in d3 mt-16">
+  <p class="lead mt-16">Las reglas claras para separar tu fecha, cambiarla si lo necesitas e inscribirte en un curso o regalar un bono.</p>
+  <div class="legal-meta mt-16">
     <p>Anticipación mínima<strong><?= e((string) $minDays) ?> días</strong></p>
     <p>Abono para separar<strong><?= e((string) $deposit) ?> %</strong></p>
     <p>Vigente desde<strong><?= e($vigencia) ?></strong></p>

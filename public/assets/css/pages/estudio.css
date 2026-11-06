@@ -11,7 +11,7 @@
 .est-sub { color: var(--topo); font-size: 15px; }
 
 /* Mapa: ilustración de respaldo + mapa real de Google + barra de vidrio */
-.map { display: block; position: relative; overflow: hidden; border-radius: 32px; height: 460px; background: #EFE7E0; }
+.map { display: block; position: relative; overflow: hidden; border-radius: var(--r-box); height: 460px; background: #EFE7E0; }
 .map-art { position: absolute; inset: 0; width: 100%; height: 100%; }
 .map-pin { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); display: grid; place-items: center; }
 .map-pin img { width: 64px; height: 64px; position: relative; border-radius: 50%; box-shadow: 0 0 0 6px var(--porcelana); }
@@ -20,7 +20,7 @@
 .map-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(.4) sepia(.18) saturate(.85) contrast(.95); }
 .map-bar {
   position: absolute; left: 32px; bottom: 32px; right: 32px; display: flex; justify-content: space-between; align-items: center;
-  gap: 16px; flex-wrap: wrap; padding: 18px 22px; border-radius: 20px; text-decoration: none; color: var(--tinta); font-size: 16px;
+  gap: 16px; flex-wrap: wrap; padding: 18px 22px; border-radius: var(--r-box); text-decoration: none; color: var(--tinta); font-size: 16px;
   background: rgba(251, 248, 245, .86); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
   box-shadow: 0 18px 40px -24px rgba(23, 19, 18, .35);
 }
@@ -46,7 +46,7 @@
   .est-hero-grid { padding-top: 32px; gap: 48px; }
   .est-title { font-size: clamp(48px, 13vw, 64px); }
   .est-quote { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .map { height: 280px; border-radius: 24px; }
+  .map { height: 280px; border-radius: var(--r-box); }
   .est-quick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .est-quick .btn { padding: 0 12px; }
   .est-hero-grid > .stack { gap: 28px; }
@@ -67,7 +67,7 @@
 .collage-c { position: relative; z-index: 2; max-width: 620px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .collage-t { font-size: clamp(48px, 5.4vw, 84px); }
 .cl { position: absolute; z-index: 1; }
-.cl .ph { border-radius: 20px; box-shadow: 0 30px 60px -36px rgba(23, 19, 18, .5); }
+.cl .ph { border-radius: var(--r-foto); box-shadow: 0 30px 60px -36px rgba(23, 19, 18, .5); }
 .cl1 { left: 4%; top: 8%; width: 260px; } .cl1 .ph { aspect-ratio: 3 / 2; rotate: -4deg; }
 .cl2 { right: 6%; top: 4%; width: 190px; } .cl2 .ph { aspect-ratio: 4 / 5; rotate: 5deg; }
 .cl3 { left: 10%; bottom: 6%; width: 180px; } .cl3 .ph { aspect-ratio: 4 / 5; rotate: 3deg; }

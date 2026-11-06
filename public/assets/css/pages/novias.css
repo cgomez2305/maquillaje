@@ -55,11 +55,11 @@
 .deck-sec { overflow: hidden; }
 .deck-pin { min-height: 0; }
 .deck { list-style: none; margin: 0 auto; padding: 32px 0 24px; display: flex; justify-content: center; max-width: var(--container); }
-.deck-card { flex: none; width: min(272px, calc((100vw - 2 * var(--gutter) - 64px) / 4)); margin: 0 8px; background: var(--blanco); border-radius: 24px; padding: 12px 12px 26px; box-shadow: 0 1px 0 rgba(23, 19, 18, .06), 0 40px 70px -46px rgba(23, 19, 18, .55); display: flex; flex-direction: column; gap: 18px; transition: translate .5s var(--ease), rotate .5s var(--ease), box-shadow .5s var(--ease); position: relative; }
+.deck-card { flex: none; width: min(272px, calc((100vw - 2 * var(--gutter) - 64px) / 4)); margin: 0 8px; background: var(--blanco); border-radius: var(--r-box); padding: 12px 12px 26px; box-shadow: 0 1px 0 rgba(23, 19, 18, .06), 0 40px 70px -46px rgba(23, 19, 18, .55); display: flex; flex-direction: column; gap: 18px; transition: translate .5s var(--ease), rotate .5s var(--ease), box-shadow .5s var(--ease); position: relative; }
 .dc1 { rotate: -7deg; translate: 0 34px; z-index: 1; } .dc2 { rotate: -2.5deg; translate: 0 6px; z-index: 2; }
 .dc3 { rotate: 2.5deg; translate: 0 6px; z-index: 3; } .dc4 { rotate: 7deg; translate: 0 34px; z-index: 4; }
 .deck-card:hover { rotate: 0deg; translate: 0 -12px; z-index: 6; box-shadow: 0 50px 80px -40px rgba(23, 19, 18, .55); }
-.deck-ph { aspect-ratio: 4 / 5; border-radius: 16px; }
+.deck-ph { aspect-ratio: 4 / 5; border-radius: var(--r-foto); }
 .deck-body { padding: 0 10px; display: flex; flex-direction: column; gap: 8px; }
 .deck-n { font-size: 13px; letter-spacing: .16em; color: var(--terracota); }
 .deck-t { font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; }
@@ -105,9 +105,9 @@
   .nv-inc-cta .btn { flex: 1 1 100%; }
   .nv-fm-head { align-items: flex-start; text-align: left; margin-bottom: 32px; }
   .deck { flex-direction: column; padding: 8px var(--gutter) 0; gap: 12px; }
-  .deck-card { width: auto; margin: 0; rotate: none; translate: none; flex-direction: row; align-items: center; gap: 16px; padding: 10px; border-radius: 20px; }
+  .deck-card { width: auto; margin: 0; rotate: none; translate: none; flex-direction: row; align-items: center; gap: 16px; padding: 10px; border-radius: var(--r-box); }
   .deck-card:hover { translate: none; }
-  .deck-ph { width: 96px; flex: none; border-radius: 14px; }
+  .deck-ph { width: 96px; flex: none; border-radius: var(--r-foto); }
   .deck-body { padding: 0 6px 0 0; gap: 4px; }
   .deck-t { font-size: 22px; }
   .deck-p { font-size: 14px; }

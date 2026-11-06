@@ -13,10 +13,10 @@ $soon = [
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
   <div class="shop-hero-grid">
     <h1 class="hero-title">
-      <span class="soon-badge in"><span class="soon-dot" aria-hidden="true"></span>Tienda · Próximamente</span>
-      <span class="d shop-h1 in d1">Muy pronto,<br>en tu piel.</span>
+      <span class="soon-badge"><span class="soon-dot" aria-hidden="true"></span>Tienda · Próximamente</span>
+      <span class="d shop-h1">Muy pronto,<br>en tu piel.</span>
     </h1>
-    <div class="stack gap-28 in d2">
+    <div class="stack gap-28">
       <p class="lead shop-hero-p">Estamos preparando la tienda de Make Up by Fletcher: bonos de regalo, kits y los productos que María Paula usa cada semana en el estudio.</p>
       <div class="wrap-row">
         <a class="btn" href="<?= e(wa_href('tienda-bono', 'bono')) ?>" rel="nofollow"><?= icon('whatsapp') ?> Pedir un bono de regalo</a>
@@ -30,7 +30,7 @@ $soon = [
   <h2 class="sr-only" id="soon-t">Lo que viene</h2>
   <ul class="g3 m-snap soon" role="list">
     <?php foreach ($soon as $i => [$title, $text, $photo, $alt]): ?>
-    <li class="soon-card rv" data-delay="<?= e((string) ($i * 0.06)) ?>">
+    <li class="soon-card">
       <div class="ph ar-45"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 80vw, 420px', 'eager' => $i === 0]) ?><span class="tag">Muy pronto</span></div>
       <h3 class="d soon-title"><?= e($title) ?></h3>
       <p class="soon-text"><?= e($text) ?></p>
@@ -41,9 +41,8 @@ $soon = [
 </section>
 
 <section class="wrap sec-b">
-  <div class="rv cta mesh soon-cta">
+  <div class="cta mesh soon-cta">
     <div class="deco" aria-hidden="true"><img src="<?= e(img_src('marca/isotipo-nude', 360)) ?>" alt="" width="360" height="360" loading="lazy"></div>
-    <p class="lbl">Bonos de regalo</p>
     <h2 class="d d-l">¿Lo necesitas ya?</h2>
     <p class="txt">Pídelo por WhatsApp: lo preparamos en tarjeta física o digital con el nombre de quien lo recibe.</p>
     <div class="wrap-row cta-actions">

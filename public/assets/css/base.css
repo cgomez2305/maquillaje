@@ -24,7 +24,8 @@ h1, h2, h3, h4 { font-weight: 400; }
 .page { position: relative; overflow-x: clip; }
 
 /* Tipografía */
-.d { font-family: var(--font-display); font-weight: 200; line-height: 1.02; letter-spacing: -0.035em; margin: 0; }
+.d { font-family: var(--font-display); font-weight: 300; font-optical-sizing: auto; line-height: 1.04; letter-spacing: -0.02em; margin: 0; }
+.d em, .d i, .d .c-terracota { font-style: italic; font-weight: 300; }
 .lbl { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; margin: 0; }
 .d-hero { font-size: clamp(56px, 7.4vw, 112px); }
 .d-xl { font-size: clamp(48px, 6.4vw, 104px); }
@@ -105,7 +106,7 @@ a:hover .arr, button:hover .arr { transform: translateX(4px); }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--tinta); }
 .brand:hover { color: var(--tinta); }
 .brand img { width: 40px; height: 40px; }
-.brand .d { font-size: 26px; letter-spacing: -0.02em; }
+.brand .d { font-family: var(--font-brand); font-weight: 200; font-size: 26px; letter-spacing: -0.02em; }
 .nav-links { display: flex; gap: 34px; align-items: center; }
 .nav-links a { text-decoration: none; font-size: 13px; letter-spacing: .06em; color: var(--tinta); position: relative; padding: 14px 0; }
 .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 8px; height: 1px; background: var(--tinta); transform: scaleX(0); transform-origin: right; transition: transform .5s var(--ease); }
@@ -130,7 +131,7 @@ a:hover .arr, button:hover .arr { transform: translateX(4px); }
 .sheet-lbl + .mrows { margin-top: -4px; }
 
 .mtiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 28px; }
-.mtile { position: relative; display: block; aspect-ratio: 1 / 1.05; border-radius: 20px; overflow: hidden; background: var(--arena); text-decoration: none; color: var(--porcelana); isolation: isolate; transition: transform 120ms ease-out; }
+.mtile { position: relative; display: block; aspect-ratio: 1 / 1.05; border-radius: var(--r-box); overflow: hidden; background: var(--arena); text-decoration: none; color: var(--porcelana); isolation: isolate; transition: transform 120ms ease-out; }
 .mtile picture, .mtile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; z-index: -2; }
 .mtile::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(23, 19, 18, 0) 38%, rgba(23, 19, 18, .78) 100%); }
 .mtile:hover, .mtile:focus-visible { color: var(--porcelana); }
@@ -148,7 +149,7 @@ a:hover .arr, button:hover .arr { transform: translateX(4px); }
 .mrow-i { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--arena); color: var(--tinta); transition: background-color .3s ease, color .3s ease; }
 .mrow-i .ic { width: 20px; height: 20px; }
 .mrow-t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.mrow-n { font-family: var(--font-display); font-weight: 200; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; }
+.mrow-n { font-family: var(--font-display); font-weight: 300; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; }
 .mrow-h { font-size: 14px; color: var(--topo); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mrow-c { width: 16px; height: 16px; color: var(--deshabilitado); transition: transform .35s var(--ease), color .3s ease; }
 .mrow:hover .mrow-c { transform: translateX(3px); color: var(--terracota); }
@@ -240,7 +241,6 @@ body.menu-open .mbar { visibility: hidden; }
 .in.d4 { animation-delay: .32s; } .in.d5 { animation-delay: .4s; }
 @keyframes in { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
 @keyframes spin { to { transform: rotate(360deg); } }
-@keyframes mq { to { transform: translateX(-50%); } }
 @keyframes pop { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 /* html.js lo añade un script en <head> solo si se permite movimiento; app.js revela con IntersectionObserver */
 /* Lenguaje de movimiento «enfoque»: el texto pasa de desenfocado a nítido, como una cámara que enfoca;

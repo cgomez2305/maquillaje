@@ -23,10 +23,10 @@ $total = $price * max(1, min($maxPeople, (int) $old['people']));
 ?>
 <section class="wrap rsv">
   <h1 class="rsv-head">
-    <span class="lbl c-terracota in">Reservar cita · Make Up by Fletcher</span>
-    <span class="d rsv-title in d1">Separa tu fecha.</span>
+    <span class="lbl c-terracota">Reservar cita · Make Up by Fletcher</span>
+    <span class="d rsv-title">Separa tu fecha.</span>
   </h1>
-  <p class="rsv-intro in d2">Elige tu servicio y la fecha: te abrimos WhatsApp con la solicitud ya escrita. Allí confirmamos la disponibilidad y la fecha queda separada con un abono del <?= (int) config('app.booking.deposit_percent', 50) ?> %.</p>
+  <p class="rsv-intro">Elige tu servicio y la fecha: te abrimos WhatsApp con la solicitud ya escrita. Allí confirmamos la disponibilidad y la fecha queda separada con un abono del <?= (int) config('app.booking.deposit_percent', 50) ?> %.</p>
 
   <div class="rsv-layout">
     <form class="rsv-form" id="paso" method="post" action="/reservar" novalidate data-reservar>

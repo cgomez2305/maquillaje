@@ -27,9 +27,9 @@ $linkBase = strtok($linksTo, '#') ?: '';
 <article>
   <header class="wrap art-head">
     <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
-    <p class="lbl c-terracota in art-kicker"><?= e($post['kicker'] ?: $post['category']) ?></p>
-    <h1 class="d in d1 art-title"><?= e($post['title']) ?></h1>
-    <div class="art-byline in d2">
+    <p class="lbl c-terracota art-kicker"><?= e($post['kicker'] ?: $post['category']) ?></p>
+    <h1 class="d art-title"><?= e($post['title']) ?></h1>
+    <div class="art-byline">
       <div class="row gap-14">
         <div class="ph avatar"><?= img('fotos/catalogo-maria-paula-tablero', '', ['sizes' => '52px', 'width' => 480]) ?></div>
         <div>
@@ -47,7 +47,7 @@ $linkBase = strtok($linksTo, '#') ?: '';
   </header>
 
   <?php if (!empty($post['cover'])): ?>
-  <div class="wrap in d3 art-cover-wrap">
+  <div class="wrap art-cover-wrap">
     <div class="ph art-cover"><?= img((string) $post['cover'], $coverAlt, ['priority' => true, 'sizes' => '(max-width: 1320px) 100vw, 1240px']) ?></div>
   </div>
   <?php endif; ?>
@@ -64,7 +64,7 @@ $linkBase = strtok($linksTo, '#') ?: '';
     <div class="prose">
       <?= $body ?>
 
-      <div class="rv art-cta">
+      <div class="art-cta">
         <p class="lbl c-salmon"><?= e($ctaLabel) ?></p>
         <p class="d art-cta-title"><?= e($ctaTitle) ?></p>
         <div class="wrap-row">
@@ -80,7 +80,7 @@ $linkBase = strtok($linksTo, '#') ?: '';
       <?= App\View::partial('partials/faq', ['items' => $faq, 'class' => 'sm']) ?>
       <?php endif; ?>
 
-      <div class="rv author">
+      <div class="author">
         <div class="ph avatar lg"><?= img('fotos/catalogo-maria-paula-tablero', 'María Paula Fletcher', ['sizes' => '88px', 'width' => 480]) ?></div>
         <div>
           <p class="lbl c-topo">Escrito por</p>
@@ -101,9 +101,8 @@ $linkBase = strtok($linksTo, '#') ?: '';
     <div class="g3">
       <?php if ($related !== []): ?>
         <?php foreach ($related as $i => $r): ?>
-        <a class="post rv" href="/diario/<?= e($r['slug']) ?>" data-delay="<?= e((string) ($i * 0.08)) ?>">
+        <a class="post" href="/diario/<?= e($r['slug']) ?>">
           <div class="ph ar-43"><?= img((string) $r['cover'], (string) $r['title'], ['sizes' => '(max-width: 960px) 100vw, 420px']) ?></div>
-          <p class="lbl c-terracota"><?= e($r['category']) ?></p>
           <h3 class="d more-post"><?= e($r['title']) ?></h3>
         </a>
         <?php endforeach; ?>
@@ -113,9 +112,8 @@ $linkBase = strtok($linksTo, '#') ?: '';
             ['/precios-maquillaje-bucaramanga', 'fotos/social-cumple-pastel', 'Clienta con maquillaje social de ojos dorados sonriendo con su torta', 'Servicios', 'Servicios y precios de maquillaje 2026'],
             ['/portafolio', 'fotos/proceso-rubor-novia', 'Novia con tiara riendo mientras le aplican rubor con brocha', 'Portafolio', 'Pieles reales, luz real: el portafolio'],
         ] as $i => [$href, $photo, $alt, $cat, $label]): ?>
-        <a class="post rv" href="<?= e($href) ?>" data-delay="<?= e((string) ($i * 0.08)) ?>">
+        <a class="post" href="<?= e($href) ?>">
           <div class="ph ar-43"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 100vw, 420px']) ?></div>
-          <p class="lbl c-terracota"><?= e($cat) ?></p>
           <h3 class="d more-post"><?= e($label) ?></h3>
         </a>
         <?php endforeach; ?>

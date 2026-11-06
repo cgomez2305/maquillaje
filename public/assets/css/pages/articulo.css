@@ -19,7 +19,7 @@
 .copied { position: absolute; right: 0; top: calc(100% + 8px); font-size: 12px; color: var(--topo); white-space: nowrap; }
 
 .art-cover-wrap { padding-bottom: 96px; }
-.art-cover { aspect-ratio: 21 / 9; border-radius: var(--r-pack); }
+.art-cover { aspect-ratio: 21 / 9; border-radius: var(--r-foto); }
 .art-cover img { object-position: 50% 40%; }
 
 .layout { display: grid; grid-template-columns: 240px minmax(0, 720px); gap: 96px; justify-content: center; }
@@ -29,11 +29,11 @@
 .toc a:hover, .toc a[aria-current="true"] { color: var(--tinta); border-left-color: var(--tinta); }
 
 .prose { min-width: 0; }
-.prose > blockquote:first-child { background: var(--arena); border-left: 0; border-radius: 24px; padding: 36px 40px; margin: 0 0 40px; scroll-margin-top: 110px; }
+.prose > blockquote:first-child { background: var(--arena); border-left: 0; border-radius: var(--r-box); padding: 36px 40px; margin: 0 0 40px; scroll-margin-top: 110px; }
 .prose > blockquote:first-child p:first-child { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; color: var(--terracota); margin: 0 0 16px; line-height: 1.5; }
 .prose > blockquote:first-child p + p { margin: 0; font-size: 20px; line-height: 1.6; color: var(--tinta); }
 .prose blockquote { margin: 0 0 22px; padding-left: 20px; border-left: 2px solid var(--salmon); }
-.prose h2 { font-family: var(--font-display); font-weight: 200; font-size: 40px; line-height: 1.1; letter-spacing: -0.03em; margin: 72px 0 24px; scroll-margin-top: 110px; }
+.prose h2 { font-family: var(--font-display); font-weight: 300; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 72px 0 24px; scroll-margin-top: 110px; }
 .prose h3 { font-size: 22px; margin: 40px 0 16px; }
 .prose p, .prose li { font-size: 18px; line-height: 1.75; color: var(--prosa); }
 .prose p { margin: 0 0 22px; }
@@ -89,7 +89,7 @@
   .art-kicker { margin-top: 32px; }
   .art-title { font-size: clamp(36px, 10vw, 52px); }
   .art-cover-wrap { padding-bottom: 56px; }
-  .art-cover { aspect-ratio: 4 / 3; border-radius: 20px; }
+  .art-cover { aspect-ratio: 4 / 3; border-radius: var(--r-foto); }
   .prose > blockquote:first-child { padding: 28px 24px; }
   .prose > blockquote:first-child p + p { font-size: 18px; }
   .prose h2 { font-size: 32px; margin-top: 56px; }

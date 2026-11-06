@@ -225,13 +225,6 @@ function scenes() {
       });
     });
   });
-  // Cinta de servicios: además de su giro continuo, el scroll la desplaza
-  document.querySelectorAll('.marq').forEach((m) => {
-    gsap.fromTo(m.querySelector('.marq-s'), { x: 0 }, {
-      x: -220, ease: 'none',
-      scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: true },
-    });
-  });
 }
 
 function init() {

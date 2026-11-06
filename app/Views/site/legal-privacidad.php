@@ -19,11 +19,11 @@ $toc = [
 <section class="wrap legal-head">
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
   <h1>
-    <span class="lbl in c-terracota">Ley 1581 de 2012 · Decreto 1377 de 2013</span>
-    <span class="d in d1">Política de tratamiento de datos.</span>
+    <span class="lbl c-terracota">Ley 1581 de 2012 · Decreto 1377 de 2013</span>
+    <span class="d">Política de tratamiento de datos.</span>
   </h1>
-  <p class="lead in d2 mt-16">Cómo cuidamos los datos que nos compartes al reservar, cotizar o comprar, para qué los usamos y cómo puedes consultarlos, corregirlos o pedir que los borremos.</p>
-  <div class="legal-meta in d3 mt-16">
+  <p class="lead mt-16">Cómo cuidamos los datos que nos compartes al reservar, cotizar o comprar, para qué los usamos y cómo puedes consultarlos, corregirlos o pedir que los borremos.</p>
+  <div class="legal-meta mt-16">
     <p>Responsable<strong><?= e($b['legal_name']) ?></strong></p>
     <p>Contacto<strong><?= e($b['email']) ?></strong></p>
     <p>Vigente desde<strong><?= e($vigencia) ?></strong></p>

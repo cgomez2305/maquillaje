@@ -10,15 +10,15 @@
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
   <div class="pf-head-row">
     <h1 class="pf-h1">
-      <span class="lbl in c-terracota">Portafolio de maquillaje · Bucaramanga</span>
-      <span class="d pf-title in d1">El trabajo<br>habla bajito.</span>
+      <span class="lbl c-terracota">Portafolio de maquillaje · Bucaramanga</span>
+      <span class="d pf-title">El trabajo<br>habla bajito.</span>
     </h1>
-    <p class="pf-lead in d2">Fotos de clientas reales, sin filtros de piel. Toca una imagen para verla en grande.</p>
+    <p class="pf-lead">Fotos de clientas reales, sin filtros de piel. Toca una imagen para verla en grande.</p>
   </div>
 </section>
 
 <section class="wrap sec-b">
-  <div class="chips pf-chips in d3" role="group" aria-label="Filtrar por tipo de servicio" data-pf-chips hidden>
+  <div class="chips pf-chips" role="group" aria-label="Filtrar por tipo de servicio" data-pf-chips hidden>
     <button type="button" class="chip on" aria-pressed="true" data-cat="todo" data-label="Todo">Todo <span class="chip-c"><?= count($items) ?></span></button>
     <?php $n = 0; foreach ($cats as $slug => $label): $n++; $count = count(array_filter($items, static fn(array $it): bool => $it['cat'] === $slug)); ?>
     <button type="button" class="chip" aria-pressed="false" data-cat="<?= e($slug) ?>" data-label="<?= e($label) ?>"><span class="chip-n" aria-hidden="true"><?= $n ?></span><?= e($label) ?> <span class="chip-c"><?= $count ?></span></button>

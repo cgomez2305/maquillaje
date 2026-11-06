@@ -16,7 +16,7 @@
 .novias-band-p { font-size: 17px; line-height: 1.7; color: var(--nude-medio); max-width: 480px; }
 .novias-band-cta { padding-top: 12px; }
 
-.cursos-band { background: var(--arena); border-radius: 32px; overflow: hidden; }
+.cursos-band { background: var(--arena); border-radius: var(--r-box); overflow: hidden; }
 .cursos-band-txt { padding: 88px 0 88px 88px; }
 .cursos-band-ph { border-radius: 0; height: 100%; min-height: 620px; }
 .addr { font-style: normal; }

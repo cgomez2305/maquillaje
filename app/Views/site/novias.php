@@ -10,10 +10,10 @@
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
   <div class="g2 nv-hero-grid">
     <h1 class="nv-h1">
-      <span class="lbl in c-terracota">Maquillaje de novia en Bucaramanga y Floridablanca</span>
-      <span class="d nv-hero-d in d1">Tu versión<br>del sí.</span>
+      <span class="lbl c-terracota">Maquillaje de novia en Bucaramanga y Floridablanca</span>
+      <span class="d nv-hero-d">Tu versión<br>del sí.</span>
     </h1>
-    <div class="stack gap-28 nv-hero-side in d2">
+    <div class="stack gap-28 nv-hero-side">
       <p class="lead">Para novias y quinceañeras que quieren reconocerse en las fotos dentro de veinte años. Prueba previa, dos propuestas y fijación extra para todo el día.</p>
       <div class="nv-prices">
         <p class="nv-price"><span class="d"><?= e(money($packs['pack3']['price'], false)) ?></span><span class="c-topo">COP · Novia o quinceañera</span></p>
@@ -28,7 +28,7 @@
 </section>
 
 <section class="nv-cover-wrap">
-  <div class="ph px in d3 nv-cover">
+  <div class="ph px nv-cover">
     <?= img('fotos/novia-labios-espejo', 'Novia con tiara y peinado de ondas sonriendo mientras le aplican el labial frente al espejo', ['priority' => true, 'sizes' => '100vw', 'class' => 'fill']) ?>
   </div>
 </section>
@@ -36,11 +36,10 @@
 <section id="incluye" class="bg-tinta sec">
   <div class="wrap">
     <div class="g2 nv-inc-head">
-      <div class="rv stack gap-18">
-        <p class="lbl c-salmon" id="quinceaneras">Pack 3 · Novias y quinceañeras</p>
-        <h2 class="d d-l">Lo que incluye.</h2>
+      <div class="stack gap-18">
+        <h2 class="d d-l" id="quinceaneras">Lo que incluye<br>el Pack 3.</h2>
       </div>
-      <p class="rv nv-on-dark mw-480">Todo pensado para que el día de la boda o de los quince no haya sorpresas: el maquillaje ya lo probaste, lo aprobaste y sabemos cómo se comporta con tu piel.</p>
+      <p class="nv-on-dark mw-480">Todo pensado para que el día de la boda o de los quince no haya sorpresas: el maquillaje ya lo probaste, lo aprobaste y sabemos cómo se comporta con tu piel.</p>
     </div>
     <div class="g4 nv-inc-grid">
       <?php
@@ -51,18 +50,18 @@
           ['04', 'Extra fijación', 'Sellado reforzado para lágrimas, abrazos, calor y pista de baile.'],
       ];
       foreach ($inc as $i => [$n, $title, $text]): ?>
-      <div class="inc rv" data-delay="<?= e((string) ($i * 0.06)) ?>">
+      <div class="inc">
         <p class="d inc-n" aria-hidden="true"><?= e($n) ?></p>
         <h3><?= e($title) ?></h3>
         <p><?= e($text) ?></p>
       </div>
       <?php endforeach; ?>
     </div>
-    <details class="rv nv-inc-more">
+    <details class="nv-inc-more">
       <summary><span>Ver todo lo que incluye el Pack 3</span><?= icon('plus', 'pl') ?></summary>
       <p>También incluye asesoría previa, sesión de relajación con skin care (mascarilla húmeda, masaje facial, esencias aromáticas y masaje de manos con cera tibia), maquillaje el día del evento en silla profesional con luz de estudio, pestañas postizas y kit de retoque con papel de arroz, brillo labial y espejo de bolsillo.</p>
     </details>
-    <div class="rv nv-inc-cta">
+    <div class="nv-inc-cta">
       <a class="btn light" href="/reservar?servicio=pack3">Reservar mi prueba</a>
       <a class="btn ghost-light" href="<?= e(wa_href('novias-incluye', 'novias')) ?>" rel="nofollow">Consultar mi fecha</a>
     </div>
@@ -70,8 +69,7 @@
 </section>
 
 <section class="wrap sec nv-fm" aria-labelledby="nv-fm-t">
-  <div class="rv stack gap-18 nv-fm-head">
-    <p class="lbl c-terracota">El acabado, punto por punto</p>
+  <div class="stack gap-18 nv-fm-head">
     <h2 class="d d-l" id="nv-fm-t">Así se ve el <span class="nowrap">Pack 3</span><br class="hide-m"> en tu piel.</h2>
   </div>
   <div class="fm" data-facemap>
@@ -97,8 +95,7 @@
 
 <section class="sec deck-sec" aria-labelledby="nv-deck-t" data-deck>
   <div class="deck-pin">
-    <div class="wrap rv stack gap-18 nv-steps-head">
-      <p class="lbl c-terracota">El proceso</p>
+    <div class="wrap stack gap-18 nv-steps-head">
       <h2 class="d d-l" id="nv-deck-t">Del primer mensaje<br>a la última foto.</h2>
     </div>
     <ol class="deck">
@@ -124,8 +121,7 @@
 </section>
 
 <section class="wrap sec-b looks" aria-labelledby="nv-looks-t">
-  <div class="rv stack gap-18 looks-head">
-    <p class="lbl c-terracota">Tu look</p>
+  <div class="stack gap-18 looks-head">
     <h2 class="d d-l" id="nv-looks-t">Natural, glam<br>o editorial.</h2>
     <p class="body-l mw-460">En la prueba previa te presentamos dos propuestas. Estas son las tres direcciones que más piden nuestras novias.</p>
   </div>
@@ -149,7 +145,6 @@
     <div class="look-panel" role="tabpanel" id="lp-<?= e($id) ?>" aria-labelledby="lt-<?= e($id) ?>">
       <div class="ph look-ph"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 100vw, 560px']) ?></div>
       <div class="look-txt">
-        <p class="lbl c-terracota">Look 0<?= $i + 1 ?></p>
         <h3 class="d look-title"><?= e($name) ?></h3>
         <p class="body-l"><?= e($text) ?></p>
         <p class="look-for"><span class="lbl c-topo">Ideal para</span><?= e($for) ?></p>
@@ -161,9 +156,8 @@
 </section>
 
 <section class="wrap sec-b" aria-labelledby="nv-gal-t">
-  <div class="rv sec-head">
+  <div class="sec-head">
     <div>
-      <p class="lbl c-terracota">Novias MUBF</p>
       <h2 class="d d-l" id="nv-gal-t">Reales, en su día.</h2>
     </div>
     <a class="btn ghost hide-m" href="/portafolio#novias">Ver más novias</a>
@@ -177,7 +171,7 @@
         ['fotos/novia-pareja', 'Novia con tiara recibiendo un beso del novio en la frente durante la recepción'],
         ['fotos/novia-balcon', 'Novia con velo y vestido de seda en un balcón con vista a la ciudad'],
     ] as [$photo, $alt]): ?>
-    <li class="rv"><div class="ph ar-34"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 80vw, 400px']) ?></div></li>
+    <li><div class="ph ar-34"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 80vw, 400px']) ?></div></li>
     <?php endforeach; ?>
   </ul>
   <p class="m-snap-hint only-m" aria-hidden="true">Desliza para ver más <?= icon('arrow', 'arr') ?></p>
@@ -185,12 +179,11 @@
 
 <section class="wrap sec-b" id="cortejo">
   <div class="g2 nv-cortejo">
-    <div class="ph px rv ar-45 m-43 arch-soft"><?= img('fotos/novia-madre', 'Novia y su mamá abrazadas en batas de seda blanca y rosa durante la preparación', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
+    <div class="ph px ar-45 m-43 arch-soft"><?= img('fotos/novia-madre', 'Novia y su mamá abrazadas en batas de seda blanca y rosa durante la preparación', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
     <div class="stack gap-32">
-      <p class="lbl rv c-terracota">Para el cortejo</p>
-      <h2 class="d d-m rv">Mamá, damas<br>e invitadas.</h2>
-      <p class="rv body-l mw-480">Una boda casi nunca es un solo maquillaje. Agenda a quien te acompaña el mismo día y mantén un solo estilo en todas las fotos.</p>
-      <div class="rv price-list">
+      <h2 class="d d-m">Mamá, damas<br>e invitadas.</h2>
+      <p class="body-l mw-480">Una boda casi nunca es un solo maquillaje. Agenda a quien te acompaña el mismo día y mantén un solo estilo en todas las fotos.</p>
+      <div class="price-list">
         <div class="price-row"><div><p class="name">Pack 1 · Servicio base</p><p class="detail">Asesoría, maquillaje social y pestañas</p></div><p class="amount"><?= e(money($packs['pack1']['price'])) ?></p></div>
         <div class="price-row"><div><p class="name">Pack 2 · Full experience</p><p class="detail">Skin care, silla y luz de estudio, kit de retoque</p></div><p class="amount"><?= e(money($packs['pack2']['price'])) ?></p></div>
       </div>
@@ -200,21 +193,20 @@
 
 <section class="bg-arena sec">
   <div class="wrap g2 nv-season">
-    <div class="rv stack gap-24">
+    <div class="stack gap-24">
       <p class="lbl c-terracota">Temporada de bodas</p>
       <p class="d nv-season-d">Octubre, noviembre y diciembre son los meses más pedidos. Las fechas de 2027 ya se están separando.</p>
     </div>
-    <div class="rv nv-season-cta"><a class="btn" href="/reservar?servicio=pack3">Ver fechas disponibles</a></div>
+    <div class="nv-season-cta"><a class="btn" href="/reservar?servicio=pack3">Ver fechas disponibles</a></div>
   </div>
 </section>
 
 <section class="wrap sec">
   <div class="g2 nv-faq-grid">
-    <div class="rv stack gap-18">
-      <p class="lbl c-terracota">Preguntas de novias</p>
+    <div class="stack gap-18">
       <h2 class="d d-l2">Todo claro<br>antes del sí.</h2>
     </div>
-    <div class="rv faq">
+    <div class="faq">
       <?php foreach ($faq as $i => $item): ?>
       <details<?= $i === 0 ? ' open' : '' ?>>
         <summary><span><?= e($item['q']) ?></span><?= icon('plus', 'pl') ?></summary>
@@ -226,9 +218,8 @@
 </section>
 
 <section class="wrap sec-b">
-  <div class="rv cta mesh nv-cta">
+  <div class="cta mesh nv-cta">
     <div class="deco" aria-hidden="true"><img src="<?= e(img_src('marca/isotipo-nude', 360)) ?>" alt="" width="360" height="360" loading="lazy"></div>
-    <p class="lbl">Novias 2027</p>
     <h2 class="d d-xl">Separa tu fecha.</h2>
     <div class="wrap-row cta-actions">
       <a class="btn" href="<?= e(wa_href('novias-cta', 'novias')) ?>" rel="nofollow">Escribir por WhatsApp <?= icon('arrow', 'arr') ?></a>

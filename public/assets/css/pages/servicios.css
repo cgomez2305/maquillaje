@@ -20,8 +20,7 @@
 .sv-rows { display: flex; flex-direction: column; }
 .sv-row { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 48px; padding: 48px 0; border-top: 1px solid var(--linea); scroll-margin-top: calc(var(--nav-h) + 24px); }
 .sv-row:first-child { padding-top: 0; border-top: 0; }
-.sv-row-ph { aspect-ratio: 4 / 5; border-radius: 160px 160px 22px 22px; }
-.sv-row:nth-child(2) .sv-row-ph { border-radius: 22px; }
+.sv-row-ph { aspect-ratio: 4 / 5; border-radius: var(--r-foto); }
 .sv-row-body { display: flex; flex-direction: column; gap: 22px; }
 .sv-row-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; align-items: start; }
 .sv-row-n { font-size: 64px; line-height: .9; color: var(--salmon); letter-spacing: -0.04em; }
@@ -63,7 +62,7 @@
 
 /* Selector de pack en móvil: los tres precios en la primera pantalla; cada uno lleva a su tarjeta */
 .sv-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }
-.sv-strip a { display: flex; flex-direction: column; gap: 4px; padding: 14px 12px; border-radius: 18px; background: var(--arena); text-decoration: none; color: var(--tinta); min-height: 44px; }
+.sv-strip a { display: flex; flex-direction: column; gap: 4px; padding: 14px 12px; border-radius: var(--r-box); background: var(--arena); text-decoration: none; color: var(--tinta); min-height: 44px; }
 .sv-strip a:nth-child(2) { background: var(--tinta); color: var(--porcelana); }
 .sv-strip a:nth-child(2) .lbl { color: var(--salmon); }
 .sv-strip .lbl { font-size: 11px; letter-spacing: .12em; color: var(--terracota); }
@@ -93,7 +92,7 @@
   .sv-pk-price .d { font-size: 34px; }
   .sv-menu { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .sv-row { grid-template-columns: 112px minmax(0, 1fr); gap: 16px 18px; padding: 32px 0; }
-  .sv-row-ph { aspect-ratio: 4 / 5; border-radius: 60px 60px 14px 14px; align-self: start; }
+  .sv-row-ph { aspect-ratio: 4 / 5; border-radius: var(--r-foto); align-self: start; }
   .sv-row-body { display: contents; }
   .sv-row-head { grid-column: 2; grid-template-columns: minmax(0, 1fr); gap: 6px; align-self: center; }
   .sv-row-n { display: none; }

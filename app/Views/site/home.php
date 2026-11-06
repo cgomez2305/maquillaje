@@ -9,15 +9,15 @@
 <section class="wrap hero">
   <div class="stack gap-40">
     <h1 class="hero-h1">
-      <span class="lbl in c-terracota">Maquillaje profesional en Bucaramanga</span>
-      <span class="d d-hero in d1">Natural.<br>Duradero.<br>Tuyo.</span>
+      <span class="lbl c-terracota">Maquillaje profesional en Bucaramanga</span>
+      <span class="d d-hero">Que te veas tú<br>hasta la última <em>canción.</em></span>
     </h1>
-    <p class="lead mw-470 in d2">Maquillaje para novias, quinceañeras, grados y eventos sociales, con acabado natural que se mantiene impecable de la primera foto a la última canción. Estudio en Floridablanca y servicio a domicilio.</p>
-    <div class="wrap-row in d3">
+    <p class="lead mw-470">Maquillaje para novias, quinceañeras, grados y eventos sociales, con acabado natural que se mantiene impecable de la primera foto a la última del álbum. Estudio en Floridablanca y servicio a domicilio.</p>
+    <div class="wrap-row">
       <a class="btn" href="<?= e(wa_href('inicio-hero')) ?>" rel="nofollow">Agendar por WhatsApp <?= icon('arrow', 'arr') ?></a>
       <a class="btn ghost hide-m" href="/precios-maquillaje-bucaramanga">Ver servicios y precios</a>
     </div>
-    <nav class="hero-quick only-m in d3" aria-label="Servicios y precios">
+    <nav class="hero-quick only-m" aria-label="Servicios y precios">
       <?php foreach ([
           ['/maquillaje-de-novia-bucaramanga', 'Novias y quinceañeras', 'Prueba previa, reel y extra fijación', $packs['pack3']['price']],
           ['/precios-maquillaje-bucaramanga#packs', 'Social y grados', 'Asesoría, maquillaje y pestañas', $packs['pack1']['price']],
@@ -27,13 +27,13 @@
       <a href="<?= e($href) ?>"><span class="hq-t"><span class="hq-n"><?= e($name) ?></span><span class="hq-d"><?= e($detail) ?></span></span><span class="hq-p"><?= $k === 3 ? 'desde ' : '' ?><?= e(money($price, false)) ?></span><?= icon('chevron', 'hq-i') ?></a>
       <?php endforeach; ?>
     </nav>
-    <dl class="hero-facts hide-m in d4">
+    <dl class="hero-facts hide-m">
       <div><dt class="lbl c-topo">Estudio</dt><dd>Floridablanca, Santander</dd></div>
       <div><dt class="lbl c-topo">Servicio</dt><dd>En estudio y a domicilio</dd></div>
       <div><dt class="lbl c-topo">Desde</dt><dd><?= e(money($packs['pack1']['price'])) ?></dd></div>
     </dl>
   </div>
-  <div class="hero-media in d1">
+  <div class="hero-media">
     <div class="hero-sun" aria-hidden="true"></div>
     <div class="arch px op-top">
       <?= img('fotos/novia-tiara-retrato', 'Novia con tiara y velo, piel luminosa y labios rosados, sonriendo con su ramo de flores blancas', ['priority' => true, 'sizes' => '(max-width: 960px) 80vw, 520px']) ?>
@@ -42,26 +42,13 @@
   </div>
 </section>
 
-<div class="marq" aria-hidden="true">
-  <div class="marq-s">
-    <div class="marq-t">
-      <?php foreach ([1, 2] as $_): ?>
-        <?php foreach (['Novias', 'Quinceañeras', 'Grados', 'Maquillaje social', 'A domicilio', 'Cursos'] as $k => $w): ?>
-        <span class="d<?= $k % 2 ? ' o' : '' ?>"><?= e($w) ?></span><span class="dot"></span>
-        <?php endforeach; ?>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</div>
-
 <section class="wrap sec">
   <div class="g2 firma">
-    <div class="rv stack gap-20">
+    <div class="stack gap-20">
       <div class="ph ar-45 firma-ph op-left"><?= img('fotos/catalogo-maria-paula-tablero', 'María Paula Fletcher en su estudio, junto al tablero de clase', ['sizes' => '300px']) ?></div>
       <p class="lbl c-topo">María Paula Fletcher · Creadora de MUBF</p>
     </div>
-    <div class="rv stack gap-40">
-      <p class="lbl c-terracota">La firma</p>
+    <div class="stack gap-40">
       <p class="d firma-quote" data-ink>Creemos en una piel que se ve como piel<?php foreach (['fotos/novia-rostro', 'fotos/social-cumple-beso', 'fotos/novia-bata-sonrisa'] as $q): ?><span class="qface" aria-hidden="true"><?= img($q, '', ['sizes' => '64px', 'width' => 480]) ?></span><?php endforeach; ?>. Luz donde hace falta, color con intención y una fijación pensada para <span class="c-terracota">llorar, abrazar y bailar</span> sin retoques de emergencia.</p>
       <a class="link-line" href="/estudio-maquillaje-floridablanca">Conoce el estudio <?= icon('arrow', 'arr') ?></a>
     </div>
@@ -69,9 +56,8 @@
 </section>
 
 <section class="wrap sec-b">
-  <div class="rv sec-head">
+  <div class="sec-head">
     <div>
-      <p class="lbl c-terracota">Servicios</p>
       <h2 class="d d-l">Tres experiencias,<br>un mismo acabado.</h2>
     </div>
     <a class="btn ghost hide-m" href="/precios-maquillaje-bucaramanga">Comparar servicios</a>
@@ -82,7 +68,7 @@
         ['02', 'Full experience a domicilio', 'Skin care, silla y luz de estudio en tu casa, pestañas y kit de retoque.', $packs['pack2']['price'], '/precios-maquillaje-bucaramanga#pk-pack2', 'fotos/proceso-domicilio'],
         ['03', 'Novias y quinceañeras', 'Prueba previa con dos propuestas, video reel y extra fijación.', $packs['pack3']['price'], '/maquillaje-de-novia-bucaramanga', 'fotos/novia-ramo-ceremonia'],
     ] as [$n, $title, $text, $price, $href, $photo]): ?>
-    <li class="frow rv" data-follow-row>
+    <li class="frow" data-follow-row>
       <a href="<?= e($href) ?>">
         <span class="frow-n"><?= e($n) ?></span>
         <span class="frow-t"><?= e($title) ?></span>
@@ -102,7 +88,7 @@
         ['pack3', 'Pack 03', 'Novias y quinceañeras', 'fotos/novia-ramo-ceremonia', 'Novia con tiara y vestido de encaje sosteniendo su ramo durante la ceremonia', 'Prueba previa con dos propuestas, skin care, maquillaje el día del evento, video reel y extra fijación.', '/maquillaje-de-novia-bucaramanga', 'op-top'],
     ];
     foreach ($cards as $i => [$code, $tag, $title, $photo, $alt, $text, $href, $op]): ?>
-    <a class="card rv" href="<?= e($href) ?>" data-delay="<?= e((string) ($i * 0.08)) ?>">
+    <a class="card" href="<?= e($href) ?>">
       <div class="ph ar-45 <?= e($op) ?>"><?= img($photo, $alt, ['sizes' => '(max-width: 960px) 80vw, 420px']) ?><span class="tag"><?= e($tag) ?></span></div>
       <div class="between"><h3 class="d d-card"><?= e($title) ?></h3><p class="price"><?= e(money($packs[$code]['price'])) ?></p></div>
       <p><?= e($text) ?></p>
@@ -118,16 +104,15 @@
   <div class="wrap g2 novias-band">
     <div class="ph px grow novias-band-ph"><?= img('fotos/novia-jardin-cuello', 'Novia con tiara y vestido de encaje en un jardín, ojos cerrados y piel luminosa', ['sizes' => '(max-width: 960px) 100vw, 640px', 'class' => 'fill']) ?></div>
     <div class="novias-band-txt stack gap-36">
-      <p class="lbl rv c-salmon">Novias · Quinceañeras</p>
-      <h2 class="d d-l2 rv">El día que más<br>te van a mirar.</h2>
-      <p class="rv novias-band-p">Una prueba previa para encontrar tu versión, dos propuestas para elegir con calma y una fijación pensada para doce horas de abrazos, fotos y pista.</p>
-      <div class="steps on-dark rv">
+      <h2 class="d d-l2">El día que más<br>te van a mirar.</h2>
+      <p class="novias-band-p">Una prueba previa para encontrar tu versión, dos propuestas para elegir con calma y una fijación pensada para doce horas de abrazos, fotos y pista.</p>
+      <div class="steps on-dark">
         <div><p class="lbl">01</p><p>Prueba previa</p></div>
         <div><p class="lbl">02</p><p>Dos propuestas</p></div>
         <div><p class="lbl">03</p><p>Video reel</p></div>
         <div><p class="lbl">04</p><p>Extra fijación</p></div>
       </div>
-      <div class="rv wrap-row novias-band-cta">
+      <div class="wrap-row novias-band-cta">
         <a class="btn light" href="/maquillaje-de-novia-bucaramanga">Conocer la experiencia novia</a>
       </div>
     </div>
@@ -136,9 +121,8 @@
 
 <section class="sec pf" aria-labelledby="pf-title" data-hrail>
   <div class="pf-pin">
-    <div class="wrap rv sec-head">
+    <div class="wrap sec-head">
       <div>
-        <p class="lbl c-terracota">Portafolio</p>
         <h2 class="d d-l" id="pf-title">Pieles reales,<br>luz real.</h2>
       </div>
       <a class="btn ghost" href="/portafolio">Ver portafolio completo</a>
@@ -183,9 +167,8 @@
 </section>
 
 <section class="wrap sec-b">
-  <div class="g2 rv cursos-band">
+  <div class="g2 cursos-band">
     <div class="cursos-band-txt stack gap-32">
-      <p class="lbl c-terracota">Cursos de maquillaje</p>
       <h2 class="d d-m">Aprende la técnica<br>detrás del acabado.</h2>
       <div class="price-list">
         <div class="price-row"><div><p class="name">Automaquillaje</p><p class="detail">5 módulos · para ti</p></div><p class="amount"><?= e(money($courses['curso-auto']['price'])) ?></p></div>
@@ -199,16 +182,15 @@
 
 <section class="wrap sec-b">
   <div class="g2">
-    <div class="ph px rv ar-45 m-43 arch-soft"><?= img('fotos/catalogo-brindis-estudio', 'María Paula Fletcher brindando con una clienta en el estudio de Floridablanca', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
+    <div class="ph px ar-45 m-43 arch-soft"><?= img('fotos/catalogo-brindis-estudio', 'María Paula Fletcher brindando con una clienta en el estudio de Floridablanca', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
     <div class="stack gap-32">
-      <p class="lbl rv c-terracota">El estudio</p>
-      <h2 class="d d-l rv">Floridablanca,<br>a tu medida.</h2>
-      <p class="rv body-l mw-460">Un espacio con luz de estudio para que el maquillaje se vea igual en el espejo, en la foto y en persona. Si prefieres no moverte, llevamos el estudio a tu casa en Bucaramanga, Floridablanca, Piedecuesta o Girón.</p>
-      <address class="rv stack gap-4 fs-16 addr">
+      <h2 class="d d-l">Floridablanca,<br>a tu medida.</h2>
+      <p class="body-l mw-460">Un espacio con luz de estudio para que el maquillaje se vea igual en el espejo, en la foto y en persona. Si prefieres no moverte, llevamos el estudio a tu casa en Bucaramanga, Floridablanca, Piedecuesta o Girón.</p>
+      <address class="stack gap-4 fs-16 addr">
         <span>Carrera 29 #158-08</span>
         <span class="c-topo">Floridablanca, Santander</span>
       </address>
-      <div class="rv wrap-row">
+      <div class="wrap-row">
         <a class="btn" href="/estudio-maquillaje-floridablanca#ubicacion">Cómo llegar</a>
         <a class="btn ghost" href="<?= e(wa_href('inicio-domicilio', 'domicilio')) ?>" rel="nofollow">Pedir servicio a domicilio</a>
       </div>
@@ -218,11 +200,10 @@
 
 <section class="wrap sec">
   <div class="g2 faq-grid">
-    <div class="rv stack gap-18">
-      <p class="lbl c-terracota">Preguntas frecuentes</p>
+    <div class="stack gap-18">
       <h2 class="d d-l2">Antes de<br>reservar.</h2>
     </div>
-    <div class="rv"><?= App\View::partial('partials/faq', ['items' => $faq]) ?></div>
+    <div><?= App\View::partial('partials/faq', ['items' => $faq]) ?></div>
   </div>
 </section>
 

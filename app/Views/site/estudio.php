@@ -24,21 +24,21 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
   <div class="g2 est-hero-grid">
     <div class="stack gap-40">
       <h1 class="hero-h1 est-h1">
-        <span class="lbl in c-terracota">Estudio de maquillaje en Floridablanca</span>
-        <span class="d in d1 est-title">Pasa por<br>el estudio.</span>
+        <span class="lbl c-terracota">Estudio de maquillaje en Floridablanca</span>
+        <span class="d est-title">Pasa por<br>el estudio.</span>
       </h1>
-      <dl class="est-data in d3">
+      <dl class="est-data">
         <div><dt class="lbl c-topo">Dirección</dt><dd><?= e($b['address']) ?><br><?= e($b['city']) ?>, <?= e($b['region']) ?></dd></div>
         <div><dt class="lbl c-topo">Horario</dt><dd>Solo con cita previa<br><span class="est-sub">Agenda por WhatsApp</span></dd></div>
         <div><dt class="lbl c-topo">WhatsApp</dt><dd><a href="<?= e(wa_href('estudio-datos', 'estudio')) ?>" rel="nofollow"><?= e($b['phone_display']) ?></a></dd></div>
         <div><dt class="lbl c-topo">Correo</dt><dd><a href="mailto:<?= e($b['email']) ?>"><?= e($b['email']) ?></a></dd></div>
       </dl>
-      <div class="est-quick only-m in d3">
+      <div class="est-quick only-m">
         <a class="btn" href="#cotizar">Cotizar mi servicio</a>
         <a class="btn ghost" href="<?= e($b['maps_url']) ?>" target="_blank" rel="noopener">Cómo llegar</a>
       </div>
     </div>
-    <div class="ph px in d2 ar-45 m-43 arch-soft">
+    <div class="ph px ar-45 m-43 arch-soft">
       <?= img('fotos/catalogo-brindis-estudio', 'María Paula Fletcher brindando con una clienta en el estudio de Floridablanca', ['priority' => true, 'class' => 'fill', 'sizes' => '(max-width: 960px) 100vw, 580px']) ?>
     </div>
   </div>
@@ -51,15 +51,14 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
   ] as [$photo, $cls, $speed]): ?>
   <div class="cl <?= $cls ?>" data-speed="<?= $speed ?>" aria-hidden="true"><div class="ph"><?= img('fotos/' . $photo, '', ['sizes' => '(max-width: 960px) 30vw, 240px', 'width' => 480]) ?></div></div>
   <?php endforeach; ?>
-  <div class="wrap collage-c rv">
-    <p class="lbl c-terracota">El estudio</p>
+  <div class="wrap collage-c">
     <h2 class="d collage-t" id="est-col-t">Luz de estudio,<br>espejo de verdad.</h2>
     <p class="body-l">Lo que ves en el espejo es lo que sale en la foto. Silla profesional, luz pareja y el tiempo que tu piel necesita, en Floridablanca o en tu casa.</p>
   </div>
 </section>
 
 <section class="wrap sec-b" id="ubicacion">
-  <div class="rv map">
+  <div class="map">
     <svg class="map-art" viewBox="0 0 1240 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <g fill="none" stroke="#E2D6CC" stroke-width="18" stroke-linecap="round"><path d="M-20 120 C 300 160, 520 60, 1260 140"/><path d="M-20 360 C 380 300, 760 420, 1260 330"/><path d="M420 -20 C 460 160, 380 300, 470 480"/><path d="M880 -20 C 820 140, 900 320, 840 480"/></g>
       <g fill="none" stroke="#E9DFD6" stroke-width="6"><path d="M-20 240 L 1260 220"/><path d="M180 -20 L 220 480"/><path d="M640 -20 L 620 480"/><path d="M1060 -20 L 1080 480"/></g>
@@ -80,12 +79,11 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
 
 <section class="bg-arena sec" id="cotizar">
   <div class="wrap g2 est-quote">
-    <div class="rv stack gap-24">
-      <p class="lbl c-terracota">Cotiza tu servicio</p>
+    <div class="stack gap-24">
       <h2 class="d d-l2">Cuéntanos<br>tu fecha.</h2>
       <p class="body-l est-quote-p">Llena lo básico y el mensaje se abre en WhatsApp ya redactado. Te respondemos con disponibilidad y precio.</p>
     </div>
-    <form class="rv stack gap-40" method="post" action="/estudio-maquillaje-floridablanca/cotizar#cotizar" aria-label="Cotizar servicio de maquillaje" novalidate>
+    <form class="stack gap-40" method="post" action="/estudio-maquillaje-floridablanca/cotizar#cotizar" aria-label="Cotizar servicio de maquillaje" novalidate>
       <?= csrf_field() ?>
       <?php if (!empty($formError)): ?>
       <p class="notice err" role="alert"><?= e($formError) ?></p>
@@ -115,11 +113,10 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
 </section>
 
 <section class="wrap sec">
-  <div class="rv stack gap-18 est-zones-head">
-    <p class="lbl c-terracota">Zonas de servicio</p>
+  <div class="stack gap-18 est-zones-head">
     <h2 class="d d-l">Todo el área<br>metropolitana.</h2>
   </div>
-  <div class="rv est-zones">
+  <div class="est-zones">
     <?php foreach ([['Floridablanca', 'Estudio y domicilio'], ['Bucaramanga', 'A domicilio'], ['Piedecuesta', 'A domicilio'], ['Girón', 'A domicilio']] as [$city, $mode]): ?>
     <div><p class="d"><?= e($city) ?></p><p class="est-zone-mode"><?= e($mode) ?></p></div>
     <?php endforeach; ?>
