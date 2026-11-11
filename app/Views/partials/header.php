@@ -33,7 +33,7 @@ $b = config('app.business');
 // Mosaicos de servicio: decidir con foto y precio a la vista
 $tiles = [
     ['/maquillaje-de-novia-bucaramanga', 'Novias y quinceañeras', money($packs['pack3']['price'], false), 'fotos/novia-tiara-ramo'],
-    ['/precios-maquillaje-bucaramanga#packs', 'Social y grados', money($packs['pack1']['price'], false), 'fotos/social-cumple-pastel'],
+    ['/precios-maquillaje-bucaramanga#packs', 'Social y grados', money($packs['pack1']['price'], false), 'fotos/estudio-vestido-azul-sonrisa'],
     ['/precios-maquillaje-bucaramanga#domicilio', 'A domicilio', money($packs['pack2']['price'], false), 'fotos/proceso-domicilio'],
     ['/cursos-de-maquillaje-bucaramanga', 'Cursos', 'desde ' . money(min(array_map(static fn(array $c): int => (int) $c['price'], $courses)), false), 'fotos/proceso-brocha-bn'],
 ];

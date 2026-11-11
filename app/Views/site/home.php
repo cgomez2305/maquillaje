@@ -64,7 +64,7 @@
   </div>
   <ul class="flist hide-m" data-follow role="list">
     <?php foreach ([
-        ['01', 'Maquillaje social', 'Asesoría, maquillaje y pestañas para grados, cenas, sesiones y eventos.', $packs['pack1']['price'], '/precios-maquillaje-bucaramanga#pk-pack1', 'fotos/social-cumple-pastel'],
+        ['01', 'Maquillaje social', 'Asesoría, maquillaje y pestañas para grados, cenas, sesiones y eventos.', $packs['pack1']['price'], '/precios-maquillaje-bucaramanga#pk-pack1', 'fotos/estudio-vestido-azul-sonrisa'],
         ['02', 'Full experience a domicilio', 'Skin care, silla y luz de estudio en tu casa, pestañas y kit de retoque.', $packs['pack2']['price'], '/precios-maquillaje-bucaramanga#pk-pack2', 'fotos/proceso-domicilio'],
         ['03', 'Novias y quinceañeras', 'Prueba previa con dos propuestas, video reel y extra fijación.', $packs['pack3']['price'], '/maquillaje-de-novia-bucaramanga', 'fotos/novia-ramo-ceremonia'],
     ] as [$n, $title, $text, $price, $href, $photo]): ?>
@@ -83,7 +83,7 @@
   <div class="g3 m-snap only-m" aria-label="Servicios">
     <?php
     $cards = [
-        ['pack1', 'Pack 01', 'Maquillaje social', 'fotos/social-cumple-pastel', 'Clienta con maquillaje social de ojos dorados y pestañas, sonriendo con su torta de cumpleaños', 'Asesoría, maquillaje social y pestañas. Ideal para grados, cenas, sesiones y eventos.', '/precios-maquillaje-bucaramanga#packs', ''],
+        ['pack1', 'Pack 01', 'Maquillaje social', 'fotos/estudio-vestido-azul-sonrisa', 'Clienta con vestido azul bordado, ojos ahumados en tonos cálidos y pestañas, sonriendo en el estudio', 'Asesoría, maquillaje social y pestañas. Ideal para grados, cenas, sesiones y eventos.', '/precios-maquillaje-bucaramanga#packs', ''],
         ['pack2', 'Pack 02', 'Full experience a domicilio', 'fotos/proceso-domicilio', 'Maquilladora aplicando rubor a una novia en bata en su casa, con el vestido colgado al fondo', 'Una sesión premium en la comodidad de tu casa: skin care con mascarilla y masaje, silla y luz de estudio, pestañas y kit de retoque.', '/precios-maquillaje-bucaramanga#domicilio', ''],
         ['pack3', 'Pack 03', 'Novias y quinceañeras', 'fotos/novia-ramo-ceremonia', 'Novia con tiara y vestido de encaje sosteniendo su ramo durante la ceremonia', 'Prueba previa con dos propuestas, skin care, maquillaje el día del evento, video reel y extra fijación.', '/maquillaje-de-novia-bucaramanga', 'op-top'],
     ];
@@ -130,7 +130,7 @@
     <?php
     $rail = [
         ['fotos/novia-jardin-velo', 'Novia con velo largo y trenza mirando su ramo en un jardín', 'Novia'],
-        ['fotos/social-cumple-bengala', 'Clienta sonriendo con una torta de cumpleaños y una bengala encendida', 'Social'],
+        ['fotos/estudio-ondas-vino', 'Clienta con ondas suaves, vestido vino y maquillaje de piel satinada con labio coral', 'Social'],
         ['fotos/novia-calas-editorial', 'Novia con velo y vestido de seda entre calas blancas', 'Editorial'],
         ['fotos/proceso-labios-perfil', 'Perfil de una novia mientras le delinean los labios', 'Proceso'],
         ['fotos/proceso-rubor-novia', 'Novia con tiara riendo mientras le aplican rubor con brocha', 'Detrás de cámaras'],

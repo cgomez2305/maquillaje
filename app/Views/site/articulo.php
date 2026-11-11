@@ -109,7 +109,7 @@ $linkBase = strtok($linksTo, '#') ?: '';
       <?php else: ?>
         <?php foreach ([
             ['/maquillaje-de-novia-bucaramanga', 'fotos/novia-tiara-ramo', 'Novia con tiara y recogido alto sonriendo con su ramo de hortensias', 'Novias', 'La experiencia novia, paso a paso'],
-            ['/precios-maquillaje-bucaramanga', 'fotos/social-cumple-pastel', 'Clienta con maquillaje social de ojos dorados sonriendo con su torta', 'Servicios', 'Servicios y precios de maquillaje 2026'],
+            ['/precios-maquillaje-bucaramanga', 'fotos/estudio-vestido-azul-sonrisa', 'Clienta con vestido azul bordado, ojos ahumados en tonos cálidos y pestañas, sonriendo en el estudio', 'Servicios', 'Servicios y precios de maquillaje 2026'],
             ['/portafolio', 'fotos/proceso-rubor-novia', 'Novia con tiara riendo mientras le aplican rubor con brocha', 'Portafolio', 'Pieles reales, luz real: el portafolio'],
         ] as $i => [$href, $photo, $alt, $cat, $label]): ?>
         <a class="post" href="<?= e($href) ?>">

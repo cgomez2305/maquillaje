@@ -7,7 +7,7 @@
 $check = '<svg class="ck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9.5l4 4 8-9"/></svg>';
 $cards = [
     'pack1' => ['label' => 'Servicio base', 'title' => 'Maquillaje social', 'note' => 'Grados, cenas, sesiones de fotos e invitadas de boda. En el estudio de Floridablanca.', 'cta' => 'Reservar Pack 1', 'href' => '/reservar?servicio=pack1', 'wa' => 'social',
-        'pills' => ['Asesoría previa', 'Maquillaje social', 'Pestañas incluidas'], 'photo' => 'fotos/social-cumple-pastel', 'alt' => 'Clienta con maquillaje social de ojos dorados sonriendo con su torta de cumpleaños'],
+        'pills' => ['Asesoría previa', 'Maquillaje social', 'Pestañas incluidas'], 'photo' => 'fotos/estudio-vestido-azul-sonrisa', 'alt' => 'Clienta con vestido azul bordado, ojos ahumados en tonos cálidos y pestañas, sonriendo en el estudio'],
     'pack2' => ['label' => 'Full experience · A domicilio', 'title' => 'Full experience a domicilio', 'note' => 'Una sesión premium en la comodidad de tu casa, con música relajante y ventilador de mano para que estés fresca.', 'cta' => 'Reservar Pack 2', 'href' => '/reservar?servicio=pack2', 'wa' => 'domicilio',
         'pills' => ['Skin care y masaje', 'Silla y luz de estudio', 'Pestañas incluidas', 'Kit de retoque'], 'photo' => 'fotos/proceso-domicilio', 'alt' => 'Maquilladora aplicando rubor a una novia en bata en su casa'],
     'pack3' => ['label' => 'Novias y quinceañeras', 'title' => 'Novias y quinceañeras', 'note' => 'Bodas, quince años y cualquier día que merezca prueba previa.', 'cta' => 'Reservar Pack 3', 'href' => '/reservar?servicio=pack3', 'wa' => 'novias',
@@ -118,7 +118,7 @@ $rows = [
 
 <section class="bg-arena sec" id="grados">
   <div class="wrap g2">
-    <div class="ph px ar-45 m-43 arch-soft op-top"><?= img('fotos/social-cumple-beso', 'Clienta con maquillaje social de ojos ahumados dorados soplando un beso junto a su torta', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
+    <div class="ph px ar-45 m-43 arch-soft op-top"><?= img('fotos/estudio-rizos-sonrisa', 'Clienta de cabello rizado con maquillaje social de piel luminosa y labio rosado, sonriendo en el estudio', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
     <div class="stack gap-32">
       <h2 class="d d-l">Maquillaje<br>para grados.</h2>
       <p class="body-l mw-460">Un look que se vea bien con toga, con flash y en la foto familiar. Pack 1 desde <?= e(money($packs['pack1']['price'])) ?>. En noviembre y diciembre la agenda se llena rápido.</p>

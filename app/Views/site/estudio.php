@@ -47,7 +47,7 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
 <section class="collage" data-collage aria-labelledby="est-col-t">
   <?php foreach ([
       ['proceso-estudio-espejo', 'cl1', 30], ['catalogo-asesoria-estudio', 'cl2', 55], ['proceso-brocha-bn', 'cl3', 18],
-      ['catalogo-brindis-estudio', 'cl4', 42], ['proceso-labios-perfil', 'cl5', 66],
+      ['estudio-bata-ondas', 'cl4', 42], ['estudio-ondas-vino-ojos', 'cl5', 66],
   ] as [$photo, $cls, $speed]): ?>
   <div class="cl <?= $cls ?>" data-speed="<?= $speed ?>" aria-hidden="true"><div class="ph"><?= img('fotos/' . $photo, '', ['sizes' => '(max-width: 960px) 30vw, 240px', 'width' => 480]) ?></div></div>
   <?php endforeach; ?>
@@ -55,6 +55,22 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
     <h2 class="d collage-t" id="est-col-t">Luz de estudio,<br>espejo de verdad.</h2>
     <p class="body-l">Lo que ves en el espejo es lo que sale en la foto. Silla profesional, luz pareja y el tiempo que tu piel necesita, en Floridablanca o en tu casa.</p>
   </div>
+</section>
+
+<section class="wrap sec" aria-labelledby="est-gal-t">
+  <div class="sec-head">
+    <div class="stack gap-18">
+      <h2 class="d d-l" id="est-gal-t">Así salen<br>del espejo.</h2>
+      <p class="body-l mw-460">Clientas reales fotografiadas en el estudio, con la misma luz con la que las maquillamos.</p>
+    </div>
+    <a class="btn ghost hide-m" href="/portafolio#social">Ver portafolio</a>
+  </div>
+  <ul class="g3 m-snap est-gal" role="list">
+    <?php foreach (['estudio-rizos-sonrisa', 'estudio-delineado-negro', 'estudio-sonrisa-dorada', 'estudio-bata-rosa', 'estudio-natural-sonrisa', 'estudio-bata-negra-madura'] as $photo): ?>
+    <li><div class="ph ar-34"><?= img('fotos/' . $photo, (string) config('fotos')['fotos/' . $photo], ['sizes' => '(max-width: 960px) 80vw, 400px']) ?></div></li>
+    <?php endforeach; ?>
+  </ul>
+  <p class="m-snap-hint only-m" aria-hidden="true">Desliza para ver más <?= icon('arrow', 'arr') ?></p>
 </section>
 
 <section class="wrap sec-b" id="ubicacion">

@@ -75,6 +75,138 @@
    1000
   ]
  },
+ "fotos/estudio-bata-negra-madura": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-bata-ondas": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-bata-rosa": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-chaqueta-negra": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-delineado-negro": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-natural-sonrisa": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-ondas-vino": {
+  "ext": "jpg",
+  "h": 1600,
+  "w": 901,
+  "widths": [
+   480,
+   600,
+   768,
+   901
+  ]
+ },
+ "fotos/estudio-ondas-vino-ojos": {
+  "ext": "jpg",
+  "h": 1600,
+  "w": 900,
+  "widths": [
+   480,
+   600,
+   768,
+   900
+  ]
+ },
+ "fotos/estudio-rizos-sonrisa": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-sonrisa-dorada": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-vestido-azul-ojos": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
+ "fotos/estudio-vestido-azul-sonrisa": {
+  "ext": "jpg",
+  "h": 1448,
+  "w": 1086,
+  "widths": [
+   480,
+   600,
+   768,
+   1086
+  ]
+ },
  "fotos/ig-clienta-bata-seda": {
   "ext": "jpg",
   "h": 1280,
@@ -483,6 +615,28 @@
    768,
    1200,
    1600
+  ]
+ },
+ "fotos/social-cumple-globos-pie": {
+  "ext": "jpg",
+  "h": 1600,
+  "w": 1067,
+  "widths": [
+   480,
+   600,
+   768,
+   1067
+  ]
+ },
+ "fotos/social-cumple-pampas": {
+  "ext": "jpg",
+  "h": 1600,
+  "w": 1067,
+  "widths": [
+   480,
+   600,
+   768,
+   1067
   ]
  },
  "fotos/social-cumple-pastel": {
