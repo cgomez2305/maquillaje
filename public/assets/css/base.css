@@ -200,6 +200,11 @@ body.menu-open { overflow: hidden; }
 .foot-legal { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--gris-pie); border-top: 1px solid var(--tinta-3); padding-top: 28px; }
 .foot-legal a { color: var(--gris-pie); }
 .foot-legal nav { display: flex; gap: 20px; flex-wrap: wrap; }
+.foot-credit { display: inline-flex; align-items: center; gap: 5px; transition: color .3s ease; }
+.foot-heart { width: 13px; height: 13px; color: var(--salmon); transform-origin: center; }
+.foot-credit:hover .foot-heart { animation: foot-beat 1s ease-in-out infinite; }
+@keyframes foot-beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.25); } 30% { transform: scale(1); } 45% { transform: scale(1.18); } }
+@media (prefers-reduced-motion: reduce) { .foot-credit:hover .foot-heart { animation: none; } }
 /* Área táctil ampliada sin cambiar el ritmo visual (WCAG 2.5.8) */
 .foot-col a, .foot-legal a { padding: 7px 0; margin: -7px 0; }
 

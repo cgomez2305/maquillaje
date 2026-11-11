@@ -42,7 +42,7 @@ $b = config('app.business');
         <a href="/politica-de-privacidad">Política de datos</a>
         <a href="/terminos">Términos y reservas</a>
         <a href="#" data-consent-open>Cookies</a>
-        <span>Diseño y SEO · ClikRank</span>
+        <a class="foot-credit" href="https://clikrank.com" target="_blank" rel="nofollow noopener">Desarrollado con <?= icon('heart', 'ic foot-heart') ?><span class="sr-only">amor</span> por ClikRank</a>
       </nav>
     </div>
   </div>
