@@ -112,13 +112,10 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
   </div>
 </section>
 
-<section class="wrap sec">
-  <div class="stack gap-18 est-zones-head">
+<section class="wrap sec" id="zonas">
+  <div class="est-zones-head">
     <h2 class="d d-l">Todo el área<br>metropolitana.</h2>
+    <p class="body-l mw-480">En el estudio no tiene costo. A domicilio vamos a Bucaramanga, Floridablanca, Girón y Piedecuesta, con una tarifa adicional según el municipio.</p>
   </div>
-  <div class="est-zones">
-    <?php foreach ([['Floridablanca', 'Estudio y domicilio'], ['Bucaramanga', 'A domicilio'], ['Piedecuesta', 'A domicilio'], ['Girón', 'A domicilio']] as [$city, $mode]): ?>
-    <div><p class="d"><?= e($city) ?></p><p class="est-zone-mode"><?= e($mode) ?></p></div>
-    <?php endforeach; ?>
-  </div>
+  <?= App\View::partial('partials/domicilio-mapa', []) ?>
 </section>

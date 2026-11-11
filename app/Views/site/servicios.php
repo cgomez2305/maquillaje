@@ -128,19 +128,14 @@ $rows = [
 </section>
 
 <section class="wrap sec" id="domicilio">
-  <div class="g2 sv-home">
-    <div class="stack gap-32">
-      <h2 class="d d-l">Llevamos<br>la luz contigo.</h2>
-      <p class="body-l mw-480">Silla profesional, luz de estudio y skin care en tu casa, tu hotel o el lugar del evento en Bucaramanga, Floridablanca, Piedecuesta y Girón.</p>
-      <ul class="sv-zones" aria-label="Zonas a domicilio">
-        <?php foreach (config('app.business.area_served') as $zone): ?>
-        <li><?= e($zone) ?></li>
-        <?php endforeach; ?>
-      </ul>
+  <div class="sv-home">
+    <h2 class="d d-l">Llevamos<br>la luz contigo.</h2>
+    <div class="stack gap-24">
+      <p class="body-l mw-480">Silla profesional, luz de estudio y skin care en tu casa, tu hotel o el lugar del evento. El domicilio se suma al servicio según el municipio; en el estudio de Floridablanca no tiene costo.</p>
       <div><a class="btn" href="<?= e(wa_href('servicios-domicilio', 'domicilio')) ?>" rel="nofollow">Pedir maquillaje a domicilio</a></div>
     </div>
-    <div class="ph px ar-34 m-43 op-left"><?= img('fotos/proceso-domicilio-h', 'Maquilladora aplicando rubor a una novia en bata en su casa, junto al vestido colgado', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
   </div>
+  <?= App\View::partial('partials/domicilio-mapa', []) ?>
 </section>
 
 <section class="wrap sec-b">

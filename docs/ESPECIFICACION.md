@@ -40,7 +40,7 @@ Instrucciones para Claude Code:
 |---|---|
 | Marca | Make Up by Fletcher (MUBF) · «Fletcher · Make up artist» |
 | Dueña | María Paula Fletcher (maquilladora, creadora de MUBF) |
-| Estudio | Carrera 29 #158-08, Floridablanca, Santander |
+| Estudio | Calle 200 #12-290, Floridablanca, Santander |
 | WhatsApp | +57 316 191 0936 · enlace: `https://wa.me/message/H3JAJC64G4RQM1` |
 | Correo | makeupbyfletcher@gmail.com |
 | Redes | Instagram, TikTok y Facebook: @makeupbyfletcher / «Make up by Fletcher» |

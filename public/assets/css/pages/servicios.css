@@ -71,9 +71,7 @@
 .sv-strip-p { font-size: 15px; font-variant-numeric: tabular-nums; margin-top: 2px; }
 .pk { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
-.sv-home { grid-template-columns: 1.1fr .9fr; }
-.sv-zones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 480px; border-bottom: 1px solid var(--linea); }
-.sv-zones li { padding: 18px 0; border-top: 1px solid var(--linea); }
+.sv-home { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; margin-bottom: 56px; }
 
 .sv-cta { flex-direction: row; justify-content: space-between; align-items: center; text-align: left; gap: 40px; flex-wrap: wrap; }
 .sv-cta-txt { max-width: 640px; }
@@ -107,6 +105,6 @@
   .sv-tbl thead .d { font-size: 18px; }
   .sv-tbl tbody th { line-height: 1.35; }
   .sv-tbl-p { font-size: 13px; }
-  .sv-home { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .sv-home { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-bottom: 40px; }
   .sv-cta { flex-direction: column; align-items: flex-start; gap: 32px; }
 }

@@ -59,7 +59,8 @@ $toc = [
 
     <h2 id="domicilio">4. Servicio a domicilio</h2>
     <p>Atendemos a domicilio en Bucaramanga, Floridablanca, Piedecuesta y Girón. Necesitamos un espacio con buena luz, una mesa y un tomacorriente cerca.</p>
-    <p>Los servicios fuera del área metropolitana o en horarios especiales se cotizan por WhatsApp según la distancia y la hora.</p>
+    <p>El domicilio siempre se cobra aparte del servicio, según el municipio: <?php $hf = (array) config('app.booking.home_fees'); asort($hf); echo e(implode(', ', array_map(static fn(string $t, int $v): string => $t . ' ' . money($v), array_keys($hf), $hf))); ?>. Son valores de referencia y pueden cambiar según la ubicación exacta. En el estudio no tiene costo adicional.</p>
+    <p>Las áreas rurales, los servicios fuera del área metropolitana y los horarios especiales se acuerdan por WhatsApp según la distancia y la hora.</p>
 
     <h2 id="cursos">5. Cursos</h2>
     <ul>

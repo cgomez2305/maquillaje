@@ -1,0 +1,54 @@
+/* Tarifas de domicilio con mapa (partials/domicilio-mapa.php + js/mapa.js) */
+.dmap { display: grid; grid-template-columns: minmax(300px, 400px) minmax(0, 1fr); gap: 0; background: var(--arena); border-radius: var(--r-box); overflow: hidden; }
+.dmap-side { display: flex; flex-direction: column; gap: 24px; padding: var(--pad-card) calc(var(--pad-card) - 12px); }
+.dmap-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linea); }
+.dmap-list > li { border-bottom: 1px solid var(--linea); }
+.dmap-z, .dmap-studio { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 14px; width: 100%; min-height: 64px; padding: 12px; text-align: left; color: var(--tinta); }
+.dmap-z { appearance: none; border: 0; background: none; font: inherit; cursor: pointer; position: relative; }
+.dmap-z::before { content: ''; position: absolute; inset: 0; background: rgba(23, 19, 18, .04); opacity: 0; transition: opacity .25s ease; }
+.dmap-z:hover::before, .dmap-z[aria-pressed="true"]::before { opacity: 1; }
+.dmap-z:focus-visible { outline: 2px solid var(--terracota); outline-offset: 2px; }
+.dmap-n { display: flex; flex-direction: column; gap: 2px; font-size: 17px; line-height: 1.3; min-width: 0; position: relative; }
+.dmap-n small { font-size: 13px; color: var(--texto-tarjeta); }
+.dmap-p { font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; position: relative; }
+.dmap-studio .dmap-p { color: var(--terracota); font-weight: 600; }
+.dmap-sw { width: 14px; height: 14px; border-radius: 50%; justify-self: center; position: relative; box-shadow: inset 0 0 0 1px rgba(23, 19, 18, .12); transition: transform .3s ease; }
+.dmap-sw.t1 { background: #F98F7D; }
+.dmap-sw.t2 { background: #C9654E; }
+.dmap-sw.t3 { background: #A5462F; }
+.dmap-z[aria-pressed="true"] .dmap-sw { transform: scale(1.35); }
+.dmap-sw-pin { width: 22px; height: 22px; box-shadow: none; color: var(--terracota); }
+.dmap-sw-pin .ic { width: 22px; height: 22px; }
+.dmap-note { font-size: 14px; line-height: 1.55; color: var(--texto-tarjeta); margin: 0; padding: 0 12px; }
+
+.dmap-map { position: relative; min-height: 520px; background: var(--nude-claro); isolation: isolate; }
+.dmap-wait { position: absolute; inset: auto 0 24px; margin: 0; text-align: center; font-size: 13px; letter-spacing: .08em; color: var(--texto-tarjeta); }
+.dmap:not(.is-map) .dmap-z { cursor: default; }
+.dmap:not(.is-map) .dmap-z::before { display: none; }
+.dmap.is-off .dmap-map { display: none; }
+.dmap.is-off { grid-template-columns: minmax(0, 1fr); }
+
+/* Piezas dentro del mapa */
+.dmap .leaflet-container { font-family: var(--font-body); background: var(--nude-claro); }
+.dmap .leaflet-control-attribution { font-size: 10px; background: rgba(251, 248, 245, .82); }
+.dmap .leaflet-control-zoom { border: 0; box-shadow: 0 6px 18px rgba(23, 19, 18, .12); border-radius: var(--r-box); overflow: hidden; }
+.dmap .leaflet-control-zoom a { width: 40px; height: 40px; line-height: 40px; font-size: 20px; color: var(--tinta); background: var(--porcelana); border-color: var(--linea); }
+.dmap .leaflet-control-zoom a:hover { background: var(--arena); }
+.dmap .leaflet-tile-pane { filter: grayscale(1) sepia(.22) contrast(.88) brightness(1.06); }
+.dmap .dmap-lbl, .dmap .dmap-pin { width: 0; height: 0; background: none; border: 0; }
+.dmap-lbl > div { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 6px 10px; transform: translate(-50%, -50%); background: var(--porcelana); border-radius: var(--r-box); box-shadow: 0 6px 16px rgba(23, 19, 18, .14); color: var(--tinta); white-space: nowrap; pointer-events: none; transition: transform .3s ease, background-color .3s ease, color .3s ease; }
+.dmap-lbl span { font-size: 12px; line-height: 1.2; }
+.dmap-lbl strong { font-size: 13px; line-height: 1.25; font-weight: 600; font-variant-numeric: tabular-nums; }
+.dmap-lbl.is-on > div { background: var(--tinta); color: var(--porcelana); transform: translate(-50%, -50%) scale(1.08); }
+.dmap-pin i { position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; background: var(--tinta); box-shadow: 0 0 0 4px var(--porcelana), 0 6px 14px rgba(23, 19, 18, .3); }
+.dmap-pin i::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--tinta); animation: dmap-ping 2.4s ease-out infinite; }
+.dmap-pin span { position: absolute; left: 0; bottom: 16px; transform: translateX(-50%); padding: 4px 9px; background: var(--tinta); color: var(--porcelana); font-size: 12px; line-height: 16px; white-space: nowrap; border-radius: var(--r-box); }
+@keyframes dmap-ping { from { transform: scale(1); opacity: .6; } to { transform: scale(2.4); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .dmap-pin i::after { animation: none; display: none; } }
+
+@media (max-width: 960px) {
+  .dmap { grid-template-columns: minmax(0, 1fr); margin: 0 calc(var(--gutter) * -1); border-radius: 0; }
+  .dmap-side { padding: 40px var(--gutter) 32px; }
+  .dmap-map { min-height: 0; height: min(78vw, 420px); order: -1; }
+  .dmap-side { padding-inline: calc(var(--gutter) - 12px); }
+}

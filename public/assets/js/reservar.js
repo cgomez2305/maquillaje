@@ -29,6 +29,9 @@ if (form) {
     const time = form.querySelector('input[name="time"]:checked');
     const loc = form.querySelector('input[name="location"]:checked');
     const zone = val('zone')?.value.trim();
+    const town = form.querySelector('input[name="town"]:checked');
+    const home = loc?.value === 'home';
+    const fee = home && town ? Number(town.dataset.fee || 0) : 0;
     const eventSel = form.querySelector('[name="event"]');
     const name = val('name')?.value.trim();
     const notes = val('notes')?.value.trim();
@@ -40,10 +43,19 @@ if (form) {
     if (eventSel?.value) lines.push(`• Evento: ${eventSel.options[eventSel.selectedIndex].text}`);
     if (date) lines.push(`• Fecha: ${longDate(date)}`);
     if (time?.value) lines.push(`• Hora de inicio: ${time.dataset.label}`);
-    lines.push(`• Lugar: ${loc?.value === 'home' ? `A domicilio${zone ? ` · ${zone}` : ''}` : 'En el estudio de Floridablanca'}`);
+    if (home) {
+      const place = [zone, town ? (town.value === 'rural' ? 'zona rural' : town.value) : ''].filter(Boolean).join(', ');
+      lines.push(`• Lugar: A domicilio${place ? ` · ${place}` : ''}`);
+      if (town) lines.push(`• Domicilio: ${fee ? `${money(fee)} (adicional)` : 'a convenir'}`);
+    } else {
+      lines.push('• Lugar: En el estudio de Floridablanca (sin costo de domicilio)');
+    }
+    const feeRow = document.querySelector('[data-fee-row]');
+    if (feeRow) feeRow.hidden = !(home && town);
+    set('fee', fee ? money(fee) : 'A convenir');
     if (service) {
-      const total = Number(service.dataset.price) * Math.min(people, maxPeople);
-      lines.push(`• Total estimado: ${money(total)}${people >= maxPeople ? ' o más' : ''}`);
+      const total = Number(service.dataset.price) * Math.min(people, maxPeople) + fee;
+      lines.push(`• Total estimado: ${money(total)}${people >= maxPeople ? ' o más' : ''}${fee ? ' con domicilio' : ''}`);
       set('total', money(total));
       set('deposit', money(Math.floor(total * deposit)));
     }

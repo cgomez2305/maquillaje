@@ -29,7 +29,8 @@ final class ServiciosController extends Controller
 
         return $this->page('servicios', 'site/servicios', [
             'packs' => $packs,
-            'css' => ['pages/servicios.css'],
+            'css' => ['pages/servicios.css', 'pages/mapa.css'],
+            'js' => ['mapa.js'],
             'schema' => $schema,
             'waOrigin' => 'servicios',
         ]);

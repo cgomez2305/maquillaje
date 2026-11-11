@@ -21,8 +21,12 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .rsv-n { font-family: var(--font-body); font-size: 13px; letter-spacing: .16em; color: var(--terracota); }
 .rsv-date { max-width: 320px; }
 .rsv-date input { min-height: 48px; }
-.rsv-zone { max-width: 420px; margin-top: 8px; }
+.rsv-zone { margin-top: 24px; }
 .rsv-form:not(:has(input[name="location"][value="home"]:checked)) .rsv-zone:not(.has-err) { display: none; }
+.rsv-zone .rsv-q { margin-top: 0; }
+.rsv-towns { margin-bottom: 20px; }
+.slot em { font-style: normal; margin-left: 6px; font-size: .88em; opacity: .72; font-variant-numeric: tabular-nums; }
+.rsv-zone .f { max-width: 420px; }
 .slot .ic { width: 16px; height: 16px; margin-right: 8px; }
 .slot span { display: inline-flex; align-items: center; }
 .rsv-send .ic { width: 20px; height: 20px; }

@@ -18,7 +18,7 @@ final class NoviasController extends Controller
         $faq = [
             ['q' => '¿Cuánto cuesta el maquillaje de novia?', 'a' => money($p3['price']) . ' con el Pack 3, que incluye prueba previa, dos propuestas, video reel y extra fijación.'],
             ['q' => '¿Cuándo se hace la prueba previa?', 'a' => 'Unos días antes del evento, en el estudio de Floridablanca. Ahí te presentamos las dos propuestas y definimos juntas el look elegido.'],
-            ['q' => '¿Maquillan en la locación de la boda?', 'a' => 'Sí, llevamos silla y luz de estudio a tu casa, hotel o finca en el área metropolitana. Fuera de Bucaramanga, Floridablanca, Piedecuesta y Girón, el desplazamiento se cotiza por WhatsApp según la distancia.'],
+            ['q' => '¿Maquillan en la locación de la boda?', 'a' => 'Sí, llevamos silla y luz de estudio a tu casa, hotel o finca. El domicilio se suma al servicio: ' . self::fees() . '. Fincas y áreas rurales se acuerdan por WhatsApp según la distancia. En el estudio no tiene costo adicional.'],
             ['q' => '¿Y si tengo que cambiar la fecha?', 'a' => 'Reagendamos tu cita. El abono del 50 % no se devuelve, pero se mantiene para la nueva fecha. Avísanos con mínimo un día de anticipación.'],
         ];
         // En el JSON-LD solo va el texto confirmado (sin marcadores pendientes)
@@ -41,5 +41,13 @@ final class NoviasController extends Controller
             ],
             'waOrigin' => 'novias',
         ]);
+    }
+
+    /** Tarifas de domicilio en texto («Floridablanca 25.000 COP, Bucaramanga 30.000 COP, …»). */
+    private static function fees(): string
+    {
+        $fees = (array) config('app.booking.home_fees');
+        asort($fees);
+        return implode(', ', array_map(static fn(string $t, int $v): string => $t . ' ' . money($v), array_keys($fees), $fees));
     }
 }

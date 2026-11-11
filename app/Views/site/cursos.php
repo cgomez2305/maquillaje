@@ -38,7 +38,7 @@
 
 <section class="wrap sec-t">
   <div class="g3 crs-pillars">
-    <div><p class="d">En el estudio</p><p class="crs-pillar-txt">Clases presenciales en la Carrera 29 #158-08, Floridablanca.</p></div>
+    <div><p class="d">En el estudio</p><p class="crs-pillar-txt">Clases presenciales en el estudio de la <?= e(config('app.business.address')) ?>, Floridablanca.</p></div>
     <div><p class="d">Práctica real</p><p class="crs-pillar-txt">Con la misma luz y los mismos productos del estudio.</p></div>
     <div><p class="d">Empiezas ya</p><p class="crs-pillar-txt">Lista de materiales con descuento en tienda aliada, o empiezas con el kit de María Paula.</p></div>
   </div>

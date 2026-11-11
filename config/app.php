@@ -21,7 +21,7 @@ return [
         'legal_name' => 'Make Up by Fletcher',
         'owner' => 'María Paula Fletcher',
         'tagline' => 'Fletcher · Make up artist',
-        'address' => 'Carrera 29 #158-08',
+        'address' => 'Calle 200 #12-290',
         'city' => 'Floridablanca',
         'region' => 'Santander',
         'country' => 'CO',
@@ -36,7 +36,7 @@ return [
         'tiktok' => 'https://www.tiktok.com/@makeupbyfletcher',
         'facebook' => 'https://www.facebook.com/makeupbyfletcher',
         'google_review_url' => '[Enlace de reseña de Google Business Profile]',
-        'maps_url' => 'https://www.google.com/maps/search/?api=1&query=Carrera+29+%23158-08+Floridablanca+Santander',
+        'maps_url' => 'https://www.google.com/maps/search/?api=1&query=Calle+200+%2312-290+Floridablanca+Santander',
         'hours_text' => 'Solo con cita previa',
         'opening_hours' => [], // pendiente: [['days'=>['Monday',…],'opens'=>'08:00','closes'=>'18:00']]
         'area_served' => ['Bucaramanga', 'Floridablanca', 'Piedecuesta', 'Girón'],
@@ -51,6 +51,9 @@ return [
         'change_notice_days' => 1,
         'slots' => ['05:00', '07:00', '09:00', '11:00', '14:00', '16:00'], // horas de inicio (Bogotá)
         'max_people' => 4,              // «4 o más»
+        // Domicilio: siempre adicional al servicio; en el estudio no tiene costo. Valores de referencia por
+        // municipio (zona urbana); áreas rurales a convenir y la ubicación exacta puede cambiar el valor.
+        'home_fees' => ['Bucaramanga' => 30000, 'Floridablanca' => 25000, 'Girón' => 35000, 'Piedecuesta' => 35000],
         'event_types' => [
             'boda' => 'Boda',
             'quince' => 'Quince años',

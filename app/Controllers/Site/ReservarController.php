@@ -22,7 +22,7 @@ final class ReservarController extends Controller
         $packs = Catalog::packs();
         $old = [
             'service' => '', 'people' => '1', 'date' => '', 'time' => '', 'location' => 'studio',
-            'zone' => '', 'event' => '', 'name' => '', 'notes' => '',
+            'town' => '', 'zone' => '', 'event' => '', 'name' => '', 'notes' => '',
         ];
         $pre = $request->str('servicio', 10);
         if (isset($packs[$pre])) {
@@ -34,7 +34,7 @@ final class ReservarController extends Controller
             return $this->render($old, []);
         }
 
-        foreach (['service' => 10, 'people' => 2, 'date' => 10, 'time' => 5, 'location' => 6, 'zone' => 80, 'event' => 20, 'name' => 80, 'notes' => 400] as $f => $len) {
+        foreach (['service' => 10, 'people' => 2, 'date' => 10, 'time' => 5, 'location' => 6, 'town' => 20, 'zone' => 80, 'event' => 20, 'name' => 80, 'notes' => 400] as $f => $len) {
             $old[$f] = trim($request->str($f, $len));
         }
         $errors = $this->validate($old, $packs);
@@ -44,7 +44,7 @@ final class ReservarController extends Controller
         Metrics::bump('booking_submits');
         return Response::redirect(wa_direct(WhatsApp::serviceRequest([
             'service' => $old['service'], 'people' => (int) $old['people'], 'date' => $old['date'], 'time' => $old['time'],
-            'location' => $old['location'], 'zone' => $old['zone'], 'event' => $old['event'], 'name' => $old['name'], 'notes' => $old['notes'],
+            'location' => $old['location'], 'town' => $old['town'], 'zone' => $old['zone'], 'event' => $old['event'], 'name' => $old['name'], 'notes' => $old['notes'],
         ])), 303)->header('Cache-Control', 'no-store');
     }
 
@@ -71,8 +71,13 @@ final class ReservarController extends Controller
         }
         if (!in_array($d['location'], ['studio', 'home'], true)) {
             $e['location'] = 'Elige dónde será el maquillaje.';
-        } elseif ($d['location'] === 'home' && mb_strlen($d['zone']) < 3) {
-            $e['zone'] = 'Escribe el barrio y la ciudad del servicio.';
+        } elseif ($d['location'] === 'home') {
+            if ($d['town'] !== 'rural' && !isset(config('app.booking.home_fees')[$d['town']])) {
+                $e['town'] = 'Elige el municipio del servicio.';
+            }
+            if (mb_strlen($d['zone']) < 3) {
+                $e['zone'] = 'Escribe el barrio o sector.';
+            }
         }
         if ($d['event'] !== '' && !isset(config('app.booking.event_types')[$d['event']])) {
             $e['event'] = 'Elige el tipo de evento.';

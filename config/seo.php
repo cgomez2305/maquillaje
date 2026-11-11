@@ -39,7 +39,7 @@ return [
     'estudio' => [
         'path' => '/estudio-maquillaje-floridablanca',
         'title' => 'Estudio de maquillaje en Floridablanca · Fletcher',
-        'description' => 'Estudio de maquillaje en Floridablanca, Carrera 29 #158-08. Maquillaje con luz de estudio y servicio a domicilio en Bucaramanga, Piedecuesta y Girón.',
+        'description' => 'Estudio de maquillaje en Floridablanca, Calle 200 #12-290. Maquillaje con luz de estudio y servicio a domicilio en Bucaramanga, Piedecuesta y Girón.',
         'crumb' => 'Estudio y contacto',
     ],
     'tienda' => [

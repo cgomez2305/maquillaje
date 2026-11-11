@@ -21,13 +21,17 @@ final class EstudioController extends Controller
         'curso-pro' => 'Curso de maquillaje profesional',
     ];
 
-    private const PLACES = [
-        'estudio' => 'En el estudio, Floridablanca',
-        'bucaramanga' => 'A domicilio en Bucaramanga',
-        'floridablanca' => 'A domicilio en Floridablanca',
-        'piedecuesta' => 'A domicilio en Piedecuesta',
-        'giron' => 'A domicilio en Girón',
-    ];
+    /** Lugar del servicio con la tarifa de domicilio (siempre adicional; en el estudio no tiene costo). */
+    private static function places(): array
+    {
+        $fees = (array) config('app.booking.home_fees');
+        $out = ['estudio' => 'En el estudio, Floridablanca · sin costo'];
+        foreach (['bucaramanga' => 'Bucaramanga', 'floridablanca' => 'Floridablanca', 'piedecuesta' => 'Piedecuesta', 'giron' => 'Girón'] as $k => $town) {
+            $out[$k] = 'A domicilio en ' . $town . (isset($fees[$town]) ? ' · + ' . money((int) $fees[$town]) : '');
+        }
+        $out['rural'] = 'A domicilio, zona rural · a convenir';
+        return $out;
+    }
 
     public function index(Request $request): Response
     {
@@ -70,7 +74,7 @@ final class EstudioController extends Controller
         if (!isset(self::SERVICES[$old['servicio']])) {
             $errors['servicio'] = 'Elige un servicio de la lista.';
         }
-        if (!isset(self::PLACES[$old['lugar']])) {
+        if (!isset(self::places()[$old['lugar']])) {
             $errors['lugar'] = 'Elige un lugar de la lista.';
         }
         if ($errors) {
@@ -87,7 +91,7 @@ final class EstudioController extends Controller
         if ($when !== null) {
             $lines[] = '• Fecha: ' . $when;
         }
-        $lines[] = '• Lugar: ' . self::PLACES[$old['lugar']];
+        $lines[] = '• Lugar: ' . self::places()[$old['lugar']];
         $lines[] = '• Mi nombre: ' . $old['nombre'];
         if ($old['mensaje'] !== '') {
             $lines[] = '• Nota: ' . $old['mensaje'];
@@ -108,9 +112,10 @@ final class EstudioController extends Controller
             'errors' => $errors,
             'formError' => $formError,
             'services' => self::SERVICES,
-            'places' => self::PLACES,
+            'places' => self::places(),
             'minDate' => (new \DateTimeImmutable('today', $tz))->modify('+' . (int) config('app.booking.min_days_ahead', 2) . ' days')->format('Y-m-d'),
-            'css' => ['pages/estudio.css'],
+            'css' => ['pages/estudio.css', 'pages/mapa.css'],
+            'js' => ['mapa.js'],
             'preload' => ['key' => 'fotos/catalogo-brindis-estudio', 'sizes' => '(max-width: 960px) 100vw, 580px'],
             'waOrigin' => 'estudio',
         ], $status);

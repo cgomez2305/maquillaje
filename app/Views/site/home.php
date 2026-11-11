@@ -187,7 +187,7 @@
       <h2 class="d d-l">Floridablanca,<br>a tu medida.</h2>
       <p class="body-l mw-460">Un espacio con luz de estudio para que el maquillaje se vea igual en el espejo, en la foto y en persona. Si prefieres no moverte, llevamos el estudio a tu casa en Bucaramanga, Floridablanca, Piedecuesta o Girón.</p>
       <address class="stack gap-4 fs-16 addr">
-        <span>Carrera 29 #158-08</span>
+        <span><?= e(config('app.business.address')) ?></span>
         <span class="c-topo">Floridablanca, Santander</span>
       </address>
       <div class="wrap-row">

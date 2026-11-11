@@ -39,7 +39,7 @@ final class WhatsApp
 
     /**
      * Solicitud de servicio armada desde /reservar o la cotización del estudio.
-     * @param array{service?:string,people?:int,date?:?string,time?:?string,location?:string,zone?:string,event?:string,name?:string,notes?:string} $d
+     * @param array{service?:string,people?:int,date?:?string,time?:?string,location?:string,town?:string,zone?:string,event?:string,name?:string,notes?:string} $d
      */
     public static function serviceRequest(array $d): string
     {
@@ -63,14 +63,20 @@ final class WhatsApp
         if (!empty($d['time'])) {
             $lines[] = '• Hora de inicio: ' . hora(new \DateTimeImmutable('2000-01-01 ' . $d['time']));
         }
-        $where = ($d['location'] ?? 'studio') === 'home' ? 'A domicilio' : 'En el estudio de Floridablanca';
-        if (($d['location'] ?? '') === 'home' && !empty($d['zone'])) {
-            $where .= ' · ' . $d['zone'];
+        $home = ($d['location'] ?? 'studio') === 'home';
+        $town = (string) ($d['town'] ?? '');
+        $fees = (array) config('app.booking.home_fees');
+        $fee = $home ? (int) ($fees[$town] ?? 0) : 0;
+        if ($home) {
+            $place = array_filter([(string) ($d['zone'] ?? ''), $town === 'rural' ? 'zona rural' : $town]);
+            $lines[] = '• Lugar: A domicilio' . ($place !== [] ? ' · ' . implode(', ', $place) : '');
+            $lines[] = '• Domicilio: ' . ($fee > 0 ? money($fee) . ' (adicional)' : 'a convenir');
+        } else {
+            $lines[] = '• Lugar: En el estudio de Floridablanca (sin costo de domicilio)';
         }
-        $lines[] = '• Lugar: ' . $where;
         if (isset($packs[$code])) {
-            $total = (int) $packs[$code]['price'] * min($people, $maxPeople);
-            $lines[] = '• Total estimado: ' . money($total) . ($people >= $maxPeople ? ' o más' : '');
+            $total = (int) $packs[$code]['price'] * min($people, $maxPeople) + $fee;
+            $lines[] = '• Total estimado: ' . money($total) . ($people >= $maxPeople ? ' o más' : '') . ($fee > 0 ? ' con domicilio' : '');
         }
         if (!empty($d['name'])) {
             $lines[] = '• Mi nombre: ' . $d['name'];

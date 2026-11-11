@@ -17,9 +17,11 @@ $descs = [
 $maxPeople = (int) config('app.booking.max_people', 4);
 $err = static fn(string $f): string => isset($errors[$f]) ? '<p class="err" id="e-' . e($f) . '">' . e($errors[$f]) . '</p>' : '';
 $aria = static fn(string $f): string => isset($errors[$f]) ? ' aria-invalid="true" aria-describedby="e-' . e($f) . '"' : '';
-$zones = config('app.business.area_served');
+$fees = (array) config('app.booking.home_fees');
+asort($fees);
 $price = isset($packs[$old['service']]) ? (int) $packs[$old['service']]['price'] : 0;
-$total = $price * max(1, min($maxPeople, (int) $old['people']));
+$fee = $old['location'] === 'home' ? (int) ($fees[$old['town']] ?? 0) : 0;
+$total = $price * max(1, min($maxPeople, (int) $old['people'])) + ($price ? $fee : 0);
 ?>
 <section class="wrap rsv">
   <h1 class="rsv-head">
@@ -85,11 +87,21 @@ $total = $price * max(1, min($maxPeople, (int) $old['people']));
           <label class="slot"><input class="sr-only" type="radio" name="location" value="studio" data-label="Estudio, Floridablanca"<?= $old['location'] !== 'home' ? ' checked' : '' ?>><span><?= icon('pin') ?> Estudio, Floridablanca</span></label>
           <label class="slot"><input class="sr-only" type="radio" name="location" value="home" data-label="A domicilio"<?= $old['location'] === 'home' ? ' checked' : '' ?>><span><?= icon('home') ?> A domicilio</span></label>
         </div>
-        <div class="f rsv-zone<?= isset($errors['zone']) ? ' has-err' : '' ?>">
-          <label for="r-zona">Barrio y ciudad del servicio</label>
-          <input id="r-zona" name="zone" type="text" maxlength="80" autocomplete="address-level2" placeholder="Ej.: Cabecera, Bucaramanga" value="<?= e($old['zone']) ?>"<?= $aria('zone') ?>>
-          <?= $err('zone') ?>
-          <p class="hint">A domicilio en <?= e(implode(', ', array_slice($zones, 0, -1)) . ' y ' . end($zones)) ?>.</p>
+        <div class="rsv-zone<?= isset($errors['town']) || isset($errors['zone']) ? ' has-err' : '' ?>">
+          <p class="rsv-q" id="mun-lbl">Municipio · el domicilio se suma al servicio</p>
+          <div class="slots rsv-towns" role="radiogroup" aria-labelledby="mun-lbl"<?= isset($errors['town']) ? ' aria-describedby="e-town"' : '' ?>>
+            <?php foreach ($fees as $town => $tFee): ?>
+            <label class="slot"><input class="sr-only" type="radio" name="town" value="<?= e($town) ?>" data-fee="<?= (int) $tFee ?>"<?= $old['town'] === $town ? ' checked' : '' ?>><span><?= e($town) ?> <em><?= e('+ ' . money((int) $tFee, false)) ?></em></span></label>
+            <?php endforeach; ?>
+            <label class="slot"><input class="sr-only" type="radio" name="town" value="rural" data-fee="0"<?= $old['town'] === 'rural' ? ' checked' : '' ?>><span>Zona rural <em>a convenir</em></span></label>
+          </div>
+          <?= $err('town') ?>
+          <div class="f">
+            <label for="r-zona">Barrio o sector</label>
+            <input id="r-zona" name="zone" type="text" maxlength="80" autocomplete="address-level3" placeholder="Ej.: Cabecera" value="<?= e($old['zone']) ?>"<?= $aria('zone') ?>>
+            <?= $err('zone') ?>
+          </div>
+          <p class="rsv-hint">Valores de referencia: pueden cambiar según la ubicación exacta. En el estudio no tiene costo.</p>
         </div>
       </fieldset>
 
@@ -117,6 +129,7 @@ $total = $price * max(1, min($maxPeople, (int) $old['people']));
         <p>¿Tienen disponibilidad?</p>
       </div>
       <hr class="hr">
+      <div class="row" data-fee-row<?= $fee ? '' : ' hidden' ?>><span>Domicilio</span><span data-sum="fee"><?= $fee ? e(money($fee)) : '—' ?></span></div>
       <div class="row total"><span>Total estimado</span><span data-sum="total"><?= $price ? e(money($total)) : '—' ?></span></div>
       <div class="row"><span>Abono para separar (<?= (int) config('app.booking.deposit_percent', 50) ?> %)</span><span data-sum="deposit"><?= $price ? e(money(intdiv($total * (int) config('app.booking.deposit_percent', 50), 100))) : '—' ?></span></div>
       <p class="sum-note">El abono se envía por Nequi o Bancolombia cuando confirmemos la fecha. No es reembolsable, pero puedes reprogramar avisando con <?= (int) config('app.booking.change_notice_days', 1) ?> día de anticipación.</p>

@@ -72,11 +72,12 @@ $check('producto de la tienda → 301 a /tienda (próximamente)', $r->status() =
 $_SESSION = [];
 $tok = Csrf::token();
 $before = (int) Db::value('SELECT COUNT(*) FROM leads');
-$r = Kernel::handle(new Request('POST', '/reservar', [], ['_token' => $tok, 'service' => 'pack3', 'people' => '2', 'date' => gmdate('Y-m-d', time() + 86400 * 10), 'time' => '09:00', 'location' => 'home', 'name' => 'Ana Prueba', 'zone' => 'Cabecera', 'event' => 'boda', 'notes' => 'Alergia al látex'], $srv(), []));
+$r = Kernel::handle(new Request('POST', '/reservar', [], ['_token' => $tok, 'service' => 'pack3', 'people' => '2', 'date' => gmdate('Y-m-d', time() + 86400 * 10), 'time' => '09:00', 'location' => 'home', 'name' => 'Ana Prueba', 'town' => 'Bucaramanga', 'zone' => 'Cabecera', 'event' => 'boda', 'notes' => 'Alergia al látex'], $srv(), []));
 $loc = $r->headers()['Location'] ?? '';
 $text = rawurldecode((string) parse_url($loc, PHP_URL_QUERY));
 $check('solicitud válida → 303 a wa.me', $r->status() === 303 && str_starts_with($loc, 'https://wa.me/'));
 $check('el mensaje lleva servicio, personas, nombre y nota', str_contains($text, 'Novias y quinceañeras') && str_contains($text, 'Personas: 2') && str_contains($text, 'Ana Prueba') && str_contains($text, 'Alergia al látex'));
+$check('el domicilio se suma al total según el municipio', str_contains($text, 'Domicilio: 30.000 COP (adicional)') && str_contains($text, 'Total estimado: 1.230.000 COP con domicilio'));
 $check('no se guarda nada en la BD', (int) Db::value('SELECT COUNT(*) FROM leads') === $before);
 $r = Kernel::handle(new Request('POST', '/reservar', [], ['_token' => $tok, 'service' => 'pack9', 'name' => ''], $srv(), []));
 $check('solicitud incompleta → se queda en el formulario (422)', $r->status() === 422);
