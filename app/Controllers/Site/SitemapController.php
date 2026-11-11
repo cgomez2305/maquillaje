@@ -12,7 +12,7 @@ use App\Support\Db;
 final class SitemapController extends Controller
 {
     private const PRIORITY = [
-        'home' => '1.0', 'novias' => '0.9', 'servicios' => '0.9', 'cursos' => '0.8', 'estudio' => '0.8',
+        'home' => '1.0', 'novias' => '0.9', 'servicios' => '0.9', 'quinceaneras' => '0.9', 'grados' => '0.9', 'domicilio' => '0.8', 'cursos' => '0.8', 'estudio' => '0.8',
         'tienda' => '0.7', 'portafolio' => '0.7', 'diario' => '0.6', 'privacidad' => '0.2', 'terminos' => '0.2',
     ];
 
@@ -62,7 +62,9 @@ final class SitemapController extends Controller
         'home' => ['site/home', 'Site/HomeController'], 'novias' => ['site/novias', 'Site/NoviasController'],
         'servicios' => ['site/servicios', 'Site/ServiciosController'], 'cursos' => ['site/cursos', 'Site/CursosController'],
         'portafolio' => ['site/portafolio', 'Site/PortafolioController'], 'estudio' => ['site/estudio', 'Site/EstudioController'],
-        'diario' => ['site/diario', 'Site/DiarioController'], 'privacidad' => ['site/legal-privacidad'], 'terminos' => ['site/legal-terminos'],
+        'diario' => ['site/diario', 'Site/DiarioController'],
+        'quinceaneras' => ['site/landing', 'Site/LandingController'], 'grados' => ['site/landing', 'Site/LandingController'],
+        'domicilio' => ['site/landing', 'Site/LandingController'], 'privacidad' => ['site/legal-privacidad'], 'terminos' => ['site/legal-terminos'],
     ];
 
     private static function lastmod(string $key): ?string

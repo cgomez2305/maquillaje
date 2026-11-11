@@ -32,9 +32,11 @@ $courses = App\Domain\Catalog::courses();
 $b = config('app.business');
 // Mosaicos de servicio: decidir con foto y precio a la vista
 $tiles = [
-    ['/maquillaje-de-novia-bucaramanga', 'Novias y quinceañeras', money($packs['pack3']['price'], false), 'fotos/novia-tiara-ramo'],
-    ['/precios-maquillaje-bucaramanga#packs', 'Social y grados', money($packs['pack1']['price'], false), 'fotos/social-cumple-pastel'],
-    ['/precios-maquillaje-bucaramanga#domicilio', 'A domicilio', money($packs['pack2']['price'], false), 'fotos/proceso-domicilio'],
+    ['/maquillaje-de-novia-bucaramanga', 'Novias', money($packs['pack3']['price'], false), 'fotos/novia-tiara-ramo'],
+    ['/maquillaje-para-quinceaneras-bucaramanga', 'Quinceañeras', money($packs['pack3']['price'], false), 'fotos/catalogo-modelo-hero'],
+    ['/maquillaje-para-grados-bucaramanga', 'Grados', money($packs['pack1']['price'], false), 'fotos/social-cumple-beso'],
+    ['/precios-maquillaje-bucaramanga#pk-pack1', 'Social', money($packs['pack1']['price'], false), 'fotos/social-cumple-pastel'],
+    ['/maquillaje-a-domicilio-bucaramanga', 'A domicilio', money($packs['pack2']['price'], false), 'fotos/proceso-domicilio'],
     ['/cursos-de-maquillaje-bucaramanga', 'Cursos', 'desde ' . money(min(array_map(static fn(array $c): int => (int) $c['price'], $courses)), false), 'fotos/proceso-brocha-bn'],
 ];
 $rows = [

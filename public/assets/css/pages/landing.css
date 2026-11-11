@@ -1,0 +1,27 @@
+/* Páginas de servicio por intención (quinceañeras, grados, domicilio). Base visual: pages/novias.css */
+.lp-hero-d { font-size: clamp(52px, 7vw, 112px); }
+.lp-cover img { object-position: 50% 35%; }
+
+.lp-inc-list { margin: 0; padding: 0 0 24px 20px; display: grid; gap: 10px; font-size: 16px; line-height: 1.6; color: var(--nude-medio); }
+
+.lp-guide { align-items: center; }
+.lp-points { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.lp-points div { padding: 22px 0; border-top: 1px solid var(--linea); }
+.lp-points dt { font-size: 18px; margin-bottom: 8px; }
+.lp-points dd { margin: 0; font-size: 15px; line-height: 1.6; color: var(--texto-tarjeta); }
+
+.lp-zones-head { margin-bottom: 48px; }
+.lp-zones { gap: 0; }
+.lp-zone { padding: 32px 28px 32px 0; border-top: 1px solid var(--linea); scroll-margin-top: 96px; }
+.lp-zone-t { font-size: 24px; line-height: 1.15; margin-bottom: 14px; }
+.lp-zone p { font-size: 15px; line-height: 1.65; color: var(--texto-tarjeta); }
+.lp-zone:target .lp-zone-t { color: var(--terracota); }
+
+.lp-related { display: flex; flex-direction: column; gap: 14px; }
+
+@media (max-width: 960px) {
+  .lp-hero-d { font-size: clamp(44px, 12vw, 60px); }
+  .lp-points { grid-template-columns: minmax(0, 1fr); }
+  .lp-zones-head { margin-bottom: 24px; }
+  .lp-zone { padding: 24px 0; }
+}

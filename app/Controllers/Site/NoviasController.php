@@ -16,7 +16,7 @@ final class NoviasController extends Controller
         $packs = Catalog::packs();
         $p3 = $packs['pack3'];
         $faq = [
-            ['q' => '¿Cuánto cuesta el maquillaje de novia?', 'a' => money($p3['price']) . ' con el Pack 3, que incluye prueba previa, dos propuestas, video reel y extra fijación.'],
+            ['q' => '¿Qué incluye el Pack 3?', 'a' => 'Asesoría previa, prueba de maquillaje con dos propuestas, skin care, maquillaje el día de la boda en silla profesional con luz de estudio, pestañas, kit de retoque, video reel de tu preparación y extra fijación. Todo por ' . money($p3['price']) . '.'],
             ['q' => '¿Cuándo se hace la prueba previa?', 'a' => 'Unos días antes del evento, en el estudio de Floridablanca. Ahí te presentamos las dos propuestas y definimos juntas el look elegido.'],
             ['q' => '¿Maquillan en la locación de la boda?', 'a' => 'Sí, llevamos silla y luz de estudio a tu casa, hotel o finca en el área metropolitana. Fuera de Bucaramanga, Floridablanca, Piedecuesta y Girón, el desplazamiento se cotiza por WhatsApp según la distancia.'],
             ['q' => '¿Y si tengo que cambiar la fecha?', 'a' => 'Reagendamos tu cita. El abono del 50 % no se devuelve, pero se mantiene para la nueva fecha. Avísanos con mínimo un día de anticipación.'],
@@ -32,7 +32,7 @@ final class NoviasController extends Controller
             'schema' => [
                 Schema::service(
                     $p3['name'],
-                    'Maquillaje de novia y quinceañera en Bucaramanga y Floridablanca: ' . implode(', ', $p3['includes']) . '.',
+                    'Maquillaje de novia en Bucaramanga y Floridablanca: ' . implode(', ', $p3['includes']) . '.',
                     (int) $p3['price'],
                     '/maquillaje-de-novia-bucaramanga',
                     'Maquillaje de novia',

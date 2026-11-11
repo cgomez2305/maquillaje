@@ -24,7 +24,7 @@ $fcls = static fn(string $field): string => 'f' . (isset($errors[$field]) ? ' ha
   <div class="g2 est-hero-grid">
     <div class="stack gap-40">
       <h1 class="hero-h1 est-h1">
-        <span class="lbl c-terracota">Estudio de maquillaje en Floridablanca</span>
+        <span class="lbl c-terracota">Maquilladora en Floridablanca · estudio con cita</span>
         <span class="d est-title">Pasa por<br>el estudio.</span>
       </h1>
       <dl class="est-data">

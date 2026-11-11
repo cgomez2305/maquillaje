@@ -12,10 +12,10 @@ $b = config('app.business');
       <nav class="foot-col" aria-label="Servicios">
         <p class="lbl">Servicios</p>
         <a href="/maquillaje-de-novia-bucaramanga">Maquillaje de novia</a>
-        <a href="/maquillaje-de-novia-bucaramanga#quinceaneras">Maquillaje para quinceañeras</a>
-        <a href="/precios-maquillaje-bucaramanga#grados">Maquillaje para grados</a>
-        <a href="/precios-maquillaje-bucaramanga#packs">Maquillaje social</a>
-        <a href="/precios-maquillaje-bucaramanga#domicilio">Maquillaje a domicilio</a>
+        <a href="/maquillaje-para-quinceaneras-bucaramanga">Maquillaje para quinceañeras</a>
+        <a href="/maquillaje-para-grados-bucaramanga">Maquillaje para grados</a>
+        <a href="/precios-maquillaje-bucaramanga#pk-pack1">Maquillaje social</a>
+        <a href="/maquillaje-a-domicilio-bucaramanga">Maquillaje a domicilio</a>
         <a href="/cursos-de-maquillaje-bucaramanga">Cursos de maquillaje</a>
         <a href="/tienda">Tienda</a>
         <a href="/diario">Diario de belleza</a>
@@ -31,8 +31,9 @@ $b = config('app.business');
       <nav class="foot-col" aria-label="Zonas">
         <p class="lbl">Zonas</p>
         <a href="/">Maquillaje en Bucaramanga</a>
-        <a href="/estudio-maquillaje-floridablanca">Maquillaje en Floridablanca</a>
-        <a href="/precios-maquillaje-bucaramanga#domicilio">Piedecuesta y Girón a domicilio</a>
+        <a href="/estudio-maquillaje-floridablanca">Maquilladora en Floridablanca</a>
+        <a href="/maquillaje-a-domicilio-bucaramanga#piedecuesta">A domicilio en Piedecuesta</a>
+        <a href="/maquillaje-a-domicilio-bucaramanga#giron">A domicilio en Girón</a>
       </nav>
     </div>
     <div class="d foot-word" aria-hidden="true" data-word="Fletcher"></div>

@@ -7,10 +7,13 @@
 $check = '<svg class="ck" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9.5l4 4 8-9"/></svg>';
 $cards = [
     'pack1' => ['label' => 'Servicio base', 'title' => 'Maquillaje social', 'note' => 'Grados, cenas, sesiones de fotos e invitadas de boda. En el estudio de Floridablanca.', 'cta' => 'Reservar Pack 1', 'href' => '/reservar?servicio=pack1', 'wa' => 'social',
+        'links' => [['/maquillaje-para-grados-bucaramanga', 'Maquillaje para grados']],
         'pills' => ['Asesoría previa', 'Maquillaje social', 'Pestañas incluidas'], 'photo' => 'fotos/social-cumple-pastel', 'alt' => 'Clienta con maquillaje social de ojos dorados sonriendo con su torta de cumpleaños'],
     'pack2' => ['label' => 'Full experience · A domicilio', 'title' => 'Full experience a domicilio', 'note' => 'Una sesión premium en la comodidad de tu casa, con música relajante y ventilador de mano para que estés fresca.', 'cta' => 'Reservar Pack 2', 'href' => '/reservar?servicio=pack2', 'wa' => 'domicilio',
+        'links' => [['/maquillaje-a-domicilio-bucaramanga', 'Maquillaje a domicilio: zonas y cómo funciona']],
         'pills' => ['Skin care y masaje', 'Silla y luz de estudio', 'Pestañas incluidas', 'Kit de retoque'], 'photo' => 'fotos/proceso-domicilio', 'alt' => 'Maquilladora aplicando rubor a una novia en bata en su casa'],
     'pack3' => ['label' => 'Novias y quinceañeras', 'title' => 'Novias y quinceañeras', 'note' => 'Bodas, quince años y cualquier día que merezca prueba previa.', 'cta' => 'Reservar Pack 3', 'href' => '/reservar?servicio=pack3', 'wa' => 'novias',
+        'links' => [['/maquillaje-de-novia-bucaramanga', 'Maquillaje de novia'], ['/maquillaje-para-quinceaneras-bucaramanga', 'Maquillaje para quinceañeras'], ['/diario/precio-maquillaje-de-novia-bucaramanga', 'Qué incluye el precio de novia']],
         'pills' => ['Prueba previa', 'Dos propuestas', 'Video reel', 'Extra fijación'], 'photo' => 'fotos/novia-tiara-ramo', 'alt' => 'Novia con tiara y recogido alto sonriendo con su ramo de hortensias'],
 ];
 $rows = [
@@ -62,6 +65,9 @@ $rows = [
           <p class="sv-pk-price"><span class="d"><?= e(money($packs[$code]['price'], false)) ?></span><span class="sv-cop">COP</span></p>
         </div>
         <p class="sv-pk-note"><?= e($c['note']) ?></p>
+        <?php if (!empty($c['links'])): ?>
+        <p class="sv-pk-links"><?php foreach ($c['links'] as [$lh, $lt]): ?><a href="<?= e($lh) ?>"><?= e($lt) ?></a><?php endforeach; ?></p>
+        <?php endif; ?>
         <ul class="sv-pills" aria-label="Incluye">
           <?php foreach ($c['pills'] as $pill): ?><li><?= $check ?><?= e($pill) ?></li><?php endforeach; ?>
         </ul>
@@ -121,8 +127,11 @@ $rows = [
     <div class="ph px ar-45 m-43 arch-soft op-top"><?= img('fotos/social-cumple-beso', 'Clienta con maquillaje social de ojos ahumados dorados soplando un beso junto a su torta', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
     <div class="stack gap-32">
       <h2 class="d d-l">Maquillaje<br>para grados.</h2>
-      <p class="body-l mw-460">Un look que se vea bien con toga, con flash y en la foto familiar. Pack 1 desde <?= e(money($packs['pack1']['price'])) ?>. En noviembre y diciembre la agenda se llena rápido.</p>
-      <div class="wrap-row"><a class="btn" href="<?= e(wa_href('servicios-grados', 'grados')) ?>" rel="nofollow">Reservar para mi grado</a></div>
+      <p class="body-l mw-460">Un look que se vea bien con toga, con flash y en la foto familiar, con el Pack 1 por <?= e(money($packs['pack1']['price'])) ?>. En noviembre y diciembre la agenda se llena rápido.</p>
+      <div class="wrap-row">
+        <a class="btn" href="/maquillaje-para-grados-bucaramanga">Ver maquillaje para grados <?= icon('arrow', 'arr') ?></a>
+        <a class="btn ghost" href="<?= e(wa_href('servicios-grados', 'grados')) ?>" rel="nofollow">Reservar para mi grado</a>
+      </div>
     </div>
   </div>
 </section>
@@ -137,7 +146,10 @@ $rows = [
         <li><?= e($zone) ?></li>
         <?php endforeach; ?>
       </ul>
-      <div><a class="btn" href="<?= e(wa_href('servicios-domicilio', 'domicilio')) ?>" rel="nofollow">Pedir maquillaje a domicilio</a></div>
+      <div class="wrap-row">
+        <a class="btn" href="/maquillaje-a-domicilio-bucaramanga">Ver maquillaje a domicilio <?= icon('arrow', 'arr') ?></a>
+        <a class="btn ghost" href="<?= e(wa_href('servicios-domicilio', 'domicilio')) ?>" rel="nofollow">Pedir por WhatsApp</a>
+      </div>
     </div>
     <div class="ph px ar-34 m-43 op-left"><?= img('fotos/proceso-domicilio-h', 'Maquilladora aplicando rubor a una novia en bata en su casa, junto al vestido colgado', ['sizes' => '(max-width: 960px) 100vw, 560px', 'class' => 'fill']) ?></div>
   </div>

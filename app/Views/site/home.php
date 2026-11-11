@@ -9,7 +9,7 @@
 <section class="wrap hero">
   <div class="stack gap-40">
     <h1 class="hero-h1">
-      <span class="lbl c-terracota">Maquillaje profesional en Bucaramanga</span>
+      <span class="lbl c-terracota">Maquilladora profesional en Bucaramanga</span>
       <span class="d d-hero hero-t">Que te veas tú hasta la última canción.</span>
     </h1>
     <p class="lead mw-470">Maquillaje para novias, quinceañeras, grados y eventos sociales, con acabado natural que se mantiene impecable de la primera foto a la última del álbum. Estudio en Floridablanca y servicio a domicilio.</p>
@@ -20,8 +20,8 @@
     <nav class="hero-quick only-m" aria-label="Servicios y precios">
       <?php foreach ([
           ['/maquillaje-de-novia-bucaramanga', 'Novias y quinceañeras', 'Prueba previa, reel y extra fijación', $packs['pack3']['price']],
-          ['/precios-maquillaje-bucaramanga#packs', 'Social y grados', 'Asesoría, maquillaje y pestañas', $packs['pack1']['price']],
-          ['/precios-maquillaje-bucaramanga#domicilio', 'A domicilio', 'El estudio va a tu casa', $packs['pack2']['price']],
+          ['/maquillaje-para-grados-bucaramanga', 'Grados y eventos', 'Asesoría, maquillaje y pestañas', $packs['pack1']['price']],
+          ['/maquillaje-a-domicilio-bucaramanga', 'A domicilio', 'El estudio va a tu casa', $packs['pack2']['price']],
           ['/cursos-de-maquillaje-bucaramanga', 'Cursos', 'Automaquillaje y profesional', min($courses['curso-auto']['price'], $courses['curso-pro']['price'])],
       ] as $k => [$href, $name, $detail, $price]): ?>
       <a href="<?= e($href) ?>"><span class="hq-t"><span class="hq-n"><?= e($name) ?></span><span class="hq-d"><?= e($detail) ?></span></span><span class="hq-p"><?= $k === 3 ? 'desde ' : '' ?><?= e(money($price, false)) ?></span><?= icon('chevron', 'hq-i') ?></a>
@@ -50,7 +50,7 @@
     </div>
     <div class="stack gap-40">
       <p class="d firma-quote" data-ink>Creemos en una piel que se ve como piel<?php foreach (['fotos/novia-rostro', 'fotos/social-cumple-beso', 'fotos/novia-bata-sonrisa'] as $q): ?><span class="qface" aria-hidden="true"><?= img($q, '', ['sizes' => '64px', 'width' => 480]) ?></span><?php endforeach; ?>. Luz donde hace falta, color con intención y una fijación pensada para <span class="c-terracota">llorar, abrazar y bailar</span> sin retoques de emergencia.</p>
-      <a class="link-line" href="/estudio-maquillaje-floridablanca">Conoce el estudio <?= icon('arrow', 'arr') ?></a>
+      <a class="link-line" href="/estudio-maquillaje-floridablanca">Conoce el estudio de maquillaje en Floridablanca <?= icon('arrow', 'arr') ?></a>
     </div>
   </div>
 </section>
@@ -65,7 +65,7 @@
   <ul class="flist hide-m" data-follow role="list">
     <?php foreach ([
         ['01', 'Maquillaje social', 'Asesoría, maquillaje y pestañas para grados, cenas, sesiones y eventos.', $packs['pack1']['price'], '/precios-maquillaje-bucaramanga#pk-pack1', 'fotos/social-cumple-pastel'],
-        ['02', 'Full experience a domicilio', 'Skin care, silla y luz de estudio en tu casa, pestañas y kit de retoque.', $packs['pack2']['price'], '/precios-maquillaje-bucaramanga#pk-pack2', 'fotos/proceso-domicilio'],
+        ['02', 'Full experience a domicilio', 'Skin care, silla y luz de estudio en tu casa, pestañas y kit de retoque.', $packs['pack2']['price'], '/maquillaje-a-domicilio-bucaramanga', 'fotos/proceso-domicilio'],
         ['03', 'Novias y quinceañeras', 'Prueba previa con dos propuestas, video reel y extra fijación.', $packs['pack3']['price'], '/maquillaje-de-novia-bucaramanga', 'fotos/novia-ramo-ceremonia'],
     ] as [$n, $title, $text, $price, $href, $photo]): ?>
     <li class="frow" data-follow-row>
@@ -83,8 +83,8 @@
   <div class="g3 m-snap only-m" aria-label="Servicios">
     <?php
     $cards = [
-        ['pack1', 'Pack 01', 'Maquillaje social', 'fotos/social-cumple-pastel', 'Clienta con maquillaje social de ojos dorados y pestañas, sonriendo con su torta de cumpleaños', 'Asesoría, maquillaje social y pestañas. Ideal para grados, cenas, sesiones y eventos.', '/precios-maquillaje-bucaramanga#packs', ''],
-        ['pack2', 'Pack 02', 'Full experience a domicilio', 'fotos/proceso-domicilio', 'Maquilladora aplicando rubor a una novia en bata en su casa, con el vestido colgado al fondo', 'Una sesión premium en la comodidad de tu casa: skin care con mascarilla y masaje, silla y luz de estudio, pestañas y kit de retoque.', '/precios-maquillaje-bucaramanga#domicilio', ''],
+        ['pack1', 'Pack 01', 'Maquillaje social', 'fotos/social-cumple-pastel', 'Clienta con maquillaje social de ojos dorados y pestañas, sonriendo con su torta de cumpleaños', 'Asesoría, maquillaje social y pestañas. Ideal para grados, cenas, sesiones y eventos.', '/precios-maquillaje-bucaramanga#pk-pack1', ''],
+        ['pack2', 'Pack 02', 'Full experience a domicilio', 'fotos/proceso-domicilio', 'Maquilladora aplicando rubor a una novia en bata en su casa, con el vestido colgado al fondo', 'Una sesión premium en la comodidad de tu casa: skin care con mascarilla y masaje, silla y luz de estudio, pestañas y kit de retoque.', '/maquillaje-a-domicilio-bucaramanga', ''],
         ['pack3', 'Pack 03', 'Novias y quinceañeras', 'fotos/novia-ramo-ceremonia', 'Novia con tiara y vestido de encaje sosteniendo su ramo durante la ceremonia', 'Prueba previa con dos propuestas, skin care, maquillaje el día del evento, video reel y extra fijación.', '/maquillaje-de-novia-bucaramanga', 'op-top'],
     ];
     foreach ($cards as $i => [$code, $tag, $title, $photo, $alt, $text, $href, $op]): ?>
@@ -184,7 +184,7 @@
   <div class="g2">
     <div class="ph px ar-45 m-43 arch-soft"><?= img('fotos/catalogo-brindis-estudio', 'María Paula Fletcher brindando con una clienta en el estudio de Floridablanca', ['sizes' => '(max-width: 960px) 100vw, 620px', 'class' => 'fill']) ?></div>
     <div class="stack gap-32">
-      <h2 class="d d-l">Floridablanca,<br>a tu medida.</h2>
+      <h2 class="d d-l">El estudio,<br>en Floridablanca.</h2>
       <p class="body-l mw-460">Un espacio con luz de estudio para que el maquillaje se vea igual en el espejo, en la foto y en persona. Si prefieres no moverte, llevamos el estudio a tu casa en Bucaramanga, Floridablanca, Piedecuesta o Girón.</p>
       <address class="stack gap-4 fs-16 addr">
         <span>Carrera 29 #158-08</span>
@@ -192,7 +192,7 @@
       </address>
       <div class="wrap-row">
         <a class="btn" href="/estudio-maquillaje-floridablanca#ubicacion">Cómo llegar</a>
-        <a class="btn ghost" href="<?= e(wa_href('inicio-domicilio', 'domicilio')) ?>" rel="nofollow">Pedir servicio a domicilio</a>
+        <a class="btn ghost" href="/maquillaje-a-domicilio-bucaramanga">Maquillaje a domicilio</a>
       </div>
     </div>
   </div>

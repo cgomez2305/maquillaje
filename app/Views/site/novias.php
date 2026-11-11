@@ -1,6 +1,6 @@
 <?php
 /**
- * Novias y quinceañeras (maqueta Novias.dc.html).
+ * Novias (maqueta Novias.dc.html). Las quinceañeras tienen su propia página (/maquillaje-para-quinceaneras-bucaramanga).
  * @var array<string,array{name:string,short:string,price:int,includes:list<string>}> $packs
  * @var list<array{q:string,a:string,pending?:string}> $faq
  * @var list<array{0:string,1:?string}> $crumbs
@@ -10,13 +10,13 @@
   <?= App\View::partial('partials/breadcrumbs', ['crumbs' => $crumbs]) ?>
   <div class="g2 nv-hero-grid">
     <h1 class="nv-h1">
-      <span class="lbl c-terracota">Maquillaje de novia en Bucaramanga y Floridablanca</span>
+      <span class="lbl c-terracota">Maquillaje de novia en Bucaramanga</span>
       <span class="d nv-hero-d">Tu versión<br>del sí.</span>
     </h1>
     <div class="stack gap-28 nv-hero-side">
-      <p class="lead">Para novias y quinceañeras que quieren reconocerse en las fotos dentro de veinte años. Prueba previa, dos propuestas y fijación extra para todo el día.</p>
+      <p class="lead">Para novias que quieren reconocerse en las fotos dentro de veinte años. Prueba previa, dos propuestas y fijación extra para todo el día.</p>
       <div class="nv-prices">
-        <p class="nv-price"><span class="d"><?= e(money($packs['pack3']['price'], false)) ?></span><span class="c-topo">COP · Novia o quinceañera</span></p>
+        <p class="nv-price"><span class="d"><?= e(money($packs['pack3']['price'], false)) ?></span><span class="c-topo">COP · Pack 3 de novia</span></p>
         <a class="nv-price-alt" href="#cortejo"><span>Mamá, damas e invitadas desde <strong><?= e(money($packs['pack1']['price'])) ?></strong></span><?= icon('arrow', 'arr') ?></a>
       </div>
       <div class="wrap-row">
@@ -37,9 +37,9 @@
   <div class="wrap">
     <div class="g2 nv-inc-head">
       <div class="stack gap-18">
-        <h2 class="d d-l" id="quinceaneras">Lo que incluye<br>el Pack 3.</h2>
+        <h2 class="d d-l">Lo que incluye<br>el Pack 3.</h2>
       </div>
-      <p class="nv-on-dark mw-480">Todo pensado para que el día de la boda o de los quince no haya sorpresas: el maquillaje ya lo probaste, lo aprobaste y sabemos cómo se comporta con tu piel.</p>
+      <p class="nv-on-dark mw-480">Todo pensado para que el día de la boda no haya sorpresas: el maquillaje ya lo probaste, lo aprobaste y sabemos cómo se comporta con tu piel.</p>
     </div>
     <div class="g4 nv-inc-grid">
       <?php
@@ -205,6 +205,8 @@
   <div class="g2 nv-faq-grid">
     <div class="stack gap-18">
       <h2 class="d d-l2">Todo claro<br>antes del sí.</h2>
+      <p class="body-l mw-460">¿Cuánto suma el cortejo y qué cambia el valor final? Lo explicamos en la guía de <a href="/diario/precio-maquillaje-de-novia-bucaramanga">precio del maquillaje de novia en Bucaramanga</a>.</p>
+      <p class="body-l mw-460">¿Es para unos quince años? Mira el <a href="/maquillaje-para-quinceaneras-bucaramanga">maquillaje para quinceañeras</a>.</p>
     </div>
     <div class="faq">
       <?php foreach ($faq as $i => $item): ?>

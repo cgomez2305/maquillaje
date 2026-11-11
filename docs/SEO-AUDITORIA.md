@@ -391,3 +391,34 @@ Reglas para cada artículo:
 - Una H1 por página con la keyword; títulos de 60 caracteres o menos; descriptions de 133–149.
 - `lang="es-CO"`; Open Graph y Twitter Card; imágenes con `width` y `height`, carga diferida y AVIF/WebP con preload del LCP; Lighthouse móvil 98–100 (según el contexto del proyecto).
 - JSON-LD coherente (BeautySalon con `@id`, Service con Offer en COP, Course, BlogPosting con autora, FAQPage visible) y sin reseñas marcadas.
+
+---
+
+## 8. Estado de implementación (11-nov-2026, rama `claude/seo-auditoria-mubf`; **sin desplegar**)
+
+**Canibalización corregida (§3 y §4)**
+
+| Caso | Cambio hecho | Archivos |
+|---|---|---|
+| C1 precio de novia | FAQ de Inicio → «¿Cuánto cuestan los servicios?» (rango 200.000–600.000, sin novia ni ciudad). FAQ de Novias → «¿Qué incluye el Pack 3?». Novias enlaza al artículo con «precio del maquillaje de novia en Bucaramanga» y Precios con «Qué incluye el precio de novia». En el artículo, el ancla «Pack 3» pasa a «maquillaje de novia en Bucaramanga» (migración 008). | `HomeController.php`, `NoviasController.php`, `novias.php`, `servicios.php`, `articulo.php`, `008_seo_canibalizacion.sql` |
+| C2 Inicio frente a Precios | Inicio → «Maquilladora profesional en Bucaramanga» (title, description, H1). Precios → title «Precios de maquillaje social y de novia 2026». | `config/seo.php`, `home.php` |
+| C3 Floridablanca | Estudio → «Maquilladora en Floridablanca · Estudio Fletcher» (title, H1, description). Inicio enlaza con «estudio de maquillaje en Floridablanca» y su H2 pasa a «El estudio, en Floridablanca». Novias deja «y Floridablanca» en el H1. | `config/seo.php`, `estudio.php`, `home.php`, `novias.php` |
+| C4 quinceañeras | Novias se centra en novia; el ancla `#quinceaneras` desaparece y todos los enlaces van a la nueva landing. | `novias.php`, `footer.php`, `header.php` |
+| C5/C6 preventivos | Los borradores del diario de grados, quinceañera y domicilio pasan a keyword informacional y enlazan a su landing (migración 008). | `008_seo_canibalizacion.sql` |
+
+**Nuevas URL (en el sitemap, pie, menú móvil y barra de contacto)**
+
+| URL | Pack y precio | Contenido |
+|---|---|---|
+| `/maquillaje-para-grados-bucaramanga` | Pack 1 · 200.000 (Pack 2 a domicilio 250.000) | Qué incluye, día/noche, toga, flash y calor, proceso, galería, acompañantes, temporada, 6 FAQ (Service + FAQPage) |
+| `/maquillaje-para-quinceaneras-bucaramanga` | Pack 3 · 600.000 | Qué incluye, enfoque «de su edad», proceso con prueba, familia, 6 FAQ (Service + FAQPage) |
+| `/maquillaje-a-domicilio-bucaramanga` | Pack 2 · 250.000 | Qué incluye, qué se necesita en casa, secciones `#bucaramanga`, `#floridablanca`, `#piedecuesta` y `#giron`, «no hacemos peinados», 6 FAQ con las PAA de precio |
+
+Las tres comparten un solo controlador (`LandingController`) y una sola vista (`site/landing.php`) con la estética de Novias (`novias.css` + `landing.css`).
+
+**Pendiente**
+
+- Fotos reales de grados (con toga), de quinceañeras y de servicios a domicilio en Piedecuesta y Girón. Las landings usan fotos provisionales con `alt` honesto.
+- Desplegar los archivos y aplicar la migración 008 (`php cron/migrate.php`).
+- Página «Sobre María Paula» (necesita datos reales de trayectoria).
+- Google Business Profile y Search Console (§6.1 R10–R11 y §6.2).

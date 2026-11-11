@@ -8,21 +8,39 @@ declare(strict_types=1);
 return [
     'home' => [
         'path' => '/',
-        'title' => 'Maquillaje profesional en Bucaramanga · Make Up by Fletcher',
-        'description' => 'Maquillaje profesional en Bucaramanga y Floridablanca para novias, quinceañeras, grados y eventos. Acabado natural y duradero. Estudio y domicilio.',
+        'title' => 'Maquilladora profesional en Bucaramanga · Fletcher',
+        'description' => 'Maquilladora profesional en Bucaramanga para novias, quinceañeras y grados. Estudio en Floridablanca y servicio a domicilio. Reserva por WhatsApp.',
         'crumb' => 'Inicio',
     ],
     'novias' => [
         'path' => '/maquillaje-de-novia-bucaramanga',
         'title' => 'Maquillaje de novia en Bucaramanga · Make Up by Fletcher',
-        'description' => 'Maquillaje de novia y quinceañera en Bucaramanga: prueba previa con dos propuestas, skin care, video reel y extra fijación. Pack 3 por 600.000 COP.',
-        'crumb' => 'Novias y quinceañeras',
+        'description' => 'Maquillaje de novia en Bucaramanga con prueba previa y dos propuestas, skin care, video reel y extra fijación. Pack 3 por 600.000 COP.',
+        'crumb' => 'Novias',
     ],
     'servicios' => [
         'path' => '/precios-maquillaje-bucaramanga',
-        'title' => 'Precios de maquillaje en Bucaramanga 2026 · Fletcher',
+        'title' => 'Precios de maquillaje social y de novia 2026 · Fletcher',
         'description' => 'Precios 2026 de maquillaje en Bucaramanga: social desde 200.000 COP, full experience a domicilio 250.000 COP y novias 600.000 COP. Compara los packs.',
         'crumb' => 'Servicios y precios',
+    ],
+    'grados' => [
+        'path' => '/maquillaje-para-grados-bucaramanga',
+        'title' => 'Maquillaje para grados en Bucaramanga · Fletcher',
+        'description' => 'Maquillaje para grados en Bucaramanga y Floridablanca: look natural que resiste toga, flash y calor. 200.000 COP con pestañas. Reserva tu fecha.',
+        'crumb' => 'Maquillaje para grados',
+    ],
+    'quinceaneras' => [
+        'path' => '/maquillaje-para-quinceaneras-bucaramanga',
+        'title' => 'Maquillaje para quinceañeras en Bucaramanga · Fletcher',
+        'description' => 'Maquillaje para quinceañera en Bucaramanga: natural y fotogénico, con prueba previa, video reel y fijación extra. Pack 600.000 COP. Separa la fecha.',
+        'crumb' => 'Quinceañeras',
+    ],
+    'domicilio' => [
+        'path' => '/maquillaje-a-domicilio-bucaramanga',
+        'title' => 'Maquillaje a domicilio en Bucaramanga · Fletcher',
+        'description' => 'Maquillaje a domicilio en Bucaramanga, Floridablanca, Piedecuesta y Girón: silla y luz de estudio, skin care y pestañas en tu casa. 250.000 COP.',
+        'crumb' => 'A domicilio',
     ],
     'cursos' => [
         'path' => '/cursos-de-maquillaje-bucaramanga',
@@ -38,8 +56,8 @@ return [
     ],
     'estudio' => [
         'path' => '/estudio-maquillaje-floridablanca',
-        'title' => 'Estudio de maquillaje en Floridablanca · Fletcher',
-        'description' => 'Estudio de maquillaje en Floridablanca, Carrera 29 #158-08. Maquillaje con luz de estudio y servicio a domicilio en Bucaramanga, Piedecuesta y Girón.',
+        'title' => 'Maquilladora en Floridablanca · Estudio Fletcher',
+        'description' => 'Estudio de maquillaje en Floridablanca (Carrera 29 #158-08), con cita previa. Luz de estudio, prueba de novia y cursos. Domicilio en el área metropolitana.',
         'crumb' => 'Estudio y contacto',
     ],
     'tienda' => [

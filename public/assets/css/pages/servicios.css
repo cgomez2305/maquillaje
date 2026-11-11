@@ -48,6 +48,8 @@
 .pk.dark .sv-cop { color: var(--nude-oscuro); }
 .sv-pk-note { font-size: 14px; color: var(--texto-tarjeta); line-height: 1.6; flex-grow: 1; }
 .pk.dark .sv-pk-note { color: var(--nude-oscuro); }
+.sv-pk-links { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 14px; }
+.sv-pk-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cacao); text-underline-offset: 4px; }
 .sv-policy { margin-top: 32px; font-size: 14px; color: var(--topo); }
 
 .sv-cmp-head { margin-bottom: 40px; }
@@ -98,7 +100,7 @@
   .sv-row-head { grid-column: 2; grid-template-columns: minmax(0, 1fr); gap: 6px; align-self: center; }
   .sv-row-n { display: none; }
   .sv-row-head .sv-pk-price { grid-column: auto; }
-  .sv-pk-note, .sv-pills, .sv-more, .sv-row-cta { grid-column: 1 / -1; }
+  .sv-pk-note, .sv-pk-links, .sv-pills, .sv-more, .sv-row-cta { grid-column: 1 / -1; }
   .sv-row-cta .btn { flex: 1 1 auto; }
   /* Tabla comparativa: cabe en el ancho del teléfono, sin desplazamiento lateral */
   .sv-tbl { min-width: 0; table-layout: fixed; font-size: 14px; }

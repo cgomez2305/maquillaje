@@ -12,6 +12,9 @@ $courses = App\Domain\Catalog::courses();
 $from = static fn(array $items): int => min(array_map(static fn(array $p): int => (int) $p['price'], $items));
 $bars = [
     '/maquillaje-de-novia-bucaramanga' => ['Pack novias', money($packs['pack3']['price']), '/reservar?servicio=pack3', 'Reservar'],
+    '/maquillaje-para-quinceaneras-bucaramanga' => ['Pack quinceañera', money($packs['pack3']['price']), '/reservar?servicio=pack3', 'Reservar'],
+    '/maquillaje-para-grados-bucaramanga' => ['Maquillaje de grado', money($packs['pack1']['price']), '/reservar?servicio=pack1', 'Reservar'],
+    '/maquillaje-a-domicilio-bucaramanga' => ['A domicilio', money($packs['pack2']['price']), '/reservar?servicio=pack2', 'Reservar'],
     '/cursos-de-maquillaje-bucaramanga' => ['Cursos desde', money($from($courses)), '#automaquillaje', 'Ver cursos'],
     '/tienda' => ['Tienda', 'Próximamente', wa_href('barra-tienda', 'bono'), 'Pedir bono'],
 ];

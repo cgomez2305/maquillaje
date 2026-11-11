@@ -11,6 +11,9 @@ use App\Router;
 return static function (Router $r): void {
     $r->add('GET', '/', [Site\HomeController::class, 'index']);
     $r->add('GET', '/maquillaje-de-novia-bucaramanga', [Site\NoviasController::class, 'index']);
+    $r->add('GET', '/maquillaje-para-quinceaneras-bucaramanga', [Site\LandingController::class, 'quinceaneras']);
+    $r->add('GET', '/maquillaje-para-grados-bucaramanga', [Site\LandingController::class, 'grados']);
+    $r->add('GET', '/maquillaje-a-domicilio-bucaramanga', [Site\LandingController::class, 'domicilio']);
     $r->add('GET', '/precios-maquillaje-bucaramanga', [Site\ServiciosController::class, 'index']);
     $r->add('GET', '/cursos-de-maquillaje-bucaramanga', [Site\CursosController::class, 'index']);
     $r->add('GET', '/portafolio', [Site\PortafolioController::class, 'index']);
